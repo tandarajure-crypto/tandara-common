@@ -13,6 +13,7 @@
   const commonRoot = new URL("../", loaderScript.src);
   const siteRoot = new URL(body.dataset.siteRoot || "./", document.baseURI);
   const templateUrl = new URL("templates/branch-page-minimal.html", commonRoot);
+  templateUrl.search = new URL(loaderScript.src).search;
 
   const siteUrl = (relativePath) => new URL(relativePath, siteRoot).href;
   const commonUrl = (relativePath) => new URL(relativePath, commonRoot).href;
