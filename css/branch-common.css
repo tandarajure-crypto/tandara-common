@@ -1,4 +1,9 @@
 /* TANDARA COMMON — jedini stil zajedničkog okvira stranice. */
+body.tandara-common-page {
+  background: #e7c191;
+  margin: 0;
+}
+
 .tandara-layout,
 .tandara-layout * {
   box-sizing: border-box;
@@ -179,6 +184,138 @@
   width: 1px;
 }
 
+/* Početno stablo: slika je zajednička, a svih deset poveznica dijeli isti izvor. */
+.tandara-home-page {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.tandara-home-tree {
+  line-height: 0;
+  margin: 0 auto;
+  max-width: 1672px;
+  position: relative;
+  width: 100%;
+}
+
+.tandara-home-tree > img {
+  border: 0;
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.tandara-home-hotspot {
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: absolute;
+  text-decoration: none;
+  transition: background-color .15s ease, border-color .15s ease, transform .15s ease;
+  z-index: 2;
+}
+
+.tandara-home-hotspot:hover,
+.tandara-home-hotspot:focus-visible,
+.tandara-home-hotspot:active {
+  background: rgba(212, 175, 55, .16);
+  border-color: #d4af37;
+}
+
+.tandara-home-hotspot:focus-visible {
+  outline: 3px solid #d4af37;
+  outline-offset: 2px;
+}
+
+.tandara-home-hotspot--jurina,
+.tandara-home-hotspot--petrova {
+  height: 10.15%;
+  top: 31.75%;
+  width: 19.5652%;
+}
+
+.tandara-home-hotspot--antina,
+.tandara-home-hotspot--matina {
+  height: 10.15%;
+  top: 48.1%;
+  width: 19.5652%;
+}
+
+.tandara-home-hotspot--jurina,
+.tandara-home-hotspot--antina {
+  left: 9.2174%;
+}
+
+.tandara-home-hotspot--petrova,
+.tandara-home-hotspot--matina {
+  left: 34.8696%;
+}
+
+.tandara-home-hotspot--ivanov {
+  height: 9.6%;
+  left: 68.4783%;
+  top: 44%;
+  width: 12.7174%;
+}
+
+.tandara-home-hotspot--jurin {
+  height: 9%;
+  left: 83.8804%;
+  top: 6.85%;
+  width: 11.087%;
+}
+
+.tandara-home-hotspot--petrov {
+  height: 9%;
+  left: 84.0978%;
+  top: 26.7%;
+  width: 11.087%;
+}
+
+.tandara-home-hotspot--antin {
+  height: 9%;
+  left: 84.0978%;
+  top: 59.4%;
+  width: 11.087%;
+}
+
+.tandara-home-hotspot--matin {
+  height: 9%;
+  left: 84.0978%;
+  top: 82.2%;
+  width: 11.087%;
+}
+
+.tandara-home-hotspot--livanjske {
+  align-items: center;
+  background: rgba(248, 232, 190, .92);
+  border-color: #7a5a2f;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .28);
+  color: #3b2a1a;
+  display: flex;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(8px, .8vw, 13px);
+  font-weight: 700;
+  height: 5.2%;
+  justify-content: center;
+  left: 45%;
+  line-height: 1.05;
+  text-align: center;
+  top: 68%;
+  width: 8%;
+}
+
+.tandara-home-hotspot--livanjske:hover,
+.tandara-home-hotspot--livanjske:focus-visible,
+.tandara-home-hotspot--livanjske:active {
+  background: #d4af37;
+  color: #fff;
+  transform: scale(1.04);
+}
+
 @media (max-width: 900px) {
   .tandara-layout {
     display: block;
@@ -191,6 +328,20 @@
     overflow: visible;
     position: relative;
     width: 100%;
+  }
+
+  .tandara-home-hotspot--livanjske {
+    border-radius: 5px;
+    border-width: 1px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .25);
+    font-size: clamp(5.5px, 1.9vw, 9px);
+    height: 7%;
+    left: 44.4%;
+    line-height: .95;
+    overflow: hidden;
+    padding: 1px;
+    white-space: normal;
+    width: 15.5%;
   }
 }
 
