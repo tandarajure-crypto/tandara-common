@@ -1,133 +1,117 @@
-/* TANDARA COMMON — zajednički elementi glavnih grana */
+/* TANDARA COMMON — jedini učitavač zajedničkog okvira stranice. */
 (() => {
   "use strict";
 
+  const loaderScript = document.currentScript;
   const body = document.body;
-  const siteRoot = (body.dataset.siteRoot || "./").replace(/\/?$/, "/");
-  const commonRoot = (body.dataset.commonRoot || "../tandara-common/").replace(/\/?$/, "/");
-  const page = body.dataset.page || "";
-  const branchName = body.dataset.branchName || "";
-  const diagramHref = body.dataset.diagram || "";
-  const lang = (document.documentElement.lang || "hr").toLowerCase();
+  const pageContent = document.querySelector("[data-page-content]") || document.querySelector("main");
+
+  if (!loaderScript || !body || !pageContent) return;
+
+  const lang = (document.documentElement.lang || body.dataset.lang || "hr").toLowerCase();
   const isHr = lang.startsWith("hr");
+  const commonRoot = new URL("../", loaderScript.src);
+  const siteRoot = new URL(body.dataset.siteRoot || "./", document.baseURI);
+  const templateUrl = new URL("templates/branch-page-minimal.html", commonRoot);
 
-  const pageHr = page ? `${siteRoot}${page}.html` : `${siteRoot}index.html`;
-  const pageEn = page ? `${siteRoot}${page}-en.html` : `${siteRoot}index-en.html`;
+  const siteUrl = (relativePath) => new URL(relativePath, siteRoot).href;
+  const commonUrl = (relativePath) => new URL(relativePath, commonRoot).href;
 
-  const oldRepo = "https://tandarajure-crypto.github.io/Tandara/";
-  const commonImage = (name) => `${commonRoot}slike/${name}`;
+  function localize(root) {
+    root.querySelectorAll("[data-text-hr][data-text-en]").forEach((element) => {
+      element.textContent = isHr ? element.dataset.textHr : element.dataset.textEn;
+    });
 
-  function fallback(img, oldName) {
-    if (!img) return;
-    img.addEventListener("error", function useOldRepo() {
-      img.removeEventListener("error", useOldRepo);
-      img.src = oldRepo + oldName;
+    root.querySelectorAll("[data-label-hr][data-label-en]").forEach((element) => {
+      element.setAttribute("aria-label", isHr ? element.dataset.labelHr : element.dataset.labelEn);
+    });
+
+    root.querySelectorAll("[data-route-hr][data-route-en]").forEach((link) => {
+      link.href = siteUrl(isHr ? link.dataset.routeHr : link.dataset.routeEn);
+    });
+
+    root.querySelectorAll("[data-common-src]").forEach((image) => {
+      image.src = commonUrl(image.dataset.commonSrc);
     });
   }
 
-  const sidebar = document.getElementById("common-sidebar");
-  if (sidebar) {
-    sidebar.className = "left-menu";
-    sidebar.innerHTML = `
-      <a aria-label="${isHr ? "Početna stranica" : "Home"}" class="home-button" href="${siteRoot}index.html">
-        <div class="home-circle">
-          <svg aria-hidden="true" class="home-svg" fill="none" stroke="white"
-               stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-               viewBox="0 0 24 24">
-            <path d="M3 10.5L12 3l9 7.5"></path>
-            <path d="M5 10v10h14V10"></path>
-            <path d="M10 20v-6h4v6"></path>
-          </svg>
-        </div>
-      </a>
+  function configureLanguageSwitch(sidebar) {
+    const switcher = sidebar.querySelector('[data-role="language-switch"]');
+    const hrLink = sidebar.querySelector('[data-role="hr-link"]');
+    const enLink = sidebar.querySelector('[data-role="en-link"]');
+    const hrPage = body.dataset.pageHr;
+    const enPage = body.dataset.pageEn;
 
-      <div class="lang-switch">
-        <a class="lang-btn flag-btn" href="${pageHr}" title="Hrvatski">
-          <img id="common-flag-hr" alt="Hrvatski" src="${commonImage("flag-hr.png")}">
-        </a>
-        <a class="lang-btn flag-btn" href="${pageEn}" title="English">
-          <img id="common-flag-uk" alt="English" src="${commonImage("flag-uk.png")}">
-        </a>
-      </div>
+    if (!switcher || !hrLink || !enLink || !hrPage || !enPage) return;
 
-      <div class="menu-title">TANDARA-PREZIME</div>
-
-      <ul class="heritage-menu">
-        <li><span>🌳</span><a href="${siteRoot}${isHr ? "autor-hr.html" : "autor-en.html"}">${isHr ? "O autoru i projektu" : "About the author and project"}</a></li>
-        <li><span>🌳</span><a href="${siteRoot}${isHr ? "podrijetlo-hr.html" : "podrijetlo-en.html"}">${isHr ? "Podrijetlo prezimena" : "Surname origin"}</a></li>
-        <li><span>🌳</span><a href="${siteRoot}${isHr ? "rodoslovlje-hr.html" : "rodoslovlje-en.html"}">${isHr ? "Rodoslovlje roda" : "Family genealogy"}</a></li>
-        <li><span>🌳</span><a href="${siteRoot}${isHr ? "migracije-hr.html" : "migracije-en.html"}">${isHr ? "Migracije i rasprostranjenost" : "Migration and distribution"}</a></li>
-        <li><span>🌳</span><a href="${siteRoot}${isHr ? "zanimljivosti.html" : "zanimljivosti-en.html"}">${isHr ? "Zanimljivosti" : "Interesting facts"}</a></li>
-        <li><span>🌳</span><a href="${siteRoot}${isHr ? "kontakti.html" : "kontakti-en.html"}">${isHr ? "Kontakt i suradnja" : "Contact and collaboration"}</a></li>
-        <li><span>🌳</span><a href="${siteRoot}${isHr ? "knjiga-poruka.html" : "knjiga-poruka-en.html"}">${isHr ? "Knjiga poruka" : "Guestbook"}</a></li>
-        <li><span>🌳</span><a href="${siteRoot}${isHr ? "privatnost.html" : "privatnost-en.html"}">${isHr ? "Politika privatnosti" : "Privacy policy"}</a></li>
-      </ul>
-
-      <div class="author-photo">
-        <a href="${siteRoot}${isHr ? "autor-hr.html" : "autor-en.html"}">
-          <img id="common-jure" alt="Jure Tandara" src="${commonImage("jure.png")}" loading="lazy" decoding="async">
-        </a>
-      </div>
-    `;
-
-    fallback(document.getElementById("common-flag-hr"), "flag-hr.png");
-    fallback(document.getElementById("common-flag-uk"), "flag-uk.png");
-    fallback(document.getElementById("common-jure"), "jure.png");
+    hrLink.href = siteUrl(hrPage);
+    enLink.href = siteUrl(enPage);
+    const activeLink = isHr ? hrLink : enLink;
+    activeLink.classList.add("active");
+    activeLink.setAttribute("aria-current", "page");
+    switcher.hidden = false;
   }
 
-  const tools = document.getElementById("common-branch-tools");
-  if (tools) {
-    tools.className = "branch-common-tools";
-    tools.innerHTML = `
-      <img id="common-branch-flag"
-           alt="${isHr ? "Hrvatska zastava" : "Croatian flag"}"
-           class="branch-flag"
-           src="${commonImage("flag-hr.png")}">
-      <div aria-label="${isHr ? "Alati stranice" : "Page tools"}" class="branch-page-actions">
-        <button class="branch-print-button" type="button">
-          <span aria-hidden="true" class="branch-print-button__icon">🖨️</span>
-          ${isHr ? "Ispis stranice" : "Print page"}
-        </button>
-      </div>
-    `;
-    fallback(document.getElementById("common-branch-flag"), "flag-hr.png");
+  function configureAuthorPhoto(sidebar) {
+    const wrapper = sidebar.querySelector('[data-role="author-photo"]');
+    const image = sidebar.querySelector('[data-role="author-image"]');
+    const relativePath = body.dataset.authorImage;
 
-    const printButton = tools.querySelector(".branch-print-button");
-    if (printButton) printButton.addEventListener("click", () => window.print());
+    if (!wrapper || !image) return;
+    if (!relativePath) {
+      image.remove();
+      return;
+    }
+
+    image.src = commonUrl(relativePath);
+    wrapper.hidden = false;
   }
 
-  const footer = document.getElementById("common-branch-footer");
-  if (footer && branchName && diagramHref) {
-    const safeName = branchName.replace(/[<>&"]/g, "");
-    footer.innerHTML = `
-      <section class="branch-diagram-link">
-        <div>
-          <h2>${isHr ? "Interaktivni dijagram" : "Interactive diagram"} ${safeName}</h2>
-          <p>${isHr
-            ? "Otvorite pripadajući interaktivni rodoslovni dijagram ove obiteljske grane."
-            : "Open the interactive genealogical diagram for this family branch."}</p>
-        </div>
-        <a class="branch-diagram-link__button" href="${siteRoot}${diagramHref}">
-          ${isHr ? "Otvori dijagram" : "Open diagram"}
-        </a>
-      </section>
-
-      <section class="tree-note">
-        <h3>${isHr ? "Napomena!" : "Note!"}</h3>
-        <p>${isHr
-          ? "Kompletno rodoslovno stablo ove obiteljske grane nalazi se u desnom interaktivnom dijagramu na početnoj stranici Digitalnog arhiva roda Tandara."
-          : "The complete family tree of this branch is available in the interactive diagram on the home page of the Tandara Digital Archive."}</p>
-        <p>${isHr
-          ? `Na početnoj stranici odaberite klikabilni okvir pod nazivom „${safeName}”.`
-          : `On the home page, select the clickable box named “${safeName}”.`}</p>
-      </section>
-    `;
-  }
-
-  document.querySelectorAll("img[data-old-src]").forEach((img) => {
-    img.addEventListener("error", function useOldImage() {
-      img.removeEventListener("error", useOldImage);
-      img.src = img.dataset.oldSrc;
+  function markCurrentPage(sidebar) {
+    sidebar.querySelectorAll("a[href]").forEach((link) => {
+      const linkUrl = new URL(link.href, document.baseURI);
+      if (linkUrl.origin === location.origin && linkUrl.pathname === location.pathname) {
+        link.classList.add("active");
+        link.setAttribute("aria-current", "page");
+      }
     });
-  });
+  }
+
+  function installShell(sidebar) {
+    const existingLayout = pageContent.closest(".tandara-layout");
+    if (existingLayout) {
+      existingLayout.prepend(sidebar);
+    } else {
+      const layout = document.createElement("div");
+      layout.className = "tandara-layout";
+      pageContent.before(layout);
+      layout.append(sidebar, pageContent);
+    }
+
+    pageContent.classList.add("tandara-page-content");
+    body.classList.add("tandara-shell-ready");
+    window.dispatchEvent(new CustomEvent("tandara:shell-ready"));
+  }
+
+  fetch(templateUrl, { cache: "force-cache", credentials: "omit" })
+    .then((response) => {
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return response.text();
+    })
+    .then((source) => {
+      const parsed = new DOMParser().parseFromString(source, "text/html");
+      const template = parsed.querySelector("#tandara-common-shell");
+      const sidebar = template?.content?.firstElementChild?.cloneNode(true);
+      if (!sidebar) throw new Error("Predložak ne sadrži #tandara-common-shell.");
+
+      localize(sidebar);
+      configureLanguageSwitch(sidebar);
+      configureAuthorPhoto(sidebar);
+      markCurrentPage(sidebar);
+      installShell(sidebar);
+    })
+    .catch((error) => {
+      body.classList.add("tandara-shell-unavailable");
+      console.error("Tandara common okvir nije učitan:", error);
+    });
 })();
