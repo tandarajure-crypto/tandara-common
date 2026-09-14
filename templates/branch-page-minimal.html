@@ -1,30 +1,45 @@
-<!DOCTYPE html>
-<html lang="hr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <!-- Ovdje ostaju meta podaci koji pripadaju samo toj stranici. -->
-  <link rel="stylesheet" href="../tandara-common/css/branch-common.css">
-  <script defer src="../tandara-common/js/branch-common.js"></script>
-</head>
-<body class="hr"
-      data-site-root="./"
-      data-common-root="../tandara-common/"
-      data-page="NAZIV-STRANICE"
-      data-branch-name="NAZIV GRANE"
-      data-diagram="box2x.html">
-  <div class="layout">
-    <aside id="common-sidebar"></aside>
-    <main class="branch-content">
-      <article class="branch-card">
-        <div id="common-branch-tools"></div>
+<!--
+  TANDARA COMMON: jedini zajednički predložak lijevog dijela stranice.
+  Ovaj se dokument ne otvara samostalno. Učitava ga js/branch-common.js.
+  Sve adrese repoa postavlja učitavač iz data-site-root atributa stranice.
+-->
+<template id="tandara-common-shell">
+  <aside class="tandara-sidebar" data-label-en="Main navigation" data-label-hr="Glavna navigacija" id="common-sidebar">
+    <a class="tandara-home-button" data-route-en="index-en.html" data-route-hr="index.html" data-role="home-link" target="_top">
+      <span class="tandara-home-circle">
+        <img alt="" data-common-src="slike/ikone/pocetna.png" height="32" width="32">
+      </span>
+      <span class="tandara-visually-hidden" data-text-en="Home" data-text-hr="Početna stranica"></span>
+    </a>
 
-        <!-- SAMO JEDINSTVENI SADRŽAJ OVE GRANE -->
-        <div class="branch-text-block"></div>
+    <nav class="tandara-lang-switch" data-label-en="Language selection" data-label-hr="Odabir jezika" data-role="language-switch" hidden>
+      <a data-role="hr-link" hreflang="hr" lang="hr" target="_top" title="Hrvatski">
+        <img alt="Hrvatski" data-common-src="slike/ikone/zastava-hr.png" height="20" width="30">
+      </a>
+      <a data-role="en-link" hreflang="en" lang="en" target="_top" title="English">
+        <img alt="English" data-common-src="slike/ikone/zastava-uk.png" height="20" width="30">
+      </a>
+    </nav>
 
-        <div id="common-branch-footer"></div>
-      </article>
-    </main>
-  </div>
-</body>
-</html>
+    <div class="tandara-menu-title">TANDARA-PREZIME</div>
+
+    <nav data-label-en="Main navigation" data-label-hr="Glavna navigacija" data-role="main-navigation">
+      <ul class="tandara-heritage-menu">
+        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-en="autor-en.html" data-route-hr="autor-hr.html" target="_top"><span data-text-en="About the author and project" data-text-hr="O autoru i projektu"></span></a></li>
+        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-en="podrijetlo-en.html" data-route-hr="podrijetlo-hr.html" target="_top"><span data-text-en="Surname origin" data-text-hr="Podrijetlo prezimena"></span></a></li>
+        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-en="rodoslovlje-en.html" data-route-hr="rodoslovlje-hr.html" target="_top"><span data-text-en="Family genealogy" data-text-hr="Rodoslovlje roda"></span></a></li>
+        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-en="migracije-en.html" data-route-hr="migracije-hr.html" target="_top"><span data-text-en="Migration and distribution" data-text-hr="Migracije i rasprostranjenost"></span></a></li>
+        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-en="zanimljivosti-en.html" data-route-hr="zanimljivosti.html" target="_top"><span data-text-en="Interesting facts" data-text-hr="Zanimljivosti"></span></a></li>
+        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-en="contacts.html" data-route-hr="kontakti.html" target="_top"><span data-text-en="Contact and collaboration" data-text-hr="Kontakt i suradnja"></span></a></li>
+        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-en="visitors-messages.html" data-route-hr="knjiga-poruka.html" target="_top"><span data-text-en="Guestbook" data-text-hr="Knjiga poruka"></span></a></li>
+        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-en="privacy.html" data-route-hr="privatnost.html" target="_top"><span data-text-en="Privacy policy" data-text-hr="Politika privatnosti"></span></a></li>
+      </ul>
+    </nav>
+
+    <div class="tandara-author-photo" data-role="author-photo" hidden>
+      <a data-route-en="autor-en.html" data-route-hr="autor-hr.html" target="_top">
+        <img alt="Jure Tandara" data-role="author-image" decoding="async" loading="lazy">
+      </a>
+    </div>
+  </aside>
+</template>
