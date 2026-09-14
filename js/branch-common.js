@@ -17,6 +17,19 @@
   const siteUrl = (relativePath) => new URL(relativePath, siteRoot).href;
   const commonUrl = (relativePath) => new URL(relativePath, commonRoot).href;
 
+  const homeHotspots = [
+    { key: "jurina", labelHr: "Jurina grana", labelEn: "Jure's branch", routeHr: "jurinagrana.html", routeEn: "jurinagrana-en.html" },
+    { key: "petrova", labelHr: "Petrova grana", labelEn: "Petar's branch", routeHr: "petrovagrana.html", routeEn: "petrovagrana-en.html" },
+    { key: "antina", labelHr: "Antina grana", labelEn: "Ante's branch", routeHr: "antinagrana.html", routeEn: "antinagrana-en.html" },
+    { key: "matina", labelHr: "Matina grana", labelEn: "Mate's branch", routeHr: "matinagrana.html", routeEn: "matinagrana-en.html" },
+    { key: "ivanov", labelHr: "Ivan Tandara", labelEn: "Ivan Tandara", routeHr: "box1.html", routeEn: "box1-en.html" },
+    { key: "jurin", labelHr: "Jure Tandara", labelEn: "Jure Tandara", routeHr: "box2a.html", routeEn: "box2a-en.html" },
+    { key: "petrov", labelHr: "Petar Tandara", labelEn: "Petar Tandara", routeHr: "box2b.html", routeEn: "box2b-en.html" },
+    { key: "antin", labelHr: "Ante Tandara", labelEn: "Ante Tandara", routeHr: "box2c.html", routeEn: "box2c-en.html" },
+    { key: "matin", labelHr: "Mate Tandara", labelEn: "Mate Tandara", routeHr: "box2d.html", routeEn: "box2d-en.html" },
+    { key: "livanjske", labelHr: "Livanjske Tandare", labelEn: "Livno Tandara branch", routeHr: "filipovagrana.html", routeEn: "filipovagrana-en.html" }
+  ];
+
   function localize(root) {
     root.querySelectorAll("[data-text-hr][data-text-en]").forEach((element) => {
       element.textContent = isHr ? element.dataset.textHr : element.dataset.textEn;
@@ -92,6 +105,31 @@
     body.classList.add("tandara-shell-ready");
     window.dispatchEvent(new CustomEvent("tandara:shell-ready"));
   }
+
+  function installHomeHotspots() {
+    const tree = document.querySelector("[data-home-tree]");
+    if (!tree || tree.querySelector(".tandara-home-hotspot")) return;
+
+    const fragment = document.createDocumentFragment();
+
+    homeHotspots.forEach((hotspot) => {
+      const link = document.createElement("a");
+      link.className = `tandara-home-hotspot tandara-home-hotspot--${hotspot.key}`;
+      link.dataset.hotspot = hotspot.key;
+      link.href = siteUrl(isHr ? hotspot.routeHr : hotspot.routeEn);
+      link.setAttribute("aria-label", isHr ? hotspot.labelHr : hotspot.labelEn);
+
+      if (hotspot.key === "livanjske") {
+        link.append(isHr ? "LIVANJSKE" : "LIVNO", document.createElement("br"), isHr ? "TANDARE" : "TANDARA");
+      }
+
+      fragment.append(link);
+    });
+
+    tree.append(fragment);
+  }
+
+  installHomeHotspots();
 
   fetch(templateUrl, { cache: "force-cache", credentials: "omit" })
     .then((response) => {
