@@ -17,6 +17,8 @@ body.tandara-common-page {
 }
 
 .tandara-page-content {
+  background: #e7d3b0;
+  min-height: 100vh;
   min-width: 0;
 }
 
@@ -54,16 +56,16 @@ body.tandara-common-page {
   border-radius: 50%;
   box-shadow: 0 0 4px rgba(0, 0, 0, .3);
   display: flex;
-  height: 66px;
+  height: 74px;
   justify-content: center;
   transition: background-color .15s ease, border-color .15s ease;
-  width: 66px;
+  width: 74px;
 }
 
 .tandara-home-circle img {
-  height: 32px;
+  height: 38px;
   object-fit: contain;
-  width: 32px;
+  width: 38px;
 }
 
 .tandara-home-button:hover .tandara-home-circle,
@@ -96,9 +98,9 @@ body.tandara-common-page {
 .tandara-lang-switch img {
   border-radius: 3px;
   display: block;
-  height: 20px;
+  height: 24px;
   object-fit: cover;
-  width: 30px;
+  width: 36px;
 }
 
 .tandara-menu-title {
