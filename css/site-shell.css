@@ -1,21 +1,30 @@
 /* =========================================================
    TANDARA — SITE SHELL
 
-   Zajednički izgled okvira stranice:
+   Zajednički standard lijevog stupca za:
+   - index HR / EN
+   - glavne podstranice
+   - glavne rodoslovne grane HR / EN
+
+   Izgled je usklađen s provjerenim sidebarom
+   8 glavnih stranica.
+
+   OVA DATOTEKA SADRŽI:
+   - raspored stranice
    - lijevi stupac
-   - početna tipka
-   - HR / EN
+   - HR / HOME / EN u jednom redu
    - glavni izbornik
-   - fotografija autora
-   - osnovni raspored stranice
+   - AUTOR | fotografija | Jure / Tandara
+   - FlagCounter
+   - responsive prikaz
 
    OVA DATOTEKA NE SADRŽI:
-   - početno obiteljsko stablo
+   - početno stablo
    - hotspotove
-   - sadržaj rodoslovnih grana
+   - rodoslovne podatke
    - dijagrame
-   - print stilove
-   - posebne zakrpe za pojedine stranice
+   - print
+   - posebne zakrpe pojedinih grana
    ========================================================= */
 
 
@@ -24,20 +33,35 @@
    ========================================================= */
 
 :root {
-  --shell-width: 300px;
+  --shell-width:
+    calc(300px + 2cm);
 
-  --shell-background: #e7d3b0;
-  --content-background: #e7c191;
+  --shell-background:
+    #e7d3b0;
 
-  --shell-text: #4a3b2a;
-  --shell-heading: #3b2f22;
+  --content-background:
+    #e7c191;
 
-  --shell-accent: #d4af37;
-  --shell-home-background: #c9a46d;
-  --shell-home-hover: #d3b07a;
+  --shell-text:
+    #4a3b2a;
 
-  --shell-border: #7a7a7a;
-  --shell-soft-border: rgba(0, 0, 0, 0.08);
+  --shell-heading:
+    #3b2f22;
+
+  --shell-accent:
+    #d4af37;
+
+  --shell-border:
+    #7a7a7a;
+
+  --shell-soft-border:
+    rgba(0, 0, 0, 0.08);
+
+  --shell-top-control-size:
+    66px;
+
+  --shell-author-photo-size:
+    170px;
 
   --shell-font:
     Georgia,
@@ -56,22 +80,30 @@ html {
 
 body {
   margin: 0;
+
   min-height: 100vh;
 }
 
 .site-layout {
   display: grid;
+
   grid-template-columns:
     var(--shell-width)
     minmax(0, 1fr);
-  min-height: 100vh;
+
+  align-items: start;
+
   width: 100%;
+  min-height: 100vh;
 }
 
 .site-content {
-  background: var(--content-background);
-  min-height: 100vh;
+  width: 100%;
   min-width: 0;
+  min-height: 100vh;
+
+  background:
+    var(--content-background);
 }
 
 
@@ -80,27 +112,49 @@ body {
    ========================================================= */
 
 .site-shell {
+  position: sticky;
+  top: 0;
+
+  z-index: 20;
+
   box-sizing: border-box;
 
   display: flex;
   flex-direction: column;
 
-  width: var(--shell-width);
+  width:
+    var(--shell-width);
+
   height: 100vh;
+  max-height: 100vh;
 
-  padding: 14px 0 20px;
+  margin: 0;
 
-  position: sticky;
-  top: 0;
+  padding:
+    8px
+    0
+    16px;
 
   overflow-y: auto;
+  overflow-x: hidden;
 
-  background: var(--shell-background);
-  border-right: 4px solid var(--shell-border);
+  background:
+    var(--shell-background);
 
-  color: var(--shell-text);
+  border-right:
+    4px solid
+    var(--shell-border);
 
-  z-index: 20;
+  color:
+    var(--shell-text);
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.site-shell::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .site-shell,
@@ -110,122 +164,153 @@ body {
 
 
 /* =========================================================
-   POČETNA
+   GORNJI RED
+
+   HR ZASTAVA — HOME — EN ZASTAVA
+
+   Sva tri elementa imaju ISTU VISINU.
    ========================================================= */
 
-.site-shell__home {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.site-shell__top {
+  display: grid;
 
-  margin: 0 0 8px;
+  grid-template-columns:
+    max-content
+    var(--shell-top-control-size)
+    max-content;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  width: 100%;
+
+  margin:
+    0
+    0
+    6px;
+
+  padding: 0;
+}
+
+.site-shell__top[hidden] {
+  display: none;
+}
+
+.site-shell__top-control {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  height:
+    var(--shell-top-control-size);
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+
+  background:
+    transparent;
+
+  line-height: 0;
 
   text-decoration: none;
-}
-
-.site-shell__home-circle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 74px;
-  height: 74px;
-
-  border: 2px solid transparent;
-  border-radius: 50%;
-
-  background: var(--shell-home-background);
-
-  box-shadow:
-    0 0 4px rgba(0, 0, 0, 0.3);
 
   transition:
-    background-color 0.15s ease,
-    border-color 0.15s ease,
-    transform 0.15s ease;
-}
-
-.site-shell__home-circle img {
-  display: block;
-
-  width: 38px;
-  height: 38px;
-
-  object-fit: contain;
-}
-
-.site-shell__home:hover
-.site-shell__home-circle {
-  background: var(--shell-home-hover);
-  border-color: var(--shell-accent);
-}
-
-.site-shell__home:focus-visible {
-  outline: none;
-}
-
-.site-shell__home:focus-visible
-.site-shell__home-circle {
-  background: var(--shell-home-hover);
-  border-color: var(--shell-accent);
-
-  transform: scale(1.03);
+    filter 0.15s ease;
 }
 
 
 /* =========================================================
-   JEZICI
+   HOME
    ========================================================= */
 
-.site-shell__languages {
-  display: flex;
-  justify-content: center;
+.site-shell__home-control {
+  width:
+    var(--shell-top-control-size);
 
-  gap: 14px;
-
-  margin: 0 0 16px;
+  height:
+    var(--shell-top-control-size);
 }
 
-.site-shell__languages[hidden] {
-  display: none;
-}
-
-.site-shell__languages a {
-  display: flex;
-
-  padding: 2px;
-
-  border: 2px solid transparent;
-  border-radius: 4px;
-
-  text-decoration: none;
-
-  transition:
-    border-color 0.15s ease,
-    background-color 0.15s ease;
-}
-
-.site-shell__languages a:hover,
-.site-shell__languages a:focus-visible,
-.site-shell__languages a[aria-current="page"] {
-  border-color: var(--shell-accent);
-  background:
-    rgba(212, 175, 55, 0.12);
-}
-
-.site-shell__languages a:focus-visible {
-  outline: none;
-}
-
-.site-shell__languages img {
+.site-shell__home-control img {
   display: block;
 
-  width: 36px;
-  height: 24px;
+  width:
+    var(--shell-top-control-size);
 
-  border-radius: 3px;
+  height:
+    var(--shell-top-control-size);
 
-  object-fit: cover;
+  object-fit:
+    contain;
+}
+
+
+/* =========================================================
+   ZASTAVE
+
+   Visina je jednaka HOME tipki.
+   Širina ostaje prema omjeru slike.
+   ========================================================= */
+
+.site-shell__flag-control {
+  width: auto;
+
+  min-width: 0;
+}
+
+.site-shell__flag-control img {
+  display: block;
+
+  width: auto;
+
+  height:
+    var(--shell-top-control-size);
+
+  max-width: none;
+
+  object-fit:
+    contain;
+
+  border-radius:
+    5px;
+}
+
+
+/* =========================================================
+   HOVER / AKTIVNI JEZIK
+
+   Nema pomicanja elemenata.
+   ========================================================= */
+
+.site-shell__top-control:hover,
+.site-shell__top-control:focus-visible {
+  filter:
+    drop-shadow(
+      0 0 5px
+      rgba(212, 175, 55, 0.85)
+    );
+}
+
+.site-shell__top-control:focus-visible {
+  outline:
+    2px solid
+    var(--shell-accent);
+
+  outline-offset:
+    2px;
+}
+
+.site-shell__top-control[aria-current="page"] {
+  filter:
+    drop-shadow(
+      0 0 4px
+      rgba(212, 175, 55, 0.75)
+    );
 }
 
 
@@ -234,147 +319,442 @@ body {
    ========================================================= */
 
 .site-shell__title {
-  margin: -6px 0 14px;
+  width: 100%;
 
-  padding: 0 14px;
+  margin:
+    2px
+    0
+    10px;
 
-  color: var(--shell-heading);
+  padding:
+    0
+    8px;
 
-  font-family: var(--shell-font);
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.2;
+  color:
+    var(--shell-heading);
 
-  text-align: center;
+  font-family:
+    var(--shell-font);
+
+  font-size:
+    24px;
+
+  line-height:
+    1.2;
+
+  font-weight:
+    700;
+
+  text-align:
+    center;
 }
 
 
 /* =========================================================
-   GLAVNI IZBORNIK
+   GLAVNA NAVIGACIJA
    ========================================================= */
 
 .site-shell__navigation {
   width: 100%;
+
+  margin: 0;
+  padding: 0;
 }
 
 .site-shell__menu {
-  margin: 0;
-  padding: 0 20px;
+  width: 100%;
 
-  list-style: none;
+  margin: 0;
+
+  padding:
+    0
+    20px;
+
+  list-style:
+    none;
 }
 
 .site-shell__menu li {
   display: flex;
+
   align-items: center;
 
-  gap: 10px;
+  gap: 9px;
 
-  min-height: 38px;
+  width: 100%;
 
-  padding: 7px 0;
+  margin: 0;
+
+  padding:
+    6px
+    0;
 
   border-bottom:
-    1px solid var(--shell-soft-border);
+    1px solid
+    var(--shell-soft-border);
+
   border-left:
-    2px solid transparent;
+    2px solid
+    transparent;
 
   transition:
     background-color 0.15s ease,
-    border-color 0.15s ease,
-    padding-left 0.15s ease;
+    border-color 0.15s ease;
 }
 
+
+/*
+   VAŽNO:
+   nema padding-left animacije
+   i ništa se ne pomiče na hover.
+*/
+
 .site-shell__menu li:hover {
-  padding-left: 6px;
+  background:
+    rgba(212, 175, 55, 0.10);
 
   border-left-color:
     var(--shell-accent);
-
-  background:
-    rgba(212, 175, 55, 0.1);
 }
 
 .site-shell__menu li > img {
-  flex: 0 0 auto;
+  display: block;
 
-  width: 18px;
-  height: 18px;
+  flex:
+    0
+    0
+    24px;
 
-  object-fit: contain;
+  width: 24px;
+  height: 24px;
+
+  object-fit:
+    contain;
 }
 
 .site-shell__menu a {
-  flex: 1 1 auto;
+  min-width: 0;
 
-  color: var(--shell-text);
+  color:
+    var(--shell-text);
 
-  font-family: var(--shell-font);
-  font-size: 17px;
-  line-height: 1.25;
+  font-family:
+    var(--shell-font);
 
-  text-decoration: none;
+  font-size:
+    17px;
+
+  line-height:
+    1.2;
+
+  font-weight:
+    400;
+
+  text-decoration:
+    none;
+
+  overflow-wrap:
+    anywhere;
 }
 
 .site-shell__menu a:hover,
-.site-shell__menu a:focus-visible,
-.site-shell__menu a[aria-current="page"] {
-  color: #6b4b25;
+.site-shell__menu a:focus-visible {
+  color:
+    #7a5e3a;
+}
 
-  text-decoration: underline;
-  text-decoration-color:
-    var(--shell-accent);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
+.site-shell__menu
+a[aria-current="page"] {
+  font-weight:
+    700;
 }
 
 .site-shell__menu a:focus-visible {
   outline:
-    2px solid var(--shell-accent);
-  outline-offset: 3px;
+    2px solid
+    var(--shell-accent);
 
-  border-radius: 2px;
+  outline-offset:
+    3px;
+
+  border-radius:
+    2px;
 }
 
 
 /* =========================================================
    AUTOR
+
+   AUTOR | FOTOGRAFIJA | JURE
+                       | TANDARA
+
+   Fotografija ima fiksnu poziciju.
+   Tekst lijevo i desno je ne može pomaknuti.
    ========================================================= */
 
-.site-shell__author {
-  display: flex;
-  justify-content: center;
+.site-shell__author-row {
+  display: grid;
 
-  margin: 12px 0 0;
+  grid-template-columns:
+    minmax(0, 1fr)
+    var(--shell-author-photo-size)
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  width: 100%;
+
+  margin:
+    clamp(14px, 2.2vh, 26px)
+    0
+    10px;
+
+  padding:
+    0
+    8px;
 }
 
-.site-shell__author[hidden] {
+.site-shell__author-row[hidden] {
   display: none;
 }
 
-.site-shell__author a {
-  display: block;
 
-  border-radius: 12px;
+/* lijevo — AUTOR / AUTHOR */
+
+.site-shell__author-label {
+  min-width: 0;
+
+  padding-right:
+    6px;
+
+  color:
+    var(--shell-heading);
+
+  font-family:
+    var(--shell-font);
+
+  font-size:
+    clamp(
+      10px,
+      1vw,
+      14px
+    );
+
+  line-height:
+    1.1;
+
+  font-weight:
+    700;
+
+  text-align:
+    right;
+
+  white-space:
+    nowrap;
 }
 
-.site-shell__author a:focus-visible {
-  outline:
-    3px solid var(--shell-accent);
-  outline-offset: 3px;
-}
 
-.site-shell__author img {
+/* sredina — fotografija */
+
+.site-shell__author-photo {
   display: block;
 
-  width: 190px;
-  height: auto;
+  width:
+    var(--shell-author-photo-size);
 
-  border: 3px solid #b99867;
-  border-radius: 12px;
+  margin: 0;
+  padding: 0;
+
+  text-decoration:
+    none;
+}
+
+.site-shell__author-photo img {
+  display: block;
+
+  width:
+    var(--shell-author-photo-size);
+
+  height:
+    auto;
+
+  margin: 0;
+
+  border:
+    3px solid
+    #b99867;
+
+  border-radius:
+    12px;
 
   box-shadow:
-    0 3px 8px rgba(0, 0, 0, 0.25);
+    0 3px 8px
+    rgba(0, 0, 0, 0.25);
+}
+
+.site-shell__author-photo:hover img,
+.site-shell__author-photo:focus-visible img {
+  border-color:
+    var(--shell-accent);
+
+  box-shadow:
+    0 0 10px
+    rgba(212, 175, 55, 0.45);
+}
+
+.site-shell__author-photo:focus-visible {
+  outline: none;
+}
+
+
+/* desno — ime u dva reda */
+
+.site-shell__author-name {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+  justify-content: center;
+
+  min-width: 0;
+
+  padding-left:
+    7px;
+
+  color:
+    var(--shell-heading);
+
+  font-family:
+    var(--shell-font);
+
+  font-size:
+    clamp(
+      12px,
+      1.15vw,
+      17px
+    );
+
+  line-height:
+    1.12;
+
+  font-weight:
+    700;
+
+  text-align:
+    left;
+}
+
+.site-shell__author-name span {
+  display: block;
+
+  max-width: 100%;
+
+  white-space:
+    nowrap;
+}
+
+
+/* =========================================================
+   FLAGCOUNTER
+   ========================================================= */
+
+.site-shell__flagbox {
+  position: relative;
+
+  width:
+    calc(100% - 32px);
+
+  margin:
+    0 auto;
+
+  padding: 0;
+
+  text-align:
+    left;
+}
+
+.site-shell__flagbox > a {
+  display: block;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+}
+
+.site-shell__flagbox img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  max-width: none;
+
+  border: 0;
+}
+
+.site-shell__flag-title {
+  position: absolute;
+
+  top: 1px;
+  left: 1px;
+
+  z-index: 5;
+
+  display: flex;
+
+  align-items: center;
+
+  min-width:
+    116px;
+
+  height:
+    24px;
+
+  margin: 0;
+
+  padding:
+    0
+    5px
+    0
+    2px;
+
+  background:
+    #ffffff;
+
+  color:
+    #000000;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    17px;
+
+  line-height:
+    24px;
+
+  font-weight:
+    700;
+
+  white-space:
+    nowrap;
+}
+
+.site-shell__flagbox a:hover,
+.site-shell__flagbox a:focus-visible {
+  outline:
+    2px solid
+    var(--shell-accent);
+
+  outline-offset:
+    3px;
+
+  border-radius:
+    6px;
 }
 
 
@@ -393,16 +773,21 @@ body {
 
   overflow: hidden;
 
-  clip-path: inset(50%);
+  clip:
+    rect(0 0 0 0);
 
-  white-space: nowrap;
+  clip-path:
+    inset(50%);
 
   border: 0;
+
+  white-space:
+    nowrap;
 }
 
 
 /* =========================================================
-   TABLET I MOBITEL
+   TABLET / UŽI EKRAN
    ========================================================= */
 
 @media (max-width: 900px) {
@@ -417,23 +802,33 @@ body {
 
   .site-shell {
     position: relative;
+    top: auto;
 
     width: 100%;
+
     height: auto;
+    max-height: none;
 
     overflow: visible;
 
     border-right: 0;
+
     border-bottom:
-      4px solid var(--shell-border);
+      4px solid
+      var(--shell-border);
   }
 
   .site-shell__menu {
-    max-width: 520px;
+    max-width:
+      520px;
 
-    margin-left: auto;
-    margin-right: auto;
+    margin-left:
+      auto;
+
+    margin-right:
+      auto;
   }
+
 }
 
 
@@ -441,36 +836,67 @@ body {
    MALI MOBITEL
    ========================================================= */
 
-@media (max-width: 480px) {
+@media (max-width: 420px) {
 
-  .site-shell {
-    padding-top: 12px;
+  :root {
+    --shell-top-control-size:
+      56px;
+
+    --shell-author-photo-size:
+      150px;
   }
 
-  .site-shell__home-circle {
-    width: 64px;
-    height: 64px;
-  }
-
-  .site-shell__home-circle img {
-    width: 32px;
-    height: 32px;
+  .site-shell__top {
+    gap:
+      8px;
   }
 
   .site-shell__title {
-    font-size: 21px;
+    font-size:
+      21px;
   }
 
   .site-shell__menu {
-    padding-left: 14px;
-    padding-right: 14px;
+    padding-left:
+      14px;
+
+    padding-right:
+      14px;
   }
 
   .site-shell__menu a {
-    font-size: 16px;
+    font-size:
+      16px;
   }
 
-  .site-shell__author img {
-    width: min(190px, 72vw);
+  .site-shell__author-row {
+    padding:
+      0
+      4px;
   }
+
+  .site-shell__author-label {
+    padding-right:
+      4px;
+
+    font-size:
+      clamp(
+        9px,
+        3vw,
+        12px
+      );
+  }
+
+  .site-shell__author-name {
+    padding-left:
+      4px;
+
+    font-size:
+      clamp(
+        11px,
+        3.5vw,
+        15px
+      );
+  }
+
 }
