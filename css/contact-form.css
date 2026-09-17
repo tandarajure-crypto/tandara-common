@@ -1,1 +1,147 @@
+/* =========================================================
+   TANDARA — ZAJEDNIČKI KONTAKT OBRAZAC
+   HR: kontakti.html
+   EN: contacts.html
+   ========================================================= */
 
+.archive-contact-form {
+  display: grid;
+  gap: 18px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.archive-contact-form label,
+.archive-contact-form legend {
+  color: var(--tandara-text);
+  font-weight: 700;
+}
+
+.archive-contact-form input,
+.archive-contact-form select,
+.archive-contact-form textarea {
+  width: 100%;
+  margin-top: 6px;
+  padding: 11px 12px;
+
+  font: inherit;
+  color: var(--tandara-text);
+
+  background: #fffaf2;
+
+  border: 1px solid rgba(80, 60, 35, 0.38);
+  border-radius: 8px;
+}
+
+.archive-contact-form textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.archive-contact-form input:focus,
+.archive-contact-form select:focus,
+.archive-contact-form textarea:focus {
+  outline: 2px solid var(--tandara-gold);
+  outline-offset: 2px;
+}
+
+.required-choice {
+  margin: 0;
+  padding: 16px 18px;
+
+  border: 1px solid rgba(80, 60, 35, 0.28);
+  border-radius: 10px;
+}
+
+.required-choice legend {
+  padding: 0 6px;
+}
+
+.checkbox-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  margin-top: 12px;
+
+  font-weight: 400;
+}
+
+.checkbox-line input {
+  width: auto;
+  margin: 4px 0 0;
+  flex: 0 0 auto;
+}
+
+.form-required-notice {
+  padding: 14px 16px;
+
+  background: rgba(212, 175, 55, 0.12);
+
+  border: 1px solid rgba(150, 110, 30, 0.35);
+  border-radius: 10px;
+}
+
+.form-note {
+  font-size: 15px !important;
+}
+
+.archive-contact-form button {
+  width: fit-content;
+
+  padding: 12px 22px;
+
+  font: inherit;
+  font-weight: 700;
+
+  color: #ffffff;
+  background: #5e4930;
+
+  border: 0;
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
+.archive-contact-form button:hover,
+.archive-contact-form button:focus-visible {
+  background: #7a5e3a;
+}
+
+.form-success {
+  margin: 16px 0;
+  padding: 14px 16px;
+
+  border: 1px solid #65875a;
+  border-radius: 10px;
+
+  background: #edf7e9;
+}
+
+.contact-honeypot {
+  position: absolute;
+  left: -9999px;
+
+  width: 1px;
+  height: 1px;
+
+  overflow: hidden;
+}
+
+@media (max-width: 700px) {
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .archive-contact-form button {
+    width: 100%;
+  }
+
+}
