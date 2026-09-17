@@ -1,1 +1,476 @@
+/* =========================================================
+   TANDARA — SITE SHELL
 
+   Zajednički izgled okvira stranice:
+   - lijevi stupac
+   - početna tipka
+   - HR / EN
+   - glavni izbornik
+   - fotografija autora
+   - osnovni raspored stranice
+
+   OVA DATOTEKA NE SADRŽI:
+   - početno obiteljsko stablo
+   - hotspotove
+   - sadržaj rodoslovnih grana
+   - dijagrame
+   - print stilove
+   - posebne zakrpe za pojedine stranice
+   ========================================================= */
+
+
+/* =========================================================
+   OSNOVNE VRIJEDNOSTI
+   ========================================================= */
+
+:root {
+  --shell-width: 300px;
+
+  --shell-background: #e7d3b0;
+  --content-background: #e7c191;
+
+  --shell-text: #4a3b2a;
+  --shell-heading: #3b2f22;
+
+  --shell-accent: #d4af37;
+  --shell-home-background: #c9a46d;
+  --shell-home-hover: #d3b07a;
+
+  --shell-border: #7a7a7a;
+  --shell-soft-border: rgba(0, 0, 0, 0.08);
+
+  --shell-font:
+    Georgia,
+    "Times New Roman",
+    serif;
+}
+
+
+/* =========================================================
+   STRANICA I RASPORED
+   ========================================================= */
+
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.site-layout {
+  display: grid;
+  grid-template-columns:
+    var(--shell-width)
+    minmax(0, 1fr);
+  min-height: 100vh;
+  width: 100%;
+}
+
+.site-content {
+  background: var(--content-background);
+  min-height: 100vh;
+  min-width: 0;
+}
+
+
+/* =========================================================
+   LIJEVI STUPAC
+   ========================================================= */
+
+.site-shell {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  width: var(--shell-width);
+  height: 100vh;
+
+  padding: 14px 0 20px;
+
+  position: sticky;
+  top: 0;
+
+  overflow-y: auto;
+
+  background: var(--shell-background);
+  border-right: 4px solid var(--shell-border);
+
+  color: var(--shell-text);
+
+  z-index: 20;
+}
+
+.site-shell,
+.site-shell * {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   POČETNA
+   ========================================================= */
+
+.site-shell__home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0 0 8px;
+
+  text-decoration: none;
+}
+
+.site-shell__home-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 74px;
+  height: 74px;
+
+  border: 2px solid transparent;
+  border-radius: 50%;
+
+  background: var(--shell-home-background);
+
+  box-shadow:
+    0 0 4px rgba(0, 0, 0, 0.3);
+
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.site-shell__home-circle img {
+  display: block;
+
+  width: 38px;
+  height: 38px;
+
+  object-fit: contain;
+}
+
+.site-shell__home:hover
+.site-shell__home-circle {
+  background: var(--shell-home-hover);
+  border-color: var(--shell-accent);
+}
+
+.site-shell__home:focus-visible {
+  outline: none;
+}
+
+.site-shell__home:focus-visible
+.site-shell__home-circle {
+  background: var(--shell-home-hover);
+  border-color: var(--shell-accent);
+
+  transform: scale(1.03);
+}
+
+
+/* =========================================================
+   JEZICI
+   ========================================================= */
+
+.site-shell__languages {
+  display: flex;
+  justify-content: center;
+
+  gap: 14px;
+
+  margin: 0 0 16px;
+}
+
+.site-shell__languages[hidden] {
+  display: none;
+}
+
+.site-shell__languages a {
+  display: flex;
+
+  padding: 2px;
+
+  border: 2px solid transparent;
+  border-radius: 4px;
+
+  text-decoration: none;
+
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.site-shell__languages a:hover,
+.site-shell__languages a:focus-visible,
+.site-shell__languages a[aria-current="page"] {
+  border-color: var(--shell-accent);
+  background:
+    rgba(212, 175, 55, 0.12);
+}
+
+.site-shell__languages a:focus-visible {
+  outline: none;
+}
+
+.site-shell__languages img {
+  display: block;
+
+  width: 36px;
+  height: 24px;
+
+  border-radius: 3px;
+
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   NASLOV
+   ========================================================= */
+
+.site-shell__title {
+  margin: -6px 0 14px;
+
+  padding: 0 14px;
+
+  color: var(--shell-heading);
+
+  font-family: var(--shell-font);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   GLAVNI IZBORNIK
+   ========================================================= */
+
+.site-shell__navigation {
+  width: 100%;
+}
+
+.site-shell__menu {
+  margin: 0;
+  padding: 0 20px;
+
+  list-style: none;
+}
+
+.site-shell__menu li {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  min-height: 38px;
+
+  padding: 7px 0;
+
+  border-bottom:
+    1px solid var(--shell-soft-border);
+  border-left:
+    2px solid transparent;
+
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    padding-left 0.15s ease;
+}
+
+.site-shell__menu li:hover {
+  padding-left: 6px;
+
+  border-left-color:
+    var(--shell-accent);
+
+  background:
+    rgba(212, 175, 55, 0.1);
+}
+
+.site-shell__menu li > img {
+  flex: 0 0 auto;
+
+  width: 18px;
+  height: 18px;
+
+  object-fit: contain;
+}
+
+.site-shell__menu a {
+  flex: 1 1 auto;
+
+  color: var(--shell-text);
+
+  font-family: var(--shell-font);
+  font-size: 17px;
+  line-height: 1.25;
+
+  text-decoration: none;
+}
+
+.site-shell__menu a:hover,
+.site-shell__menu a:focus-visible,
+.site-shell__menu a[aria-current="page"] {
+  color: #6b4b25;
+
+  text-decoration: underline;
+  text-decoration-color:
+    var(--shell-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.site-shell__menu a:focus-visible {
+  outline:
+    2px solid var(--shell-accent);
+  outline-offset: 3px;
+
+  border-radius: 2px;
+}
+
+
+/* =========================================================
+   AUTOR
+   ========================================================= */
+
+.site-shell__author {
+  display: flex;
+  justify-content: center;
+
+  margin: 12px 0 0;
+}
+
+.site-shell__author[hidden] {
+  display: none;
+}
+
+.site-shell__author a {
+  display: block;
+
+  border-radius: 12px;
+}
+
+.site-shell__author a:focus-visible {
+  outline:
+    3px solid var(--shell-accent);
+  outline-offset: 3px;
+}
+
+.site-shell__author img {
+  display: block;
+
+  width: 190px;
+  height: auto;
+
+  border: 3px solid #b99867;
+  border-radius: 12px;
+
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   SKRIVENI PRISTUPAČNI TEKST
+   ========================================================= */
+
+.site-shell__visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  margin: -1px;
+  padding: 0;
+
+  overflow: hidden;
+
+  clip-path: inset(50%);
+
+  white-space: nowrap;
+
+  border: 0;
+}
+
+
+/* =========================================================
+   TABLET I MOBITEL
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .site-layout {
+    display: block;
+  }
+
+  .site-content {
+    min-height: 0;
+  }
+
+  .site-shell {
+    position: relative;
+
+    width: 100%;
+    height: auto;
+
+    overflow: visible;
+
+    border-right: 0;
+    border-bottom:
+      4px solid var(--shell-border);
+  }
+
+  .site-shell__menu {
+    max-width: 520px;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+/* =========================================================
+   MALI MOBITEL
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .site-shell {
+    padding-top: 12px;
+  }
+
+  .site-shell__home-circle {
+    width: 64px;
+    height: 64px;
+  }
+
+  .site-shell__home-circle img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .site-shell__title {
+    font-size: 21px;
+  }
+
+  .site-shell__menu {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .site-shell__menu a {
+    font-size: 16px;
+  }
+
+  .site-shell__author img {
+    width: min(190px, 72vw);
+  }
+}
