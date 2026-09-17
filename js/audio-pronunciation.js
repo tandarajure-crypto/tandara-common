@@ -5,92 +5,58 @@ const status=document.getElementById("audioStatus");
 const buttons=[...document.querySelectorAll(".audio-icon-button[data-audio-src]")];
 if(!player||!buttons.length)return;
 
-let activeButton=null,requestId=0;
-const warmed=new Set();
+let activeButton=null;
+
 const setStatus=m=>{if(status)status.textContent=m||"";};
-const resetButtons=()=>{buttons.forEach(b=>{b.classList.remove("playing");b.setAttribute("aria-pressed","false");});activeButton=null;};
-const resetPlayer=()=>{player.pause();try{player.currentTime=0;}catch(_){}};
-const markPlaying=(b,l)=>{activeButton=b;b.classList.add("playing");b.setAttribute("aria-pressed","true");setStatus("Reproducira se "+l+".");};
-const delay=ms=>new Promise(r=>setTimeout(r,ms));
 
-async function realPlay(button,label,id){
-if(id!==requestId)return;
-resetPlayer();player.muted=false;player.volume=1;
-await delay(120);
-if(id!==requestId)return;
-try{
-player.currentTime=0;
-await player.play();
-if(id===requestId)markPlaying(button,label);
-}catch(_){
-resetButtons();
-setStatus("Zvuk se nije mogao pokrenuti. Pokušajte ponovno.");
-}}
-
-async function warmUp(button,label,id,src){
-try{
-setStatus("Priprema zvuka...");
-player.src=src;player.preload="auto";player.muted=true;player.volume=0;
-player.load();
-
-await new Promise((resolve,reject)=>{
-if(player.readyState>=3)return resolve();
-const ready=()=>{cleanup();resolve();};
-const fail=()=>{cleanup();reject();};
-const cleanup=()=>{player.removeEventListener("canplay",ready);player.removeEventListener("error",fail);};
-player.addEventListener("canplay",ready,{once:true});
-player.addEventListener("error",fail,{once:true});
+const resetButtons=()=>{
+buttons.forEach(b=>{
+b.classList.remove("playing");
+b.setAttribute("aria-pressed","false");
 });
+activeButton=null;
+};
 
-if(id!==requestId)return;
-player.currentTime=0;
-await player.play();
-await delay(350);
-if(id!==requestId)return;
-
+const stopPlayer=()=>{
 player.pause();
-player.currentTime=0;
-player.muted=false;
-player.volume=1;
-warmed.add(src);
+try{player.currentTime=0;}catch(_){}
+};
 
-await delay(180);
-await realPlay(button,label,id);
-
-}catch(_){
-player.muted=false;player.volume=1;
-resetButtons();
-setStatus("Zvuk se nije mogao pokrenuti. Pokušajte ponovno.");
-}}
-
-async function playButton(button){
+const playButton=button=>{
 const src=button.dataset.audioSrc||"";
 const label=button.dataset.audioLabel||"izgovor";
 if(!src)return;
 
 if(activeButton===button&&!player.paused){
-requestId++;
-resetPlayer();resetButtons();
+stopPlayer();
+resetButtons();
 setStatus("Reprodukcija je zaustavljena.");
 return;
 }
 
-const id=++requestId;
-resetPlayer();resetButtons();
-const absoluteSrc=new URL(src,document.baseURI).href;
+stopPlayer();
+resetButtons();
+player.src=src;
 
-if(player.currentSrc!==absoluteSrc){
-player.src=absoluteSrc;
-player.preload="auto";
-player.load();
-}
+const p=player.play();
 
-if(warmed.has(absoluteSrc)){
-setStatus("Priprema zvuka...");
-await realPlay(button,label,id);
+if(p&&typeof p.then==="function"){
+p.then(()=>{
+activeButton=button;
+button.classList.add("playing");
+button.setAttribute("aria-pressed","true");
+setStatus("Reproducira se "+label+".");
+}).catch(()=>{
+resetButtons();
+setStatus("Zvuk se nije mogao pokrenuti. Pokušajte ponovno.");
+});
 }else{
-await warmUp(button,label,id,absoluteSrc);
-}}
+activeButton=button;
+button.classList.add("playing");
+button.setAttribute("aria-pressed","true");
+setStatus("Reproducira se "+label+".");
+}
+};
 
 buttons.forEach(b=>b.addEventListener("click",()=>playButton(b)));
 
@@ -100,8 +66,6 @@ setStatus("");
 });
 
 player.addEventListener("error",()=>{
-player.muted=false;
-player.volume=1;
 resetButtons();
 setStatus("Zvuk se nije mogao učitati. Pokušajte ponovno.");
 });
