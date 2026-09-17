@@ -171,6 +171,14 @@
 
 /* =========================================================
    OBITELJSKE ŠIFRE
+
+   Separator nije dio HTML sadržaja.
+   Svaki sljedeći član dobiva tanku
+   vertikalnu crtu preko CSS-a.
+
+   Razmak:
+   - 0.75em prije crte
+   - 0.75em poslije crte
    ========================================================= */
 
 .family-code-list {
@@ -187,7 +195,14 @@
 }
 
 .family-code-list span {
+  display: inline;
   white-space: normal;
+}
+
+.family-code-list span + span {
+  margin-left: 0.75em;
+  padding-left: 0.75em;
+  border-left: 1px solid var(--branch-accent-light);
 }
 
 .family-code-list span strong {
@@ -315,16 +330,14 @@
 
 
 /* =========================================================
-   FOTOGRAFIJE OSOBA — OBAVEZNI STANDARD ZA SVE GRANE
+   FOTOGRAFIJE OSOBA — STANDARD ZA SVE GRANE
 
-   - visina male fotografije: 75 px
-   - širina ostaje proporcionalna originalu
-   - fotografije počinju s lijeve strane
-   - više fotografija ostaje u jednom redu
-   - razmak između fotografija: 35 px
-   - svaka fotografija ima vlastiti opis ispod sebe
-   - na uskom ekranu red se ne lomi nego se može
-     vodoravno pomicati
+   - visina: 75 px
+   - proporcionalna širina
+   - početak s lijeve strane
+   - jedan red
+   - razmak 35 px
+   - opis ispod fotografije
    ========================================================= */
 
 .person-photo-gallery {
@@ -394,7 +407,7 @@
 
 
 /* =========================================================
-   LIGHTBOX — PUNA / MAKSIMALNA VELIČINA FOTOGRAFIJE
+   LIGHTBOX — PUNA / MAKSIMALNA VELIČINA
    ========================================================= */
 
 body.branch-photo-lightbox-open {
