@@ -1,1 +1,350 @@
+<!--
+  TANDARA COMMON
+  Jedini zajednički lijevi stupac za:
+  - index HR/EN
+  - 8 glavnih podstranica HR/EN
+  - grane
+  - dijagrame
+  - box stranice
 
+  Jezik, linkove i aktivnu stranicu postavlja js/site-common.js.
+-->
+
+<template id="tandara-common-sidebar-template">
+
+  <aside
+    class="tandara-sidebar"
+    id="tandara-common-sidebar"
+    data-label-hr="Glavna navigacija"
+    data-label-en="Main navigation"
+  >
+
+    <!-- ==========================================
+         HR ZASTAVA — HOME — UK ZASTAVA
+         ========================================== -->
+
+    <div
+      class="tandara-sidebar-top"
+      data-label-hr="Jezik i početna stranica"
+      data-label-en="Language and home page"
+    >
+
+      <a
+        class="tandara-top-control tandara-flag-control"
+        data-role="hr-link"
+        hreflang="hr"
+        lang="hr"
+        title="Hrvatski"
+        target="_top"
+      >
+        <img
+          data-common-src="slike/ikone/zastava-hr.png"
+          alt="Hrvatski"
+        >
+      </a>
+
+
+      <a
+        class="tandara-top-control tandara-home-control"
+        data-role="home-link"
+        data-route-hr="index.html"
+        data-route-en="index-en.html"
+        target="_top"
+      >
+        <img
+          data-common-src="slike/ikone/pocetna.png"
+          alt=""
+          aria-hidden="true"
+        >
+
+        <span
+          class="tandara-visually-hidden"
+          data-text-hr="Početna stranica"
+          data-text-en="Home"
+        ></span>
+      </a>
+
+
+      <a
+        class="tandara-top-control tandara-flag-control"
+        data-role="en-link"
+        hreflang="en"
+        lang="en"
+        title="English"
+        target="_top"
+      >
+        <img
+          data-common-src="slike/ikone/zastava-uk.png"
+          alt="English"
+        >
+      </a>
+
+    </div>
+
+
+    <!-- ==========================================
+         GLAVNI NASLOV
+         ========================================== -->
+
+    <div
+      class="tandara-sidebar-title"
+      data-text-hr="TANDARA-PREZIME"
+      data-text-en="TANDARA — SURNAME"
+    ></div>
+
+
+    <!-- ==========================================
+         JEDINI ZAJEDNIČKI IZBORNIK
+         ========================================== -->
+
+    <nav
+      class="tandara-sidebar-navigation"
+      data-label-hr="Glavni izbornik"
+      data-label-en="Main navigation"
+    >
+
+      <ul class="tandara-heritage-menu">
+
+        <li>
+          <img
+            data-common-src="slike/ikone/stablo.png"
+            alt=""
+            aria-hidden="true"
+          >
+
+          <a
+            data-page-key="autor"
+            data-route-hr="autor-hr.html"
+            data-route-en="autor-en.html"
+            target="_top"
+          >
+            <span
+              data-text-hr="O autoru i projektu"
+              data-text-en="About the Author and Project"
+            ></span>
+          </a>
+        </li>
+
+
+        <li>
+          <img
+            data-common-src="slike/ikone/stablo.png"
+            alt=""
+            aria-hidden="true"
+          >
+
+          <a
+            data-page-key="podrijetlo"
+            data-route-hr="podrijetlo-hr.html"
+            data-route-en="podrijetlo-en.html"
+            target="_top"
+          >
+            <span
+              data-text-hr="Podrijetlo prezimena"
+              data-text-en="Origin of the Surname"
+            ></span>
+          </a>
+        </li>
+
+
+        <li>
+          <img
+            data-common-src="slike/ikone/stablo.png"
+            alt=""
+            aria-hidden="true"
+          >
+
+          <a
+            data-page-key="rodoslovlje"
+            data-route-hr="rodoslovlje-hr.html"
+            data-route-en="rodoslovlje-en.html"
+            target="_top"
+          >
+            <span
+              data-text-hr="Rodoslovlje roda"
+              data-text-en="Family Genealogy"
+            ></span>
+          </a>
+        </li>
+
+
+        <li>
+          <img
+            data-common-src="slike/ikone/stablo.png"
+            alt=""
+            aria-hidden="true"
+          >
+
+          <a
+            data-page-key="migracije"
+            data-route-hr="migracije-hr.html"
+            data-route-en="migracije-en.html"
+            target="_top"
+          >
+            <span
+              data-text-hr="Migracije i rasprostranjenost"
+              data-text-en="Migration and Distribution"
+            ></span>
+          </a>
+        </li>
+
+
+        <li>
+          <img
+            data-common-src="slike/ikone/stablo.png"
+            alt=""
+            aria-hidden="true"
+          >
+
+          <a
+            data-page-key="zanimljivosti"
+            data-route-hr="zanimljivosti.html"
+            data-route-en="zanimljivosti-en.html"
+            target="_top"
+          >
+            <span
+              data-text-hr="Zanimljivosti"
+              data-text-en="Interesting Facts"
+            ></span>
+          </a>
+        </li>
+
+
+        <li>
+          <img
+            data-common-src="slike/ikone/stablo.png"
+            alt=""
+            aria-hidden="true"
+          >
+
+          <a
+            data-page-key="kontakti"
+            data-route-hr="kontakti.html"
+            data-route-en="contacts.html"
+            target="_top"
+          >
+            <span
+              data-text-hr="Kontakt i suradnja"
+              data-text-en="Contact and Collaboration"
+            ></span>
+          </a>
+        </li>
+
+
+        <li>
+          <img
+            data-common-src="slike/ikone/stablo.png"
+            alt=""
+            aria-hidden="true"
+          >
+
+          <a
+            data-page-key="knjiga-poruka"
+            data-route-hr="knjiga-poruka.html"
+            data-route-en="visitors-messages.html"
+            target="_top"
+          >
+            <span
+              data-text-hr="Knjiga poruka"
+              data-text-en="Visitor Messages"
+            ></span>
+          </a>
+        </li>
+
+
+        <li>
+          <img
+            data-common-src="slike/ikone/stablo.png"
+            alt=""
+            aria-hidden="true"
+          >
+
+          <a
+            data-page-key="privatnost"
+            data-route-hr="privatnost.html"
+            data-route-en="privacy.html"
+            target="_top"
+          >
+            <span
+              data-text-hr="Politika privatnosti"
+              data-text-en="Privacy Policy"
+            ></span>
+          </a>
+        </li>
+
+      </ul>
+
+    </nav>
+
+
+    <!-- ==========================================
+         AUTOR | FOTOGRAFIJA | JURE / TANDARA
+
+         Središnji stupac bit će fiksan.
+         Tekst lijevo/desno neće moći pomicati fotografiju.
+         ========================================== -->
+
+    <div class="tandara-author-row">
+
+      <div
+        class="tandara-author-label"
+        data-text-hr="AUTOR"
+        data-text-en="AUTHOR"
+      ></div>
+
+
+      <a
+        class="tandara-author-photo"
+        data-route-hr="autor-hr.html"
+        data-route-en="autor-en.html"
+        target="_top"
+      >
+        <img
+          data-common-src="slike/common-foto/jure.webp"
+          alt="Jure Tandara"
+          decoding="async"
+          loading="lazy"
+        >
+      </a>
+
+
+      <div class="tandara-author-name">
+        <span>Jure</span>
+        <span>Tandara</span>
+      </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         FLAGCOUNTER
+         ========================================== -->
+
+    <div class="tandara-flagbox">
+
+      <div
+        class="tandara-flag-title"
+        data-text-hr="Posjetitelji"
+        data-text-en="Visitors"
+      ></div>
+
+      <a
+        href="https://info.flagcounter.com/OyvA"
+        target="_blank"
+        rel="noopener noreferrer"
+        referrerpolicy="no-referrer"
+      >
+        <img
+          alt=""
+          decoding="async"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+          data-flag-counter-src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/"
+        >
+      </a>
+
+    </div>
+
+  </aside>
+
+</template>
