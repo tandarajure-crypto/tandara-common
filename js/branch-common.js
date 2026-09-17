@@ -1,156 +1,822 @@
-/* TANDARA COMMON — jedini učitavač zajedničkog okvira stranice. */
+/* =========================================================
+   TANDARA — BRANCH PAGE ENGINE
+
+   Zajednički čisti motor za stranice rodoslovnih grana.
+
+   Koristi se za:
+   - svih 10 glavnih grana
+   - HR i EN
+   - PUBLIC i PRIVATE kada koriste isti tip stranice
+
+   MOTOR MOŽE:
+   - dodati opcionalni povratni link
+   - dodati opcionalni link na dijagram
+   - dodati opcionalnu završnu napomenu
+   - otvoriti fotografije osoba u zajedničkom lightboxu
+
+   MOTOR NE SADRŽI:
+   - rodoslovne podatke
+   - imena osoba
+   - godine i datume
+   - šifre osoba
+   - putanje pojedinih fotografija
+   - CSS
+   - site shell
+   - početno stablo
+   - hotspotove
+   - pretragu osoba
+   - logiku dijagrama
+   - print
+   - protected/private autorizaciju
+   - posebne zakrpe za pojedine grane
+
+   Sve razlike među stranicama dolaze
+   iz data-* atributa lokalnog HTML-a.
+   ========================================================= */
+
 (() => {
   "use strict";
 
-  const loaderScript = document.currentScript;
   const body = document.body;
-  const pageContent = document.querySelector("[data-page-content]") || document.querySelector("main");
 
-  if (!loaderScript || !body || !pageContent) return;
-
-  const lang = (document.documentElement.lang || body.dataset.lang || "hr").toLowerCase();
-  const isHr = lang.startsWith("hr");
-  const commonRoot = new URL("../", loaderScript.src);
-  const siteRoot = new URL(body.dataset.siteRoot || "./", document.baseURI);
-  const templateUrl = new URL("templates/branch-page-minimal.html", commonRoot);
-  templateUrl.search = new URL(loaderScript.src).search;
-
-  const siteUrl = (relativePath) => new URL(relativePath, siteRoot).href;
-  const commonUrl = (relativePath) => new URL(relativePath, commonRoot).href;
-
-  const homeHotspots = [
-    { key: "jurina", labelHr: "Jurina grana", labelEn: "Jure's branch", routeHr: "jurinagrana.html", routeEn: "jurinagrana-en.html" },
-    { key: "petrova", labelHr: "Petrova grana", labelEn: "Petar's branch", routeHr: "petrovagrana.html", routeEn: "petrovagrana-en.html" },
-    { key: "antina", labelHr: "Antina grana", labelEn: "Ante's branch", routeHr: "antinagrana.html", routeEn: "antinagrana-en.html" },
-    { key: "matina", labelHr: "Matina grana", labelEn: "Mate's branch", routeHr: "matinagrana.html", routeEn: "matinagrana-en.html" },
-    { key: "ivanov", labelHr: "Ivan Tandara", labelEn: "Ivan Tandara", routeHr: "box1.html", routeEn: "box1-en.html" },
-    { key: "jurin", labelHr: "Jure Tandara", labelEn: "Jure Tandara", routeHr: "box2a.html", routeEn: "box2a-en.html" },
-    { key: "petrov", labelHr: "Petar Tandara", labelEn: "Petar Tandara", routeHr: "box2b.html", routeEn: "box2b-en.html" },
-    { key: "antin", labelHr: "Ante Tandara", labelEn: "Ante Tandara", routeHr: "box2c.html", routeEn: "box2c-en.html" },
-    { key: "matin", labelHr: "Mate Tandara", labelEn: "Mate Tandara", routeHr: "box2d.html", routeEn: "box2d-en.html" },
-    { key: "livanjske", labelHr: "Livanjske Tandare", labelEn: "Livno Tandara branch", routeHr: "filipovagrana.html", routeEn: "filipovagrana-en.html" }
-  ];
-
-  function localize(root) {
-    root.querySelectorAll("[data-text-hr][data-text-en]").forEach((element) => {
-      element.textContent = isHr ? element.dataset.textHr : element.dataset.textEn;
-    });
-
-    root.querySelectorAll("[data-label-hr][data-label-en]").forEach((element) => {
-      element.setAttribute("aria-label", isHr ? element.dataset.labelHr : element.dataset.labelEn);
-    });
-
-    root.querySelectorAll("[data-route-hr][data-route-en]").forEach((link) => {
-      link.href = siteUrl(isHr ? link.dataset.routeHr : link.dataset.routeEn);
-    });
-
-    root.querySelectorAll("[data-common-src]").forEach((image) => {
-      image.src = commonUrl(image.dataset.commonSrc);
-    });
+  if (!body) {
+    return;
   }
 
-  function configureLanguageSwitch(sidebar) {
-    const switcher = sidebar.querySelector('[data-role="language-switch"]');
-    const hrLink = sidebar.querySelector('[data-role="hr-link"]');
-    const enLink = sidebar.querySelector('[data-role="en-link"]');
-    const hrPage = body.dataset.pageHr;
-    const enPage = body.dataset.pageEn;
 
-    if (!switcher || !hrLink || !enLink || !hrPage || !enPage) return;
+  /* =======================================================
+     PUTANJE
+     ======================================================= */
 
-    hrLink.href = siteUrl(hrPage);
-    enLink.href = siteUrl(enPage);
-    const activeLink = isHr ? hrLink : enLink;
-    activeLink.classList.add("active");
-    activeLink.setAttribute("aria-current", "page");
-    switcher.hidden = false;
+  const siteRoot = new URL(
+    body.dataset.siteRoot || "./",
+    document.baseURI
+  );
+
+  function siteUrl(path) {
+    return new URL(
+      path,
+      siteRoot
+    ).href;
   }
 
-  function configureAuthorPhoto(sidebar) {
-    const wrapper = sidebar.querySelector('[data-role="author-photo"]');
-    const image = sidebar.querySelector('[data-role="author-image"]');
-    const relativePath = body.dataset.authorImage;
 
-    if (!wrapper || !image) return;
-    if (!relativePath) {
-      image.remove();
+  /* =======================================================
+     POMOĆNE FUNKCIJE
+     ======================================================= */
+
+  function hasText(value) {
+    return (
+      typeof value === "string" &&
+      value.trim() !== ""
+    );
+  }
+
+  function enabled(value) {
+    return (
+      value === "true" ||
+      value === "1" ||
+      value === "yes"
+    );
+  }
+
+  function toolsHost() {
+    return document.getElementById(
+      "common-branch-tools"
+    );
+  }
+
+  function footerHost() {
+    return document.getElementById(
+      "common-branch-footer"
+    );
+  }
+
+  function createToolLink(
+    path,
+    label,
+    role
+  ) {
+    const link =
+      document.createElement("a");
+
+    link.href =
+      siteUrl(path);
+
+    link.textContent =
+      label.trim();
+
+    link.dataset.branchTool =
+      role;
+
+    return link;
+  }
+
+
+  /* =======================================================
+     POVRATNI LINK
+
+     Lokalni HTML po potrebi koristi:
+
+     data-parent-page="..."
+     data-parent-label="..."
+
+     Ako atributi ne postoje,
+     ništa se ne prikazuje.
+     ======================================================= */
+
+  function installParentLink() {
+    const host =
+      toolsHost();
+
+    if (!host) {
       return;
     }
 
-    image.src = commonUrl(relativePath);
-    wrapper.hidden = false;
-  }
-
-  function markCurrentPage(sidebar) {
-    sidebar.querySelectorAll("a[href]").forEach((link) => {
-      const linkUrl = new URL(link.href, document.baseURI);
-      if (linkUrl.origin === location.origin && linkUrl.pathname === location.pathname) {
-        link.classList.add("active");
-        link.setAttribute("aria-current", "page");
-      }
-    });
-  }
-
-  function installShell(sidebar) {
-    const existingLayout = pageContent.closest(".tandara-layout");
-    if (existingLayout) {
-      existingLayout.prepend(sidebar);
-    } else {
-      const layout = document.createElement("div");
-      layout.className = "tandara-layout";
-      pageContent.before(layout);
-      layout.append(sidebar, pageContent);
+    if (
+      host.querySelector(
+        '[data-branch-tool="parent"]'
+      )
+    ) {
+      return;
     }
 
-    pageContent.classList.add("tandara-page-content");
-    body.classList.add("tandara-shell-ready");
-    window.dispatchEvent(new CustomEvent("tandara:shell-ready"));
+    const page =
+      body.dataset.parentPage;
+
+    const label =
+      body.dataset.parentLabel;
+
+    if (
+      !hasText(page) ||
+      !hasText(label)
+    ) {
+      return;
+    }
+
+    const link =
+      createToolLink(
+        page,
+        `← ${label.trim()}`,
+        "parent"
+      );
+
+    host.append(link);
   }
 
-  function installHomeHotspots() {
-    const tree = document.querySelector("[data-home-tree]");
-    if (!tree || tree.querySelector(".tandara-home-hotspot")) return;
 
-    const fragment = document.createDocumentFragment();
+  /* =======================================================
+     POVEZNICA NA DIJAGRAM
 
-    homeHotspots.forEach((hotspot) => {
-      const link = document.createElement("a");
-      link.className = `tandara-home-hotspot tandara-home-hotspot--${hotspot.key}`;
-      link.dataset.hotspot = hotspot.key;
-      link.href = siteUrl(isHr ? hotspot.routeHr : hotspot.routeEn);
-      link.setAttribute("aria-label", isHr ? hotspot.labelHr : hotspot.labelEn);
+     Motor ne upravlja dijagramom.
+     Samo otvara lokalno definiranu stranicu.
 
-      if (hotspot.key === "livanjske") {
-        link.append(isHr ? "LIVANJSKE" : "LIVNO", document.createElement("br"), isHr ? "TANDARE" : "TANDARA");
+     Lokalni HTML po potrebi koristi:
+
+     data-diagram="box2a.html"
+     data-diagram-label="Interaktivni dijagram"
+
+     EN primjer:
+
+     data-diagram="box2a-en.html"
+     data-diagram-label="Interactive diagram"
+
+     Ako nema oba atributa,
+     poveznica se ne prikazuje.
+     ======================================================= */
+
+  function installDiagramLink() {
+    const host =
+      toolsHost();
+
+    if (!host) {
+      return;
+    }
+
+    if (
+      host.querySelector(
+        '[data-branch-tool="diagram"]'
+      )
+    ) {
+      return;
+    }
+
+    const path =
+      body.dataset.diagram;
+
+    const label =
+      body.dataset.diagramLabel;
+
+    if (
+      !hasText(path) ||
+      !hasText(label)
+    ) {
+      return;
+    }
+
+    const link =
+      createToolLink(
+        path,
+        label,
+        "diagram"
+      );
+
+    host.append(link);
+  }
+
+
+  /* =======================================================
+     ZAVRŠNA NAPOMENA
+
+     Potpuno opcionalna.
+
+     Lokalni HTML koristi:
+
+     data-branch-note="true"
+     data-branch-note-title="..."
+     data-branch-note-text="..."
+
+     Ako nema potpune konfiguracije,
+     napomena se ne prikazuje.
+     ======================================================= */
+
+  function installBranchNote() {
+    const host =
+      footerHost();
+
+    if (!host) {
+      return;
+    }
+
+    if (
+      host.querySelector(
+        "[data-branch-note]"
+      )
+    ) {
+      return;
+    }
+
+    if (
+      !enabled(
+        body.dataset.branchNote
+      )
+    ) {
+      return;
+    }
+
+    const title =
+      body.dataset
+        .branchNoteTitle;
+
+    const text =
+      body.dataset
+        .branchNoteText;
+
+    if (
+      !hasText(title) ||
+      !hasText(text)
+    ) {
+      return;
+    }
+
+    const section =
+      document.createElement(
+        "section"
+      );
+
+    section.className =
+      "branch-note";
+
+    section.dataset.branchNote =
+      "";
+
+    const heading =
+      document.createElement(
+        "h3"
+      );
+
+    heading.textContent =
+      title.trim();
+
+    const paragraph =
+      document.createElement(
+        "p"
+      );
+
+    paragraph.textContent =
+      text.trim();
+
+    section.append(
+      heading,
+      paragraph
+    );
+
+    host.append(section);
+  }
+
+
+  /* =======================================================
+     FOTOGRAFIJE — ZAJEDNIČKI LIGHTBOX
+
+     Standardni HTML fotografije:
+
+     <div class="person-photo-gallery">
+       <figure class="person-photo">
+         <a href="PUTANJA-DO-SLIKE">
+           <img
+             src="PUTANJA-DO-SLIKE"
+             alt="Opis">
+         </a>
+         <figcaption>Opis</figcaption>
+       </figure>
+     </div>
+
+     Normalni klik otvara sliku u lightboxu.
+     Ctrl / Shift / Command klik zadržava
+     izvorno ponašanje poveznice.
+     ======================================================= */
+
+  const photoLinkSelector =
+    ".person-photo-gallery .person-photo a";
+
+  let activePhotoLink =
+    null;
+
+
+  function photoLightboxHost() {
+    return document.querySelector(
+      "[data-branch-photo-lightbox]"
+    );
+  }
+
+
+  function createPhotoLightbox() {
+    const existing =
+      photoLightboxHost();
+
+    if (existing) {
+      return existing;
+    }
+
+    const overlay =
+      document.createElement(
+        "div"
+      );
+
+    overlay.className =
+      "branch-photo-lightbox";
+
+    overlay.dataset
+      .branchPhotoLightbox =
+        "";
+
+    overlay.setAttribute(
+      "role",
+      "dialog"
+    );
+
+    overlay.setAttribute(
+      "aria-modal",
+      "true"
+    );
+
+    overlay.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    overlay.setAttribute(
+      "aria-label",
+      body.classList.contains("en")
+        ? "Enlarged photograph"
+        : "Povećana fotografija"
+    );
+
+
+    const closeButton =
+      document.createElement(
+        "button"
+      );
+
+    closeButton.type =
+      "button";
+
+    closeButton.className =
+      "branch-photo-lightbox__close";
+
+    closeButton.setAttribute(
+      "aria-label",
+      body.classList.contains("en")
+        ? "Close photograph"
+        : "Zatvori fotografiju"
+    );
+
+    closeButton.textContent =
+      "×";
+
+
+    const figure =
+      document.createElement(
+        "figure"
+      );
+
+    figure.className =
+      "branch-photo-lightbox__figure";
+
+
+    const image =
+      document.createElement(
+        "img"
+      );
+
+    image.className =
+      "branch-photo-lightbox__image";
+
+    image.alt =
+      "";
+
+
+    const caption =
+      document.createElement(
+        "figcaption"
+      );
+
+    caption.className =
+      "branch-photo-lightbox__caption";
+
+    caption.hidden =
+      true;
+
+
+    figure.append(
+      image,
+      caption
+    );
+
+    overlay.append(
+      closeButton,
+      figure
+    );
+
+    document.body.append(
+      overlay
+    );
+
+    return overlay;
+  }
+
+
+  function closePhotoLightbox() {
+    const overlay =
+      photoLightboxHost();
+
+    if (!overlay) {
+      return;
+    }
+
+    if (
+      !overlay.classList.contains(
+        "is-open"
+      )
+    ) {
+      return;
+    }
+
+    overlay.classList.remove(
+      "is-open"
+    );
+
+    overlay.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    body.classList.remove(
+      "branch-photo-lightbox-open"
+    );
+
+
+    const image =
+      overlay.querySelector(
+        ".branch-photo-lightbox__image"
+      );
+
+    if (image) {
+      image.removeAttribute(
+        "src"
+      );
+
+      image.alt =
+        "";
+    }
+
+
+    if (
+      activePhotoLink &&
+      typeof activePhotoLink.focus ===
+        "function"
+    ) {
+      activePhotoLink.focus();
+    }
+
+    activePhotoLink =
+      null;
+  }
+
+
+  function openPhotoLightbox(link) {
+    if (!link) {
+      return;
+    }
+
+    const thumb =
+      link.querySelector(
+        "img"
+      );
+
+    if (
+      !thumb ||
+      !hasText(link.href)
+    ) {
+      return;
+    }
+
+
+    const overlay =
+      createPhotoLightbox();
+
+    const image =
+      overlay.querySelector(
+        ".branch-photo-lightbox__image"
+      );
+
+    const caption =
+      overlay.querySelector(
+        ".branch-photo-lightbox__caption"
+      );
+
+    const closeButton =
+      overlay.querySelector(
+        ".branch-photo-lightbox__close"
+      );
+
+    const figure =
+      link.closest(
+        "figure"
+      );
+
+    const sourceCaption =
+      figure
+        ? figure.querySelector(
+            "figcaption"
+          )
+        : null;
+
+
+    if (
+      !image ||
+      !caption ||
+      !closeButton
+    ) {
+      return;
+    }
+
+
+    activePhotoLink =
+      link;
+
+    image.src =
+      link.href;
+
+    image.alt =
+      thumb.alt || "";
+
+
+    const captionText =
+      sourceCaption
+        ? sourceCaption
+            .textContent
+            .trim()
+        : "";
+
+
+    caption.textContent =
+      captionText;
+
+    caption.hidden =
+      !hasText(
+        captionText
+      );
+
+
+    overlay.classList.add(
+      "is-open"
+    );
+
+    overlay.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+    body.classList.add(
+      "branch-photo-lightbox-open"
+    );
+
+    closeButton.focus();
+  }
+
+
+  function installPhotoLightbox() {
+    const links =
+      document.querySelectorAll(
+        photoLinkSelector
+      );
+
+    if (!links.length) {
+      return;
+    }
+
+
+    const overlay =
+      createPhotoLightbox();
+
+    const closeButton =
+      overlay.querySelector(
+        ".branch-photo-lightbox__close"
+      );
+
+
+    links.forEach(
+      (link) => {
+
+        if (
+          link.dataset
+            .branchPhotoReady ===
+          "true"
+        ) {
+          return;
+        }
+
+        link.dataset
+          .branchPhotoReady =
+            "true";
+
+
+        link.addEventListener(
+          "click",
+          (event) => {
+
+            if (
+              event.defaultPrevented ||
+              event.button !== 0 ||
+              event.metaKey ||
+              event.ctrlKey ||
+              event.shiftKey ||
+              event.altKey
+            ) {
+              return;
+            }
+
+            event.preventDefault();
+
+            openPhotoLightbox(
+              link
+            );
+          }
+        );
       }
+    );
 
-      fragment.append(link);
-    });
 
-    tree.append(fragment);
+    if (
+      closeButton &&
+      closeButton.dataset
+        .branchPhotoReady !==
+      "true"
+    ) {
+      closeButton.dataset
+        .branchPhotoReady =
+          "true";
+
+      closeButton.addEventListener(
+        "click",
+        closePhotoLightbox
+      );
+    }
+
+
+    if (
+      overlay.dataset
+        .branchPhotoEventsReady !==
+      "true"
+    ) {
+      overlay.dataset
+        .branchPhotoEventsReady =
+          "true";
+
+
+      overlay.addEventListener(
+        "click",
+        (event) => {
+
+          if (
+            event.target ===
+            overlay
+          ) {
+            closePhotoLightbox();
+          }
+        }
+      );
+
+
+      document.addEventListener(
+        "keydown",
+        (event) => {
+
+          if (
+            event.key === "Escape" &&
+            overlay.classList.contains(
+              "is-open"
+            )
+          ) {
+            closePhotoLightbox();
+          }
+        }
+      );
+    }
   }
 
-  installHomeHotspots();
 
-  fetch(templateUrl, { cache: "force-cache", credentials: "omit" })
-    .then((response) => {
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      return response.text();
-    })
-    .then((source) => {
-      const parsed = new DOMParser().parseFromString(source, "text/html");
-      const template = parsed.querySelector("#tandara-common-shell");
-      const sidebar = template?.content?.firstElementChild?.cloneNode(true);
-      if (!sidebar) throw new Error("Predložak ne sadrži #tandara-common-shell.");
+  /* =======================================================
+     INICIJALIZACIJA
+     ======================================================= */
 
-      localize(sidebar);
-      configureLanguageSwitch(sidebar);
-      configureAuthorPhoto(sidebar);
-      markCurrentPage(sidebar);
-      installShell(sidebar);
-    })
-    .catch((error) => {
-      body.classList.add("tandara-shell-unavailable");
-      console.error("Tandara common okvir nije učitan:", error);
+  function init() {
+    if (
+      body.dataset
+        .branchPageEngineReady ===
+      "true"
+    ) {
+      return;
+    }
+
+    installParentLink();
+    installDiagramLink();
+    installBranchNote();
+    installPhotoLightbox();
+
+    body.dataset
+      .branchPageEngineReady =
+        "true";
+
+
+    window.dispatchEvent(
+      new CustomEvent(
+        "tandara:branch-page-ready",
+        {
+          detail: {
+            page:
+              body.dataset.page ||
+              "",
+
+            branch:
+              body.dataset
+                .branchName ||
+              ""
+          }
+        }
+      )
+    );
+  }
+
+
+  /* =======================================================
+     JAVNO SUČELJE
+     ======================================================= */
+
+  window.TandaraBranchPage =
+    Object.freeze({
+      init
     });
+
+
+  /* =======================================================
+     POKRETANJE
+     ======================================================= */
+
+  if (
+    document.readyState ===
+    "loading"
+  ) {
+    document.addEventListener(
+      "DOMContentLoaded",
+      init,
+      {
+        once: true
+      }
+    );
+  } else {
+    init();
+  }
+
 })();
