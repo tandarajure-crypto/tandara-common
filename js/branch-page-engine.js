@@ -1,28 +1,24 @@
 /* =========================================================
    TANDARA — BRANCH PAGE ENGINE
 
-   Zajednički čisti motor za stranice rodoslovnih grana.
+   Zajednički motor za svih 10 glavnih rodoslovnih grana.
 
    Koristi se za:
-   - Jurinu granu
-   - Petrovu granu
-   - Antinu granu
-   - Matinu granu
-   - Livanjske Tandare
-   - HR i EN
-   - PUBLIC i PRIVATE kada koriste isti tip stranice
+   - HR i EN verzije
+   - PUBLIC i PRIVATE stranice istoga tipa
 
    MOTOR MOŽE:
    - dodati opcionalni povratni link
    - dodati opcionalni link na dijagram
    - dodati opcionalnu završnu napomenu
+   - otvoriti fotografije osoba u zajedničkom lightboxu
 
    MOTOR NE SADRŽI:
    - rodoslovne podatke
    - imena osoba
    - godine i datume
    - šifre osoba
-   - slike
+   - putanje pojedinih fotografija
    - CSS
    - site shell
    - početno stablo
@@ -30,10 +26,8 @@
    - pretragu osoba
    - logiku dijagrama
    - print
-   - modalne prozore
    - protected/private autorizaciju
-   - posebne zakrpe za Jurinu, Petrovu,
-     Antinu, Matinu ili Livanjsku granu
+   - posebne zakrpe za pojedine grane
 
    Sve razlike među stranicama dolaze
    iz data-* atributa lokalnog HTML-a.
@@ -47,6 +41,23 @@
   if (!body) {
     return;
   }
+
+
+  /* =======================================================
+     JEZIK
+     ======================================================= */
+
+  const documentLanguage =
+    (
+      document.documentElement.lang ||
+      ""
+    )
+      .trim()
+      .toLowerCase();
+
+  const isEnglish =
+    documentLanguage.startsWith("en") ||
+    body.classList.contains("en");
 
 
   /* =======================================================
@@ -174,15 +185,12 @@
   /* =======================================================
      POVEZNICA NA DIJAGRAM
 
-     Motor ne upravlja dijagramom.
-     Samo otvara lokalno definiranu stranicu.
-
      Lokalni HTML po potrebi koristi:
 
      data-diagram="box2a.html"
      data-diagram-label="Interaktivni dijagram"
 
-     EN primjer:
+     EN:
 
      data-diagram="box2a-en.html"
      data-diagram-label="Interactive diagram"
@@ -234,16 +242,11 @@
   /* =======================================================
      ZAVRŠNA NAPOMENA
 
-     Potpuno opcionalna.
-
-     Lokalni HTML koristi:
+     Lokalni HTML po potrebi koristi:
 
      data-branch-note="true"
      data-branch-note-title="..."
      data-branch-note-text="..."
-
-     Ako nema potpune konfiguracije,
-     napomena se ne prikazuje.
      ======================================================= */
 
   function installBranchNote() {
@@ -271,12 +274,10 @@
     }
 
     const title =
-      body.dataset
-        .branchNoteTitle;
+      body.dataset.branchNoteTitle;
 
     const text =
-      body.dataset
-        .branchNoteText;
+      body.dataset.branchNoteText;
 
     if (
       !hasText(title) ||
@@ -322,13 +323,470 @@
 
 
   /* =======================================================
+     FOTOGRAFIJE — ZAJEDNIČKI LIGHTBOX
+
+     Standardni HTML:
+
+     <div class="person-photo-gallery">
+       <figure class="person-photo">
+         <a href="PUTANJA-DO-SLIKE"
+            target="_blank"
+            rel="noopener noreferrer">
+           <img
+             src="PUTANJA-DO-SLIKE"
+             alt="Opis"
+             loading="lazy"
+             decoding="async">
+         </a>
+         <figcaption>Opis</figcaption>
+       </figure>
+     </div>
+
+     Normalni klik:
+     - otvara fotografiju preko stranice
+
+     Ctrl / Shift / Alt / Command klik:
+     - zadržava standardno ponašanje poveznice
+
+     Zatvaranje:
+     - gumb ×
+     - tipka Escape
+     - klik na tamnu pozadinu
+     ======================================================= */
+
+  const photoLinkSelector =
+    ".person-photo-gallery .person-photo a";
+
+  let activePhotoLink =
+    null;
+
+
+  function photoLightboxHost() {
+    return document.querySelector(
+      "[data-branch-photo-lightbox]"
+    );
+  }
+
+
+  /* =======================================================
+     IZGRADNJA LIGHTBOXA
+     ======================================================= */
+
+  function createPhotoLightbox() {
+    const existing =
+      photoLightboxHost();
+
+    if (existing) {
+      return existing;
+    }
+
+    const overlay =
+      document.createElement(
+        "div"
+      );
+
+    overlay.className =
+      "branch-photo-lightbox";
+
+    overlay.dataset.branchPhotoLightbox =
+      "";
+
+    overlay.setAttribute(
+      "role",
+      "dialog"
+    );
+
+    overlay.setAttribute(
+      "aria-modal",
+      "true"
+    );
+
+    overlay.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    overlay.setAttribute(
+      "aria-label",
+      isEnglish
+        ? "Enlarged photograph"
+        : "Povećana fotografija"
+    );
+
+
+    const closeButton =
+      document.createElement(
+        "button"
+      );
+
+    closeButton.type =
+      "button";
+
+    closeButton.className =
+      "branch-photo-lightbox__close";
+
+    closeButton.setAttribute(
+      "aria-label",
+      isEnglish
+        ? "Close photograph"
+        : "Zatvori fotografiju"
+    );
+
+    closeButton.textContent =
+      "×";
+
+
+    const figure =
+      document.createElement(
+        "figure"
+      );
+
+    figure.className =
+      "branch-photo-lightbox__figure";
+
+
+    const image =
+      document.createElement(
+        "img"
+      );
+
+    image.className =
+      "branch-photo-lightbox__image";
+
+    image.alt =
+      "";
+
+
+    const caption =
+      document.createElement(
+        "figcaption"
+      );
+
+    caption.className =
+      "branch-photo-lightbox__caption";
+
+    caption.hidden =
+      true;
+
+
+    figure.append(
+      image,
+      caption
+    );
+
+    overlay.append(
+      closeButton,
+      figure
+    );
+
+    document.body.append(
+      overlay
+    );
+
+    return overlay;
+  }
+
+
+  /* =======================================================
+     OTVARANJE FOTOGRAFIJE
+     ======================================================= */
+
+  function openPhotoLightbox(link) {
+    if (!link) {
+      return;
+    }
+
+    const thumb =
+      link.querySelector(
+        "img"
+      );
+
+    if (
+      !thumb ||
+      !hasText(link.href)
+    ) {
+      return;
+    }
+
+    const overlay =
+      createPhotoLightbox();
+
+    const image =
+      overlay.querySelector(
+        ".branch-photo-lightbox__image"
+      );
+
+    const caption =
+      overlay.querySelector(
+        ".branch-photo-lightbox__caption"
+      );
+
+    const closeButton =
+      overlay.querySelector(
+        ".branch-photo-lightbox__close"
+      );
+
+    if (
+      !image ||
+      !caption ||
+      !closeButton
+    ) {
+      return;
+    }
+
+    const figure =
+      link.closest(
+        ".person-photo"
+      );
+
+    const sourceCaption =
+      figure
+        ? figure.querySelector(
+            "figcaption"
+          )
+        : null;
+
+    const captionText =
+      sourceCaption
+        ? sourceCaption
+            .textContent
+            .trim()
+        : "";
+
+    activePhotoLink =
+      link;
+
+    image.src =
+      link.href;
+
+    image.alt =
+      thumb.alt || "";
+
+    caption.textContent =
+      captionText;
+
+    caption.hidden =
+      !hasText(
+        captionText
+      );
+
+    overlay.classList.add(
+      "is-open"
+    );
+
+    overlay.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+    body.classList.add(
+      "branch-photo-lightbox-open"
+    );
+
+    closeButton.focus();
+  }
+
+
+  /* =======================================================
+     ZATVARANJE FOTOGRAFIJE
+     ======================================================= */
+
+  function closePhotoLightbox() {
+    const overlay =
+      photoLightboxHost();
+
+    if (!overlay) {
+      return;
+    }
+
+    if (
+      !overlay.classList.contains(
+        "is-open"
+      )
+    ) {
+      return;
+    }
+
+    overlay.classList.remove(
+      "is-open"
+    );
+
+    overlay.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    body.classList.remove(
+      "branch-photo-lightbox-open"
+    );
+
+    const image =
+      overlay.querySelector(
+        ".branch-photo-lightbox__image"
+      );
+
+    const caption =
+      overlay.querySelector(
+        ".branch-photo-lightbox__caption"
+      );
+
+    if (image) {
+      image.removeAttribute(
+        "src"
+      );
+
+      image.alt =
+        "";
+    }
+
+    if (caption) {
+      caption.textContent =
+        "";
+
+      caption.hidden =
+        true;
+    }
+
+    const previousLink =
+      activePhotoLink;
+
+    activePhotoLink =
+      null;
+
+    if (
+      previousLink &&
+      typeof previousLink.focus ===
+        "function"
+    ) {
+      previousLink.focus();
+    }
+  }
+
+
+  /* =======================================================
+     INSTALACIJA LIGHTBOXA
+     ======================================================= */
+
+  function installPhotoLightbox() {
+    const links =
+      document.querySelectorAll(
+        photoLinkSelector
+      );
+
+    if (!links.length) {
+      return;
+    }
+
+    const overlay =
+      createPhotoLightbox();
+
+    const closeButton =
+      overlay.querySelector(
+        ".branch-photo-lightbox__close"
+      );
+
+
+    links.forEach(
+      (link) => {
+
+        if (
+          link.dataset.branchPhotoReady ===
+          "true"
+        ) {
+          return;
+        }
+
+        link.dataset.branchPhotoReady =
+          "true";
+
+        link.addEventListener(
+          "click",
+          (event) => {
+
+            if (
+              event.defaultPrevented ||
+              event.button !== 0 ||
+              event.metaKey ||
+              event.ctrlKey ||
+              event.shiftKey ||
+              event.altKey
+            ) {
+              return;
+            }
+
+            event.preventDefault();
+
+            openPhotoLightbox(
+              link
+            );
+          }
+        );
+      }
+    );
+
+
+    if (
+      closeButton &&
+      closeButton.dataset.branchPhotoReady !==
+        "true"
+    ) {
+      closeButton.dataset.branchPhotoReady =
+        "true";
+
+      closeButton.addEventListener(
+        "click",
+        closePhotoLightbox
+      );
+    }
+
+
+    if (
+      overlay.dataset.branchPhotoEventsReady !==
+      "true"
+    ) {
+      overlay.dataset.branchPhotoEventsReady =
+        "true";
+
+
+      overlay.addEventListener(
+        "click",
+        (event) => {
+
+          if (
+            event.target ===
+            overlay
+          ) {
+            closePhotoLightbox();
+          }
+        }
+      );
+
+
+      document.addEventListener(
+        "keydown",
+        (event) => {
+
+          if (
+            event.key === "Escape" &&
+            overlay.classList.contains(
+              "is-open"
+            )
+          ) {
+            closePhotoLightbox();
+          }
+        }
+      );
+    }
+  }
+
+
+  /* =======================================================
      INICIJALIZACIJA
      ======================================================= */
 
   function init() {
     if (
-      body.dataset
-        .branchPageEngineReady ===
+      body.dataset.branchPageEngineReady ===
       "true"
     ) {
       return;
@@ -337,10 +795,11 @@
     installParentLink();
     installDiagramLink();
     installBranchNote();
+    installPhotoLightbox();
 
-    body.dataset
-      .branchPageEngineReady =
-        "true";
+    body.dataset.branchPageEngineReady =
+      "true";
+
 
     window.dispatchEvent(
       new CustomEvent(
@@ -348,11 +807,12 @@
         {
           detail: {
             page:
-              body.dataset.page || "",
+              body.dataset.page ||
+              "",
 
             branch:
-              body.dataset
-                .branchName || ""
+              body.dataset.branchName ||
+              ""
           }
         }
       )
@@ -366,7 +826,9 @@
 
   window.TandaraBranchPage =
     Object.freeze({
-      init
+      init,
+      openPhotoLightbox,
+      closePhotoLightbox
     });
 
 
@@ -388,4 +850,5 @@
   } else {
     init();
   }
+
 })();
