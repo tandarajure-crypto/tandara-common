@@ -1,123 +1,64 @@
-/* TANDARA — AUDIO PRONUNCIATION */
+/* TANDARA — AUDIO PRONUNCIATION v4 */
 (() => {
   "use strict";
 
-  const player = document.getElementById("pronunciationPlayer");
   const status = document.getElementById("audioStatus");
   const buttons = [...document.querySelectorAll(".audio-icon-button[data-audio-src]")];
-  if (!player || !buttons.length) return;
+  const htmlPlayer = document.getElementById("pronunciationPlayer");
+  if (!buttons.length) return;
 
+  const AudioCtx = window.AudioContext || window.webkitAudioContext;
+  const ctx = new AudioCtx();
+  const cache = new Map();
+
+  let currentSource = null;
   let activeButton = null;
   let requestId = 0;
-  const warmed = new Set();
 
-  const setStatus = msg => {
-    if (status) status.textContent = msg || "";
-  };
+  const setStatus = t => { if (status) status.textContent = t || ""; };
 
   const resetButtons = () => {
-    buttons.forEach(btn => {
-      btn.classList.remove("playing");
-      btn.setAttribute("aria-pressed", "false");
+    buttons.forEach(b => {
+      b.classList.remove("playing");
+      b.setAttribute("aria-pressed", "false");
     });
     activeButton = null;
   };
 
-  const resetPlayer = () => {
-    player.pause();
-    try { player.currentTime = 0; } catch (_) {}
+  const stopCurrent = () => {
+    if (currentSource) {
+      try { currentSource.onended = null; currentSource.stop(); } catch (_) {}
+      currentSource = null;
+    }
+    if (htmlPlayer) {
+      htmlPlayer.pause();
+      try { htmlPlayer.currentTime = 0; } catch (_) {}
+    }
   };
 
-  const markPlaying = (button, label) => {
-    activeButton = button;
-    button.classList.add("playing");
-    button.setAttribute("aria-pressed", "true");
-    setStatus("Reproducira se " + label + ".");
-  };
+  async function loadWithSilence(url) {
+    if (cache.has(url)) return cache.get(url);
 
-  const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+    const response = await fetch(url, { cache: "force-cache" });
+    if (!response.ok) throw new Error("HTTP " + response.status);
 
-  async function realPlay(button, label, id) {
-    if (id !== requestId) return;
+    const data = await response.arrayBuffer();
+    const decoded = await ctx.decodeAudioData(data);
 
-    resetPlayer();
-    player.muted = false;
-    player.volume = 1;
+    /* 0,35 s tišine PRIJE izgovora — početno T se više ne može odrezati. */
+    const silence = Math.round(decoded.sampleRate * 0.35);
+    const padded = ctx.createBuffer(
+      decoded.numberOfChannels,
+      silence + decoded.length,
+      decoded.sampleRate
+    );
 
-    await delay(120);
-    if (id !== requestId) return;
-
-    try {
-      player.currentTime = 0;
-      await player.play();
-      if (id === requestId) markPlaying(button, label);
-    } catch (_) {
-      resetButtons();
-      setStatus("Zvuk se nije mogao pokrenuti. Pokušajte ponovno.");
+    for (let ch = 0; ch < decoded.numberOfChannels; ch++) {
+      padded.getChannelData(ch).set(decoded.getChannelData(ch), silence);
     }
-  }
 
-  async function warmUp(button, label, id, absoluteSrc) {
-    try {
-      setStatus("Priprema zvuka...");
-
-      player.src = absoluteSrc;
-      player.preload = "auto";
-      player.muted = true;
-      player.volume = 0;
-
-      player.load();
-
-      await new Promise((resolve, reject) => {
-        if (player.readyState >= 3) return resolve();
-
-        const ready = () => {
-          cleanup();
-          resolve();
-        };
-
-        const fail = () => {
-          cleanup();
-          reject();
-        };
-
-        const cleanup = () => {
-          player.removeEventListener("canplay", ready);
-          player.removeEventListener("error", fail);
-        };
-
-        player.addEventListener("canplay", ready, { once: true });
-        player.addEventListener("error", fail, { once: true });
-      });
-
-      if (id !== requestId) return;
-
-      player.currentTime = 0;
-      await player.play();
-
-      /* Nečujna reprodukcija aktivira audio izlaz preglednika. */
-      await delay(350);
-
-      if (id !== requestId) return;
-
-      player.pause();
-      player.currentTime = 0;
-      player.muted = false;
-      player.volume = 1;
-
-      warmed.add(absoluteSrc);
-
-      /* Kratko čekanje nakon buđenja audio izlaza. */
-      await delay(180);
-
-      await realPlay(button, label, id);
-
-    } catch (_) {
-      player.muted = false;
-      player.volume = 1;
-      resetButtons();
-      setStatus("Zvuk se nije mogao pokrenuti. Pokušajte ponovno.");
-    }
+    cache.set(url, padded);
+    return padded;
   }
 
   async function playButton(button) {
@@ -125,49 +66,56 @@
     const label = button.dataset.audioLabel || "izgovor";
     if (!src) return;
 
-    if (activeButton === button && !player.paused) {
+    if (activeButton === button && currentSource) {
       requestId++;
-      resetPlayer();
+      stopCurrent();
       resetButtons();
       setStatus("Reprodukcija je zaustavljena.");
       return;
     }
 
-    requestId++;
-    const id = requestId;
-
-    resetPlayer();
+    const id = ++requestId;
+    stopCurrent();
     resetButtons();
+    setStatus("Priprema zvuka...");
 
-    const absoluteSrc = new URL(src, document.baseURI).href;
+    try {
+      if (ctx.state === "suspended") await ctx.resume();
 
-    if (player.currentSrc !== absoluteSrc) {
-      player.src = absoluteSrc;
-      player.preload = "auto";
-      player.load();
-    }
+      const url = new URL(src, document.baseURI).href;
+      const buffer = await loadWithSilence(url);
 
-    if (warmed.has(absoluteSrc)) {
-      setStatus("Priprema zvuka...");
-      await realPlay(button, label, id);
-    } else {
-      await warmUp(button, label, id, absoluteSrc);
+      if (id !== requestId) return;
+
+      const source = ctx.createBufferSource();
+      source.buffer = buffer;
+      source.connect(ctx.destination);
+
+      currentSource = source;
+      activeButton = button;
+
+      button.classList.add("playing");
+      button.setAttribute("aria-pressed", "true");
+      setStatus("Reproducira se " + label + ".");
+
+      source.onended = () => {
+        if (currentSource !== source) return;
+        currentSource = null;
+        resetButtons();
+        setStatus("");
+      };
+
+      source.start(0);
+
+    } catch (_) {
+      if (id !== requestId) return;
+      stopCurrent();
+      resetButtons();
+      setStatus("Zvuk se nije mogao pokrenuti. Pokušajte ponovno.");
     }
   }
 
   buttons.forEach(button => {
     button.addEventListener("click", () => playButton(button));
-  });
-
-  player.addEventListener("ended", () => {
-    resetButtons();
-    setStatus("");
-  });
-
-  player.addEventListener("error", () => {
-    player.muted = false;
-    player.volume = 1;
-    resetButtons();
-    setStatus("Zvuk se nije mogao učitati. Pokušajte ponovno.");
   });
 })();
