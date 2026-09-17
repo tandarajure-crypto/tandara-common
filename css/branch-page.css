@@ -1,12 +1,7 @@
 /* =========================================================
    TANDARA — BRANCH PAGE
 
-   Zajednički izgled rodoslovnih grana:
-   - Jurina
-   - Petrova
-   - Antina
-   - Matina
-   - Livanjske Tandare
+   Zajednički izgled svih glavnih rodoslovnih grana.
 
    OVA DATOTEKA SADRŽI:
    - glavni sadržaj grane
@@ -14,7 +9,8 @@
    - naslove
    - tekst
    - obiteljske šifre
-   - slike
+   - fotografije osoba
+   - zajednički photo lightbox
    - donji okvir interaktivnog dijagrama
    - donji okvir napomene
    - zajedničke poveznice grane
@@ -26,7 +22,7 @@
    - logiku dijagrama
    - tražilicu
    - print
-   - modalne prozore
+   - protected/private autorizaciju
    - posebne zakrpe za pojedine grane
    ========================================================= */
 
@@ -36,40 +32,22 @@
    ========================================================= */
 
 :root {
-  --branch-page-background:
-    #e7c191;
+  --branch-page-background: #e7c191;
+  --branch-card-background: #f5e6c8;
+  --branch-text: #3f3327;
+  --branch-heading: #49341f;
+  --branch-accent: #8b642f;
+  --branch-accent-light: #c9a46d;
+  --branch-border: rgba(91, 65, 35, 0.28);
+  --branch-code-background: rgba(255, 255, 255, 0.28);
+  --branch-link: #69451f;
+  --branch-max-width: 1050px;
+  --branch-font: Georgia, "Times New Roman", serif;
 
-  --branch-card-background:
-    #f5e6c8;
-
-  --branch-text:
-    #3f3327;
-
-  --branch-heading:
-    #49341f;
-
-  --branch-accent:
-    #8b642f;
-
-  --branch-accent-light:
-    #c9a46d;
-
-  --branch-border:
-    rgba(91, 65, 35, 0.28);
-
-  --branch-code-background:
-    rgba(255, 255, 255, 0.28);
-
-  --branch-link:
-    #69451f;
-
-  --branch-max-width:
-    1050px;
-
-  --branch-font:
-    Georgia,
-    "Times New Roman",
-    serif;
+  --branch-photo-height: 75px;
+  --branch-photo-gap: 35px;
+  --branch-photo-caption: #67533e;
+  --branch-lightbox-background: rgba(22, 16, 10, 0.94);
 }
 
 
@@ -79,23 +57,12 @@
 
 .branch-content {
   box-sizing: border-box;
-
   min-width: 0;
   min-height: 100vh;
-
-  padding:
-    34px
-    30px
-    50px;
-
-  background:
-    var(--branch-page-background);
-
-  color:
-    var(--branch-text);
-
-  font-family:
-    var(--branch-font);
+  padding: 34px 30px 50px;
+  background: var(--branch-page-background);
+  color: var(--branch-text);
+  font-family: var(--branch-font);
 }
 
 .branch-content *,
@@ -110,33 +77,13 @@
    ========================================================= */
 
 .branch-card {
-  width:
-    min(
-      100%,
-      var(--branch-max-width)
-    );
-
-  margin:
-    0 auto;
-
-  padding:
-    34px
-    42px
-    44px;
-
-  background:
-    var(--branch-card-background);
-
-  border:
-    1px solid
-    var(--branch-border);
-
-  border-radius:
-    14px;
-
-  box-shadow:
-    0 5px 18px
-    rgba(60, 42, 24, 0.16);
+  width: min(100%, var(--branch-max-width));
+  margin: 0 auto;
+  padding: 34px 42px 44px;
+  background: var(--branch-card-background);
+  border: 1px solid var(--branch-border);
+  border-radius: 14px;
+  box-shadow: 0 5px 18px rgba(60, 42, 24, 0.16);
 }
 
 
@@ -145,29 +92,12 @@
    ========================================================= */
 
 .branch-card > h1 {
-  margin:
-    0
-    0
-    28px;
-
-  color:
-    var(--branch-heading);
-
-  font-size:
-    clamp(
-      26px,
-      3vw,
-      38px
-    );
-
-  font-weight:
-    700;
-
-  line-height:
-    1.18;
-
-  text-align:
-    center;
+  margin: 0 0 28px;
+  color: var(--branch-heading);
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 700;
+  line-height: 1.18;
+  text-align: center;
 }
 
 
@@ -176,40 +106,15 @@
    ========================================================= */
 
 .branch-root-title {
-  margin:
-    0
-    0
-    24px;
-
-  padding:
-    14px
-    18px;
-
-  background:
-    rgba(201, 164, 109, 0.19);
-
-  border-left:
-    5px solid
-    var(--branch-accent);
-
-  border-radius:
-    6px;
-
-  color:
-    var(--branch-heading);
-
-  font-size:
-    clamp(
-      21px,
-      2.3vw,
-      29px
-    );
-
-  font-weight:
-    700;
-
-  line-height:
-    1.3;
+  margin: 0 0 24px;
+  padding: 14px 18px;
+  background: rgba(201, 164, 109, 0.19);
+  border-left: 5px solid var(--branch-accent);
+  border-radius: 6px;
+  color: var(--branch-heading);
+  font-size: clamp(21px, 2.3vw, 29px);
+  font-weight: 700;
+  line-height: 1.3;
 }
 
 
@@ -218,87 +123,49 @@
    ========================================================= */
 
 .branch-text-block {
-  font-size:
-    18px;
-
-  line-height:
-    1.72;
+  font-size: 18px;
+  line-height: 1.72;
 }
 
 .branch-text-block p {
-  margin:
-    0
-    0
-    20px;
+  margin: 0 0 20px;
 }
 
 .branch-text-block strong {
-  color:
-    #352719;
-
-  font-weight:
-    700;
+  color: #352719;
+  font-weight: 700;
 }
 
 
 /* =========================================================
-   NASLOVI OSOBA
+   NASLOVI OSOBA I PODGRANA
    ========================================================= */
 
 .branch-text-block h2,
 .branch-text-block h3,
 .branch-text-block h4 {
-  color:
-    var(--branch-heading);
-
-  font-weight:
-    700;
+  color: var(--branch-heading);
+  font-weight: 700;
 }
 
 .branch-text-block h2 {
-  margin:
-    32px
-    0
-    14px;
-
-  font-size:
-    25px;
-
-  line-height:
-    1.3;
+  margin: 32px 0 14px;
+  font-size: 25px;
+  line-height: 1.3;
 }
 
 .branch-text-block h3 {
-  margin:
-    30px
-    0
-    12px;
-
-  padding-bottom:
-    6px;
-
-  border-bottom:
-    1px solid
-    var(--branch-border);
-
-  font-size:
-    22px;
-
-  line-height:
-    1.35;
+  margin: 30px 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--branch-border);
+  font-size: 22px;
+  line-height: 1.35;
 }
 
 .branch-text-block h4 {
-  margin:
-    25px
-    0
-    10px;
-
-  font-size:
-    19px;
-
-  line-height:
-    1.4;
+  margin: 25px 0 10px;
+  font-size: 19px;
+  line-height: 1.4;
 }
 
 
@@ -307,43 +174,34 @@
    ========================================================= */
 
 .family-code-list {
-  padding:
-    13px
-    15px;
-
-  background:
-    var(--branch-code-background);
-
-  border:
-    1px solid
-    var(--branch-border);
-
-  border-radius:
-    7px;
-
-  font-size:
-    16px;
-
-  line-height:
-    1.6;
+  padding: 13px 15px;
+  background: var(--branch-code-background);
+  border: 1px solid var(--branch-border);
+  border-radius: 7px;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 .family-code-list > strong:first-child {
-  color:
-    var(--branch-heading);
+  color: var(--branch-heading);
 }
 
 .family-code-list span {
-  white-space:
-    normal;
+  white-space: normal;
 }
 
 .family-code-list span strong {
-  color:
-    var(--branch-accent);
+  color: var(--branch-accent);
+  font-weight: 700;
+}
 
-  font-weight:
-    700;
+
+/* =========================================================
+   PRIVATNOST
+   ========================================================= */
+
+.public-privacy-note {
+  margin: 0 0 20px;
 }
 
 
@@ -352,38 +210,22 @@
    ========================================================= */
 
 .branch-card a {
-  color:
-    var(--branch-link);
-
-  text-decoration:
-    underline;
-
-  text-decoration-thickness:
-    1px;
-
-  text-underline-offset:
-    3px;
+  color: var(--branch-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
 .branch-card a:hover,
 .branch-card a:focus-visible {
-  color:
-    #3f2813;
-
-  text-decoration-thickness:
-    2px;
+  color: #3f2813;
+  text-decoration-thickness: 2px;
 }
 
 .branch-card a:focus-visible {
-  outline:
-    2px solid
-    var(--branch-accent-light);
-
-  outline-offset:
-    3px;
-
-  border-radius:
-    3px;
+  outline: 2px solid var(--branch-accent-light);
+  outline-offset: 3px;
+  border-radius: 3px;
 }
 
 
@@ -392,160 +234,242 @@
    ========================================================= */
 
 #common-branch-tools {
-  display:
-    flex;
-
-  flex-wrap:
-    wrap;
-
-  align-items:
-    center;
-
-  gap:
-    10px;
-
-  min-height:
-    0;
-
-  margin:
-    0
-    0
-    24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  min-height: 0;
+  margin: 0 0 24px;
 }
 
 #common-branch-tools:empty {
-  display:
-    none;
+  display: none;
 }
 
 #common-branch-tools a {
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  min-height:
-    38px;
-
-  padding:
-    8px
-    13px;
-
-  background:
-    rgba(255, 255, 255, 0.28);
-
-  border:
-    1px solid
-    var(--branch-border);
-
-  border-radius:
-    6px;
-
-  color:
-    var(--branch-link);
-
-  font-size:
-    15px;
-
-  font-weight:
-    700;
-
-  line-height:
-    1.25;
-
-  text-decoration:
-    none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 8px 13px;
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid var(--branch-border);
+  border-radius: 6px;
+  color: var(--branch-link);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-decoration: none;
 }
 
 #common-branch-tools a:hover,
 #common-branch-tools a:focus-visible {
-  background:
-    rgba(201, 164, 109, 0.28);
-
-  border-color:
-    var(--branch-accent-light);
+  background: rgba(201, 164, 109, 0.28);
+  border-color: var(--branch-accent-light);
 }
 
 
 /* =========================================================
-   SLIKE
+   GENERIČKE SLIKE GRANE
    ========================================================= */
 
 .branch-main-image,
 .branch-person-image {
-  display:
-    block;
-
-  max-width:
-    100%;
-
-  height:
-    auto;
-
-  margin:
-    24px auto 0;
-
-  border:
-    0;
-
-  border-radius:
-    8px;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 24px auto 0;
+  border: 0;
+  border-radius: 8px;
 }
 
 .branch-person-image {
-  width:
-    auto;
+  width: auto;
 }
 
 
 /* =========================================================
-   FIGURE I OPISI SLIKA
+   GENERIČKE FIGURE I OPISI SLIKA
    ========================================================= */
 
 .branch-card figure {
-  margin:
-    26px auto;
-
-  text-align:
-    center;
+  margin: 26px auto;
+  text-align: center;
 }
 
 .branch-card figure img {
-  display:
-    block;
-
-  max-width:
-    100%;
-
-  height:
-    auto;
-
-  margin:
-    0 auto;
-
-  border-radius:
-    8px;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 8px;
 }
 
 .branch-card figcaption {
-  margin-top:
-    8px;
+  margin-top: 8px;
+  color: var(--branch-photo-caption);
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.4;
+  text-align: center;
+}
 
-  color:
-    #67533e;
 
-  font-size:
-    14px;
+/* =========================================================
+   FOTOGRAFIJE OSOBA — OBAVEZNI STANDARD ZA SVE GRANE
 
-  font-style:
-    italic;
+   - visina male fotografije: 75 px
+   - širina ostaje proporcionalna originalu
+   - fotografije počinju s lijeve strane
+   - više fotografija ostaje u jednom redu
+   - razmak između fotografija: 35 px
+   - svaka fotografija ima vlastiti opis ispod sebe
+   - na uskom ekranu red se ne lomi nego se može
+     vodoravno pomicati
+   ========================================================= */
 
-  line-height:
-    1.4;
+.person-photo-gallery {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--branch-photo-gap);
+  width: 100%;
+  max-width: 100%;
+  margin: 18px 0 24px;
+  padding: 0 0 4px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+}
 
-  text-align:
-    center;
+.branch-card .person-photo-gallery figure,
+.branch-card figure.person-photo {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: max-content;
+  max-width: none;
+  margin: 0;
+  text-align: left;
+}
+
+.person-photo a {
+  display: block;
+  width: max-content;
+  max-width: none;
+  line-height: 0;
+  cursor: zoom-in;
+  text-decoration: none;
+}
+
+.person-photo a:hover,
+.person-photo a:focus-visible {
+  text-decoration: none;
+}
+
+.branch-card .person-photo img {
+  display: block;
+  width: auto !important;
+  height: var(--branch-photo-height) !important;
+  max-width: none;
+  max-height: var(--branch-photo-height);
+  margin: 0;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.branch-card .person-photo figcaption {
+  display: block;
+  width: 100%;
+  margin: 6px 0 0;
+  color: var(--branch-photo-caption);
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.3;
+  text-align: left;
+  white-space: normal;
+}
+
+
+/* =========================================================
+   LIGHTBOX — PUNA / MAKSIMALNA VELIČINA FOTOGRAFIJE
+   ========================================================= */
+
+body.branch-photo-lightbox-open {
+  overflow: hidden;
+}
+
+.branch-photo-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--branch-lightbox-background);
+}
+
+.branch-photo-lightbox.is-open {
+  display: flex;
+}
+
+.branch-photo-lightbox__figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+}
+
+.branch-photo-lightbox__image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 110px);
+  margin: 0;
+  border-radius: 6px;
+  object-fit: contain;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.48);
+}
+
+.branch-photo-lightbox__caption {
+  max-width: min(900px, calc(100vw - 48px));
+  margin: 10px 0 0;
+  color: #ffffff;
+  font-size: 15px;
+  font-style: normal;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.branch-photo-lightbox__close {
+  position: fixed;
+  top: 14px;
+  right: 18px;
+  z-index: 1;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  color: #ffffff;
+  font: 400 36px/40px Arial, sans-serif;
+  text-align: center;
+  cursor: pointer;
+}
+
+.branch-photo-lightbox__close:hover,
+.branch-photo-lightbox__close:focus-visible {
+  background: rgba(255, 255, 255, 0.22);
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
 }
 
 
@@ -554,143 +478,60 @@
    ========================================================= */
 
 .branch-diagram-link {
-  display:
-    grid;
-
-  grid-template-columns:
-    minmax(0, 1fr)
-    auto;
-
-  align-items:
-    center;
-
-  gap:
-    24px;
-
-  margin:
-    30px
-    0
-    0;
-
-  padding:
-    20px
-    22px;
-
-  background:
-    rgba(255, 255, 255, 0.30);
-
-  border:
-    1px solid
-    var(--branch-border);
-
-  border-radius:
-    10px;
-
-  box-shadow:
-    0 2px 8px
-    rgba(60, 42, 24, 0.10);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+  margin: 30px 0 0;
+  padding: 20px 22px;
+  background: rgba(255, 255, 255, 0.30);
+  border: 1px solid var(--branch-border);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(60, 42, 24, 0.10);
 }
 
 .branch-diagram-link h2 {
-  margin:
-    0
-    0
-    7px;
-
-  color:
-    var(--branch-heading);
-
-  font-size:
-    21px;
-
-  line-height:
-    1.3;
+  margin: 0 0 7px;
+  color: var(--branch-heading);
+  font-size: 21px;
+  line-height: 1.3;
 }
 
 .branch-diagram-link p {
-  margin:
-    0;
-
-  color:
-    var(--branch-text);
-
-  font-size:
-    16px;
-
-  line-height:
-    1.55;
+  margin: 0;
+  color: var(--branch-text);
+  font-size: 16px;
+  line-height: 1.55;
 }
 
 .branch-diagram-link__button {
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  min-height:
-    42px;
-
-  padding:
-    10px
-    17px;
-
-  background:
-    var(--branch-accent);
-
-  border:
-    1px solid
-    var(--branch-accent);
-
-  border-radius:
-    7px;
-
-  color:
-    #ffffff;
-
-  font-size:
-    15px;
-
-  font-weight:
-    700;
-
-  line-height:
-    1.2;
-
-  text-align:
-    center;
-
-  text-decoration:
-    none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 17px;
+  background: var(--branch-accent);
+  border: 1px solid var(--branch-accent);
+  border-radius: 7px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
 }
 
-.branch-card
-.branch-diagram-link__button {
-  color:
-    #ffffff;
-
-  text-decoration:
-    none;
+.branch-card .branch-diagram-link__button {
+  color: #ffffff;
+  text-decoration: none;
 }
 
-.branch-card
-.branch-diagram-link__button:hover,
-.branch-card
-.branch-diagram-link__button:focus-visible {
-  background:
-    #6f4d24;
-
-  border-color:
-    #6f4d24;
-
-  color:
-    #ffffff;
-
-  text-decoration:
-    none;
+.branch-card .branch-diagram-link__button:hover,
+.branch-card .branch-diagram-link__button:focus-visible {
+  background: #6f4d24;
+  border-color: #6f4d24;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 
@@ -699,73 +540,35 @@
    ========================================================= */
 
 .tree-note {
-  margin:
-    18px
-    0
-    0;
-
-  padding:
-    18px
-    20px;
-
-  background:
-    rgba(201, 164, 109, 0.18);
-
-  border:
-    1px solid
-    var(--branch-border);
-
-  border-left:
-    5px solid
-    var(--branch-accent);
-
-  border-radius:
-    9px;
+  margin: 18px 0 0;
+  padding: 18px 20px;
+  background: rgba(201, 164, 109, 0.18);
+  border: 1px solid var(--branch-border);
+  border-left: 5px solid var(--branch-accent);
+  border-radius: 9px;
 }
 
 .tree-note h3 {
-  margin:
-    0
-    0
-    10px;
-
-  color:
-    var(--branch-heading);
-
-  font-size:
-    20px;
-
-  line-height:
-    1.3;
+  margin: 0 0 10px;
+  color: var(--branch-heading);
+  font-size: 20px;
+  line-height: 1.3;
 }
 
 .tree-note p {
-  margin:
-    0
-    0
-    10px;
-
-  color:
-    var(--branch-text);
-
-  font-size:
-    16px;
-
-  line-height:
-    1.58;
+  margin: 0 0 10px;
+  color: var(--branch-text);
+  font-size: 16px;
+  line-height: 1.58;
 }
 
 .tree-note p:last-child {
-  margin-bottom:
-    0;
+  margin-bottom: 0;
 }
 
 .tree-note strong {
-  color:
-    #352719;
-
-  font-weight:
-    700;
+  color: #352719;
+  font-weight: 700;
 }
 
 
@@ -774,29 +577,13 @@
    ========================================================= */
 
 .branch-note {
-  margin:
-    24px
-    0;
-
-  padding:
-    13px
-    16px;
-
-  background:
-    rgba(255, 255, 255, 0.25);
-
-  border-left:
-    4px solid
-    var(--branch-accent-light);
-
-  border-radius:
-    5px;
-
-  font-size:
-    16px;
-
-  line-height:
-    1.55;
+  margin: 24px 0;
+  padding: 13px 16px;
+  background: rgba(255, 255, 255, 0.25);
+  border-left: 4px solid var(--branch-accent-light);
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 1.55;
 }
 
 
@@ -805,28 +592,18 @@
    ========================================================= */
 
 #common-branch-footer {
-  margin-top:
-    30px;
-
-  padding-top:
-    18px;
-
-  border-top:
-    1px solid
-    var(--branch-border);
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top: 1px solid var(--branch-border);
 }
 
 #common-branch-footer:empty {
-  display:
-    none;
+  display: none;
 }
 
 #common-branch-footer p {
-  color:
-    #67533e;
-
-  line-height:
-    1.5;
+  color: #67533e;
+  line-height: 1.5;
 }
 
 
@@ -839,8 +616,7 @@
 [data-parent-code],
 [data-parent-of],
 [data-spouse-of] {
-  scroll-margin-top:
-    20px;
+  scroll-margin-top: 20px;
 }
 
 
@@ -851,22 +627,15 @@
 @media (max-width: 900px) {
 
   .branch-content {
-    padding:
-      26px
-      20px
-      40px;
+    padding: 26px 20px 40px;
   }
 
   .branch-card {
-    padding:
-      28px
-      28px
-      36px;
+    padding: 28px 28px 36px;
   }
 
   .branch-text-block {
-    font-size:
-      17px;
+    font-size: 17px;
   }
 
 }
@@ -879,100 +648,90 @@
 @media (max-width: 600px) {
 
   .branch-content {
-    padding:
-      16px
-      10px
-      28px;
+    padding: 16px 10px 28px;
   }
 
   .branch-card {
-    padding:
-      22px
-      16px
-      28px;
-
-    border-radius:
-      9px;
+    padding: 22px 16px 28px;
+    border-radius: 9px;
   }
 
   .branch-card > h1 {
-    margin-bottom:
-      22px;
+    margin-bottom: 22px;
   }
 
   .branch-root-title {
-    padding:
-      11px
-      13px;
-
-    border-left-width:
-      4px;
+    padding: 11px 13px;
+    border-left-width: 4px;
   }
 
   .branch-text-block {
-    font-size:
-      16px;
-
-    line-height:
-      1.65;
+    font-size: 16px;
+    line-height: 1.65;
   }
 
   .branch-text-block p {
-    margin-bottom:
-      17px;
+    margin-bottom: 17px;
   }
 
   .branch-text-block h3 {
-    margin-top:
-      25px;
-
-    font-size:
-      20px;
+    margin-top: 25px;
+    font-size: 20px;
   }
 
   .family-code-list {
-    padding:
-      11px
-      12px;
-
-    font-size:
-      15px;
+    padding: 11px 12px;
+    font-size: 15px;
   }
 
   #common-branch-tools {
-    align-items:
-      stretch;
-
-    flex-direction:
-      column;
+    align-items: stretch;
+    flex-direction: column;
   }
 
   #common-branch-tools a {
-    width:
-      100%;
+    width: 100%;
   }
 
   .branch-diagram-link {
-    grid-template-columns:
-      1fr;
-
-    gap:
-      14px;
-
-    padding:
-      17px
-      16px;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 17px 16px;
   }
 
   .branch-diagram-link__button {
-    width:
-      100%;
+    width: 100%;
   }
 
   .tree-note {
-    padding:
-      16px
-      15px;
+    padding: 16px 15px;
+  }
+
+  .person-photo-gallery {
+    margin-bottom: 20px;
+  }
+
+  .branch-photo-lightbox {
+    padding: 16px;
+  }
+
+  .branch-photo-lightbox__image {
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 100px);
+  }
+
+  .branch-photo-lightbox__caption {
+    max-width: calc(100vw - 32px);
+    font-size: 14px;
+  }
+
+  .branch-photo-lightbox__close {
+    top: 10px;
+    right: 10px;
+    width: 42px;
+    height: 42px;
+    font-size: 32px;
+    line-height: 36px;
   }
 
 }
