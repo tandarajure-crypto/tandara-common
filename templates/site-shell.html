@@ -1,25 +1,32 @@
 <!--
   TANDARA — SITE SHELL
 
-  Zajednički predložak lijevog stupca.
+  Zajednički lijevi stupac za:
+  - index HR / EN
+  - glavne podstranice
+  - glavne rodoslovne grane HR / EN
 
-  Ovaj file sadrži samo:
-  - poveznicu na početnu stranicu
-  - HR / EN prebacivanje
+  Raspored je usklađen s provjerenim
+  zajedničkim sidebarom 8 glavnih stranica.
+
+  OVA DATOTEKA SADRŽI:
+  - HR zastavu
+  - HOME tipku
+  - EN zastavu
   - glavni izbornik
+  - AUTOR oznaku
   - fotografiju autora
+  - ime Jure / Tandara u dva reda
+  - FlagCounter
 
-  Ovaj file NE sadrži:
-  - sadržaj pojedinih stranica
-  - rodoslovne grane
+  OVA DATOTEKA NE SADRŽI:
+  - sadržaj stranica
   - početno obiteljsko stablo
   - hotspotove
+  - rodoslovne podatke
   - dijagrame
   - print
   - modalne prozore
-  - posebne zakrpe
-
-  Učitava ga js/site-shell.js.
 -->
 
 <template id="tandara-site-shell">
@@ -30,35 +37,19 @@
     data-role="site-shell"
     aria-label="">
 
-    <!-- POČETNA -->
-    <a
-      class="site-shell__home"
-      data-role="home-link"
-      href="#">
 
-      <span class="site-shell__home-circle">
-        <img
-          data-role="home-icon"
-          alt=""
-          width="38"
-          height="38">
-      </span>
+    <!-- ===================================================
+         HR ZASTAVA — HOME — EN ZASTAVA
+         =================================================== -->
 
-      <span
-        class="site-shell__visually-hidden"
-        data-role="home-label">
-      </span>
-    </a>
-
-
-    <!-- JEZIK -->
     <nav
-      class="site-shell__languages"
+      class="site-shell__top"
       data-role="language-switch"
       aria-label=""
       hidden>
 
       <a
+        class="site-shell__top-control site-shell__flag-control"
         data-role="hr-link"
         hreflang="hr"
         lang="hr"
@@ -67,12 +58,30 @@
 
         <img
           data-role="hr-flag"
-          alt="Hrvatski"
-          width="36"
-          height="24">
+          alt="Hrvatski">
+
       </a>
 
+
       <a
+        class="site-shell__top-control site-shell__home-control"
+        data-role="home-link"
+        href="#">
+
+        <img
+          data-role="home-icon"
+          alt="">
+
+        <span
+          class="site-shell__visually-hidden"
+          data-role="home-label">
+        </span>
+
+      </a>
+
+
+      <a
+        class="site-shell__top-control site-shell__flag-control"
         data-role="en-link"
         hreflang="en"
         lang="en"
@@ -81,22 +90,27 @@
 
         <img
           data-role="en-flag"
-          alt="English"
-          width="36"
-          height="24">
+          alt="English">
+
       </a>
 
     </nav>
 
 
-    <!-- NASLOV -->
+    <!-- ===================================================
+         NASLOV
+         =================================================== -->
+
     <div
       class="site-shell__title"
       data-role="site-title">
     </div>
 
 
-    <!-- GLAVNA NAVIGACIJA -->
+    <!-- ===================================================
+         GLAVNA NAVIGACIJA
+         =================================================== -->
+
     <nav
       class="site-shell__navigation"
       data-role="main-navigation"
@@ -106,6 +120,7 @@
 
         <li>
           <img data-role="menu-icon" alt="">
+
           <a
             data-nav-key="author"
             href="#">
@@ -113,8 +128,10 @@
           </a>
         </li>
 
+
         <li>
           <img data-role="menu-icon" alt="">
+
           <a
             data-nav-key="origin"
             href="#">
@@ -122,8 +139,10 @@
           </a>
         </li>
 
+
         <li>
           <img data-role="menu-icon" alt="">
+
           <a
             data-nav-key="genealogy"
             href="#">
@@ -131,8 +150,10 @@
           </a>
         </li>
 
+
         <li>
           <img data-role="menu-icon" alt="">
+
           <a
             data-nav-key="migration"
             href="#">
@@ -140,8 +161,10 @@
           </a>
         </li>
 
+
         <li>
           <img data-role="menu-icon" alt="">
+
           <a
             data-nav-key="facts"
             href="#">
@@ -149,8 +172,10 @@
           </a>
         </li>
 
+
         <li>
           <img data-role="menu-icon" alt="">
+
           <a
             data-nav-key="contact"
             href="#">
@@ -158,8 +183,10 @@
           </a>
         </li>
 
+
         <li>
           <img data-role="menu-icon" alt="">
+
           <a
             data-nav-key="guestbook"
             href="#">
@@ -167,8 +194,10 @@
           </a>
         </li>
 
+
         <li>
           <img data-role="menu-icon" alt="">
+
           <a
             data-nav-key="privacy"
             href="#">
@@ -181,13 +210,23 @@
     </nav>
 
 
-    <!-- AUTOR -->
+    <!-- ===================================================
+         AUTOR | FOTOGRAFIJA | JURE / TANDARA
+         =================================================== -->
+
     <div
-      class="site-shell__author"
+      class="site-shell__author-row"
       data-role="author"
       hidden>
 
+      <div
+        class="site-shell__author-label"
+        data-role="author-label">
+      </div>
+
+
       <a
+        class="site-shell__author-photo"
         data-role="author-link"
         href="#">
 
@@ -199,7 +238,56 @@
 
       </a>
 
+
+      <div class="site-shell__author-name">
+        <span>Jure</span>
+        <span>Tandara</span>
+      </div>
+
     </div>
+
+
+    <!-- ===================================================
+         FLAGCOUNTER
+         =================================================== -->
+
+    <div
+      class="site-shell__flagbox"
+      data-role="flag-counter">
+
+      <div
+        class="site-shell__flag-title"
+        data-role="flag-counter-title">
+      </div>
+
+
+      <a
+        href="https://info.flagcounter.com/OyvA"
+        target="_blank"
+        rel="noopener noreferrer"
+        referrerpolicy="no-referrer">
+
+        <img
+          data-role="flag-counter-image"
+          alt=""
+          loading="lazy"
+          decoding="async"
+          referrerpolicy="no-referrer"
+          data-flag-counter-src="https://s01.flagcounter.com/countxl/OyvA/bg_FFFFFF/txt_000000/border_CCCCCC/columns_4/maxflags_50/viewers_0/labels_0/pageviews_0/flags_1/percent_0/">
+
+      </a>
+
+    </div>
+
+
+    <!-- ===================================================
+         PRISTUPAČNI SKRIVENI TEKST
+         =================================================== -->
+
+    <span
+      class="site-shell__visually-hidden"
+      aria-hidden="true">
+    </span>
 
   </aside>
 
