@@ -1,1 +1,206 @@
+<!--
+  TANDARA — SITE SHELL
 
+  Zajednički predložak lijevog stupca.
+
+  Ovaj file sadrži samo:
+  - poveznicu na početnu stranicu
+  - HR / EN prebacivanje
+  - glavni izbornik
+  - fotografiju autora
+
+  Ovaj file NE sadrži:
+  - sadržaj pojedinih stranica
+  - rodoslovne grane
+  - početno obiteljsko stablo
+  - hotspotove
+  - dijagrame
+  - print
+  - modalne prozore
+  - posebne zakrpe
+
+  Učitava ga js/site-shell.js.
+-->
+
+<template id="tandara-site-shell">
+
+  <aside
+    class="site-shell"
+    id="site-shell"
+    data-role="site-shell"
+    aria-label="">
+
+    <!-- POČETNA -->
+    <a
+      class="site-shell__home"
+      data-role="home-link"
+      href="#">
+
+      <span class="site-shell__home-circle">
+        <img
+          data-role="home-icon"
+          alt=""
+          width="38"
+          height="38">
+      </span>
+
+      <span
+        class="site-shell__visually-hidden"
+        data-role="home-label">
+      </span>
+    </a>
+
+
+    <!-- JEZIK -->
+    <nav
+      class="site-shell__languages"
+      data-role="language-switch"
+      aria-label=""
+      hidden>
+
+      <a
+        data-role="hr-link"
+        hreflang="hr"
+        lang="hr"
+        href="#"
+        title="Hrvatski">
+
+        <img
+          data-role="hr-flag"
+          alt="Hrvatski"
+          width="36"
+          height="24">
+      </a>
+
+      <a
+        data-role="en-link"
+        hreflang="en"
+        lang="en"
+        href="#"
+        title="English">
+
+        <img
+          data-role="en-flag"
+          alt="English"
+          width="36"
+          height="24">
+      </a>
+
+    </nav>
+
+
+    <!-- NASLOV -->
+    <div
+      class="site-shell__title"
+      data-role="site-title">
+    </div>
+
+
+    <!-- GLAVNA NAVIGACIJA -->
+    <nav
+      class="site-shell__navigation"
+      data-role="main-navigation"
+      aria-label="">
+
+      <ul class="site-shell__menu">
+
+        <li>
+          <img data-role="menu-icon" alt="">
+          <a
+            data-nav-key="author"
+            href="#">
+            <span></span>
+          </a>
+        </li>
+
+        <li>
+          <img data-role="menu-icon" alt="">
+          <a
+            data-nav-key="origin"
+            href="#">
+            <span></span>
+          </a>
+        </li>
+
+        <li>
+          <img data-role="menu-icon" alt="">
+          <a
+            data-nav-key="genealogy"
+            href="#">
+            <span></span>
+          </a>
+        </li>
+
+        <li>
+          <img data-role="menu-icon" alt="">
+          <a
+            data-nav-key="migration"
+            href="#">
+            <span></span>
+          </a>
+        </li>
+
+        <li>
+          <img data-role="menu-icon" alt="">
+          <a
+            data-nav-key="facts"
+            href="#">
+            <span></span>
+          </a>
+        </li>
+
+        <li>
+          <img data-role="menu-icon" alt="">
+          <a
+            data-nav-key="contact"
+            href="#">
+            <span></span>
+          </a>
+        </li>
+
+        <li>
+          <img data-role="menu-icon" alt="">
+          <a
+            data-nav-key="guestbook"
+            href="#">
+            <span></span>
+          </a>
+        </li>
+
+        <li>
+          <img data-role="menu-icon" alt="">
+          <a
+            data-nav-key="privacy"
+            href="#">
+            <span></span>
+          </a>
+        </li>
+
+      </ul>
+
+    </nav>
+
+
+    <!-- AUTOR -->
+    <div
+      class="site-shell__author"
+      data-role="author"
+      hidden>
+
+      <a
+        data-role="author-link"
+        href="#">
+
+        <img
+          data-role="author-image"
+          alt="Jure Tandara"
+          loading="lazy"
+          decoding="async">
+
+      </a>
+
+    </div>
+
+  </aside>
+
+</template>
