@@ -1,33 +1,41 @@
-
 /* =========================================================
    TANDARA — BRANCH PAGE ENGINE
 
-   Zajednički pogonski motor za:
+   Zajednički čisti motor za stranice rodoslovnih grana.
+
+   Koristi se za:
    - Jurinu granu
    - Petrovu granu
    - Antinu granu
    - Matinu granu
    - Livanjske Tandare
-
-   Namijenjen za:
-   - PUBLIC i PRIVATE
    - HR i EN
+   - PUBLIC i PRIVATE kada koriste isti tip stranice
 
-   OVA DATOTEKA NE SADRŽI:
+   MOTOR MOŽE:
+   - dodati opcionalni povratni link
+   - dodati opcionalni link na dijagram
+   - dodati opcionalnu završnu napomenu
+
+   MOTOR NE SADRŽI:
    - rodoslovne podatke
    - imena osoba
-   - datume
+   - godine i datume
    - šifre osoba
    - slike
    - CSS
-   - print funkciju
+   - site shell
+   - početno stablo
+   - hotspotove
    - pretragu osoba
-   - logiku interaktivnih dijagrama
-   - navigaciju lijevog stupca
-   - posebne zakrpe za pojedine grane
-   - branch-specific if/else logiku
+   - logiku dijagrama
+   - print
+   - modalne prozore
+   - protected/private autorizaciju
+   - posebne zakrpe za Jurinu, Petrovu,
+     Antinu, Matinu ili Livanjsku granu
 
-   Razlike među stranicama dolaze isključivo
+   Sve razlike među stranicama dolaze
    iz data-* atributa lokalnog HTML-a.
    ========================================================= */
 
@@ -40,23 +48,28 @@
     return;
   }
 
+
   /* =======================================================
-     OSNOVNI POMOĆNI ALATI
+     PUTANJE
      ======================================================= */
 
-  function siteRoot() {
-    return new URL(
+  const siteRoot =
+    new URL(
       body.dataset.siteRoot || "./",
       document.baseURI
     );
-  }
 
-  function siteUrl(relativePath) {
+  function siteUrl(path) {
     return new URL(
-      relativePath,
-      siteRoot()
+      path,
+      siteRoot
     ).href;
   }
+
+
+  /* =======================================================
+     POMOĆNE FUNKCIJE
+     ======================================================= */
 
   function hasText(value) {
     return (
@@ -73,541 +86,243 @@
     );
   }
 
-  function createElement(
-    tagName,
-    className = ""
-  ) {
-    const element =
-      document.createElement(tagName);
-
-    if (className) {
-      element.className = className;
-    }
-
-    return element;
+  function toolsHost() {
+    return document.getElementById(
+      "common-branch-tools"
+    );
   }
 
-  function markReady(
-    element,
-    key
-  ) {
-    if (!element) {
-      return false;
-    }
-
-    const attribute =
-      `branchEngine${key}Ready`;
-
-    if (
-      element.dataset[attribute] ===
-      "true"
-    ) {
-      return false;
-    }
-
-    element.dataset[attribute] =
-      "true";
-
-    return true;
+  function footerHost() {
+    return document.getElementById(
+      "common-branch-footer"
+    );
   }
 
-  /* =======================================================
-     POVRATNI LINK
-
-     Koristi se samo kada ga lokalni HTML zatraži.
-
-     Primjer:
-     data-parent-page="livanjske-tandare.html"
-     data-parent-label="Livanjske Tandare"
-
-     Ako atributi ne postoje, motor ne stvara ništa.
-     ======================================================= */
-
-  function installParentLink() {
-    const parentPage =
-      body.dataset.parentPage;
-
-    const parentLabel =
-      body.dataset.parentLabel;
-
-    if (
-      !hasText(parentPage) ||
-      !hasText(parentLabel)
-    ) {
-      return;
-    }
-
-    const card =
-      document.querySelector(
-        ".branch-card"
-      );
-
-    if (!card) {
-      return;
-    }
-
-    if (
-      card.querySelector(
-        "[data-branch-parent-link]"
-      )
-    ) {
-      return;
-    }
-
-    const paragraph =
-      createElement(
-        "p",
-        "branch-parent-link"
-      );
-
-    paragraph.dataset
-      .branchParentLink = "";
-
+  function createToolLink(
+    path,
+    label,
+    role
+  ) {
     const link =
       document.createElement("a");
 
     link.href =
-      siteUrl(parentPage);
+      siteUrl(path);
 
     link.textContent =
-      `← ${parentLabel.trim()}`;
+      label.trim();
 
-    paragraph.append(link);
+    link.dataset.branchTool =
+      role;
 
-    const toolsHost =
-      document.getElementById(
-        "common-branch-tools"
-      );
-
-    if (
-      toolsHost &&
-      toolsHost.parentElement === card
-    ) {
-      toolsHost.insertAdjacentElement(
-        "afterend",
-        paragraph
-      );
-    } else {
-      card.prepend(paragraph);
-    }
+    return link;
   }
+
 
   /* =======================================================
-     ZAŠTIĆENI PODACI
+     POVRATNI LINK
 
-     Motor ništa ne prikazuje automatski.
+     Lokalni HTML po potrebi koristi:
 
-     Funkcija se uključuje samo ako lokalni HTML sadrži:
+     data-parent-page="..."
+     data-parent-label="..."
 
-     data-protected-info="true"
-     data-protected-label="..."
-     data-protected-title="..."
-     data-protected-text="..."
-     data-protected-close-label="..."
-
-     PUBLIC može koristiti ovu mogućnost.
-     PRIVATE je jednostavno ne mora uključiti.
+     Ako atributi ne postoje,
+     ništa se ne prikazuje.
      ======================================================= */
 
-  function createProtectedDialog() {
-    const existing =
-      document.getElementById(
-        "tandara-protected-data-dialog"
-      );
-
-    if (existing) {
-      return existing;
-    }
-
-    const titleText =
-      body.dataset.protectedTitle;
-
-    const messageText =
-      body.dataset.protectedText;
-
-    const closeText =
-      body.dataset.protectedCloseLabel;
-
-    if (
-      !hasText(titleText) ||
-      !hasText(messageText) ||
-      !hasText(closeText)
-    ) {
-      return null;
-    }
-
-    const dialog =
-      createElement(
-        "dialog",
-        "protected-access-dialog"
-      );
-
-    dialog.id =
-      "tandara-protected-data-dialog";
-
-    const panel =
-      createElement(
-        "div",
-        "protected-access-dialog__panel"
-      );
-
-    const heading =
-      document.createElement("h2");
-
-    heading.textContent =
-      titleText.trim();
-
-    const paragraph =
-      document.createElement("p");
-
-    paragraph.textContent =
-      messageText.trim();
-
-    const closeButton =
-      createElement(
-        "button",
-        "protected-access-dialog__close"
-      );
-
-    closeButton.type = "button";
-
-    closeButton.textContent =
-      closeText.trim();
-
-    closeButton.addEventListener(
-      "click",
-      () => {
-        dialog.close();
-      }
-    );
-
-    dialog.addEventListener(
-      "cancel",
-      () => {
-        dialog.close();
-      }
-    );
-
-    dialog.addEventListener(
-      "click",
-      (event) => {
-        if (event.target === dialog) {
-          dialog.close();
-        }
-      }
-    );
-
-    panel.append(
-      heading,
-      paragraph,
-      closeButton
-    );
-
-    dialog.append(panel);
-
-    document.body.append(dialog);
-
-    return dialog;
-  }
-
-  function installProtectedInfo() {
-    if (
-      !enabled(
-        body.dataset.protectedInfo
-      )
-    ) {
-      return;
-    }
-
-    const label =
-      body.dataset.protectedLabel;
-
-    if (!hasText(label)) {
-      return;
-    }
-
+  function installParentLink() {
     const host =
-      document.getElementById(
-        "common-branch-tools"
-      );
+      toolsHost();
 
     if (!host) {
       return;
     }
 
     if (
-      !markReady(
-        host,
-        "Protected"
+      host.querySelector(
+        '[data-branch-tool="parent"]'
       )
     ) {
       return;
     }
 
-    const wrapper =
-      createElement(
-        "div",
-        "protected-access-notice"
-      );
+    const page =
+      body.dataset.parentPage;
 
-    const button =
-      createElement(
-        "button",
-        "protected-family-data-trigger"
-      );
-
-    button.type = "button";
-
-    button.textContent =
-      label.trim();
-
-    button.dataset
-      .protectedAccess = "";
-
-    button.addEventListener(
-      "click",
-      () => {
-        const dialog =
-          createProtectedDialog();
-
-        if (!dialog) {
-          return;
-        }
-
-        if (
-          typeof dialog.showModal ===
-          "function"
-        ) {
-          if (!dialog.open) {
-            dialog.showModal();
-          }
-
-          return;
-        }
-
-        dialog.setAttribute(
-          "open",
-          ""
-        );
-      }
-    );
-
-    wrapper.append(button);
-
-    host.append(wrapper);
-  }
-
-  /* =======================================================
-     INTERAKTIVNI DIJAGRAM
-
-     Motor NE upravlja dijagramom.
-
-     On samo stvara poveznicu na dijagram ako lokalni
-     HTML sadrži konfiguraciju:
-
-     data-diagram="box2a.html"
-     data-diagram-title="..."
-     data-diagram-text="..."
-     data-diagram-label="..."
-
-     Putanja i svi tekstovi ostaju lokalni.
-     ======================================================= */
-
-  function createDiagramSection() {
-    const diagramPath =
-      body.dataset.diagram;
-
-    const diagramTitle =
-      body.dataset.diagramTitle;
-
-    const diagramText =
-      body.dataset.diagramText;
-
-    const diagramLabel =
-      body.dataset.diagramLabel;
+    const label =
+      body.dataset.parentLabel;
 
     if (
-      !hasText(diagramPath) ||
-      !hasText(diagramTitle) ||
-      !hasText(diagramText) ||
-      !hasText(diagramLabel)
+      !hasText(page) ||
+      !hasText(label)
     ) {
-      return null;
+      return;
     }
 
-    const section =
-      createElement(
-        "section",
-        "branch-diagram-link"
-      );
-
-    section.dataset
-      .branchDiagramLink = "";
-
-    const copy =
-      document.createElement("div");
-
-    const heading =
-      document.createElement("h2");
-
-    heading.textContent =
-      diagramTitle.trim();
-
-    const paragraph =
-      document.createElement("p");
-
-    paragraph.textContent =
-      diagramText.trim();
-
     const link =
-      createElement(
-        "a",
-        "branch-diagram-link__button"
+      createToolLink(
+        page,
+        `← ${label.trim()}`,
+        "parent"
       );
 
-    link.href =
-      siteUrl(diagramPath);
-
-    link.textContent =
-      diagramLabel.trim();
-
-    copy.append(
-      heading,
-      paragraph
-    );
-
-    section.append(
-      copy,
-      link
-    );
-
-    return section;
+    host.append(link);
   }
+
+
+  /* =======================================================
+     POVEZNICA NA DIJAGRAM
+
+     Motor ne upravlja dijagramom.
+     Samo otvara lokalno definiranu stranicu.
+
+     Lokalni HTML po potrebi koristi:
+
+     data-diagram="box2a.html"
+     data-diagram-label="Interaktivni dijagram"
+
+     EN primjer:
+
+     data-diagram="box2a-en.html"
+     data-diagram-label="Interactive diagram"
+
+     Ako nema oba atributa,
+     poveznica se ne prikazuje.
+     ======================================================= */
 
   function installDiagramLink() {
     const host =
-      document.getElementById(
-        "common-branch-footer"
-      );
+      toolsHost();
 
     if (!host) {
       return;
     }
 
     if (
-      !markReady(
-        host,
-        "Diagram"
+      host.querySelector(
+        '[data-branch-tool="diagram"]'
       )
     ) {
       return;
     }
 
-    const section =
-      createDiagramSection();
+    const path =
+      body.dataset.diagram;
 
-    if (section) {
-      host.append(section);
+    const label =
+      body.dataset.diagramLabel;
+
+    if (
+      !hasText(path) ||
+      !hasText(label)
+    ) {
+      return;
     }
+
+    const link =
+      createToolLink(
+        path,
+        label,
+        "diagram"
+      );
+
+    host.append(link);
   }
+
 
   /* =======================================================
      ZAVRŠNA NAPOMENA
 
      Potpuno opcionalna.
 
-     Lokalni HTML određuje tekst:
+     Lokalni HTML koristi:
 
      data-branch-note="true"
      data-branch-note-title="..."
      data-branch-note-text="..."
 
-     Ako nema tih atributa, nema ni napomene.
+     Ako nema potpune konfiguracije,
+     napomena se ne prikazuje.
      ======================================================= */
-
-  function createBranchNote() {
-    if (
-      !enabled(
-        body.dataset.branchNote
-      )
-    ) {
-      return null;
-    }
-
-    const title =
-      body.dataset.branchNoteTitle;
-
-    const noteText =
-      body.dataset.branchNoteText;
-
-    if (
-      !hasText(title) ||
-      !hasText(noteText)
-    ) {
-      return null;
-    }
-
-    const section =
-      createElement(
-        "section",
-        "tree-note"
-      );
-
-    section.dataset
-      .branchNote = "";
-
-    const heading =
-      document.createElement("h3");
-
-    heading.textContent =
-      title.trim();
-
-    const paragraph =
-      document.createElement("p");
-
-    paragraph.textContent =
-      noteText.trim();
-
-    section.append(
-      heading,
-      paragraph
-    );
-
-    return section;
-  }
 
   function installBranchNote() {
     const host =
-      document.getElementById(
-        "common-branch-footer"
-      );
+      footerHost();
 
     if (!host) {
       return;
     }
 
     if (
-      !markReady(
-        host,
-        "Note"
+      host.querySelector(
+        "[data-branch-note]"
       )
     ) {
       return;
     }
 
-    const note =
-      createBranchNote();
-
-    if (note) {
-      host.append(note);
+    if (
+      !enabled(
+        body.dataset.branchNote
+      )
+    ) {
+      return;
     }
+
+    const title =
+      body.dataset
+        .branchNoteTitle;
+
+    const text =
+      body.dataset
+        .branchNoteText;
+
+    if (
+      !hasText(title) ||
+      !hasText(text)
+    ) {
+      return;
+    }
+
+    const section =
+      document.createElement(
+        "section"
+      );
+
+    section.className =
+      "branch-note";
+
+    section.dataset.branchNote =
+      "";
+
+    const heading =
+      document.createElement(
+        "h3"
+      );
+
+    heading.textContent =
+      title.trim();
+
+    const paragraph =
+      document.createElement(
+        "p"
+      );
+
+    paragraph.textContent =
+      text.trim();
+
+    section.append(
+      heading,
+      paragraph
+    );
+
+    host.append(section);
   }
+
 
   /* =======================================================
      INICIJALIZACIJA
-
-     Motor se može sigurno pozvati više puta.
-     Ne duplicira već postavljene elemente.
      ======================================================= */
 
   function init() {
@@ -620,7 +335,6 @@
     }
 
     installParentLink();
-    installProtectedInfo();
     installDiagramLink();
     installBranchNote();
 
@@ -635,6 +349,7 @@
           detail: {
             page:
               body.dataset.page || "",
+
             branch:
               body.dataset
                 .branchName || ""
@@ -644,16 +359,20 @@
     );
   }
 
-  /* =======================================================
-     JAVNO SUČELJE MOTORA
 
-     Namjerno minimalno.
+  /* =======================================================
+     JAVNO SUČELJE
      ======================================================= */
 
   window.TandaraBranchPage =
     Object.freeze({
       init
     });
+
+
+  /* =======================================================
+     POKRETANJE
+     ======================================================= */
 
   if (
     document.readyState ===
