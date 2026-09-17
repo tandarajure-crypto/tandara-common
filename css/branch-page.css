@@ -1,1 +1,741 @@
 
+/* =========================================================
+   TANDARA — BRANCH PAGE
+
+   Zajednički izgled rodoslovnih grana:
+   - Jurina
+   - Petrova
+   - Antina
+   - Matina
+   - Livanjske Tandare
+
+   OVA DATOTEKA SADRŽI:
+   - glavni sadržaj grane
+   - karticu grane
+   - naslove
+   - tekst
+   - obiteljske šifre
+   - slike
+   - zajedničke poveznice grane
+   - završnu napomenu / footer
+
+   OVA DATOTEKA NE SADRŽI:
+   - site shell
+   - početno stablo
+   - hotspotove
+   - dijagrame
+   - tražilicu
+   - print
+   - modalne prozore
+   - posebne zakrpe za pojedine grane
+   ========================================================= */
+
+
+/* =========================================================
+   OSNOVNE VRIJEDNOSTI
+   ========================================================= */
+
+:root {
+  --branch-page-background:
+    #e7c191;
+
+  --branch-card-background:
+    #f5e6c8;
+
+  --branch-text:
+    #3f3327;
+
+  --branch-heading:
+    #49341f;
+
+  --branch-accent:
+    #8b642f;
+
+  --branch-accent-light:
+    #c9a46d;
+
+  --branch-border:
+    rgba(91, 65, 35, 0.28);
+
+  --branch-code-background:
+    rgba(255, 255, 255, 0.28);
+
+  --branch-link:
+    #69451f;
+
+  --branch-max-width:
+    1050px;
+
+  --branch-font:
+    Georgia,
+    "Times New Roman",
+    serif;
+}
+
+
+/* =========================================================
+   GLAVNI SADRŽAJ
+   ========================================================= */
+
+.branch-content {
+  box-sizing: border-box;
+
+  min-width: 0;
+  min-height: 100vh;
+
+  padding:
+    34px
+    30px
+    50px;
+
+  background:
+    var(--branch-page-background);
+
+  color:
+    var(--branch-text);
+
+  font-family:
+    var(--branch-font);
+}
+
+.branch-content *,
+.branch-content *::before,
+.branch-content *::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   KARTICA GRANE
+   ========================================================= */
+
+.branch-card {
+  width: min(
+    100%,
+    var(--branch-max-width)
+  );
+
+  margin:
+    0 auto;
+
+  padding:
+    34px
+    42px
+    44px;
+
+  background:
+    var(--branch-card-background);
+
+  border:
+    1px solid
+    var(--branch-border);
+
+  border-radius:
+    14px;
+
+  box-shadow:
+    0 5px 18px
+    rgba(60, 42, 24, 0.16);
+}
+
+
+/* =========================================================
+   GLAVNI NASLOV
+   ========================================================= */
+
+.branch-card > h1 {
+  margin:
+    0
+    0
+    28px;
+
+  color:
+    var(--branch-heading);
+
+  font-size:
+    clamp(
+      26px,
+      3vw,
+      38px
+    );
+
+  font-weight:
+    700;
+
+  line-height:
+    1.18;
+
+  text-align:
+    center;
+}
+
+
+/* =========================================================
+   POČETNA OSOBA GRANE
+   ========================================================= */
+
+.branch-root-title {
+  margin:
+    0
+    0
+    24px;
+
+  padding:
+    14px
+    18px;
+
+  background:
+    rgba(201, 164, 109, 0.19);
+
+  border-left:
+    5px solid
+    var(--branch-accent);
+
+  border-radius:
+    6px;
+
+  color:
+    var(--branch-heading);
+
+  font-size:
+    clamp(
+      21px,
+      2.3vw,
+      29px
+    );
+
+  font-weight:
+    700;
+
+  line-height:
+    1.3;
+}
+
+
+/* =========================================================
+   TEKST GRANE
+   ========================================================= */
+
+.branch-text-block {
+  font-size:
+    18px;
+
+  line-height:
+    1.72;
+}
+
+.branch-text-block p {
+  margin:
+    0
+    0
+    20px;
+}
+
+.branch-text-block strong {
+  color:
+    #352719;
+
+  font-weight:
+    700;
+}
+
+
+/* =========================================================
+   NASLOVI OSOBA
+   ========================================================= */
+
+.branch-text-block h2,
+.branch-text-block h3,
+.branch-text-block h4 {
+  color:
+    var(--branch-heading);
+
+  font-weight:
+    700;
+}
+
+.branch-text-block h2 {
+  margin:
+    32px
+    0
+    14px;
+
+  font-size:
+    25px;
+
+  line-height:
+    1.3;
+}
+
+.branch-text-block h3 {
+  margin:
+    30px
+    0
+    12px;
+
+  padding-bottom:
+    6px;
+
+  border-bottom:
+    1px solid
+    var(--branch-border);
+
+  font-size:
+    22px;
+
+  line-height:
+    1.35;
+}
+
+.branch-text-block h4 {
+  margin:
+    25px
+    0
+    10px;
+
+  font-size:
+    19px;
+
+  line-height:
+    1.4;
+}
+
+
+/* =========================================================
+   OBITELJSKE ŠIFRE
+   ========================================================= */
+
+.family-code-list {
+  padding:
+    13px
+    15px;
+
+  background:
+    var(--branch-code-background);
+
+  border:
+    1px solid
+    var(--branch-border);
+
+  border-radius:
+    7px;
+
+  font-size:
+    16px;
+
+  line-height:
+    1.6;
+}
+
+.family-code-list > strong:first-child {
+  color:
+    var(--branch-heading);
+}
+
+.family-code-list span {
+  white-space:
+    normal;
+}
+
+.family-code-list span strong {
+  color:
+    var(--branch-accent);
+
+  font-weight:
+    700;
+}
+
+
+/* =========================================================
+   GENERIČKE POVEZNICE U SADRŽAJU
+   ========================================================= */
+
+.branch-card a {
+  color:
+    var(--branch-link);
+
+  text-decoration:
+    underline;
+
+  text-decoration-thickness:
+    1px;
+
+  text-underline-offset:
+    3px;
+}
+
+.branch-card a:hover,
+.branch-card a:focus-visible {
+  color:
+    #3f2813;
+
+  text-decoration-thickness:
+    2px;
+}
+
+.branch-card a:focus-visible {
+  outline:
+    2px solid
+    var(--branch-accent-light);
+
+  outline-offset:
+    3px;
+
+  border-radius:
+    3px;
+}
+
+
+/* =========================================================
+   GORNJE ZAJEDNIČKE POVEZNICE GRANE
+   ========================================================= */
+
+#common-branch-tools {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  min-height:
+    0;
+
+  margin:
+    0
+    0
+    24px;
+}
+
+#common-branch-tools:empty {
+  display:
+    none;
+}
+
+#common-branch-tools a {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  min-height:
+    38px;
+
+  padding:
+    8px
+    13px;
+
+  background:
+    rgba(255, 255, 255, 0.28);
+
+  border:
+    1px solid
+    var(--branch-border);
+
+  border-radius:
+    6px;
+
+  color:
+    var(--branch-link);
+
+  font-size:
+    15px;
+
+  font-weight:
+    700;
+
+  line-height:
+    1.25;
+
+  text-decoration:
+    none;
+}
+
+#common-branch-tools a:hover,
+#common-branch-tools a:focus-visible {
+  background:
+    rgba(201, 164, 109, 0.28);
+
+  border-color:
+    var(--branch-accent-light);
+}
+
+
+/* =========================================================
+   SLIKE
+   ========================================================= */
+
+.branch-main-image,
+.branch-person-image {
+  display:
+    block;
+
+  max-width:
+    100%;
+
+  height:
+    auto;
+
+  margin:
+    24px auto 0;
+
+  border:
+    0;
+
+  border-radius:
+    8px;
+}
+
+.branch-person-image {
+  width:
+    auto;
+}
+
+
+/* =========================================================
+   FIGURE I OPISI SLIKA
+   ========================================================= */
+
+.branch-card figure {
+  margin:
+    26px auto;
+
+  text-align:
+    center;
+}
+
+.branch-card figure img {
+  display:
+    block;
+
+  max-width:
+    100%;
+
+  height:
+    auto;
+
+  margin:
+    0 auto;
+
+  border-radius:
+    8px;
+}
+
+.branch-card figcaption {
+  margin-top:
+    8px;
+
+  color:
+    #67533e;
+
+  font-size:
+    14px;
+
+  font-style:
+    italic;
+
+  line-height:
+    1.4;
+
+  text-align:
+    center;
+}
+
+
+/* =========================================================
+   ZAJEDNIČKA NAPOMENA
+   ========================================================= */
+
+.branch-note {
+  margin:
+    24px
+    0;
+
+  padding:
+    13px
+    16px;
+
+  background:
+    rgba(255, 255, 255, 0.25);
+
+  border-left:
+    4px solid
+    var(--branch-accent-light);
+
+  border-radius:
+    5px;
+
+  font-size:
+    16px;
+
+  line-height:
+    1.55;
+}
+
+
+/* =========================================================
+   FOOTER GRANE
+   ========================================================= */
+
+#common-branch-footer {
+  margin-top:
+    30px;
+
+  padding-top:
+    18px;
+
+  border-top:
+    1px solid
+    var(--branch-border);
+}
+
+#common-branch-footer:empty {
+  display:
+    none;
+}
+
+#common-branch-footer p {
+  margin:
+    0;
+
+  color:
+    #67533e;
+
+  font-size:
+    14px;
+
+  line-height:
+    1.5;
+}
+
+
+/* =========================================================
+   PODACI I ŠIFRE U HTML-U
+
+   Ovi atributi ostaju sadržajni podaci.
+   CSS im ne mijenja značenje ni ponašanje.
+   ========================================================= */
+
+[data-person-code],
+[data-family-code],
+[data-parent-code],
+[data-parent-of],
+[data-spouse-of] {
+  scroll-margin-top:
+    20px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .branch-content {
+    padding:
+      26px
+      20px
+      40px;
+  }
+
+  .branch-card {
+    padding:
+      28px
+      28px
+      36px;
+  }
+
+  .branch-text-block {
+    font-size:
+      17px;
+  }
+}
+
+
+/* =========================================================
+   MOBITEL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .branch-content {
+    padding:
+      16px
+      10px
+      28px;
+  }
+
+  .branch-card {
+    padding:
+      22px
+      16px
+      28px;
+
+    border-radius:
+      9px;
+  }
+
+  .branch-card > h1 {
+    margin-bottom:
+      22px;
+  }
+
+  .branch-root-title {
+    padding:
+      11px
+      13px;
+
+    border-left-width:
+      4px;
+  }
+
+  .branch-text-block {
+    font-size:
+      16px;
+
+    line-height:
+      1.65;
+  }
+
+  .branch-text-block p {
+    margin-bottom:
+      17px;
+  }
+
+  .branch-text-block h3 {
+    margin-top:
+      25px;
+
+    font-size:
+      20px;
+  }
+
+  .family-code-list {
+    padding:
+      11px
+      12px;
+
+    font-size:
+      15px;
+  }
+
+  #common-branch-tools {
+    align-items:
+      stretch;
+
+    flex-direction:
+      column;
+  }
+
+  #common-branch-tools a {
+    width:
+      100%;
+  }
+}
