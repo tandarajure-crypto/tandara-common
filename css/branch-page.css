@@ -1,4 +1,3 @@
-
 /* =========================================================
    TANDARA — BRANCH PAGE
 
@@ -16,14 +15,15 @@
    - tekst
    - obiteljske šifre
    - slike
+   - donji okvir interaktivnog dijagrama
+   - donji okvir napomene
    - zajedničke poveznice grane
-   - završnu napomenu / footer
 
    OVA DATOTEKA NE SADRŽI:
    - site shell
    - početno stablo
    - hotspotove
-   - dijagrame
+   - logiku dijagrama
    - tražilicu
    - print
    - modalne prozore
@@ -110,10 +110,11 @@
    ========================================================= */
 
 .branch-card {
-  width: min(
-    100%,
-    var(--branch-max-width)
-  );
+  width:
+    min(
+      100%,
+      var(--branch-max-width)
+    );
 
   margin:
     0 auto;
@@ -347,7 +348,7 @@
 
 
 /* =========================================================
-   GENERIČKE POVEZNICE U SADRŽAJU
+   GENERIČKE POVEZNICE
    ========================================================= */
 
 .branch-card a {
@@ -387,7 +388,7 @@
 
 
 /* =========================================================
-   GORNJE ZAJEDNIČKE POVEZNICE GRANE
+   GORNJE ZAJEDNIČKE POVEZNICE
    ========================================================= */
 
 #common-branch-tools {
@@ -549,7 +550,227 @@
 
 
 /* =========================================================
-   ZAJEDNIČKA NAPOMENA
+   DONJI OKVIR — INTERAKTIVNI DIJAGRAM
+   ========================================================= */
+
+.branch-diagram-link {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto;
+
+  align-items:
+    center;
+
+  gap:
+    24px;
+
+  margin:
+    30px
+    0
+    0;
+
+  padding:
+    20px
+    22px;
+
+  background:
+    rgba(255, 255, 255, 0.30);
+
+  border:
+    1px solid
+    var(--branch-border);
+
+  border-radius:
+    10px;
+
+  box-shadow:
+    0 2px 8px
+    rgba(60, 42, 24, 0.10);
+}
+
+.branch-diagram-link h2 {
+  margin:
+    0
+    0
+    7px;
+
+  color:
+    var(--branch-heading);
+
+  font-size:
+    21px;
+
+  line-height:
+    1.3;
+}
+
+.branch-diagram-link p {
+  margin:
+    0;
+
+  color:
+    var(--branch-text);
+
+  font-size:
+    16px;
+
+  line-height:
+    1.55;
+}
+
+.branch-diagram-link__button {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  min-height:
+    42px;
+
+  padding:
+    10px
+    17px;
+
+  background:
+    var(--branch-accent);
+
+  border:
+    1px solid
+    var(--branch-accent);
+
+  border-radius:
+    7px;
+
+  color:
+    #ffffff;
+
+  font-size:
+    15px;
+
+  font-weight:
+    700;
+
+  line-height:
+    1.2;
+
+  text-align:
+    center;
+
+  text-decoration:
+    none;
+}
+
+.branch-card
+.branch-diagram-link__button {
+  color:
+    #ffffff;
+
+  text-decoration:
+    none;
+}
+
+.branch-card
+.branch-diagram-link__button:hover,
+.branch-card
+.branch-diagram-link__button:focus-visible {
+  background:
+    #6f4d24;
+
+  border-color:
+    #6f4d24;
+
+  color:
+    #ffffff;
+
+  text-decoration:
+    none;
+}
+
+
+/* =========================================================
+   DONJI OKVIR — NAPOMENA
+   ========================================================= */
+
+.tree-note {
+  margin:
+    18px
+    0
+    0;
+
+  padding:
+    18px
+    20px;
+
+  background:
+    rgba(201, 164, 109, 0.18);
+
+  border:
+    1px solid
+    var(--branch-border);
+
+  border-left:
+    5px solid
+    var(--branch-accent);
+
+  border-radius:
+    9px;
+}
+
+.tree-note h3 {
+  margin:
+    0
+    0
+    10px;
+
+  color:
+    var(--branch-heading);
+
+  font-size:
+    20px;
+
+  line-height:
+    1.3;
+}
+
+.tree-note p {
+  margin:
+    0
+    0
+    10px;
+
+  color:
+    var(--branch-text);
+
+  font-size:
+    16px;
+
+  line-height:
+    1.58;
+}
+
+.tree-note p:last-child {
+  margin-bottom:
+    0;
+}
+
+.tree-note strong {
+  color:
+    #352719;
+
+  font-weight:
+    700;
+}
+
+
+/* =========================================================
+   GENERIČKA ZAVRŠNA NAPOMENA
    ========================================================= */
 
 .branch-note {
@@ -601,14 +822,8 @@
 }
 
 #common-branch-footer p {
-  margin:
-    0;
-
   color:
     #67533e;
-
-  font-size:
-    14px;
 
   line-height:
     1.5;
@@ -616,10 +831,7 @@
 
 
 /* =========================================================
-   PODACI I ŠIFRE U HTML-U
-
-   Ovi atributi ostaju sadržajni podaci.
-   CSS im ne mijenja značenje ni ponašanje.
+   PODACI I ŠIFRE
    ========================================================= */
 
 [data-person-code],
@@ -656,6 +868,7 @@
     font-size:
       17px;
   }
+
 }
 
 
@@ -738,4 +951,28 @@
     width:
       100%;
   }
+
+  .branch-diagram-link {
+    grid-template-columns:
+      1fr;
+
+    gap:
+      14px;
+
+    padding:
+      17px
+      16px;
+  }
+
+  .branch-diagram-link__button {
+    width:
+      100%;
+  }
+
+  .tree-note {
+    padding:
+      16px
+      15px;
+  }
+
 }
