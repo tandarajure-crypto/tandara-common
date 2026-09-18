@@ -970,18 +970,15 @@
   document.getElementById('zoomIn').addEventListener('click', () => zoomAt(1.22));
   document.getElementById('zoomOut').addEventListener('click', () => zoomAt(0.82));
 
-  document.getElementById('fullscreenDiagram').addEventListener('click', async () => {
-    try {
-      if (!document.fullscreenElement) {
-        await document.documentElement.requestFullscreen();
-        showStatus(TXT.fullOn);
-      } else {
-        await document.exitFullscreen();
-      }
-    } catch (_error) {
-      showStatus(TXT.fullDenied);
-    }
+document.getElementById('fullscreenDiagram').addEventListener('click', () => {
+  document.body.classList.toggle('diagram-wide');
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      window.dispatchEvent(new Event('resize'));
+    });
   });
+}); 
   document.getElementById('printDiagram').addEventListener('click', () => window.print());
 
   svg.addEventListener('wheel', event => {
