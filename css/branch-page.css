@@ -464,12 +464,12 @@ body.branch-protected-dialog-open {
   color: var(--branch-heading);
 }
 
-.family-code-list span {
+.family-code-list > span {
   display: inline;
   white-space: normal;
 }
 
-.family-code-list span + span {
+.family-code-list > span + span {
   margin-left: 0.75em;
   padding-left: 0.75em;
   border-left: 1px solid var(--branch-accent-light);
