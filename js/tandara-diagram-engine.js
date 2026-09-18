@@ -1040,46 +1040,22 @@ document.getElementById('fullscreenDiagram').addEventListener('click', () => {
   const button = document.getElementById('headerCollapse');
   const fullBtn = document.getElementById('fullscreenDiagram');
 
-  const fullSymbol = fullBtn
-    ? fullBtn.querySelector('[data-fullscreen-symbol]')
-    : null;
+ const setLayoutState = (isWide) => {
+  if (!fullBtn) return;
 
-  const fullLabel = fullBtn
-    ? fullBtn.querySelector('[data-fullscreen-label]')
-    : null;
+  const enterLabel =
+    fullBtn.dataset.enterLabel || 'Cijeli ekran';
 
-  const setLayoutState = (isWide) => {
-    if (!fullBtn) return;
+  const exitLabel =
+    fullBtn.dataset.exitLabel || 'Povratak';
 
-    const enterLabel =
-      fullBtn.dataset.enterLabel || 'Cijeli ekran';
+  const label =
+    isWide ? exitLabel : enterLabel;
 
-    const exitLabel =
-      fullBtn.dataset.exitLabel || 'Povratak';
-
-    const enterSymbol =
-      fullBtn.dataset.enterSymbol || '⛶';
-
-    const exitSymbol =
-      fullBtn.dataset.exitSymbol || '↩';
-
-    const label =
-      isWide ? exitLabel : enterLabel;
-
-    const symbol =
-      isWide ? exitSymbol : enterSymbol;
-
-    fullBtn.setAttribute('aria-label', label);
-    fullBtn.title = label;
-
-    if (fullSymbol) {
-      fullSymbol.textContent = symbol;
-    }
-
-    if (fullLabel) {
-      fullLabel.textContent = label;
-    }
-  };
+  fullBtn.textContent = label;
+  fullBtn.setAttribute('aria-label', label);
+  fullBtn.title = label;
+};
 
 
   /* =====================================================
