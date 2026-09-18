@@ -114,3 +114,101 @@
   border:2px solid #70757a;
   color:#202124;
 }
+/* =========================================================
+   TANDARA DIAGRAM — HR | HOME | UK
+   Isti raspored i visina kao na početnoj stranici
+   ========================================================= */
+
+.topbar{
+  grid-template-columns:
+    max-content
+    66px
+    max-content
+    minmax(210px,1fr)
+    auto
+    42px;
+
+  gap:10px;
+  align-items:center;
+}
+
+/* HOME */
+.topbar .home-btn{
+  width:66px;
+  height:66px;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+
+.topbar .home-btn img{
+  display:block;
+  width:66px;
+  height:66px;
+  object-fit:contain;
+}
+
+/* HR i UK zastava */
+.topbar .flag-btn{
+  width:auto;
+  height:66px;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+
+.topbar .flag-btn img{
+  display:block;
+  width:auto;
+  height:66px;
+  max-width:none;
+  object-fit:contain;
+  border-radius:5px;
+}
+
+/* Aktivna zastava bez promjene dimenzija */
+.topbar .flag-btn.active{
+  outline:0;
+  filter:drop-shadow(0 0 4px rgba(212,175,55,.75));
+}
+
+/* Hover kao na zajedničkom lijevom stupcu */
+.topbar .home-btn:hover,
+.topbar .home-btn:focus-visible,
+.topbar .flag-btn:hover,
+.topbar .flag-btn:focus-visible{
+  border:0;
+  background:transparent;
+  filter:drop-shadow(0 0 5px rgba(212,175,55,.85));
+}
+
+/* Mali mobitel */
+@media(max-width:420px){
+
+  .topbar{
+    grid-template-columns:
+      max-content
+      56px
+      max-content
+      minmax(120px,1fr)
+      auto
+      36px;
+
+    gap:8px;
+  }
+
+  .topbar .home-btn,
+  .topbar .home-btn img{
+    width:56px;
+    height:56px;
+  }
+
+  .topbar .flag-btn,
+  .topbar .flag-btn img{
+    height:56px;
+  }
+}
