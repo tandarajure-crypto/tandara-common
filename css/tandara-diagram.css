@@ -260,10 +260,7 @@ body.site-shell-ready.diagram-wide .topbar > .flag-btn,
 body.site-shell-ready.diagram-wide .topbar > .home-btn {
   display: flex;
 }
-/* =========================================================
-   DIJAGRAMI — bez FlagCountera u lijevom stupcu
-   ========================================================= */
-
-.site-shell__flagbox {
+/* Dijagrami — bez naslova "Posjetitelji" */
+.site-shell__flag-title {
   display: none;
 }
