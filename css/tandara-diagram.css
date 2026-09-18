@@ -234,3 +234,29 @@ body.site-shell-ready:not(.diagram-wide) .topbar {
     auto
     42px;
 }
+/* =========================================================
+   TANDARA DIAGRAM — CIJELA ŠIRINA
+
+   Kada body dobije klasu .diagram-wide:
+   - lijevi zajednički stupac se skriva
+   - dijagram zauzima cijelu širinu
+   - HR / HOME / UK u zaglavlju dijagrama opet se prikazuju
+   ========================================================= */
+
+body.site-shell-ready.diagram-wide .site-layout {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+body.site-shell-ready.diagram-wide .site-shell {
+  display: none;
+}
+
+body.site-shell-ready.diagram-wide .site-content {
+  width: 100%;
+  min-width: 0;
+}
+
+body.site-shell-ready.diagram-wide .topbar > .flag-btn,
+body.site-shell-ready.diagram-wide .topbar > .home-btn {
+  display: flex;
+}
