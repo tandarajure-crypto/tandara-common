@@ -212,3 +212,25 @@
     height:56px;
   }
 }
+/* =========================================================
+   TANDARA DIAGRAM — PODIJELJENI PRIKAZ
+
+   Kada je zajednički lijevi stupac vidljiv:
+   - HR / HOME / UK u dijagramu se ne prikazuju
+   - naslov dijagrama zauzima njihov prostor
+
+   Klasa .diagram-wide koristit će se kasnije
+   za prikaz dijagrama preko cijele širine.
+   ========================================================= */
+
+body.site-shell-ready:not(.diagram-wide) .topbar > .flag-btn,
+body.site-shell-ready:not(.diagram-wide) .topbar > .home-btn {
+  display: none;
+}
+
+body.site-shell-ready:not(.diagram-wide) .topbar {
+  grid-template-columns:
+    minmax(210px, 1fr)
+    auto
+    42px;
+}
