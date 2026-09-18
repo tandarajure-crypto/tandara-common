@@ -9,7 +9,6 @@
 
    MOTOR MOŽE:
    - dodati opcionalni povratni link
-   - dodati opcionalni link na dijagram
    - dodati opcionalnu završnu napomenu
    - dodati gumb za zaštićene obiteljske podatke ispod glavnog naslova
    - otvoriti zajednički HR/EN dijalog za zaštićene obiteljske podatke
@@ -170,50 +169,6 @@
         page,
         `← ${label.trim()}`,
         "parent"
-      );
-
-    host.append(link);
-  }
-
-
-  /* =======================================================
-     POVEZNICA NA DIJAGRAM
-     ======================================================= */
-
-  function installDiagramLink() {
-    const host =
-      toolsHost();
-
-    if (!host) {
-      return;
-    }
-
-    if (
-      host.querySelector(
-        '[data-branch-tool="diagram"]'
-      )
-    ) {
-      return;
-    }
-
-    const path =
-      body.dataset.diagram;
-
-    const label =
-      body.dataset.diagramLabel;
-
-    if (
-      !hasText(path) ||
-      !hasText(label)
-    ) {
-      return;
-    }
-
-    const link =
-      createToolLink(
-        path,
-        label,
-        "diagram"
       );
 
     host.append(link);
@@ -1350,7 +1305,6 @@
     }
 
     installParentLink();
-    installDiagramLink();
     installBranchNote();
     installProtectedAccessDialog();
     installPhotoLightbox();
