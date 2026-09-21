@@ -1,8 +1,8 @@
 /* =========================================================
-   TANDARA — CONTENT FOR THE EIGHT MAIN SUBPAGES
+   TANDARA — CONTENT FOR THE MAIN SUBPAGES
 
    Shared content-only styles for the Croatian and English
-   versions of the eight main subpages.
+   versions of the main subpages.
 
    This file contains no site shell or navigation styles.
    The left column and page layout are provided exclusively by:
@@ -691,5 +691,61 @@
 
   .site-layout {
     display: block !important;
+  }
+}
+
+
+/* =========================================================
+   UPUTE / PDF PRIKAZ
+   ========================================================= */
+
+.instructions-intro {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.instructions-actions {
+  margin: 24px 0 28px;
+  text-align: center;
+}
+
+.instructions-pdf-link {
+  display: inline-block;
+  padding: 12px 20px;
+
+  border: 1px solid var(--subpage-soft-border);
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.35);
+  color: var(--subpage-text);
+
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.instructions-pdf-link:hover,
+.instructions-pdf-link:focus-visible {
+  text-decoration: underline;
+}
+
+.instructions-pdf-frame {
+  display: block;
+
+  width: 100%;
+  height: 78vh;
+  min-height: 720px;
+
+  margin: 0;
+
+  border: 1px solid var(--subpage-soft-border);
+  border-radius: 8px;
+
+  background: #ffffff;
+}
+
+@media (max-width: 700px) {
+  .instructions-pdf-frame {
+    height: 70vh;
+    min-height: 520px;
   }
 }
