@@ -1,32 +1,5 @@
 <!--
   TANDARA — SITE SHELL
-
-  Zajednički lijevi stupac za:
-  - index HR / EN
-  - glavne podstranice
-  - glavne rodoslovne grane HR / EN
-
-  Raspored je usklađen s provjerenim
-  zajedničkim sidebarom 8 glavnih stranica.
-
-  OVA DATOTEKA SADRŽI:
-  - HR zastavu
-  - HOME tipku
-  - EN zastavu
-  - glavni izbornik
-  - AUTOR oznaku
-  - fotografiju autora
-  - ime Jure / Tandara u dva reda
-  - FlagCounter
-
-  OVA DATOTEKA NE SADRŽI:
-  - sadržaj stranica
-  - početno obiteljsko stablo
-  - hotspotove
-  - rodoslovne podatke
-  - dijagrame
-  - print
-  - modalne prozore
 -->
 
 <template id="tandara-site-shell">
@@ -36,11 +9,6 @@
     id="site-shell"
     data-role="site-shell"
     aria-label="">
-
-
-    <!-- ===================================================
-         HR ZASTAVA — HOME — EN ZASTAVA
-         =================================================== -->
 
     <nav
       class="site-shell__top"
@@ -62,7 +30,6 @@
 
       </a>
 
-
       <a
         class="site-shell__top-control site-shell__home-control"
         data-role="home-link"
@@ -78,7 +45,6 @@
         </span>
 
       </a>
-
 
       <a
         class="site-shell__top-control site-shell__flag-control"
@@ -96,20 +62,10 @@
 
     </nav>
 
-
-    <!-- ===================================================
-         NASLOV
-         =================================================== -->
-
     <div
       class="site-shell__title"
       data-role="site-title">
     </div>
-
-
-    <!-- ===================================================
-         GLAVNA NAVIGACIJA
-         =================================================== -->
 
     <nav
       class="site-shell__navigation"
@@ -120,87 +76,63 @@
 
         <li>
           <img data-role="menu-icon" alt="">
-
-          <a
-            data-nav-key="author"
-            href="#">
+          <a data-nav-key="author" href="#">
             <span></span>
           </a>
         </li>
 
-
         <li>
           <img data-role="menu-icon" alt="">
-
-          <a
-            data-nav-key="origin"
-            href="#">
+          <a data-nav-key="origin" href="#">
             <span></span>
           </a>
         </li>
 
-
         <li>
           <img data-role="menu-icon" alt="">
-
-          <a
-            data-nav-key="genealogy"
-            href="#">
+          <a data-nav-key="genealogy" href="#">
             <span></span>
           </a>
         </li>
 
-
         <li>
           <img data-role="menu-icon" alt="">
-
-          <a
-            data-nav-key="migration"
-            href="#">
+          <a data-nav-key="migration" href="#">
             <span></span>
           </a>
         </li>
 
-
         <li>
           <img data-role="menu-icon" alt="">
-
-          <a
-            data-nav-key="facts"
-            href="#">
+          <a data-nav-key="facts" href="#">
             <span></span>
           </a>
         </li>
 
-
         <li>
           <img data-role="menu-icon" alt="">
-
-          <a
-            data-nav-key="contact"
-            href="#">
+          <a data-nav-key="instructions" href="#">
             <span></span>
           </a>
         </li>
 
-
         <li>
           <img data-role="menu-icon" alt="">
-
-          <a
-            data-nav-key="guestbook"
-            href="#">
+          <a data-nav-key="contact" href="#">
             <span></span>
           </a>
         </li>
 
+        <li>
+          <img data-role="menu-icon" alt="">
+          <a data-nav-key="guestbook" href="#">
+            <span></span>
+          </a>
+        </li>
 
         <li>
           <img data-role="menu-icon" alt="">
-
-          <a
-            data-nav-key="privacy"
-            href="#">
+          <a data-nav-key="privacy" href="#">
             <span></span>
           </a>
         </li>
@@ -208,11 +140,6 @@
       </ul>
 
     </nav>
-
-
-    <!-- ===================================================
-         AUTOR | FOTOGRAFIJA | JURE / TANDARA
-         =================================================== -->
 
     <div
       class="site-shell__author-row"
@@ -223,7 +150,6 @@
         class="site-shell__author-label"
         data-role="author-label">
       </div>
-
 
       <a
         class="site-shell__author-photo"
@@ -238,18 +164,12 @@
 
       </a>
 
-
       <div class="site-shell__author-name">
         <span>Jure</span>
         <span>Tandara</span>
       </div>
 
     </div>
-
-
-    <!-- ===================================================
-         FLAGCOUNTER
-         =================================================== -->
 
     <div
       class="site-shell__flagbox"
@@ -259,7 +179,6 @@
         class="site-shell__flag-title"
         data-role="flag-counter-title">
       </div>
-
 
       <a
         href="https://info.flagcounter.com/OyvA"
@@ -278,11 +197,6 @@
       </a>
 
     </div>
-
-
-    <!-- ===================================================
-         PRISTUPAČNI SKRIVENI TEKST
-         =================================================== -->
 
     <span
       class="site-shell__visually-hidden"
