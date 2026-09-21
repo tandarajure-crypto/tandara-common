@@ -30,48 +30,23 @@
 (() => {
   "use strict";
 
+  const script = document.currentScript;
+  const body = document.body;
 
-  /* =======================================================
-     OSNOVNI ELEMENTI
-     ======================================================= */
-
-  const script =
-    document.currentScript;
-
-  const body =
-    document.body;
-
-  if (
-    !script ||
-    !body
-  ) {
+  if (!script || !body) {
     return;
   }
 
-
   const content =
-    document.querySelector(
-      "[data-site-content]"
-    ) ||
-    document.querySelector(
-      "main"
-    );
+    document.querySelector("[data-site-content]") ||
+    document.querySelector("main");
 
   if (!content) {
     return;
   }
 
-
-  /* =======================================================
-     PUTANJE
-     ======================================================= */
-
   const commonRoot =
-    new URL(
-      "../",
-      script.src
-    );
-
+    new URL("../", script.src);
 
   const siteRoot =
     new URL(
@@ -79,44 +54,22 @@
       document.baseURI
     );
 
-
   const templateUrl =
     new URL(
       "templates/site-shell.html",
       commonRoot
     );
 
-
-  /*
-     Verzija sa site-shell.js prenosi se
-     i na template radi osvježavanja cachea.
-  */
-
   templateUrl.search =
-    new URL(
-      script.src
-    ).search;
-
+    new URL(script.src).search;
 
   function commonUrl(path) {
-    return new URL(
-      path,
-      commonRoot
-    ).href;
+    return new URL(path, commonRoot).href;
   }
-
 
   function siteUrl(path) {
-    return new URL(
-      path,
-      siteRoot
-    ).href;
+    return new URL(path, siteRoot).href;
   }
-
-
-  /* =======================================================
-     JEZIK
-     ======================================================= */
 
   const language =
     (
@@ -127,16 +80,8 @@
       .trim()
       .toLowerCase();
 
-
   const isEnglish =
-    language.startsWith(
-      "en"
-    );
-
-
-  /* =======================================================
-     TEKSTOVI
-     ======================================================= */
+    language.startsWith("en");
 
   const TEXT =
     Object.freeze({
@@ -164,8 +109,8 @@
 
           visitors:
             "Posjetitelji"
-        }),
 
+        }),
 
       en:
         Object.freeze({
@@ -190,23 +135,15 @@
 
           visitors:
             "Visitors"
+
         })
 
     });
-
 
   const text =
     isEnglish
       ? TEXT.en
       : TEXT.hr;
-
-
-  /* =======================================================
-     GLAVNI IZBORNIK
-
-     Tekst i rute usklađeni su sa zajedničkim
-     lijevim stupcem 8 glavnih stranica.
-     ======================================================= */
 
   const NAVIGATION =
     Object.freeze({
@@ -234,7 +171,6 @@
 
         }),
 
-
       origin:
         Object.freeze({
 
@@ -257,7 +193,6 @@
             })
 
         }),
-
 
       genealogy:
         Object.freeze({
@@ -282,7 +217,6 @@
 
         }),
 
-
       migration:
         Object.freeze({
 
@@ -305,7 +239,6 @@
             })
 
         }),
-
 
       facts:
         Object.freeze({
@@ -330,6 +263,28 @@
 
         }),
 
+      instructions:
+        Object.freeze({
+
+          hr:
+            Object.freeze({
+              label:
+                "Upute",
+
+              route:
+                "upute.html"
+            }),
+
+          en:
+            Object.freeze({
+              label:
+                "Instructions",
+
+              route:
+                "upute-en.html"
+            })
+
+        }),
 
       contact:
         Object.freeze({
@@ -354,7 +309,6 @@
 
         }),
 
-
       guestbook:
         Object.freeze({
 
@@ -377,7 +331,6 @@
             })
 
         }),
-
 
       privacy:
         Object.freeze({
@@ -404,11 +357,6 @@
 
     });
 
-
-  /* =======================================================
-     ZAJEDNIČKE SLIKE
-     ======================================================= */
-
   const IMAGES =
     Object.freeze({
 
@@ -429,26 +377,17 @@
 
     });
 
-
-  /* =======================================================
-     POMOĆNE FUNKCIJE
-     ======================================================= */
-
   function currentPathname() {
     return new URL(
       window.location.href
     ).pathname;
   }
 
-
   function markCurrentLink(link) {
-    if (
-      !link ||
-      !link.href
-    ) {
+
+    if (!link || !link.href) {
       return;
     }
-
 
     const linkUrl =
       new URL(
@@ -456,26 +395,19 @@
         document.baseURI
       );
 
-
     if (
       linkUrl.origin ===
         window.location.origin &&
       linkUrl.pathname ===
         currentPathname()
     ) {
-
       link.setAttribute(
         "aria-current",
         "page"
       );
-
     }
+
   }
-
-
-  /* =======================================================
-     HOME
-     ======================================================= */
 
   function configureHome(shell) {
 
@@ -484,18 +416,15 @@
         '[data-role="home-link"]'
       );
 
-
     const icon =
       shell.querySelector(
         '[data-role="home-icon"]'
       );
 
-
     const label =
       shell.querySelector(
         '[data-role="home-label"]'
       );
-
 
     if (link) {
 
@@ -506,7 +435,6 @@
             : "index.html"
         );
 
-
       link.setAttribute(
         "aria-label",
         text.home
@@ -514,30 +442,17 @@
 
     }
 
-
     if (icon) {
-
       icon.src =
-        commonUrl(
-          IMAGES.home
-        );
-
+        commonUrl(IMAGES.home);
     }
 
-
     if (label) {
-
       label.textContent =
         text.home;
-
     }
 
   }
-
-
-  /* =======================================================
-     HR / EN
-     ======================================================= */
 
   function configureLanguages(shell) {
 
@@ -546,58 +461,41 @@
         '[data-role="language-switch"]'
       );
 
-
     const hrLink =
       shell.querySelector(
         '[data-role="hr-link"]'
       );
-
 
     const enLink =
       shell.querySelector(
         '[data-role="en-link"]'
       );
 
-
     const hrFlag =
       shell.querySelector(
         '[data-role="hr-flag"]'
       );
-
 
     const enFlag =
       shell.querySelector(
         '[data-role="en-flag"]'
       );
 
-
     if (hrFlag) {
-
       hrFlag.src =
-        commonUrl(
-          IMAGES.hrFlag
-        );
-
+        commonUrl(IMAGES.hrFlag);
     }
-
 
     if (enFlag) {
-
       enFlag.src =
-        commonUrl(
-          IMAGES.enFlag
-        );
-
+        commonUrl(IMAGES.enFlag);
     }
-
 
     const hrPage =
       body.dataset.pageHr;
 
-
     const enPage =
       body.dataset.pageEn;
-
 
     if (
       !navigation ||
@@ -607,44 +505,24 @@
       return;
     }
 
-
     navigation.setAttribute(
       "aria-label",
       text.languageLabel
     );
 
-
     if (hrPage) {
-
       hrLink.href =
-        siteUrl(
-          hrPage
-        );
-
+        siteUrl(hrPage);
     } else {
-
-      hrLink.removeAttribute(
-        "href"
-      );
-
+      hrLink.removeAttribute("href");
     }
-
 
     if (enPage) {
-
       enLink.href =
-        siteUrl(
-          enPage
-        );
-
+        siteUrl(enPage);
     } else {
-
-      enLink.removeAttribute(
-        "href"
-      );
-
+      enLink.removeAttribute("href");
     }
-
 
     if (!isEnglish) {
 
@@ -670,16 +548,9 @@
 
     }
 
-
-    navigation.hidden =
-      false;
+    navigation.hidden = false;
 
   }
-
-
-  /* =======================================================
-     NASLOV
-     ======================================================= */
 
   function configureTitle(shell) {
 
@@ -688,21 +559,14 @@
         '[data-role="site-title"]'
       );
 
-
     if (!title) {
       return;
     }
-
 
     title.textContent =
       text.siteTitle;
 
   }
-
-
-  /* =======================================================
-     GLAVNI IZBORNIK
-     ======================================================= */
 
   function configureNavigation(shell) {
 
@@ -711,16 +575,12 @@
         '[data-role="main-navigation"]'
       );
 
-
     if (navigation) {
-
       navigation.setAttribute(
         "aria-label",
         text.navigationLabel
       );
-
     }
-
 
     shell
       .querySelectorAll(
@@ -732,10 +592,8 @@
           const key =
             link.dataset.navKey;
 
-
           const item =
             NAVIGATION[key];
-
 
           if (!item) {
 
@@ -745,45 +603,31 @@
             return;
           }
 
-
           const config =
             isEnglish
               ? item.en
               : item.hr;
-
 
           link.href =
             siteUrl(
               config.route
             );
 
-
           const label =
-            link.querySelector(
-              "span"
-            );
-
+            link.querySelector("span");
 
           if (label) {
-
             label.textContent =
               config.label;
-
           } else {
-
             link.textContent =
               config.label;
-
           }
 
-
-          markCurrentLink(
-            link
-          );
+          markCurrentLink(link);
 
         }
       );
-
 
     shell
       .querySelectorAll(
@@ -802,14 +646,6 @@
 
   }
 
-
-  /* =======================================================
-     AUTOR
-
-     AUTOR | fotografija | Jure
-                        | Tandara
-     ======================================================= */
-
   function configureAuthor(shell) {
 
     const wrapper =
@@ -817,24 +653,20 @@
         '[data-role="author"]'
       );
 
-
     const label =
       shell.querySelector(
         '[data-role="author-label"]'
       );
-
 
     const link =
       shell.querySelector(
         '[data-role="author-link"]'
       );
 
-
     const image =
       shell.querySelector(
         '[data-role="author-image"]'
       );
-
 
     if (
       !wrapper ||
@@ -844,25 +676,19 @@
       return;
     }
 
-
     if (label) {
-
       label.textContent =
         text.author;
-
     }
-
 
     const imagePath =
       body.dataset.authorImage ||
       IMAGES.author;
 
-
     image.src =
       commonUrl(
         imagePath
       );
-
 
     link.href =
       siteUrl(
@@ -871,16 +697,9 @@
           : NAVIGATION.author.hr.route
       );
 
-
-    wrapper.hidden =
-      false;
+    wrapper.hidden = false;
 
   }
-
-
-  /* =======================================================
-     FLAGCOUNTER
-     ======================================================= */
 
   function configureFlagCounter(shell) {
 
@@ -889,51 +708,36 @@
         '[data-role="flag-counter-title"]'
       );
 
-
     const image =
       shell.querySelector(
         '[data-role="flag-counter-image"]'
       );
 
-
     if (title) {
-
       title.textContent =
         text.visitors;
-
     }
-
 
     if (!image) {
       return;
     }
-
 
     const source =
       image.getAttribute(
         "data-flag-counter-src"
       );
 
-
     if (!source) {
       return;
     }
 
-
-    image.src =
-      source;
-
+    image.src = source;
 
     image.removeAttribute(
       "data-flag-counter-src"
     );
 
   }
-
-
-  /* =======================================================
-     ARIA SHELLA
-     ======================================================= */
 
   function configureShellLabel(shell) {
 
@@ -943,11 +747,6 @@
     );
 
   }
-
-
-  /* =======================================================
-     POSTAVLJANJE SHELLA
-     ======================================================= */
 
   function installShell(shell) {
 
@@ -959,12 +758,10 @@
       return;
     }
 
-
     const existingLayout =
       content.closest(
         ".site-layout"
       );
-
 
     if (existingLayout) {
 
@@ -979,15 +776,12 @@
           "div"
         );
 
-
       layout.className =
         "site-layout";
-
 
       content.before(
         layout
       );
-
 
       layout.append(
         shell,
@@ -996,22 +790,15 @@
 
     }
 
-
     content.classList.add(
       "site-content"
     );
-
 
     body.classList.add(
       "site-shell-ready"
     );
 
   }
-
-
-  /* =======================================================
-     UČITAVANJE TEMPLATEA
-     ======================================================= */
 
   function loadTemplate() {
 
@@ -1037,12 +824,10 @@
 
           }
 
-
           return response.text();
 
         }
       )
-
 
       .then(
         (source) => {
@@ -1054,12 +839,10 @@
                 "text/html"
               );
 
-
           const template =
             parsed.getElementById(
               "tandara-site-shell"
             );
-
 
           if (
             !template ||
@@ -1072,16 +855,12 @@
 
           }
 
-
           const shell =
             template.content
               .querySelector(
                 '[data-role="site-shell"]'
               )
-              ?.cloneNode(
-                true
-              );
-
+              ?.cloneNode(true);
 
           if (!shell) {
 
@@ -1091,7 +870,6 @@
 
           }
 
-
           return shell;
 
         }
@@ -1099,64 +877,31 @@
 
   }
 
-
-  /* =======================================================
-     POKRETANJE
-     ======================================================= */
-
   function init() {
 
     if (
-      body.dataset
-        .siteShellReady ===
+      body.dataset.siteShellReady ===
       "true"
     ) {
       return;
     }
-
 
     loadTemplate()
 
       .then(
         (shell) => {
 
-          configureShellLabel(
-            shell
-          );
+          configureShellLabel(shell);
+          configureHome(shell);
+          configureLanguages(shell);
+          configureTitle(shell);
+          configureNavigation(shell);
+          configureAuthor(shell);
+          configureFlagCounter(shell);
+          installShell(shell);
 
-          configureHome(
-            shell
-          );
-
-          configureLanguages(
-            shell
-          );
-
-          configureTitle(
-            shell
-          );
-
-          configureNavigation(
-            shell
-          );
-
-          configureAuthor(
-            shell
-          );
-
-          configureFlagCounter(
-            shell
-          );
-
-          installShell(
-            shell
-          );
-
-
-          body.dataset
-            .siteShellReady =
-              "true";
-
+          body.dataset.siteShellReady =
+            "true";
 
           window.dispatchEvent(
             new CustomEvent(
@@ -1167,14 +912,12 @@
         }
       )
 
-
       .catch(
         (error) => {
 
           body.classList.add(
             "site-shell-unavailable"
           );
-
 
           console.error(
             "TANDARA site shell nije učitan:",
@@ -1186,16 +929,10 @@
 
   }
 
-
-  /* =======================================================
-     JAVNO SUČELJE
-     ======================================================= */
-
   window.TandaraSiteShell =
     Object.freeze({
       init
     });
-
 
   if (
     document.readyState ===
