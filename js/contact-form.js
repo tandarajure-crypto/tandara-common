@@ -30,6 +30,10 @@
     "Zahtjev za pristup privatnom arhivu",
     "Request for access to the private archive"
   ];
+  const privateOption = inquiryType && Array.from(inquiryType.options).find(
+    (option) => privateValues.includes(option.value)
+  );
+  if (privateOption) privateOption.disabled = false;
   const loadedAt = Date.now();
   const minFillTimeMs = 5000;
   const cooldownMs = 60000;
