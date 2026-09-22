@@ -2,23 +2,65 @@
    TANDARA — HOME ARCHIVE INTRO
 
    Zajednički informativni okvir ispod početnog stabla.
-   Namijenjen je svim početnim stranicama koje ga učitaju.
+
+   Desktop:
+   - okvir se neposredno dodiruje s donjim rubom slike
+   - gornji rub okvira razdvaja sliku i tekst
+   - nema praznog prostora između slike i okvira
+   - nema zasebnog lijevog ruba; glavna razdjelna crta
+     između lijevog i desnog stupca služi kao lijevi rub
+   - pozadina je ista kao pozadina desnog stupca
    ========================================================= */
 
+.home-tree + .home-archive-intro,
 .home-archive-intro {
   box-sizing: border-box;
 
-  width: 100%;
-  max-width: 1672px;
+  display: block;
 
-  margin: 8px auto 0;
+  width: 100%;
+  max-width: none;
+
+  /* Bez ikakvog razmaka od slike ili lijevog stupca */
+  margin: 0;
   padding: 18px 24px 20px;
 
-  background: #e8c893;
+  background:
+    var(
+      --content-background,
+      #e7c191
+    );
 
-  border: 2px solid #555555;
+  /* Gornji rub točno na donjem rubu slike */
+  border-top:
+    2px solid
+    var(
+      --shell-border,
+      #7a7a7a
+    );
 
-  color: #2f2a24;
+  border-right:
+    2px solid
+    var(
+      --shell-border,
+      #7a7a7a
+    );
+
+  border-bottom:
+    2px solid
+    var(
+      --shell-border,
+      #7a7a7a
+    );
+
+  /* Lijevi rub daje postojeća razdjelna crta stupaca */
+  border-left: 0;
+
+  color:
+    var(
+      --shell-text,
+      #4a3b2a
+    );
 
   font-family:
     Georgia,
@@ -31,7 +73,11 @@
 .home-archive-intro__title {
   margin: 0 0 8px;
 
-  color: #292622;
+  color:
+    var(
+      --shell-heading,
+      #3b2f22
+    );
 
   font-size:
     clamp(
@@ -57,10 +103,26 @@
   line-height: 1.6;
 }
 
+
+/* =========================================================
+   MOBITEL / USKI EKRAN
+
+   Kad se lijevi stupac prebaci iznad sadržaja,
+   nema vertikalne razdjelne crte pa okvir tada
+   ponovno dobiva svoj lijevi rub.
+   ========================================================= */
+
 @media (max-width: 760px) {
   .home-archive-intro {
-    margin-top: 6px;
+    margin: 0;
     padding: 14px 16px 16px;
+
+    border-left:
+      2px solid
+      var(
+        --shell-border,
+        #7a7a7a
+      );
   }
 
   .home-archive-intro__title {
