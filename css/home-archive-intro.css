@@ -1,35 +1,25 @@
 /* =========================================================
    TANDARA — HOME ARCHIVE INTRO
-
-   Zajednički informativni okvir ispod početnog stabla.
-
-   Desktop:
-   - okvir se neposredno dodiruje s donjim rubom slike
-   - gornji rub okvira razdvaja sliku i tekst
-   - nema praznog prostora između slike i okvira
-   - nema zasebnog lijevog ruba; glavna razdjelna crta
-     između lijevog i desnog stupca služi kao lijevi rub
-   - pozadina je ista kao pozadina desnog stupca
    ========================================================= */
 
 .home-tree + .home-archive-intro,
 .home-archive-intro {
   box-sizing: border-box;
-
   display: block;
 
   width: 100%;
   max-width: none;
 
-  /* Bez ikakvog razmaka od slike ili lijevog stupca */
   margin: 0;
   padding: 18px 24px 20px;
 
-  /* Bez vlastite boje: prikazuje točno istu pozadinu
-     desnog stupca kao ostatak stranice. */
-  background: transparent;
+  /* Ista pozadina kao lijevi stupac */
+  background:
+    var(
+      --shell-background,
+      #e7d3b0
+    );
 
-  /* Gornji rub točno na donjem rubu slike */
   border-top:
     2px solid
     var(
@@ -51,7 +41,7 @@
       #7a7a7a
     );
 
-  /* Lijevi rub daje postojeća razdjelna crta stupaca */
+  /* Postojeća razdjelna crta služi kao lijevi rub */
   border-left: 0;
 
   color:
@@ -100,15 +90,6 @@
 
   line-height: 1.6;
 }
-
-
-/* =========================================================
-   MOBITEL / USKI EKRAN
-
-   Kad se lijevi stupac prebaci iznad sadržaja,
-   nema vertikalne razdjelne crte pa okvir tada
-   ponovno dobiva svoj lijevi rub.
-   ========================================================= */
 
 @media (max-width: 760px) {
   .home-archive-intro {
