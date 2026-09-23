@@ -871,6 +871,23 @@
     return tokens.every(token => haystack.includes(token));
   }
 
+  function matchPersonField(value, query) {
+  if (!query) return true;
+
+  const tokens = normalize(query).split(' ').filter(Boolean);
+  if (!tokens.length) return true;
+
+  const fullName = normalize(personName(value));
+  const nameTokens = fullName.split(' ').filter(Boolean);
+
+  if (!nameTokens.length) return false;
+
+  if (tokens.length === 1) {
+    return nameTokens[0].includes(tokens[0]);
+  }
+
+  return tokens.every(token => fullName.includes(token));
+}
   function search() {
     // Zajedničko pravilo: svaka nova pretraga zatvara karticu prethodnog rezultata.
     // Time više nije potreban Antina-only antina-search-reset.js.
@@ -888,7 +905,7 @@
 
     const found = Object.values(nodes).filter(rec =>
       matchField(rec.code, qCode)
-      && matchField(recLabel(rec), qPerson)
+     && matchPersonField(recLabel(rec), qPerson)
       && matchField(recFather(rec), qFather)
       && matchField(recMother(rec), qMother)
     );
