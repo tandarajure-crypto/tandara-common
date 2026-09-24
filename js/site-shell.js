@@ -1243,7 +1243,7 @@
 })();
 
 /* =========================================================
-   TANDARA — SMART DIAGRAM SEARCH V4 2026-09-24
+   TANDARA — SMART DIAGRAM SEARCH V6 2026-09-24
 
    Jedinstvena pretraga za JAVNI i PRIVATNI web.
    Važno pravilo:
@@ -1591,23 +1591,22 @@
     const tokenMatch = (h, q) => {
       if (exactVariantMatch(h, q)) return true;
 
-      // Dopušten je smisleni početak osobnog imena od najmanje 3 znaka:
-      // "Mil" -> "Milan". Ne radimo široku substring-pretragu.
+      // Dopušten je smisleni početak od najmanje 3 znaka.
+      // Primjeri: "Mil" -> "Milan", "Luk" -> "Lukic".
       const hn = normalizeBase(h);
       const qn = normalizeBase(q);
       return qn.length >= 3 && hn.startsWith(qn);
     };
 
-    // Jedna riječ u polju Otac/Majka znači OSOBNO IME roditelja.
-    // Zato "Milan" traži prvog člana "Milan Mijin", ali neće pogoditi
-    // "Ante Milanov" samo zato što drugi član počinje s "Milan".
+    // Jedna riječ smije biti bilo koji dio zapisa roditelja:
+    // Milan | Mijin | Iva | Lukic.
     if (qTokens.length === 1) {
-      return tokenMatch(hTokens[0], qTokens[0]);
+      return hTokens.some(h => tokenMatch(h, qTokens[0]));
     }
 
-    // Ako korisnik upiše puni zapis, patronimik/prezime se također smije
-    // koristiti: "Milan Mijin", "Iva Lukić", itd.
-    return tokensInOrderMatch(hTokens, qTokens);
+    // Više riječi: sve riječi moraju biti nađene u zapisu roditelja.
+    // Redoslijed nije presudan, pa rade i "Milan Mijin" i "Mijin Milan".
+    return qTokens.every(q => hTokens.some(h => tokenMatch(h, q)));
   }
 
   function parentFieldMatch(rec, key, query) {
@@ -1759,9 +1758,11 @@
   [searchPerson, searchFather, searchMother].forEach(input => {
     input.classList.add('smart-search-ready');
     input.title = TEXT.smartTitle;
-    input.setAttribute('data-smart-search', 'v4');
+    input.setAttribute('data-smart-search', 'v6');
   });
-  document.body.dataset.smartDiagramSearch = 'v4';
+  document.body.dataset.smartDiagramSearch = 'v6';
+  findBtn.setAttribute('data-search-version', 'v6');
+  findBtn.title = isEnglish ? 'TANDARA search V6' : 'TANDARA pretraga V6';
 
   findBtn.addEventListener('click', event => {
     if (relayToOriginal) return;
