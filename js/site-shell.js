@@ -1243,7 +1243,7 @@
 })();
 
 /* =========================================================
-   TANDARA — SMART DIAGRAM SEARCH V3 2026-09-24
+   TANDARA — SMART DIAGRAM SEARCH V4 2026-09-24
 
    Jedinstvena pretraga za JAVNI i PRIVATNI web.
    Važno pravilo:
@@ -1586,7 +1586,15 @@
       .filter(Boolean)
       .filter(token => !NAME_MARKERS.has(token));
 
-    return qTokens.every(q => hTokens.some(h => exactVariantMatch(h, q)));
+    return qTokens.every(q => hTokens.some(h => {
+      if (exactVariantMatch(h, q)) return true;
+
+      // Otac/majka: dopusti i smisleni početak imena od najmanje 3 znaka,
+      // npr. "Mil" -> "Milan", bez široke substring-pretrage.
+      const hn = normalizeBase(h);
+      const qn = normalizeBase(q);
+      return qn.length >= 3 && hn.startsWith(qn);
+    }));
   }
 
   function codeMatch(value, query) {
@@ -1715,21 +1723,20 @@
       return true;
     }
 
-    if (found.length === 1) {
-      closeResults();
-      openWithOriginalEngine(found[0].code);
-    } else {
-      showResults(found);
-    }
+    // V4: rezultat se UVIJEK prikazuje u popisu, čak i kada je pronađena
+    // samo jedna osoba. To je važno kada ime + otac/majka suze dvije
+    // istoimene osobe na jednu: korisnik mora jasno vidjeti rezultat
+    // prije otvaranja dijagrama.
+    showResults(found);
     return true;
   }
 
   [searchPerson, searchFather, searchMother].forEach(input => {
     input.classList.add('smart-search-ready');
     input.title = TEXT.smartTitle;
-    input.setAttribute('data-smart-search', 'v3');
+    input.setAttribute('data-smart-search', 'v4');
   });
-  document.body.dataset.smartDiagramSearch = 'v3';
+  document.body.dataset.smartDiagramSearch = 'v4';
 
   findBtn.addEventListener('click', event => {
     if (relayToOriginal) return;
