@@ -1577,7 +1577,7 @@
       .some(tokensArray => tokensInOrderMatch(tokensArray, names));
   }
 
-  function genericNameFieldMatch(value, query) {
+  function parentNameValueMatch(value, query) {
     const qTokens = queryTokens(query);
     if (!qTokens.length) return true;
 
@@ -1586,15 +1586,40 @@
       .filter(Boolean)
       .filter(token => !NAME_MARKERS.has(token));
 
-    return qTokens.every(q => hTokens.some(h => {
+    if (!hTokens.length) return false;
+
+    const tokenMatch = (h, q) => {
       if (exactVariantMatch(h, q)) return true;
 
-      // Otac/majka: dopusti i smisleni početak imena od najmanje 3 znaka,
-      // npr. "Mil" -> "Milan", bez široke substring-pretrage.
+      // Dopušten je smisleni početak osobnog imena od najmanje 3 znaka:
+      // "Mil" -> "Milan". Ne radimo široku substring-pretragu.
       const hn = normalizeBase(h);
       const qn = normalizeBase(q);
       return qn.length >= 3 && hn.startsWith(qn);
-    }));
+    };
+
+    // Jedna riječ u polju Otac/Majka znači OSOBNO IME roditelja.
+    // Zato "Milan" traži prvog člana "Milan Mijin", ali neće pogoditi
+    // "Ante Milanov" samo zato što drugi član počinje s "Milan".
+    if (qTokens.length === 1) {
+      return tokenMatch(hTokens[0], qTokens[0]);
+    }
+
+    // Ako korisnik upiše puni zapis, patronimik/prezime se također smije
+    // koristiti: "Milan Mijin", "Iva Lukić", itd.
+    return tokensInOrderMatch(hTokens, qTokens);
+  }
+
+  function parentFieldMatch(rec, key, query) {
+    const qTokens = queryTokens(query);
+    if (!qTokens.length) return true;
+
+    const values = [
+      rec?.[key],
+      rec?.[`${key}En`]
+    ].filter(Boolean);
+
+    return values.some(value => parentNameValueMatch(value, query));
   }
 
   function codeMatch(value, query) {
@@ -1709,8 +1734,8 @@
     const found = Object.values(nodes).filter(rec =>
       codeMatch(rec.code, qCode)
       && personFieldMatch(rec, qPerson)
-      && genericNameFieldMatch(bothLanguages(rec, 'father'), qFather)
-      && genericNameFieldMatch(bothLanguages(rec, 'mother'), qMother)
+      && parentFieldMatch(rec, 'father', qFather)
+      && parentFieldMatch(rec, 'mother', qMother)
     );
 
     found.sort((a, b) => String(a.code).localeCompare(String(b.code), 'hr', { numeric: true }));
