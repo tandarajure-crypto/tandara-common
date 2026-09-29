@@ -307,6 +307,30 @@
         }),
 
 
+      life:
+        Object.freeze({
+
+          hr:
+            Object.freeze({
+              label:
+                "Život roda Tandara kroz tri stoljeća",
+
+              route:
+                "zivot-hr.html"
+            }),
+
+          en:
+            Object.freeze({
+              label:
+                "The Tandara Family Through Three Centuries",
+
+              route:
+                "zivot-en.html"
+            })
+
+        }),
+
+
       facts:
         Object.freeze({
 
