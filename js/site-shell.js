@@ -316,7 +316,7 @@
                 "Život kroz tri stoljeća",
 
               route:
-                "zivot-hr.html"
+                "zivot.html"
             }),
 
           en:
