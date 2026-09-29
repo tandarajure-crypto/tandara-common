@@ -313,7 +313,7 @@
           hr:
             Object.freeze({
               label:
-                "Život roda Tandara kroz tri stoljeća",
+                "Život kroz tri stoljeća",
 
               route:
                 "zivot-hr.html"
@@ -322,7 +322,7 @@
           en:
             Object.freeze({
               label:
-                "The Tandara Family Through Three Centuries",
+                "Life Across Three Centuries",
 
               route:
                 "zivot-en.html"
