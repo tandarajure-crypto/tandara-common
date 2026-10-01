@@ -957,6 +957,27 @@
     }
 
 
+    if (
+      window.location.hostname.toLowerCase() ===
+      "privat-tvz.pages.dev"
+    ) {
+
+      image.setAttribute(
+        "data-flag-counter-src",
+        "/__flagcounter"
+      );
+
+      const link =
+        image.closest("a");
+
+      if (link) {
+        link.href =
+          "/__flagcounter/stats";
+      }
+
+    }
+
+
     const source =
       image.getAttribute(
         "data-flag-counter-src"
