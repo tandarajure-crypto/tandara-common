@@ -16,6 +16,7 @@
    - fotografiju autora
    - Jure / Tandara
    - FlagCounter
+   - pokreće zajedničku objavu iz zasebnog modula
 
    OVA DATOTEKA NE SADRŽI:
    - početno obiteljsko stablo
@@ -23,7 +24,7 @@
    - rodoslovne podatke
    - dijagrame
    - print
-   - modalne prozore
+   - izgled i ponašanje modalne objave
    - posebne zakrpe pojedinih grana
    ========================================================= */
 
@@ -49,6 +50,70 @@
   }
 
 
+  /* =======================================================
+     ZAJEDNIČKA OBJAVA
+     ======================================================= */
+
+  const commonRoot =
+    new URL(
+      "../",
+      script.src
+    );
+
+
+  const siteRoot =
+    new URL(
+      body.dataset.siteRoot || "./",
+      document.baseURI
+    );
+
+
+  if (
+    !document.querySelector(
+      "script[data-tandara-announcement-loader]"
+    )
+  ) {
+
+    const announcementUrl =
+      new URL(
+        "js/announcement.js",
+        commonRoot
+      );
+
+
+    announcementUrl.search =
+      new URL(
+        script.src
+      ).search;
+
+
+    const announcementScript =
+      document.createElement(
+        "script"
+      );
+
+
+    announcementScript.src =
+      announcementUrl.href;
+
+
+    announcementScript.dataset
+      .tandaraAnnouncementLoader =
+        "true";
+
+
+    announcementScript.dataset
+      .siteRoot =
+        siteRoot.href;
+
+
+    document.head.appendChild(
+      announcementScript
+    );
+
+  }
+
+
   const content =
     document.querySelector(
       "[data-site-content]"
@@ -65,20 +130,6 @@
   /* =======================================================
      PUTANJE
      ======================================================= */
-
-  const commonRoot =
-    new URL(
-      "../",
-      script.src
-    );
-
-
-  const siteRoot =
-    new URL(
-      body.dataset.siteRoot || "./",
-      document.baseURI
-    );
-
 
   const templateUrl =
     new URL(
