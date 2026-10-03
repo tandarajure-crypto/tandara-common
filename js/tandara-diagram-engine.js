@@ -78,6 +78,13 @@
   const detailsDates = document.getElementById('personDetailsDates');
   const detailsParents = document.getElementById('personDetailsParents');
   const detailsText = document.getElementById('personDetailsText');
+  const detailsImage = document.createElement('figure');
+  detailsImage.id = 'personDetailsImage';
+  detailsImage.className = 'person-details-image';
+  detailsImage.hidden = true;
+  if (detailsText && detailsText.parentNode) {
+    detailsText.parentNode.insertBefore(detailsImage, detailsText);
+  }
 
   // MASTER rule: every interactive diagram must expose both HR and EN flags.
   // Existing explicit links are preserved. If a converted page accidentally
@@ -303,6 +310,36 @@
     detailsCode.textContent = `${TXT.code}: ${code}`;
     detailsDates.innerHTML = dateHtml(rec);
     detailsParents.textContent = `${TXT.father}: ${recFather(rec) || TXT.missing} · ${TXT.mother}: ${recMother(rec) || TXT.missing}`;
+    detailsImage.replaceChildren();
+    const photo = String(localized(rec, 'photo') || '').trim();
+    let safePhotoUrl = '';
+    if (photo) {
+      try {
+        const parsedPhotoUrl = new URL(photo, window.location.href);
+        if (parsedPhotoUrl.protocol === 'https:') safePhotoUrl = parsedPhotoUrl.href;
+      } catch (error) {
+        safePhotoUrl = '';
+      }
+    }
+    if (safePhotoUrl) {
+      const photoLink = document.createElement('a');
+      photoLink.href = safePhotoUrl;
+      photoLink.target = '_blank';
+      photoLink.rel = 'noopener noreferrer';
+      const photoImage = document.createElement('img');
+      photoImage.src = safePhotoUrl;
+      photoImage.alt = String(localized(rec, 'photoAlt') || detailsName.textContent);
+      photoImage.loading = 'lazy';
+      photoImage.decoding = 'async';
+      photoLink.appendChild(photoImage);
+      detailsImage.appendChild(photoLink);
+      const photoCaption = document.createElement('figcaption');
+      photoCaption.textContent = String(localized(rec, 'photoCaption') || detailsName.textContent);
+      detailsImage.appendChild(photoCaption);
+      detailsImage.hidden = false;
+    } else {
+      detailsImage.hidden = true;
+    }
     const detail = String(recDetail(rec) || '').trim();
     detailsText.innerHTML = formatDetailHtml(detail);
     detailsText.hidden = !detail;
