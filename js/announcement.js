@@ -115,14 +115,22 @@
     }
   }
 
-  function safeImageUrl(path) {
+  function safeImageUrl(path, version) {
     if (typeof path !== "string" || !path.trim()) {
       return null;
     }
 
     try {
       const url = new URL(path, siteRoot);
-      return url.origin === window.location.origin ? url.href : null;
+      if (url.origin !== window.location.origin) {
+        return null;
+      }
+
+      if (typeof version === "string" && version.trim()) {
+        url.searchParams.set("v", version.trim());
+      }
+
+      return url.href;
     } catch (_error) {
       return null;
     }
@@ -149,7 +157,7 @@
       (language === "en" ? "Announcement" : "Obavijest");
     const message = localized(config.message, language);
     const imageAlt = localized(config.imageAlt, language) || title;
-    const imageUrl = safeImageUrl(config.image);
+    const imageUrl = safeImageUrl(config.image, config.id);
 
     if (!imageUrl) {
       return null;
