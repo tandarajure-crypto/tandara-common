@@ -1080,3 +1080,13 @@ body.branch-photo-lightbox-open {
   }
 
 }
+/* Private Antina page photo: keep this portrait at the branch-page photo size. */
+.branch-card figure.person-photo.rosa-milanova-photo img {
+  height: 65px !important;
+  max-height: 65px;
+}
+
+.branch-card figure.person-photo.rosa-milanova-photo figcaption {
+  width: 60px;
+  max-width: 60px;
+}
