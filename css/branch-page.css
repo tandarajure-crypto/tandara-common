@@ -1115,3 +1115,17 @@ body.branch-photo-lightbox-open {
   width: 60px;
   max-width: 60px;
 }
+
+
+/* Matina branch portraits: Cvitan Antin and Dubravka Tandara. */
+.branch-card figure.person-photo.cvitan-antin-photo img,
+.branch-card figure.person-photo.dubravka-tandara-photo img {
+  height: 65px !important;
+  max-height: 65px;
+}
+
+.branch-card figure.person-photo.cvitan-antin-photo figcaption,
+.branch-card figure.person-photo.dubravka-tandara-photo figcaption {
+  width: 60px;
+  max-width: 60px;
+}
