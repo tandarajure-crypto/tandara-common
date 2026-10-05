@@ -1103,3 +1103,15 @@ body.branch-photo-lightbox-open {
   width: 60px;
   max-width: 60px;
 }
+/* Antina branch portraits, matching the Rosa Milanova photo size. */
+.branch-card figure.person-photo.mara-josipova-photo img,
+.branch-card figure.person-photo.neda-josipova-photo img {
+  height: 65px !important;
+  max-height: 65px;
+}
+
+.branch-card figure.person-photo.mara-josipova-photo figcaption,
+.branch-card figure.person-photo.neda-josipova-photo figcaption {
+  width: 60px;
+  max-width: 60px;
+}
