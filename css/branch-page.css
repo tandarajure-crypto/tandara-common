@@ -1090,3 +1090,16 @@ body.branch-photo-lightbox-open {
   width: 60px;
   max-width: 60px;
 }
+
+/* Antina branch portraits, matching the Rosa Milanova photo size. */
+.branch-card figure.person-photo.marin-alenov-photo img,
+.branch-card figure.person-photo.vedran-zdravkov-photo img {
+  height: 65px !important;
+  max-height: 65px;
+}
+
+.branch-card figure.person-photo.marin-alenov-photo figcaption,
+.branch-card figure.person-photo.vedran-zdravkov-photo figcaption {
+  width: 60px;
+  max-width: 60px;
+}
