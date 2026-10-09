@@ -901,6 +901,34 @@
     resultItems.innerHTML = '';
   }
 
+  /* ---------- PRETRAGA ---------- */
+
+  // Osnova riječi: uklanja završni samoglasnik (mato/mate/mata/matu -> mat).
+  // Kratke riječi (3 znaka i manje) ne diraju se.
+  function wordStem(word) {
+    return word.length > 3 && /[aeiou]$/.test(word) ? word.slice(0, -1) : word;
+  }
+
+  // Dvije riječi se podudaraju ako su iste ili imaju istu osnovu.
+  function wordMatches(queryWord, nameWord) {
+    return queryWord === nameWord || wordStem(queryWord) === wordStem(nameWord);
+  }
+
+  // Svaki upit mora se podudarati s nekom riječi u tekstu (ime, otac ili majka).
+  function matchName(value, query) {
+    if (!query) return true;
+    const tokens = normalize(query).split(' ').filter(Boolean);
+    if (!tokens.length) return true;
+    const words = normalize(value).split(' ').filter(Boolean);
+    return tokens.every(token => words.some(word => wordMatches(token, word)));
+  }
+
+  // Ime osobe: prije pretrage uklanja godine iz zapisa.
+  function matchPersonField(value, query) {
+    return matchName(personName(value), query);
+  }
+
+  // Šifra: traži podniz (npr. "3.1.1" nalazi sve što počinje tim kodom).
   function matchField(value, query) {
     if (!query) return true;
     const haystack = normalize(value);
@@ -908,23 +936,6 @@
     return tokens.every(token => haystack.includes(token));
   }
 
-  function matchPersonField(value, query) {
-  if (!query) return true;
-
-  const tokens = normalize(query).split(' ').filter(Boolean);
-  if (!tokens.length) return true;
-
-  const fullName = normalize(personName(value));
-  const nameTokens = fullName.split(' ').filter(Boolean);
-
-  if (!nameTokens.length) return false;
-
-  if (tokens.length === 1) {
-    return nameTokens[0].includes(tokens[0]);
-  }
-
-  return tokens.every(token => fullName.includes(token));
-}
   function search() {
     // Zajedničko pravilo: svaka nova pretraga zatvara karticu prethodnog rezultata.
     // Time više nije potreban Antina-only antina-search-reset.js.
@@ -942,9 +953,9 @@
 
     const found = Object.values(nodes).filter(rec =>
       matchField(rec.code, qCode)
-     && matchPersonField(recLabel(rec), qPerson)
-      && matchField(recFather(rec), qFather)
-      && matchField(recMother(rec), qMother)
+      && matchPersonField(recLabel(rec), qPerson)
+      && matchName(recFather(rec), qFather)
+      && matchName(recMother(rec), qMother)
     );
 
     found.sort((a, b) => {
@@ -1024,15 +1035,15 @@
   document.getElementById('zoomIn').addEventListener('click', () => zoomAt(1.22));
   document.getElementById('zoomOut').addEventListener('click', () => zoomAt(0.82));
 
-document.getElementById('fullscreenDiagram').addEventListener('click', () => {
-  document.body.classList.toggle('diagram-wide');
+  document.getElementById('fullscreenDiagram').addEventListener('click', () => {
+    document.body.classList.toggle('diagram-wide');
 
-  requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      window.dispatchEvent(new Event('resize'));
+      requestAnimationFrame(() => {
+        window.dispatchEvent(new Event('resize'));
+      });
     });
   });
-}); 
   document.getElementById('printDiagram').addEventListener('click', () => window.print());
 
   svg.addEventListener('wheel', event => {
@@ -1094,70 +1105,48 @@ document.getElementById('fullscreenDiagram').addEventListener('click', () => {
   const button = document.getElementById('headerCollapse');
   const fullBtn = document.getElementById('fullscreenDiagram');
 
- const setLayoutState = (isWide) => {
-  if (!fullBtn) return;
+  const setLayoutState = (isWide) => {
+    if (!fullBtn) return;
 
-  const enterLabel =
-    fullBtn.dataset.enterLabel || 'Cijeli ekran';
+    const enterLabel = fullBtn.dataset.enterLabel || 'Cijeli ekran';
+    const exitLabel = fullBtn.dataset.exitLabel || 'Povratak';
+    const label = isWide ? exitLabel : enterLabel;
 
-  const exitLabel =
-    fullBtn.dataset.exitLabel || 'Povratak';
-
-  const label =
-    isWide ? exitLabel : enterLabel;
-
-  fullBtn.textContent = label;
-  fullBtn.setAttribute('aria-label', label);
-  fullBtn.title = label;
-};
-
+    fullBtn.textContent = label;
+    fullBtn.setAttribute('aria-label', label);
+    fullBtn.title = label;
+  };
 
   /* =====================================================
      SAKRIVANJE / PRIKAZ GORNJEG DIJELA DIJAGRAMA
      ===================================================== */
 
   if (header && button) {
-    const symbol =
-      button.querySelector('[data-collapse-symbol]');
-
-    const visibleLabel =
-      button.querySelector('[data-collapse-label]');
+    const symbol = button.querySelector('[data-collapse-symbol]');
+    const visibleLabel = button.querySelector('[data-collapse-label]');
 
     const updateHeader = (collapsed) => {
-      button.setAttribute(
-        'aria-expanded',
-        collapsed ? 'false' : 'true'
-      );
+      button.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
 
-      const label =
-        collapsed
-          ? button.dataset.showLabel
-          : button.dataset.hideLabel;
-
+      const label = collapsed ? button.dataset.showLabel : button.dataset.hideLabel;
       if (label) {
         button.setAttribute('aria-label', label);
         button.title = label;
       }
 
       if (symbol) {
-        symbol.textContent =
-          collapsed ? '▼' : '▲';
+        symbol.textContent = collapsed ? '▼' : '▲';
       }
 
       if (visibleLabel) {
-        visibleLabel.textContent =
-          collapsed
-            ? (button.dataset.showLabel || '')
-            : '';
+        visibleLabel.textContent = collapsed ? (button.dataset.showLabel || '') : '';
       }
     };
 
     updateHeader(false);
 
     button.addEventListener('click', () => {
-      const collapsed =
-        header.classList.toggle('header-collapsed');
-
+      const collapsed = header.classList.toggle('header-collapsed');
       updateHeader(collapsed);
 
       requestAnimationFrame(() =>
@@ -1168,24 +1157,18 @@ document.getElementById('fullscreenDiagram').addEventListener('click', () => {
     });
   }
 
-
   /* =====================================================
      PODIJELJENI PRIKAZ <-> CIJELA ŠIRINA DIJAGRAMA
      ===================================================== */
 
   if (fullBtn) {
-    setLayoutState(
-      document.body.classList.contains('diagram-wide')
-    );
+    setLayoutState(document.body.classList.contains('diagram-wide'));
 
     fullBtn.addEventListener('click', () => {
       requestAnimationFrame(() => {
-        setLayoutState(
-          document.body.classList.contains('diagram-wide')
-        );
+        setLayoutState(document.body.classList.contains('diagram-wide'));
       });
     });
   }
 
 })();
-
