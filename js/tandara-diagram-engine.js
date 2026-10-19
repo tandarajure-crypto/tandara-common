@@ -6,8 +6,11 @@
   zoom/pan, fullscreen, ispis, kartica osobe, HR/EN, N.G., privremeni zapisi
   nepoznatog spola te kći prenositeljica prezimena.
 */
-(() => {
+(async () => {
   'use strict';
+
+  // The public supplement patches #diagramData before it is parsed.
+  if (window.tandaraPublicRecordsReady) await window.tandaraPublicRecordsReady;
 
   const dataEl = document.getElementById('diagramData');
   if (!dataEl) {
@@ -1180,3 +1183,4 @@
   }
 
 })();
+
