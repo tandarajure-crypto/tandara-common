@@ -124,15 +124,75 @@
     }
   })();
 
+  // Move the owner's photograph with grandmother Anica to her own record.
+  function placeAnicaPortrait() {
+    const anica = '3.1.1.2.8.1-SP-1', josip = '3.1.1.2.8.1';
+    const base = 'https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/';
+    const src = base + 'JJ-02.jpg';
+    const en = (document.documentElement.lang || '').startsWith('en');
+    const name = en ? 'Anica née Dragun' : 'Anica rođ. Dragun';
+    const caption = en ? 'With grandmother Anica née Dragun' : 'S bakom Anicom rođ. Dragun';
+    const isPhoto = (value, file) => String(value || '').split('?')[0].endsWith('/' + file);
+    const dataEl = document.getElementById('diagramData');
+    if (dataEl) {
+      const data = JSON.parse(dataEl.textContent);
+      for (const group of [data.nodes, data.primary]) {
+        if (!group) continue;
+        const grandmother = group[anica], grandfather = group[josip];
+        if (grandmother) Object.assign(grandmother, {
+          photo:src, photoEn:src, photoAlt:caption, photoAltEn:'With grandmother Anica née Dragun',
+          photoCaption:caption, photoCaptionEn:'With grandmother Anica née Dragun',
+          photos:[{src, alt:caption, caption}]
+        });
+        if (grandfather) {
+          if (Array.isArray(grandfather.photos)) grandfather.photos = grandfather.photos.filter(p => !isPhoto(p.src, 'JJ-02.jpg'));
+          for (const key of ['photo', 'photoEn']) if (isPhoto(grandfather[key], 'JJ-02.jpg')) grandfather[key] = base + 'JJ-01.jpg';
+        }
+      }
+      dataEl.textContent = JSON.stringify(data);
+      return;
+    }
+    const entry = [...document.querySelectorAll('span[data-person-code]')].find(el => el.dataset.personCode === anica);
+    let heading = [...document.querySelectorAll('h3[data-person-code]')].find(el => el.dataset.personCode === anica);
+    const list = entry && (entry.closest('.family-code-list') || entry.closest('p'));
+    if (!heading && !list) return;
+    // Remove this photograph from Josip's block and the duplicated couple photo from Anica's block.
+    for (const figure of [...document.querySelectorAll('figure')]) {
+      const img = figure.querySelector('img'); if (!img) continue;
+      let owner = figure.dataset.personCode || figure.closest('[data-memorial-code]')?.dataset.memorialCode;
+      if (!owner) {
+        let section = figure.closest('.person-photo-gallery') || figure;
+        while ((section = section.previousElementSibling)) if (section.matches('h3[data-person-code]')) { owner = section.dataset.personCode; break; }
+      }
+      if (isPhoto(img.getAttribute('src'), 'JJ-02.jpg') || (owner === anica && isPhoto(img.getAttribute('src'), 'JJ-01.jpg'))) figure.remove();
+      else if (figure.dataset.personCodes && owner === josip) figure.dataset.personCodes = figure.dataset.personCodes.split(/\s+/).filter(c => c !== anica).join(' ');
+    }
+    if (!heading) {
+      heading = document.createElement('h3'); heading.dataset.personCode = anica;
+      heading.textContent = anica + '. ' + name + (en ? ' (1911–1989)' : ' (1911.–1989.)');
+      list.after(heading);
+    }
+    let gallery = document.querySelector(`[data-memorial-code="${anica}"]`);
+    if (!gallery) { gallery = document.createElement('div'); gallery.className = 'person-photo-gallery'; gallery.dataset.memorialCode = anica; }
+    gallery.replaceChildren();
+    const figure = document.createElement('figure'); figure.className = 'person-photo'; figure.dataset.personCode = anica;
+    const a = document.createElement('a'); a.href = src; a.target = '_blank'; a.rel = 'noopener noreferrer';
+    const img = document.createElement('img'); img.src = src; img.alt = caption; img.loading = 'lazy'; img.decoding = 'async';
+    const cap = document.createElement('figcaption'); cap.textContent = caption;
+    a.append(img); figure.append(a, cap); gallery.append(figure); heading.after(gallery);
+  }
+
   // Optional public-only record supplement. Private sites never load this file.
   if (location.hostname === 'tandarajure-crypto.github.io' && location.pathname.startsWith('/Tandara/')) {
     window.tandaraPublicRecordsReady = new Promise(resolve => {
       const supplement = document.createElement('script');
       supplement.src = new URL('js/public-memorials.js?v=20261019-3', new URL('/Tandara/', location.origin)).href;
-      supplement.onload = resolve;
-      supplement.onerror = () => { console.error('TANDARA: public memorial supplement unavailable.'); resolve(); };
+      supplement.onload = () => { placeAnicaPortrait(); resolve(); };
+      supplement.onerror = () => { placeAnicaPortrait(); console.error('TANDARA: public memorial supplement unavailable.'); resolve(); };
       document.head.appendChild(supplement);
     });
+  } else {
+    placeAnicaPortrait();
   }
 
   /* =======================================================
