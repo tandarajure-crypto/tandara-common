@@ -1129,3 +1129,13 @@ body.branch-photo-lightbox-open {
   width: 60px;
   max-width: 60px;
 }
+
+/* Compact private Petar-branch portraits. */
+.branch-card figure.person-photo.branch-photo-65 img {
+  height: 65px !important;
+  max-height: 65px;
+}
+.branch-card figure.person-photo.branch-photo-65 figcaption {
+  width: 60px;
+  max-width: 60px;
+}
