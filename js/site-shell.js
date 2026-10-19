@@ -50,6 +50,80 @@
   }
 
 
+  // Owner-confirmed deceased portraits, 2026-10-19. Only these three IDs are changed.
+  (() => {
+    const records = [
+      ['4.1.1.4.5-K1', 'Dragica Nikolina', 'Dragica Nikolina', '1937', '2015', 'matinagrana/dragicanikolina.jpg'],
+      ['3.1.1.1.4.1.1-SP-1', 'Marija rođ. Lekić', 'Marija née Lekić', '1939', '2021', 'antinagrana/marijanikolina.jpg'],
+      ['3.1.2.3.2.2-SP-1', 'Danica rođ. Malenica', 'Danica née Malenica', '1935', '2016', 'antinagrana/danicamatina.jpg']
+    ];
+    const en = (document.documentElement.lang || '').startsWith('en');
+    const dataEl = document.getElementById('diagramData');
+    const data = dataEl ? JSON.parse(dataEl.textContent) : null;
+    for (const [code, hr, english, birth, death, file] of records) {
+      const name = en ? english : hr;
+      const src = 'https://tandarajure-crypto.github.io/tandara-common/slike/' + file;
+      const dates = en ? `(${birth}–${death})` : `(${birth}.–${death}.)`;
+      if (data) {
+        for (const group of [data.nodes, data.primary]) {
+          const person = group && group[code];
+          if (!person) continue;
+          const wasProtected = person.protected;
+          Object.assign(person, {label:hr, labelEn:english, birth, death, protected:false,
+            photo:src, photoEn:src, photoAlt:hr, photoAltEn:english,
+            photoCaption:hr, photoCaptionEn:english,
+            photos:[{src, caption:name, alt:name}]});
+          if (wasProtected) {
+            person.detail = `${hr} (${birth}.–${death}.)`;
+            person.detailEn = `${english} (${birth}–${death})`;
+          }
+        }
+        continue;
+      }
+      const entry = [...document.querySelectorAll('span[data-person-code]')].find(el => el.dataset.personCode === code);
+      if (!entry) continue;
+      const strong = document.createElement('strong'); strong.textContent = code;
+      const life = document.createElement('span'); life.className = 'life-date'; life.textContent = dates;
+      entry.replaceChildren(strong, document.createTextNode(' ' + name + ' '), life);
+      const list = entry.closest('.family-code-list') || entry.closest('p');
+      if (!list) continue;
+      // Correct the existing family paragraph without copying any other family data.
+      const paragraph = list.previousElementSibling;
+      if (paragraph && paragraph.tagName === 'P') {
+        const walker = document.createTreeWalker(paragraph, NodeFilter.SHOW_TEXT);
+        while (walker.nextNode()) {
+          let value = walker.currentNode.textContent;
+          if (code === '3.1.1.1.4.1.1-SP-1') value = value.replace(/Marija (?:rođ\. |née )?Lukić/g, name);
+          if (code === '3.1.2.3.2.2-SP-1') value = value.replace(/Danica Malenica \((?:godine nisu poznate|years unknown)\)/g, name + ' ' + dates);
+          if (code === '4.1.1.4.5-K1') value = value.replace(/Dragica \(1937\.?[–-]\)/g, name + ' ' + dates);
+          walker.currentNode.textContent = value;
+        }
+      }
+      if (document.querySelector(`[data-memorial-code="${code}"]`)) continue;
+      const gallery = document.createElement('div'); gallery.className = 'person-photo-gallery'; gallery.dataset.memorialCode = code;
+      const figure = document.createElement('figure'); figure.className = 'person-photo'; figure.dataset.personCode = code;
+      const a = document.createElement('a'); a.href = src; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      const img = document.createElement('img'); img.src = src; img.alt = name; img.loading = 'lazy'; img.decoding = 'async';
+      const caption = document.createElement('figcaption'); caption.textContent = name + ' ' + dates;
+      a.append(img); figure.append(a, caption); gallery.append(figure); list.after(gallery);
+    }
+    // The shared grave belongs to Nikola's record; Marija's record now has her portrait.
+    for (const figure of document.querySelectorAll('figure[data-person-codes]')) {
+      const codes = figure.dataset.personCodes.split(/\s+/);
+      if (codes.includes('3.1.1.1.4.1.1-SP-1') && codes.includes('3.1.1.1.4.1.1')) {
+        figure.dataset.personCodes = codes.filter(code => code !== '3.1.1.1.4.1.1-SP-1').join(' ');
+        const cap = figure.querySelector('figcaption');
+        if (cap) cap.textContent = cap.textContent.replace(/Marija Lukić/g, 'Marija Lekić');
+        const img = figure.querySelector('img');
+        if (img) img.alt = img.alt.replace(/Marija Lukić/g, 'Marija Lekić');
+      }
+    }
+    if (dataEl) {
+      if (data.meta) data.meta.protectedCount = Object.values(data.nodes || {}).filter(n => n.protected).length;
+      dataEl.textContent = JSON.stringify(data);
+    }
+  })();
+
   // Optional public-only record supplement. Private sites never load this file.
   if (location.hostname === 'tandarajure-crypto.github.io' && location.pathname.startsWith('/Tandara/')) {
     window.tandaraPublicRecordsReady = new Promise(resolve => {
