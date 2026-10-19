@@ -322,35 +322,41 @@
     detailsDates.innerHTML = dateHtml(rec);
     detailsParents.textContent = `${TXT.father}: ${recFather(rec) || TXT.missing} · ${TXT.mother}: ${recMother(rec) || TXT.missing}`;
     detailsImage.replaceChildren();
-    const photo = String(localized(rec, 'photo') || '').trim();
-    let safePhotoUrl = '';
-    if (photo) {
+    const photos = Array.isArray(rec.photos) && rec.photos.length ? rec.photos : [{
+      src: localized(rec, 'photo'), alt: localized(rec, 'photoAlt'),
+      caption: localized(rec, 'photoCaption')
+    }];
+    for (const photo of photos) {
+      if (!photo.src) continue;
+      let url;
       try {
-        const parsedPhotoUrl = new URL(photo, window.location.href);
-        if (parsedPhotoUrl.protocol === 'https:') safePhotoUrl = parsedPhotoUrl.href;
-      } catch (error) {
-        safePhotoUrl = '';
-      }
+        url = new URL(photo.src, window.location.href);
+        // Family photographs always come from the common repository.
+        const imagePath = url.pathname.indexOf('/slike/');
+        if (url.hostname === 'tandarajure-crypto.github.io' && imagePath >= 0) {
+          url.pathname = '/tandara-common' + url.pathname.slice(imagePath);
+        }
+        if (url.protocol !== 'https:') continue;
+      } catch (_) { continue; }
+      const figure = document.createElement('figure');
+      figure.className = 'person-details-photo';
+      const link = document.createElement('a');
+      link.href = url.href;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      const img = document.createElement('img');
+      img.alt = String(photo.alt || photo.caption || detailsName.textContent);
+      // The selected person's card should load immediately, even while hidden.
+      img.loading = 'eager';
+      img.decoding = 'async';
+      img.src = url.href;
+      link.append(img);
+      const caption = document.createElement('figcaption');
+      caption.textContent = String(photo.caption || detailsName.textContent);
+      figure.append(link, caption);
+      detailsImage.append(figure);
     }
-    if (safePhotoUrl) {
-      const photoLink = document.createElement('a');
-      photoLink.href = safePhotoUrl;
-      photoLink.target = '_blank';
-      photoLink.rel = 'noopener noreferrer';
-      const photoImage = document.createElement('img');
-      photoImage.src = safePhotoUrl;
-      photoImage.alt = String(localized(rec, 'photoAlt') || detailsName.textContent);
-      photoImage.loading = 'lazy';
-      photoImage.decoding = 'async';
-      photoLink.appendChild(photoImage);
-      detailsImage.appendChild(photoLink);
-      const photoCaption = document.createElement('figcaption');
-      photoCaption.textContent = String(localized(rec, 'photoCaption') || detailsName.textContent);
-      detailsImage.appendChild(photoCaption);
-      detailsImage.hidden = false;
-    } else {
-      detailsImage.hidden = true;
-    }
+    detailsImage.hidden = !detailsImage.childElementCount;
     const detail = String(recDetail(rec) || '').trim();
     detailsText.innerHTML = formatDetailHtml(detail, rec);
     detailsText.hidden = !detail;
@@ -1183,4 +1189,5 @@
   }
 
 })();
+
 
