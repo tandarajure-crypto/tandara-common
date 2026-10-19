@@ -54,7 +54,7 @@
   if (location.hostname === 'tandarajure-crypto.github.io' && location.pathname.startsWith('/Tandara/')) {
     window.tandaraPublicRecordsReady = new Promise(resolve => {
       const supplement = document.createElement('script');
-      supplement.src = new URL('js/public-memorials.js?v=20261019-2', new URL('/Tandara/', location.origin)).href;
+      supplement.src = new URL('js/public-memorials.js?v=20261019-3', new URL('/Tandara/', location.origin)).href;
       supplement.onload = resolve;
       supplement.onerror = () => { console.error('TANDARA: public memorial supplement unavailable.'); resolve(); };
       document.head.appendChild(supplement);
