@@ -332,18 +332,88 @@
     }
   }
 
+
+  // Additional photographs of Nediljko and his son, attached only to visible records.
+  function placeNediljkoFamilyPhotos() {
+    const base = 'https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/';
+    const records = [
+      {code:'2.3.4.1.3.1.3.1', name:'Nediljko Milanov', caption:'Nediljko i Vesna', file:'nediljko.jpg', original:'nediljkomilanov62.jpg'},
+      {code:'2.3.4.1.3.1.3.1.1', name:'Milan Nediljkov', caption:'Milan Nediljkov', file:'nediljko2.jpg'}
+    ];
+    const dataEl = document.getElementById('diagramData');
+    if (dataEl) {
+      const data = JSON.parse(dataEl.textContent);
+      for (const r of records) for (const group of [data.nodes, data.primary]) {
+        const person = group && group[r.code];
+        if (!person || person.protected || !String(person.label).includes(r.name)) continue;
+        const photos = Array.isArray(person.photos) ? person.photos.slice() : [];
+        if (!photos.length && (person.photo || r.original)) photos.push({
+          src:person.photo || base + r.original,
+          caption:person.photoCaption || r.name, alt:person.photoAlt || r.name
+        });
+        const src = base + r.file;
+        const existing = photos.find(p => p.src === src);
+        if (existing) Object.assign(existing, {caption:r.caption, alt:r.caption});
+        else photos.push({src, caption:r.caption, alt:r.caption});
+        person.photos = photos;
+        if (!person.photo) Object.assign(person, {photo:photos[0].src, photoEn:photos[0].src,
+          photoCaption:photos[0].caption, photoCaptionEn:photos[0].caption,
+          photoAlt:photos[0].alt, photoAltEn:photos[0].alt});
+      }
+      dataEl.textContent = JSON.stringify(data);
+      return;
+    }
+    for (const r of records) {
+      const entries = [...document.querySelectorAll('[data-person-code]')]
+        .filter(el => el.dataset.personCode === r.code && el.textContent.includes(r.name));
+      let heading = entries.find(el => /^H[234]$/.test(el.tagName));
+      const entry = entries.find(el => el.matches('span, p'));
+      if (!heading && !entry) continue;
+      if (!heading) {
+        const anchor = entry.closest('.family-code-list') || entry.closest('p') || entry;
+        heading = document.createElement('h3');
+        heading.dataset.personCode = r.code;
+        heading.textContent = r.code + '. ' + r.name;
+        anchor.after(heading);
+      }
+      let gallery;
+      for (let el = heading.nextElementSibling; el && !/^H[234]$/.test(el.tagName); el = el.nextElementSibling) {
+        if (el.classList.contains('person-photo-gallery')) { gallery = el; break; }
+      }
+      if (!gallery) {
+        gallery = document.createElement('div');
+        gallery.className = 'person-photo-gallery';
+        heading.after(gallery);
+      }
+      if (r.original) {
+        gallery.style.display = 'flex'; gallery.style.flexWrap = 'wrap';
+        gallery.style.gap = '16px'; gallery.style.alignItems = 'flex-start';
+      }
+      const src = base + r.file;
+      if ([...gallery.querySelectorAll('img')].some(img => img.getAttribute('src') === src)) continue;
+      const figure = document.createElement('figure');
+      figure.className = 'person-photo'; figure.dataset.personCode = r.code;
+      const link = document.createElement('a');
+      link.href = src; link.target = '_blank'; link.rel = 'noopener noreferrer';
+      const img = document.createElement('img');
+      img.src = src; img.alt = r.caption; img.loading = 'lazy'; img.decoding = 'async';
+      const caption = document.createElement('figcaption'); caption.textContent = r.caption;
+      link.append(img); figure.append(link, caption); gallery.append(figure);
+    }
+  }
+
   // Optional public-only record supplement. Private sites never load this file.
   if (location.hostname === 'tandarajure-crypto.github.io' && location.pathname.startsWith('/Tandara/')) {
     window.tandaraPublicRecordsReady = new Promise(resolve => {
       const supplement = document.createElement('script');
       supplement.src = new URL('js/public-memorials.js?v=20261019-3', new URL('/Tandara/', location.origin)).href;
-      supplement.onload = () => { placeAnicaPortrait(); placeSnjezanaPortrait(); placeSilvanaPortrait(); updateMilenkaDates(); resolve(); };
-      supplement.onerror = () => { placeAnicaPortrait(); placeSnjezanaPortrait(); placeSilvanaPortrait(); updateMilenkaDates(); console.error('TANDARA: public memorial supplement unavailable.'); resolve(); };
+      supplement.onload = () => { placeAnicaPortrait(); placeSnjezanaPortrait(); placeSilvanaPortrait(); updateMilenkaDates(); placeNediljkoFamilyPhotos(); resolve(); };
+      supplement.onerror = () => { placeAnicaPortrait(); placeSnjezanaPortrait(); placeSilvanaPortrait(); updateMilenkaDates(); placeNediljkoFamilyPhotos(); console.error('TANDARA: public memorial supplement unavailable.'); resolve(); };
       document.head.appendChild(supplement);
     });
   } else {
     placeAnicaPortrait();
-    placeSnjezanaPortrait(); placeSilvanaPortrait(); updateMilenkaDates();
+    placeSnjezanaPortrait(); placeSilvanaPortrait(); updateMilenkaDates(); placeNediljkoFamilyPhotos();
   }
 
   /* =======================================================
