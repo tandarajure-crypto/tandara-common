@@ -402,18 +402,69 @@
     }
   }
 
+
+  // Death years confirmed by the owner on 2026-10-20.
+  function updateMarinDaughtersDates() {
+    const records = [
+      {code:'2.3.4.1.3.2-K3', name:'Anka Marinova', birth:'1954', death:'2024'},
+      {code:'2.3.4.1.3.2-K1', name:'Dragica Marinova', birth:'1938', death:'2023'}
+    ];
+    const en = (document.documentElement.lang || '').startsWith('en');
+    const dates = (r, english) => english ? '(' + r.birth + '–' + r.death + ')' : '(' + r.birth + '.–' + r.death + '.)';
+    const replaceDates = (text, english) => {
+      let result = String(text || '');
+      for (const r of records) result = result.replace(
+        new RegExp(r.name + '(?:\\s*\\([^)]*\\))?', 'g'), r.name + ' ' + dates(r, english));
+      return result;
+    };
+    const dataEl = document.getElementById('diagramData');
+    if (dataEl) {
+      const data = JSON.parse(dataEl.textContent);
+      for (const group of [data.nodes, data.primary]) {
+        if (!group) continue;
+        for (const r of records) {
+          const person = group[r.code];
+          if (!person) continue;
+          Object.assign(person, {label:r.name, labelEn:r.name, birth:r.birth, death:r.death});
+        }
+        for (const person of Object.values(group)) {
+          if (person.detail) person.detail = replaceDates(person.detail, false);
+          if (person.detailEn) person.detailEn = replaceDates(person.detailEn, true);
+        }
+      }
+      dataEl.textContent = JSON.stringify(data);
+      return;
+    }
+    for (const r of records) {
+      for (const entry of document.querySelectorAll('span[data-person-code], h3[data-person-code], p[data-person-code]')) {
+        if (entry.dataset.personCode !== r.code || !entry.textContent.includes(r.name.split(' ')[0])) continue;
+        const strong = document.createElement('strong'); strong.textContent = r.code;
+        const life = document.createElement('span'); life.className = 'life-date'; life.textContent = dates(r, en);
+        entry.replaceChildren(strong, document.createTextNode(' ' + r.name + ' '), life);
+      }
+    }
+    for (const element of document.querySelectorAll('p, h3, figcaption')) {
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+      while (walker.nextNode()) {
+        const node = walker.currentNode;
+        if (node.parentElement.closest('span[data-person-code], h3[data-person-code], p[data-person-code]')) continue;
+        node.textContent = replaceDates(node.textContent, en);
+      }
+    }
+  }
+
   // Optional public-only record supplement. Private sites never load this file.
   if (location.hostname === 'tandarajure-crypto.github.io' && location.pathname.startsWith('/Tandara/')) {
     window.tandaraPublicRecordsReady = new Promise(resolve => {
       const supplement = document.createElement('script');
       supplement.src = new URL('js/public-memorials.js?v=20261019-3', new URL('/Tandara/', location.origin)).href;
-      supplement.onload = () => { placeAnicaPortrait(); placeSnjezanaPortrait(); placeSilvanaPortrait(); updateMilenkaDates(); placeNediljkoFamilyPhotos(); resolve(); };
-      supplement.onerror = () => { placeAnicaPortrait(); placeSnjezanaPortrait(); placeSilvanaPortrait(); updateMilenkaDates(); placeNediljkoFamilyPhotos(); console.error('TANDARA: public memorial supplement unavailable.'); resolve(); };
+      supplement.onload = () => { placeAnicaPortrait(); placeSnjezanaPortrait(); placeSilvanaPortrait(); updateMilenkaDates(); placeNediljkoFamilyPhotos(); updateMarinDaughtersDates(); resolve(); };
+      supplement.onerror = () => { placeAnicaPortrait(); placeSnjezanaPortrait(); placeSilvanaPortrait(); updateMilenkaDates(); placeNediljkoFamilyPhotos(); updateMarinDaughtersDates(); console.error('TANDARA: public memorial supplement unavailable.'); resolve(); };
       document.head.appendChild(supplement);
     });
   } else {
     placeAnicaPortrait();
-    placeSnjezanaPortrait(); placeSilvanaPortrait(); updateMilenkaDates(); placeNediljkoFamilyPhotos();
+    placeSnjezanaPortrait(); placeSilvanaPortrait(); updateMilenkaDates(); placeNediljkoFamilyPhotos(); updateMarinDaughtersDates();
   }
 
   /* =======================================================
