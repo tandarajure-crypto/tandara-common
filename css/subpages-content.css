@@ -749,3 +749,11 @@
     min-height: 520px;
   }
 }
+
+/* Allow long descriptions and links to wrap within their photo card. */
+.content-card figcaption,
+.content-card figcaption a {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}

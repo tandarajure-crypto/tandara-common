@@ -295,3 +295,13 @@ body.site-shell-ready.diagram-wide .topbar > .home-btn {
   color: #67533e;
   font: italic 12px/1.3 Arial, sans-serif;
 }
+
+/* Photo captions must not widen the person details panel. */
+.person-details figcaption,
+.person-details figcaption a {
+  min-width: 0;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}

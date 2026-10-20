@@ -1139,3 +1139,38 @@ body.branch-photo-lightbox-open {
   width: 60px;
   max-width: 60px;
 }
+
+/* Keep photo descriptions within the image width; wrap galleries instead of scrolling. */
+.branch-card .person-photo-gallery {
+  flex-wrap: wrap;
+  overflow: visible;
+}
+.branch-card .person-photo-gallery figure,
+.branch-card figure.person-photo {
+  min-width: 0;
+  max-width: 100%;
+}
+.branch-card .person-photo > a {
+  max-width: 100%;
+}
+.branch-card .person-photo img {
+  max-width: 100%;
+}
+.branch-card .person-photo figcaption {
+  contain: inline-size;
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 100% !important;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+.branch-card .person-photo figcaption a {
+  display: inline;
+  width: auto;
+  max-width: 100%;
+  line-height: inherit;
+  cursor: pointer;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
