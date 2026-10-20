@@ -231,18 +231,66 @@
     link.append(img); figure.replaceChildren(link, label);
   }
 
+  // Attach Silvana's portrait wherever her existing, visible record is present.
+  function placeSilvanaPortrait() {
+    const code = '2.3.4.1.3.1.4-K1';
+    const caption = 'Silvana marijanova';
+    const src = 'https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/silvana.jpg';
+    const visibleName = value => /silvana/i.test(String(value || ''));
+    const dataEl = document.getElementById('diagramData');
+    if (dataEl) {
+      const data = JSON.parse(dataEl.textContent);
+      for (const group of [data.nodes, data.primary]) {
+        const person = group && group[code];
+        if (!person || person.protected || !visibleName(person.label)) continue;
+        const photos = Array.isArray(person.photos) ? person.photos.slice() : [];
+        if (!photos.length && person.photo && person.photo !== src) {
+          photos.push({src:person.photo, alt:person.photoAlt || person.label, caption:person.photoCaption || person.label});
+        }
+        const existing = photos.find(photo => photo.src === src);
+        if (existing) Object.assign(existing, {alt:caption, caption});
+        else photos.push({src, alt:caption, caption});
+        Object.assign(person, {photo:src, photoEn:src, photoAlt:caption, photoAltEn:caption,
+          photoCaption:caption, photoCaptionEn:caption, photos});
+      }
+      dataEl.textContent = JSON.stringify(data);
+      return;
+    }
+    const entry = [...document.querySelectorAll('span[data-person-code], h3[data-person-code]')]
+      .find(el => el.dataset.personCode === code && visibleName(el.textContent));
+    if (!entry) return;
+    let figure = document.querySelector('figure[data-person-code="' + code + '"]');
+    if (!figure) {
+      const anchor = entry.closest('.family-code-list') || entry.closest('p') || entry;
+      const gallery = document.createElement('div');
+      gallery.className = 'person-photo-gallery';
+      figure = document.createElement('figure');
+      figure.className = 'person-photo';
+      figure.dataset.personCode = code;
+      gallery.append(figure);
+      anchor.after(gallery);
+    }
+    const link = document.createElement('a');
+    link.href = src; link.target = '_blank'; link.rel = 'noopener noreferrer';
+    const img = document.createElement('img');
+    img.src = src; img.alt = caption; img.loading = 'lazy'; img.decoding = 'async';
+    const label = document.createElement('figcaption');
+    label.textContent = caption;
+    link.append(img); figure.replaceChildren(link, label);
+  }
+
   // Optional public-only record supplement. Private sites never load this file.
   if (location.hostname === 'tandarajure-crypto.github.io' && location.pathname.startsWith('/Tandara/')) {
     window.tandaraPublicRecordsReady = new Promise(resolve => {
       const supplement = document.createElement('script');
       supplement.src = new URL('js/public-memorials.js?v=20261019-3', new URL('/Tandara/', location.origin)).href;
-      supplement.onload = () => { placeAnicaPortrait(); placeSnjezanaPortrait(); resolve(); };
-      supplement.onerror = () => { placeAnicaPortrait(); placeSnjezanaPortrait(); console.error('TANDARA: public memorial supplement unavailable.'); resolve(); };
+      supplement.onload = () => { placeAnicaPortrait(); placeSnjezanaPortrait(); placeSilvanaPortrait(); resolve(); };
+      supplement.onerror = () => { placeAnicaPortrait(); placeSnjezanaPortrait(); placeSilvanaPortrait(); console.error('TANDARA: public memorial supplement unavailable.'); resolve(); };
       document.head.appendChild(supplement);
     });
   } else {
     placeAnicaPortrait();
-    placeSnjezanaPortrait();
+    placeSnjezanaPortrait(); placeSilvanaPortrait();
   }
 
   /* =======================================================
