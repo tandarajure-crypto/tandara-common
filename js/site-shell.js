@@ -345,7 +345,7 @@
       const data = JSON.parse(dataEl.textContent);
       for (const r of records) for (const group of [data.nodes, data.primary]) {
         const person = group && group[r.code];
-        if (!person || person.protected || !String(person.label).includes(r.name)) continue;
+        if (!person || person.protected || !String(person.label).includes(r.name.split(' ')[0])) continue;
         const photos = Array.isArray(person.photos) ? person.photos.slice() : [];
         if (!photos.length && (person.photo || r.original)) photos.push({
           src:person.photo || base + r.original,
@@ -365,7 +365,7 @@
     }
     for (const r of records) {
       const entries = [...document.querySelectorAll('[data-person-code]')]
-        .filter(el => el.dataset.personCode === r.code && el.textContent.includes(r.name));
+        .filter(el => el.dataset.personCode === r.code && el.textContent.includes(r.name.split(' ')[0]));
       let heading = entries.find(el => /^H[234]$/.test(el.tagName));
       const entry = entries.find(el => el.matches('span, p'));
       if (!heading && !entry) continue;
