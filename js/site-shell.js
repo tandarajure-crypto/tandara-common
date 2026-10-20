@@ -234,7 +234,7 @@
   // Attach Silvana's portrait wherever her existing, visible record is present.
   function placeSilvanaPortrait() {
     const code = '2.3.4.1.3.1.4-K1';
-    const caption = 'Silvana marijanova';
+    const caption = 'Silvana Marijanova';
     const src = 'https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/silvana.jpg';
     const visibleName = value => /silvana/i.test(String(value || ''));
     const dataEl = document.getElementById('diagramData');
