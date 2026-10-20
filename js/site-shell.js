@@ -279,18 +279,71 @@
     link.append(img); figure.replaceChildren(link, label);
   }
 
+
+  // Owner-confirmed lifespan for Milenka née Budimir.
+  function updateMilenkaDates() {
+    const code = '2.3.4.1.3.1.4-SP-1';
+    const en = (document.documentElement.lang || '').startsWith('en');
+    const name = en ? 'Milenka née Budimir' : 'Milenka rođ. Budimir';
+    const dates = en ? '(1946–1993)' : '(1946.–1993.)';
+    const replaceDates = (text, english) => String(text || '').replace(
+      /Milenka\s+(?:(?:rođ\.|née)\s+)?Budimir(?:\s*\([^)]*\))?/g,
+      (english ? 'Milenka née Budimir (1946–1993)' : 'Milenka rođ. Budimir (1946.–1993.)')
+    );
+    const dataEl = document.getElementById('diagramData');
+    if (dataEl) {
+      const data = JSON.parse(dataEl.textContent);
+      for (const group of [data.nodes, data.primary]) {
+        if (!group) continue;
+        const person = group[code];
+        if (person) {
+          const wasProtected = person.protected;
+          Object.assign(person, {label:'Milenka rođ. Budimir', labelEn:'Milenka née Budimir',
+            birth:'1946', death:'1993', protected:false});
+          if (wasProtected) {
+            person.detail = 'Milenka rođ. Budimir (1946.–1993.)';
+            person.detailEn = 'Milenka née Budimir (1946–1993)';
+          }
+        }
+        for (const record of Object.values(group)) {
+          for (const key of ['detail', 'detailEn']) {
+            if (record[key]) record[key] = replaceDates(record[key], key === 'detailEn');
+          }
+        }
+      }
+      if (data.meta) data.meta.protectedCount = Object.values(data.nodes || {}).filter(p => p.protected).length;
+      dataEl.textContent = JSON.stringify(data);
+      return;
+    }
+    for (const entry of document.querySelectorAll('span[data-person-code], h3[data-person-code]')) {
+      if (entry.dataset.personCode !== code) continue;
+      const strong = document.createElement('strong'); strong.textContent = code;
+      const life = document.createElement('span'); life.className = 'life-date'; life.textContent = dates;
+      entry.replaceChildren(strong, document.createTextNode(' ' + name + ' '), life);
+    }
+    for (const element of document.querySelectorAll('p, h3, figcaption')) {
+      // Code-bearing records already have a separate lifespan element.
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+      while (walker.nextNode()) {
+        const node = walker.currentNode;
+        if (node.parentElement.closest('span[data-person-code], h3[data-person-code]')) continue;
+        node.textContent = replaceDates(node.textContent, en);
+      }
+    }
+  }
+
   // Optional public-only record supplement. Private sites never load this file.
   if (location.hostname === 'tandarajure-crypto.github.io' && location.pathname.startsWith('/Tandara/')) {
     window.tandaraPublicRecordsReady = new Promise(resolve => {
       const supplement = document.createElement('script');
       supplement.src = new URL('js/public-memorials.js?v=20261019-3', new URL('/Tandara/', location.origin)).href;
-      supplement.onload = () => { placeAnicaPortrait(); placeSnjezanaPortrait(); placeSilvanaPortrait(); resolve(); };
-      supplement.onerror = () => { placeAnicaPortrait(); placeSnjezanaPortrait(); placeSilvanaPortrait(); console.error('TANDARA: public memorial supplement unavailable.'); resolve(); };
+      supplement.onload = () => { placeAnicaPortrait(); placeSnjezanaPortrait(); placeSilvanaPortrait(); updateMilenkaDates(); resolve(); };
+      supplement.onerror = () => { placeAnicaPortrait(); placeSnjezanaPortrait(); placeSilvanaPortrait(); updateMilenkaDates(); console.error('TANDARA: public memorial supplement unavailable.'); resolve(); };
       document.head.appendChild(supplement);
     });
   } else {
     placeAnicaPortrait();
-    placeSnjezanaPortrait(); placeSilvanaPortrait();
+    placeSnjezanaPortrait(); placeSilvanaPortrait(); updateMilenkaDates();
   }
 
   /* =======================================================
