@@ -750,10 +750,17 @@
   }
 }
 
-/* Allow long descriptions and links to wrap within their photo card. */
+/* One line by default. The shared shell adds at most one word-boundary break only on overflow. */
 .content-card figcaption,
-.content-card figcaption a {
-  white-space: normal;
-  overflow-wrap: anywhere;
-  text-wrap: balance;
+.content-card figcaption * {
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  text-wrap: nowrap !important;
+}
+.content-card figcaption {
+  contain: none;
+  width: max-content !important;
+  max-width: none !important;
 }

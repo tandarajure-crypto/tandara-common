@@ -296,12 +296,17 @@ body.site-shell-ready.diagram-wide .topbar > .home-btn {
   font: italic 12px/1.3 Arial, sans-serif;
 }
 
-/* Photo captions must not widen the person details panel. */
+/* One line by default. The shared shell adds at most one word-boundary break only on overflow. */
 .person-details figcaption,
-.person-details figcaption a {
-  min-width: 0;
-  max-width: 100%;
-  white-space: normal;
-  overflow-wrap: anywhere;
-  text-wrap: balance;
+.person-details figcaption * {
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  text-wrap: nowrap !important;
+}
+.person-details figcaption {
+  contain: none;
+  width: max-content !important;
+  max-width: none !important;
 }

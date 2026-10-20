@@ -1484,3 +1484,117 @@
 })();
 
 
+
+/* Photo captions: one line unless their container overflows, then two whole-word lines. */
+(() => {
+  'use strict';
+  const selector = '.branch-card figcaption, .content-card figcaption, .person-details figcaption';
+  let pending = false;
+  let observer;
+  const watched = new WeakMap();
+  const resize = typeof ResizeObserver === 'function' ? new ResizeObserver(entries => {
+    for (const entry of entries) {
+      const width = entry.contentRect.width;
+      if (watched.get(entry.target) !== width) {
+        watched.set(entry.target, width);
+        schedule();
+      }
+    }
+  }) : null;
+
+  function chooseBreak(text, measure) {
+    let best = null;
+    for (const match of text.matchAll(/\s+/g)) {
+      const left = text.slice(0, match.index).trim();
+      const right = text.slice(match.index + match[0].length).trim();
+      if (!left || !right) continue;
+      const width = Math.max(measure(left), measure(right));
+      if (!best || width < best.width) best = { offset: match.index, width };
+    }
+    return best;
+  }
+
+  function containerFor(caption) {
+    return caption.closest('.person-photo-gallery, #personDetailsGallery, .person-details') ||
+      caption.closest('figure')?.parentElement;
+  }
+
+  function schedule() {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(layout);
+  }
+
+  function layout() {
+    pending = false;
+    observer?.disconnect();
+    document.querySelectorAll('br[data-caption-overflow-break]').forEach(br => {
+      const parent = br.parentNode;
+      br.remove();
+      parent.normalize();
+    });
+    const groups = new Map();
+    document.querySelectorAll(selector).forEach(caption => {
+      const container = containerFor(caption);
+      if (!container || !caption.getClientRects().length) return;
+      if (!groups.has(container)) groups.set(container, []);
+      groups.get(container).push(caption);
+      if (resize && !watched.has(container)) {
+        watched.set(container, container.getBoundingClientRect().width);
+        resize.observe(container);
+      }
+    });
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    if (context) for (const [container, captions] of groups) {
+      if (container.scrollWidth <= container.clientWidth + 1) continue;
+      const candidates = [];
+      for (const caption of captions) {
+        // Preserve authored line breaks and link markup; never split a word or a URL.
+        if (caption.querySelector('br')) continue;
+        const text = caption.textContent;
+        const image = caption.closest('figure')?.querySelector('img, video');
+        const imageWidth = image?.getBoundingClientRect().width || 0;
+        const style = getComputedStyle(caption);
+        context.font = style.font || `${style.fontSize} ${style.fontFamily}`;
+        const measure = value => context.measureText(value.replace(/\s+/g, ' ')).width;
+        const fullWidth = measure(text.trim());
+        if (imageWidth && fullWidth <= imageWidth + 1) continue;
+        const split = chooseBreak(text, measure);
+        if (split) candidates.push({caption, split, saving: fullWidth - Math.max(imageWidth, split.width)});
+      }
+      candidates.sort((a, b) => b.saving - a.saving);
+      for (const {caption, split, saving} of candidates) {
+        if (container.scrollWidth <= container.clientWidth + 1) break;
+        if (saving <= 1) continue;
+        const walker = document.createTreeWalker(caption, NodeFilter.SHOW_TEXT);
+        let remaining = split.offset;
+        let node;
+        while ((node = walker.nextNode())) {
+          if (remaining <= node.length) {
+            const range = document.createRange();
+            range.setStart(node, remaining);
+            range.collapse(true);
+            const br = document.createElement('br');
+            br.dataset.captionOverflowBreak = '';
+            range.insertNode(br);
+            break;
+          }
+          remaining -= node.length;
+        }
+      }
+    }
+    observer?.observe(document.body, {childList:true, subtree:true, characterData:true});
+  }
+
+  function start() {
+    observer = new MutationObserver(schedule);
+    window.addEventListener('resize', schedule);
+    window.addEventListener('tandara:site-shell-ready', schedule);
+    document.addEventListener('load', schedule, true);
+    if (document.fonts) document.fonts.ready.then(schedule);
+    schedule();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, {once:true});
+  else start();
+})();
