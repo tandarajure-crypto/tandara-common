@@ -1082,8 +1082,8 @@ body.branch-photo-lightbox-open {
 }
 /* Private Antina page photo: keep this portrait at the branch-page photo size. */
 .branch-card figure.person-photo.rosa-milanova-photo img {
-  height: 65px !important;
-  max-height: 65px;
+  height: 75px !important;
+  max-height: 75px;
 }
 
 .branch-card figure.person-photo.rosa-milanova-photo figcaption {
@@ -1094,8 +1094,8 @@ body.branch-photo-lightbox-open {
 /* Antina branch portraits, matching the Rosa Milanova photo size. */
 .branch-card figure.person-photo.marin-alenov-photo img,
 .branch-card figure.person-photo.vedran-zdravkov-photo img {
-  height: 65px !important;
-  max-height: 65px;
+  height: 75px !important;
+  max-height: 75px;
 }
 
 .branch-card figure.person-photo.marin-alenov-photo figcaption,
@@ -1106,8 +1106,8 @@ body.branch-photo-lightbox-open {
 /* Antina branch portraits, matching the Rosa Milanova photo size. */
 .branch-card figure.person-photo.mara-josipova-photo img,
 .branch-card figure.person-photo.neda-josipova-photo img {
-  height: 65px !important;
-  max-height: 65px;
+  height: 75px !important;
+  max-height: 75px;
 }
 
 .branch-card figure.person-photo.mara-josipova-photo figcaption,
@@ -1120,8 +1120,8 @@ body.branch-photo-lightbox-open {
 /* Matina branch portraits: Cvitan Antin and Dubravka Tandara. */
 .branch-card figure.person-photo.cvitan-antin-photo img,
 .branch-card figure.person-photo.dubravka-tandara-photo img {
-  height: 65px !important;
-  max-height: 65px;
+  height: 75px !important;
+  max-height: 75px;
 }
 
 .branch-card figure.person-photo.cvitan-antin-photo figcaption,
@@ -1132,8 +1132,8 @@ body.branch-photo-lightbox-open {
 
 /* Compact private Petar-branch portraits. */
 .branch-card figure.person-photo.branch-photo-65 img {
-  height: 65px !important;
-  max-height: 65px;
+  height: 75px !important;
+  max-height: 75px;
 }
 .branch-card figure.person-photo.branch-photo-65 figcaption {
   width: 60px;
