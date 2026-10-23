@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap");
 @import url("./photo-size.css?v=20261023-1");
 /* =========================================================
    TANDARA — SITE SHELL
@@ -924,4 +924,41 @@ a[aria-current="page"] {
       );
   }
 
+}
+/* =========================================================
+   AUTOR i JURE TANDARA - Pinyon Script, ukošeno
+   ========================================================= */
+
+.site-shell__author-label,
+.site-shell__author-name {
+  font-family: "Pinyon Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+  color: #7a4a1a;
+  line-height: 0.95;
+}
+
+/* Autor: jedna veličina veći od potpisa */
+.site-shell__author-label {
+  font-size: clamp(34px, 3.4vw, 46px);
+  transform: rotate(-12deg);
+  transform-origin: right center;
+}
+
+/* Jure / Tandara */
+.site-shell__author-name {
+  font-size: clamp(30px, 3vw, 42px);
+  transform: rotate(-12deg);
+  transform-origin: left center;
+}
+
+/* mobitel */
+@media (max-width: 420px) {
+  .site-shell__author-label {
+    font-size: clamp(26px, 7vw, 34px);
+  }
+
+  .site-shell__author-name {
+    font-size: clamp(22px, 6vw, 30px);
+  }
 }
