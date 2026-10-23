@@ -69,7 +69,7 @@
     if (photos.length) record.photos = photos;
   }
 
-  const isPrivateSite = /\\/PRIVAT(?:\\/|$)/i.test(window.location.pathname);
+  const isPrivateSite = /\/PRIVAT(?:\/|$)/i.test(window.location.pathname);
   const registeredByCode = isPrivateSite
     ? { ...(photoRegistry.public || {}), ...(photoRegistry.private || {}) }
     : (photoRegistry.public || {});
