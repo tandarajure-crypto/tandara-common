@@ -628,7 +628,7 @@
             "Početna stranica",
 
           author:
-            "AUTOR",
+         "Autor",
 
           visitors:
             "Posjetitelji"
@@ -654,7 +654,7 @@
             "Home",
 
           author:
-            "AUTHOR",
+           "Author",
 
           visitors:
             "Visitors"
