@@ -670,6 +670,16 @@ a[aria-current="page"] {
 }
 
 
+/* TANDARA AUTHOR SIGNATURE STYLE — shared across public/private HR and EN pages, 2026-10-23 */
+.site-shell__author-label,
+.site-shell__author-name,
+.site-shell__author-name span {
+  font-family: "Dancing Script", "Segoe Script", "URW Chancery L", cursive;
+  font-style: italic;
+  font-weight: 400;
+  text-decoration: none;
+}
+
 /* =========================================================
    FLAGCOUNTER
    ========================================================= */
