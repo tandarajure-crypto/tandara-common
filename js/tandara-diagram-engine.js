@@ -31,6 +31,8 @@
   const sideByHost = DATA.sideByHost || {};
   const targets = DATA.targets || {};
   const rootCode = (DATA.meta && DATA.meta.rootCode) || document.body.dataset.rootCode || Object.keys(primary)[0] || '';
+  // Kronološko sortiranje primjenjuje se samo na Matinu granu.
+  const sortMatinaBranch = rootCode === '4.0';
 
   const LANG = document.body.dataset.lang === 'en' ? 'en' : 'hr';
   const TXT = LANG === 'en' ? {
@@ -227,6 +229,23 @@
     return /\.$/.test(value) ? value : `${value}.`;
   }
 
+  function birthYearNumber(rec) {
+    const match = String(rec && rec.birth != null ? rec.birth : '').match(/\d{4}/);
+    return match ? Number(match[0]) : null;
+  }
+
+  // U Matinoj grani nepoznate godine idu prve, zatim najstariji prema najmlađem.
+  function compareBirthOrder(codeA, codeB) {
+    const a = primary[codeA] || nodes[codeA] || {};
+    const b = primary[codeB] || nodes[codeB] || {};
+    const ay = birthYearNumber(a);
+    const by = birthYearNumber(b);
+    if (ay == null && by != null) return -1;
+    if (ay != null && by == null) return 1;
+    if (ay != null && by != null && ay !== by) return ay - by;
+    return String(codeA).localeCompare(String(codeB), 'hr', { numeric: true });
+  }
+
   function deathSymbol(rec) {
     const code = String(rec && (rec.code || rec.id) || '');
     const omit = ['3.1.1.1.2.1.1.1', '3.1.1.1.2.1.1.2'].some(root =>
@@ -387,11 +406,17 @@
   }
 
   function structuralChildren(code) {
-    return [...primaryChildren(code), ...terminalSons(code)];
+    const children = [...primaryChildren(code), ...terminalSons(code)];
+    return sortMatinaBranch ? children.sort(compareBirthOrder) : children;
   }
 
   function familyExtras(code) {
-    return (sideByHost[code] || []).filter(member => nodes[member]?.type !== 'son');
+    const extras = (sideByHost[code] || []).filter(member => nodes[member]?.type !== 'son');
+    if (!sortMatinaBranch) return extras;
+    // Supružnici ostaju na početku i zadržavaju međusobni red; ostali članovi su kronološki.
+    const spouses = extras.filter(member => nodes[member]?.type === 'spouse');
+    const otherMembers = extras.filter(member => nodes[member]?.type !== 'spouse').sort(compareBirthOrder);
+    return [...spouses, ...otherMembers];
   }
 
   function spouseCodes(code) {
@@ -979,6 +1004,17 @@
       const aExact = normalize(a.code) === normalize(qCode) ? -1 : 0;
       const bExact = normalize(b.code) === normalize(qCode) ? -1 : 0;
       if (aExact !== bExact) return aExact - bExact;
+      if (sortMatinaBranch) {
+        const aName = normalize(personName(recLabel(a)));
+        const bName = normalize(personName(recLabel(b)));
+        const byName = aName.localeCompare(bName, 'hr', { numeric: true });
+        if (byName) return byName;
+        const ay = birthYearNumber(a);
+        const by = birthYearNumber(b);
+        if (ay == null && by != null) return -1;
+        if (ay != null && by == null) return 1;
+        if (ay != null && by != null && ay !== by) return ay - by;
+      }
       return String(a.code).localeCompare(String(b.code), 'hr', { numeric: true });
     });
 
