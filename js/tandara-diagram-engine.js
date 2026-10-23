@@ -26,10 +26,57 @@
     return;
   }
 
+  // Central photo registry: each image is keyed by the person's unique genealogy code.
+  // Public diagrams receive only the public mapping; the private site receives the combined mapping.
+  let photoRegistry = { public: {}, private: {} };
+  try {
+    const registryUrl = new URL('../tandara-common/data/person-photo-map.json', window.location.href);
+    const registryResponse = await fetch(registryUrl.href, { cache: 'no-cache' });
+    if (registryResponse.ok) photoRegistry = await registryResponse.json();
+  } catch (error) {
+    console.warn('TANDARA diagram: središnji registar fotografija nije dostupan.', error);
+  }
+
   const nodes = DATA.nodes || {};
   const primary = DATA.primary || {};
   const sideByHost = DATA.sideByHost || {};
   const targets = DATA.targets || {};
+
+  function photoSourceKey(photo) {
+    try { return new URL(photo.src, window.location.href).href; }
+    catch (_) { return String(photo.src || ''); }
+  }
+
+  function applyPhotoRegistry(record, code, registeredPhotos) {
+    if (!record || !Array.isArray(registeredPhotos) || !registeredPhotos.length) return;
+    const photos = Array.isArray(record.photos) ? record.photos.slice() : [];
+    if (record.photo) {
+      photos.push({
+        src: record.photo,
+        alt: record.photoAlt || '',
+        caption: record.photoCaption || '',
+        altEn: record.photoAltEn || '',
+        captionEn: record.photoCaptionEn || ''
+      });
+    }
+    const knownSources = new Set(photos.map(photoSourceKey));
+    for (const photo of registeredPhotos) {
+      const key = photoSourceKey(photo);
+      if (!key || knownSources.has(key)) continue;
+      photos.push(photo);
+      knownSources.add(key);
+    }
+    if (photos.length) record.photos = photos;
+  }
+
+  const isPrivateSite = /\\/PRIVAT(?:\\/|$)/i.test(window.location.pathname);
+  const registeredByCode = isPrivateSite
+    ? { ...(photoRegistry.public || {}), ...(photoRegistry.private || {}) }
+    : (photoRegistry.public || {});
+  for (const [code, photos] of Object.entries(registeredByCode)) {
+    applyPhotoRegistry(nodes[code], code, photos);
+    if (primary[code] && primary[code] !== nodes[code]) applyPhotoRegistry(primary[code], code, photos);
+  }
   const rootCode = (DATA.meta && DATA.meta.rootCode) || document.body.dataset.rootCode || Object.keys(primary)[0] || '';
   // Kronološko sortiranje primjenjuje se samo na Matinu granu.
   const sortMatinaBranch = rootCode === '4.0';
@@ -364,14 +411,16 @@
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
       const img = document.createElement('img');
-      img.alt = String(photo.alt || photo.caption || detailsName.textContent);
+      const photoAlt = LANG === 'en' ? (photo.altEn || photo.alt || photo.captionEn || photo.caption) : (photo.alt || photo.caption);
+      const photoCaption = LANG === 'en' ? (photo.captionEn || photo.caption) : photo.caption;
+      img.alt = String(photoAlt || photoCaption || detailsName.textContent);
       // The selected person's card should load immediately, even while hidden.
       img.loading = 'eager';
       img.decoding = 'async';
       img.src = url.href;
       link.append(img);
       const caption = document.createElement('figcaption');
-      caption.textContent = String(photo.caption || detailsName.textContent);
+      caption.textContent = String(photoCaption || detailsName.textContent);
       figure.append(link, caption);
       detailsImage.append(figure);
     }
