@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap");
+
 @import url("./photo-size.css?v=20261023-1");
 /* =========================================================
    TANDARA — SITE SHELL
@@ -520,7 +522,7 @@ a[aria-current="page"] {
 }
 
 
-/* lijevo — AUTOR / AUTHOR */
+/* lijevo — AUTOR / AUTHOR: ukrasni rukopisni potpis */
 
 .site-shell__author-label {
   min-width: 0;
@@ -529,23 +531,29 @@ a[aria-current="page"] {
     6px;
 
   color:
-    var(--shell-heading);
+    #63452c;
 
   font-family:
-    var(--shell-font);
+    "Dancing Script",
+    "Segoe Script",
+    "URW Chancery L",
+    cursive;
 
   font-size:
     clamp(
-      10px,
-      1vw,
-      14px
+      12px,
+      1.15vw,
+      16px
     );
+
+  font-style:
+    italic;
 
   line-height:
     1.1;
 
   font-weight:
-    700;
+    400;
 
   text-align:
     right;
@@ -624,23 +632,29 @@ a[aria-current="page"] {
     7px;
 
   color:
-    var(--shell-heading);
+    #63452c;
 
   font-family:
-    var(--shell-font);
+    "Dancing Script",
+    "Segoe Script",
+    "URW Chancery L",
+    cursive;
 
   font-size:
     clamp(
-      12px,
-      1.15vw,
-      17px
+      17px,
+      1.55vw,
+      23px
     );
+
+  font-style:
+    italic;
 
   line-height:
     1.12;
 
   font-weight:
-    700;
+    400;
 
   text-align:
     left;
