@@ -1,5 +1,4 @@
 /* Uniform photograph thumbnails; full-size viewers retain their own sizing. */
-html body img[src*="slike/"]:not([src*="/ikone/"]):not([src*="family-tree"]):not(.branch-photo-lightbox__image),
 html body .person-photo img,
 html body .person-details-image img,
 html body #personDetailsGallery img,
