@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
 
 @import url("./photo-size.css?v=20261023-1");
 /* =========================================================
@@ -534,7 +534,7 @@ a[aria-current="page"] {
     #63452c;
 
   font-family:
-    "Dancing Script",
+    "Great Vibes",
     "Segoe Script",
     "URW Chancery L",
     cursive;
@@ -635,7 +635,7 @@ a[aria-current="page"] {
     #63452c;
 
   font-family:
-    "Dancing Script",
+    "Great Vibes",
     "Segoe Script",
     "URW Chancery L",
     cursive;
@@ -674,7 +674,7 @@ a[aria-current="page"] {
 .site-shell .site-shell__author-label,
 .site-shell .site-shell__author-name,
 .site-shell .site-shell__author-name span {
-  font-family: "Dancing Script", "Segoe Script", "URW Chancery L", cursive !important;
+  font-family: "Great Vibes", "Segoe Script", "URW Chancery L", cursive !important;
   font-style: italic !important;
   font-weight: 400 !important;
   text-decoration: none !important;
