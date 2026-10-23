@@ -962,3 +962,9 @@ a[aria-current="page"] {
     font-size: clamp(22px, 6vw, 30px);
   }
 }
+.site-shell__author-name span:last-child {
+  position: relative;
+  z-index: 2;
+  font-size: 0.8em;
+  left: -0.9em;
+}
