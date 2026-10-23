@@ -1,0 +1,2491 @@
+{
+  "public": {
+    "4.1.1.4.4.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/ante-marijanov.jpg",
+        "alt": "Ante Marijanov",
+        "caption": "Ante Marijanov",
+        "altEn": "Ante",
+        "captionEn": "Ante"
+      }
+    ],
+    "4.1.1.4.4.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/dinko-marijanov.jpg",
+        "alt": "Dinko Marijanov",
+        "caption": "Dinko Marijanov",
+        "altEn": "Dinko",
+        "captionEn": "Dinko"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/dinko-marijanov1.jpg",
+        "alt": "Dinko Marijanov",
+        "caption": "Dinko Marijanov",
+        "altEn": "Dinko",
+        "captionEn": "Dinko"
+      }
+    ],
+    "4.1.1.4.4.1.2-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/dubravkadinkova.jpg",
+        "alt": "Fotografija Dubravka Tandara",
+        "caption": "Dubravka Tandara",
+        "altEn": "Photograph of Dubravka Tandara",
+        "captionEn": "Dubravka Tandara"
+      }
+    ],
+    "4.1.1.4.4.4": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/cvitanantin.jpg",
+        "alt": "Fotografija Cvitan Antin",
+        "caption": "Cvitan Antin",
+        "altEn": "Photograph of Cvitan Antin",
+        "captionEn": "Cvitan Antin"
+      }
+    ],
+    "4.1.1.4.4.4.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/marijantandara.jpg",
+        "alt": "Marijan Tandara",
+        "caption": "Marijan Tandara",
+        "altEn": "Marijan Tandara",
+        "captionEn": "Marijan Tandara"
+      }
+    ],
+    "4.1.1.4.4.5.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/dariomatin.jpg",
+        "alt": "Dario Matin",
+        "caption": "Dario Matin"
+      }
+    ],
+    "3.1.1.1.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/mirkomarkov1.jpg",
+        "alt": "Putovnica Mirka Markova iz 1939.",
+        "caption": "Putovnica iz 1939.",
+        "altEn": "Mirko, son of Marko passport from 1939",
+        "captionEn": "Passport from 1939"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/mirkomarkov2.jpg",
+        "alt": "Izvod iz matične knjige umrlih za Mirka Markova",
+        "caption": "Izvod iz matične knjige umrlih",
+        "altEn": "Extract from the death register for Mirko, son of Marko",
+        "captionEn": "Extract from the death register"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/mirkomarkov3.jpg",
+        "alt": "Original osmrtnica Mirka Markova",
+        "caption": "Original osmrtnica",
+        "altEn": "Original death notice of Mirko, son of Marko",
+        "captionEn": "Original death notice"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/mirkomarkov4.jpg",
+        "alt": "Mirko Markov",
+        "caption": "Mirko Markov",
+        "altEn": "Mirko, son of Marko",
+        "captionEn": "Mirko, son of Marko"
+      }
+    ],
+    "3.1.1.1.2.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/milanmirkov.jpg",
+        "alt": "Milan Mirkov",
+        "caption": "Milan Mirkov",
+        "altEn": "Milan Mirkov",
+        "captionEn": "Milan Mirkov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/milansarajevo.jpg",
+        "caption": "Milan Mirkov",
+        "captionEn": "Milan Mirkov",
+        "alt": "Milan Mirkov",
+        "altEn": "Milan Mirkov"
+      }
+    ],
+    "3.1.1.1.2.1.1.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/damirdaliborov.jpg",
+        "alt": "Damir Tandara",
+        "caption": "Damir Tandara",
+        "altEn": "Damir Tandara",
+        "captionEn": "Damir Tandara"
+      }
+    ],
+    "3.1.1.1.4.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/grobobiteljinikolemarijanova.jpg",
+        "alt": "Nikola Marijanov i Marija Lukić",
+        "caption": "Nikola Marijanov (1939.–2018.) i Marija Lukić (1939.–2021.)",
+        "altEn": "Nikola, son of Marijan and Marija Lukić",
+        "captionEn": "Nikola, son of Marijan (1939–2018) and Marija Lukić (1939–2021)"
+      }
+    ],
+    "3.1.1.1.4.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/andalukina.jpg",
+        "alt": "Anđa r. Kovač",
+        "caption": "Anđa r. Kovač"
+      }
+    ],
+    "3.1.1.2.1.2.3.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marinalenov.jpg",
+        "alt": "Marin Tandara",
+        "caption": "Marin Tandara",
+        "altEn": "Marin Tandara",
+        "captionEn": "Marin Tandara"
+      }
+    ],
+    "3.1.1.2.8.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-01.jpg",
+        "alt": "Josip Jurin i Anica rođ. Dragun",
+        "caption": "Josip Jurin i Anica rođ. Dragun",
+        "altEn": "Josip, son of Jure and Anica, née Dragun",
+        "captionEn": "Josip, son of Jure and Anica, née Dragun"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-02.jpg",
+        "alt": "Sa bakom Anicom-75",
+        "caption": "Sa bakom Anicom-75",
+        "altEn": "With grandmother Anica-75",
+        "captionEn": "With grandmother Anica-75"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-03.jpg",
+        "alt": "Obiteljska grobnica Josipa Jurina",
+        "caption": "Obiteljska grobnica Josipa Jurina",
+        "altEn": "Family grave of Josip, son of Jure",
+        "captionEn": "Family grave of Josip, son of Jure"
+      }
+    ],
+    "3.1.1.2.8.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-01.jpg",
+        "alt": "Ivan Josipov – 1960.",
+        "caption": "Ivan Josipov – 1960.",
+        "altEn": "Ivan, son of Josip – 1960",
+        "captionEn": "Ivan, son of Josip – 1960"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-02.jpg",
+        "alt": "Ivanova obitelj – 1968.",
+        "caption": "Ivanova obitelj – 1968.",
+        "altEn": "Ivan’s family – 1968",
+        "captionEn": "Ivan’s family – 1968"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-05.jpg",
+        "alt": "Grob Ivana Josipova",
+        "caption": "Grob Ivana Josipova",
+        "altEn": "Grave of Ivan, son of Josip",
+        "captionEn": "Grave of Ivan, son of Josip"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-03.jpg",
+        "altEn": "Ivan, son of Josip and Jure, son of Ivan – 2022",
+        "captionEn": "Ivan, son of Josip and Jure, son of Ivan – 2022",
+        "alt": "Ivan Josipov i Jure Ivanov – 2022.",
+        "caption": "Ivan Josipov i Jure Ivanov – 2022."
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-04.jpg",
+        "altEn": "Ivan, son of Josip with his great-grandchild",
+        "captionEn": "Ivan, son of Josip with his great-grandchild",
+        "alt": "Ivan Josipov s praunukom",
+        "caption": "Ivan Josipov s praunukom"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-07.jpg",
+        "altEn": "Ivan, son of Josip with his family",
+        "captionEn": "Ivan, son of Josip with his family",
+        "alt": "Ivan Josipov u krugu obitelji",
+        "caption": "Ivan Josipov u krugu obitelji"
+      }
+    ],
+    "3.1.1.2.8.1.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-01.jpg",
+        "alt": "Jure Ivanov",
+        "caption": "Jure Ivanov",
+        "altEn": "Jure, son of Ivan",
+        "captionEn": "Jure, son of Ivan"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-02.jpg",
+        "alt": "Jure Ivanov i supruga Ruža",
+        "caption": "Jure i Ruža-1980.",
+        "altEn": "Jure, son of Ivan and Ruža, née Kosić – 1980",
+        "captionEn": "Jure, son of Ivan and Ruža, née Kosić – 1980"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-03.jpg",
+        "alt": "Jure i Ruža – 2007.",
+        "caption": "Jure i Ruža-2007.",
+        "altEn": "Jure and Ruža – 2007",
+        "captionEn": "Jure and Ruža – 2007"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-04.jpg",
+        "altEn": "Jure, son of Ivan skiing",
+        "captionEn": "Jure, son of Ivan skiing"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-05.jpg",
+        "altEn": "Jure and Ruža with their grandchildren",
+        "captionEn": "Jure and Ruža with their grandchildren"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-06.jpg",
+        "altEn": "Jure and Ruža with their grandchildren",
+        "captionEn": "Jure and Ruža with their grandchildren"
+      }
+    ],
+    "3.1.1.2.8.1.1.1-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-SP1-01.jpg",
+        "alt": "Ruža jurina",
+        "caption": "Ruža Jurina",
+        "altEn": "Ruža, née Kosić",
+        "captionEn": "Ruža, née Kosić"
+      }
+    ],
+    "3.1.1.2.8.1.1.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-01.jpg",
+        "alt": "Ivica Julio Jurin i Ana rođ. Mikuš",
+        "caption": "Ivica Julio i supruga Ana",
+        "altEn": "Ivica Julio, son of Jure and Ana, née Mikuš",
+        "captionEn": "Ivica Julio and Ana, née Mikuš"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-02.jpg",
+        "altEn": "Ivica Julio with his son",
+        "captionEn": "Ivica Julio and his son"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-03.jpg",
+        "altEn": "Ivica Julio, son of Jure and Ana, née Mikuš, with their children",
+        "captionEn": "Ivica Julio and Ana, née Mikuš, with their children"
+      }
+    ],
+    "3.1.1.2.8.1.1.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2-01.png",
+        "alt": "Marin Tin Jurin",
+        "caption": "Marin Tin",
+        "altEn": "Marin Tin, son of Jure",
+        "captionEn": "Marin Tin"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2-SP-01.jpg",
+        "alt": "Ivana Marinova",
+        "caption": "Ivana, Marinova supruga",
+        "altEn": "Ivana, née Kereta",
+        "captionEn": "Ivana, née Kereta"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2-02.jpg",
+        "altEn": "Marin Tin, son of Jure and Ivana, née Kereta",
+        "captionEn": "Marin Tin and Ivana, née Kereta"
+      }
+    ],
+    "3.1.1.2.8.1.1.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.2.1-01.jpg",
+        "alt": "Filip",
+        "caption": "Filip",
+        "altEn": "Filip, son of Vladimir",
+        "captionEn": "Filip, son of Vladimir"
+      }
+    ],
+    "3.1.1.2.8.1.1.2.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.2.2-02.jpg",
+        "alt": "Leo",
+        "caption": "Leo",
+        "altEn": "Leo, son of Vladimir",
+        "captionEn": "Leo, son of Vladimir"
+      }
+    ],
+    "3.1.1.2.8.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2-01.jpg",
+        "alt": "Milan Josipov i Slavka rođ. Budimir",
+        "caption": "Milan Josipov i Slavka rođ. Budimir",
+        "altEn": "Milan, son of Josip and Slavka, née Budimir",
+        "captionEn": "Milan, son of Josip and Slavka, née Budimir"
+      }
+    ],
+    "3.1.1.2.8.1.2-K2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2-K2-01.jpg",
+        "alt": "Ana Milanova",
+        "caption": "Ana Milanova",
+        "altEn": "Ana, daughter of Milan",
+        "captionEn": "Ana, daughter of Milan"
+      }
+    ],
+    "3.1.1.2.8.1.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.1-01.jpg",
+        "alt": "Jozo Milanov",
+        "caption": "Jozo Milanov",
+        "altEn": "Jozo, son of Milan",
+        "captionEn": "Jozo, son of Milan"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.1-SP1-01.jpg",
+        "alt": "Vesna rođ. Matić",
+        "caption": "Vesna Jozina",
+        "altEn": "Vesna, née Matić",
+        "captionEn": "Vesna, née Matić"
+      }
+    ],
+    "3.1.1.2.8.1.2.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2-01.jpg",
+        "alt": "Ivan Milanov i supruga Ružica",
+        "caption": "Ivan Milanov i Ružica",
+        "altEn": "Ivan, son of Milan and Ružica, née Glavaš",
+        "captionEn": "Ivan, son of Milan and Ružica, née Glavaš"
+      }
+    ],
+    "3.1.1.2.8.1.2.2-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2-K1-01.jpg",
+        "alt": "Natalija s diplomom",
+        "caption": "Natalija s diplomom",
+        "altEn": "Natalija with her diploma",
+        "captionEn": "Natalija with her diploma"
+      }
+    ],
+    "3.1.1.2.8.1-K2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marajosipova.jpg",
+        "alt": "Mara Josipova",
+        "caption": "Mara Josipova",
+        "altEn": "Mara Josipova",
+        "captionEn": "Mara Josipova"
+      }
+    ],
+    "3.1.1.2.8.1-K3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/nedajosipova.jpg",
+        "alt": "Neda Josipova",
+        "caption": "Neda Josipova, Tatjana i Ana",
+        "altEn": "Neda Josipova",
+        "captionEn": "Neda Josipova"
+      }
+    ],
+    "3.1.1.2.8.1-K4": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/matija-budimir.png",
+        "alt": "Matija i Ante sa sinovima; slijeva nadesno: Mario, Mirko, Ivica i Jozo",
+        "caption": "Matija i Ante sa sinovima. Slijeva nadesno: Mario, Mirko, Ivica i Jozo.",
+        "altEn": "Matija and Ante with their sons; from left to right: Mario, Mirko, Ivica and Jozo",
+        "captionEn": "Matija and Ante with their sons. From left to right: Mario, Mirko, Ivica and Jozo."
+      }
+    ],
+    "3.1.2.1.1.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ikokum.jpg",
+        "alt": "Ivan Marijanov",
+        "caption": "Ivan Marijanov",
+        "altEn": "Ivan Marijanov",
+        "captionEn": "Ivan Marijanov"
+      }
+    ],
+    "3.1.2.5.4.2.3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ante-mirkov.jpg",
+        "alt": "Ante Mirkov",
+        "caption": "Ante Mirkov",
+        "altEn": "Ante, son of Mirko",
+        "captionEn": "Ante, son of Mirko"
+      }
+    ],
+    "3.3.1.1.3.1.3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marijanmatin.jpg",
+        "alt": "Marijan Matin",
+        "caption": "Marijan Matin",
+        "altEn": "Marijan Matin",
+        "captionEn": "Marijan Matin"
+      }
+    ],
+    "3.3.1.2.1.4.1.1-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/sabina.jpg",
+        "alt": "Sabina Ivičina – Sabina Tandara Knezović",
+        "caption": "Sabina Ivičina",
+        "altEn": "Sabina, daughter of Ivica – Sabina Tandara Knezović",
+        "captionEn": "Sabina, daughter of Ivica"
+      }
+    ],
+    "3.3.1.2.1.4.5.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/vanjintata.jpg",
+        "alt": "Željko Matin",
+        "caption": "Željko Matin",
+        "altEn": "Željko Matin",
+        "captionEn": "Željko Matin"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/vanjinirod.jpg",
+        "alt": "Željko Matin i supruga",
+        "caption": "Željko Matin i supruga",
+        "altEn": "Željko Matin and his wife",
+        "captionEn": "Željko Matin and his wife"
+      }
+    ],
+    "3.3.1.2.1.3.1.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ivicamijin75.jpg",
+        "altEn": "Ivica, son of Mijo",
+        "captionEn": "Ivica, son of Mijo"
+      }
+    ],
+    "2.3.1.2.3.3.1.1-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/hedviga.jpg",
+        "alt": "Hedviga Dinina",
+        "caption": "Hedviga Dinova"
+      }
+    ],
+    "2.3.1.2.3.3.3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/jozopiin.jpg",
+        "alt": "Jozo Piin",
+        "caption": "Jozo Piin",
+        "altEn": "Jozo, son of Pio",
+        "captionEn": "Jozo, son of Pio"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/jozopiin1.jpg",
+        "alt": "Jozo Piin",
+        "caption": "Jozo Piin",
+        "altEn": "Jozo, son of Pio",
+        "captionEn": "Jozo, son of Pio"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/jozopiin3.jpg",
+        "alt": "Jozo Piin",
+        "caption": "Jozo Piin",
+        "altEn": "Jozo Piin",
+        "captionEn": "Jozo Piin"
+      }
+    ],
+    "2.3.1.2.3.4.4": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/piodomin.jpg",
+        "alt": "Pio Dominikov",
+        "caption": "Pio Dominikov"
+      }
+    ],
+    "2.3.1.2.3.4.5": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/sveto.jpg",
+        "alt": "Sveto Dominikov",
+        "caption": "Sveto Dominikov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/sveto1.jpg",
+        "alt": "Sveto Dominikov",
+        "caption": "Sveto Dominikov"
+      }
+    ],
+    "2.3.1.2.3.5": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/matejurin.jpg",
+        "alt": "Mate Jurin",
+        "caption": "Mate Jurin",
+        "altEn": "Mate Jurin",
+        "captionEn": "Mate Jurin"
+      }
+    ],
+    "2.3.1.2.3.5.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/tomislavmatin.jpg",
+        "alt": "Toma Matin",
+        "caption": "Toma Matin",
+        "altEn": "Toma Matin",
+        "captionEn": "Toma Matin"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/tominovjencanje.jpg",
+        "alt": "Božica, Mara i Toma",
+        "caption": "Božica, Mara i Toma",
+        "altEn": "Božica, Mara and Toma",
+        "captionEn": "Božica, Mara and Toma"
+      }
+    ],
+    "2.3.1.2.3.5.1-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/martinatomina.jpg",
+        "alt": "Martina Tomina",
+        "caption": "Martina Tomina",
+        "altEn": "Martina Tomina",
+        "captionEn": "Martina Tomina"
+      }
+    ],
+    "2.3.4.1.1.4.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/bruno.png",
+        "alt": "Dr. Ante Bruno Tandara",
+        "caption": "Dr. Ante Bruno Tandara",
+        "altEn": "Dr. Ante Bruno Tandara",
+        "captionEn": "Dr. Ante Bruno Tandara"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/drbruno-graf.jpeg",
+        "alt": "Grafički prikaz grananja prezimena",
+        "caption": "Grafički prikaz grananja prezimena",
+        "altEn": "Graphic representation of surname branching",
+        "captionEn": "Graphic representation of surname branching"
+      }
+    ],
+    "2.3.4.1.1.5.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/nikoladragin.jpg",
+        "alt": "P. Nikola Tandara",
+        "caption": "P. Nikola Tandara"
+      }
+    ],
+    "2.3.4.1.3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/marijanlovrin.jpg",
+        "alt": "Marijan Lovrin",
+        "caption": "Marijan Lovrin",
+        "altEn": "Marijan, son of Lovro",
+        "captionEn": "Marijan, son of Lovro"
+      }
+    ],
+    "2.3.4.1.3.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/mijomarijanov1908.jpg",
+        "alt": "Mijo Marijanov",
+        "caption": "Mijo Marijanov",
+        "altEn": "Mijo Marijanov",
+        "captionEn": "Mijo Marijanov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/mijomarijanov.jpg",
+        "alt": "Mijo i Slavka",
+        "caption": "Mijo i Slavka",
+        "altEn": "Mijo i Slavka",
+        "captionEn": "Mijo i Slavka"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/grupa.jpg",
+        "alt": "Mijo Marijanov (1908.) — gornji red, 2. osoba slijeva.",
+        "caption": "Mijo Marijanov (1908.) — gornji red, 2. osoba slijeva.",
+        "altEn": "Mijo, son of Marijan (born 1908) — top row, 2nd person from the left.",
+        "captionEn": "Mijo, son of Marijan (born 1908) — top row, 2nd person from the left."
+      }
+    ],
+    "2.3.4.1.3.1.3.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/zeljkomilanov.jpg",
+        "alt": "Željko Milanov",
+        "caption": "Željko Milanov",
+        "altEn": "Željko Milanov",
+        "captionEn": "Željko Milanov"
+      }
+    ],
+    "2.3.4.1.3.2.5": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/blazmarinov.jpg",
+        "alt": "Blaž Marinov",
+        "caption": "Blaž Marinov",
+        "altEn": "Blaž Marinov",
+        "captionEn": "Blaž Marinov"
+      }
+    ],
+    "2.3.4.3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/mijogrgin.jpg",
+        "alt": "Mijo Grgin",
+        "caption": "Mijo Grgin",
+        "altEn": "Mijo Grgin",
+        "captionEn": "Mijo Grgin"
+      }
+    ],
+    "3.1.1.2.7.3.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/krizan.jpg",
+        "caption": "Križan, Magdalena i Ljerka",
+        "captionEn": "Križan, Magdalena and Ljerka",
+        "alt": "Križan, Magdalena i Ljerka",
+        "altEn": "Križan, Magdalena and Ljerka"
+      }
+    ],
+    "3.1.1.2.7.3.1.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/dinkokrizanov.jpg",
+        "caption": "Dinko Križanov",
+        "captionEn": "Dinko Križanov",
+        "alt": "Dinko Križanov",
+        "altEn": "Dinko Križanov"
+      }
+    ],
+    "3.1.1.1.4.1.1-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marijanikolina.jpg",
+        "caption": "Marija rođ. Lekić",
+        "captionEn": "Marija née Lekić",
+        "alt": "Marija rođ. Lekić",
+        "altEn": "Marija née Lekić"
+      }
+    ],
+    "3.1.1.1.4.2-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/andalukina.jpg",
+        "caption": "Anđa rođ. Kovač",
+        "captionEn": "Anđa née Kovač",
+        "alt": "Anđa rođ. Kovač",
+        "altEn": "Anđa née Kovač"
+      }
+    ],
+    "3.1.1.2.8.1.2-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2-01.jpg",
+        "caption": "Milan Josipov i Slavka rođ. Budimir",
+        "captionEn": "Milan Josipov and Slavka née Budimir",
+        "alt": "Milan Josipov i Slavka rođ. Budimir",
+        "altEn": "Milan Josipov and Slavka née Budimir"
+      }
+    ],
+    "3.1.1.2.8.1-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-01.jpg",
+        "caption": "Josip Jurin i Anica rođ. Dragun",
+        "captionEn": "Josip Jurin and Anica née Dragun",
+        "alt": "Josip Jurin i Anica rođ. Dragun",
+        "altEn": "Josip Jurin and Anica née Dragun"
+      }
+    ],
+    "2.3.1.2.3.3.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/ikopiin.jpg",
+        "caption": "Ivan Piin",
+        "captionEn": "Ivan Piin",
+        "alt": "Ivan Piin",
+        "altEn": "Ivan Piin"
+      }
+    ],
+    "3.3.1.2.1.4.4-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/zlatadrazenkova.jpg",
+        "caption": "Zlata rođ. Vučemil",
+        "captionEn": "Zlata née Vučemil",
+        "alt": "Zlata rođ. Vučemil",
+        "altEn": "Zlata née Vučemil"
+      }
+    ],
+    "2.3.4.1.3.2-K3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/ankavicina.jpg",
+        "caption": "Anka Marinova",
+        "captionEn": "Anka Marinova",
+        "alt": "Anka Marinova",
+        "altEn": "Anka Marinova"
+      }
+    ],
+    "2.3.4.1.3.2-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/dragicavicina.jpg",
+        "caption": "Dragica Marinova",
+        "captionEn": "Dragica Marinova",
+        "alt": "Dragica Marinova",
+        "altEn": "Dragica Marinova"
+      }
+    ],
+    "4.1.1.4.5-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/dragicanikolina.jpg",
+        "caption": "Dragica Nikolina",
+        "captionEn": "Dragica Nikolina",
+        "alt": "Dragica Nikolina",
+        "altEn": "Dragica Nikolina"
+      }
+    ],
+    "3.1.2.3.2.2-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/danicamatina.jpg",
+        "caption": "Danica rođ. Malenica",
+        "captionEn": "Danica née Malenica",
+        "alt": "Danica rođ. Malenica",
+        "altEn": "Danica née Malenica"
+      }
+    ]
+  },
+  "private": {
+    "4.1.1.1.3.1.4": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/ivicadragomir.jpg",
+        "alt": "Ivica Franin",
+        "caption": "Ivica Franin",
+        "altEn": "Ivica Franin",
+        "captionEn": "Ivica Franin"
+      }
+    ],
+    "4.1.1.4.4.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/ante-marijanov.jpg",
+        "alt": "Ante Marijanov",
+        "caption": "Ante Marijanov",
+        "altEn": "Ante, son of Marijan",
+        "captionEn": "Ante, son of Marijan"
+      }
+    ],
+    "4.1.1.4.4.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/dinko-marijanov.jpg",
+        "alt": "Dinko Marijanov",
+        "caption": "Dinko Marijanov",
+        "altEn": "Dinko, son of Marijan",
+        "captionEn": "Dinko, son of Marijan"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/dinko-marijanov1.jpg",
+        "alt": "Dinko Marijanov",
+        "caption": "Dinko Marijanov",
+        "altEn": "Dinko, son of Marijan",
+        "captionEn": "Dinko, son of Marijan"
+      }
+    ],
+    "4.1.1.4.4.1.2-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/dubravkadinkova.jpg",
+        "alt": "Fotografija Dubravka Tandara",
+        "caption": "Dubravka Tandara",
+        "altEn": "Photograph of Dubravka Tandara",
+        "captionEn": "Dubravka Tandara"
+      }
+    ],
+    "4.1.1.4.4.3.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/ivicausa.jpg",
+        "alt": "Ivica Mirkov",
+        "caption": "Ivica Mirkov"
+      }
+    ],
+    "4.1.1.4.4.3.2-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/matijabilobrk.jpg",
+        "alt": "Matija rođ. Bilobrk",
+        "caption": "Matija rođ. Bilobrk",
+        "altEn": "Matija, née Bilobrk",
+        "captionEn": "Matija, née Bilobrk"
+      }
+    ],
+    "4.1.1.4.4.4": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/cvitanantin.jpg",
+        "alt": "Fotografija Cvitan Antin",
+        "caption": "Cvitan Antin",
+        "altEn": "Photograph of Cvitan Antin",
+        "captionEn": "Cvitan Antin"
+      }
+    ],
+    "4.1.1.4.4.4.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/marijantandara.jpg",
+        "alt": "Portret Marijana Tandare",
+        "caption": "Marijan Tandara",
+        "altEn": "Portrait of Marijan Tandara",
+        "captionEn": "Marijan Tandara"
+      }
+    ],
+    "4.1.1.4.4.5.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/dariomatin.jpg",
+        "alt": "Dario Matin",
+        "caption": "Dario Matin",
+        "altEn": "Dario, son of Mate",
+        "captionEn": "Dario, son of Mate"
+      }
+    ],
+    "4.1.1.4.5": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/dragicanikolina.jpg",
+        "alt": "Dragica Nikolina",
+        "caption": "Dragica Nikolina (★ 1937. – ✝ 2015.)",
+        "altEn": "Dragica Nikolina",
+        "captionEn": "Dragica Nikolina (★ 1937 – ✝ 2015)"
+      }
+    ],
+    "3.1.1.1.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/mirkomarkov1.jpg",
+        "alt": "Putovnica Mirka Markova iz 1939.",
+        "caption": "Putovnica iz 1939.",
+        "altEn": "Mirko Markov’s passport from 1939",
+        "captionEn": "Passport from 1939"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/mirkomarkov2.jpg",
+        "alt": "Izvod iz matične knjige umrlih za Mirka Markova",
+        "caption": "Izvod iz matične knjige umrlih",
+        "altEn": "Death register extract for Mirko Markov",
+        "captionEn": "Death register extract"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/mirkomarkov3.jpg",
+        "alt": "Izvorna osmrtnica Mirka Markova",
+        "caption": "Izvorna osmrtnica",
+        "altEn": "Original death notice for Mirko Markov",
+        "captionEn": "Original death notice"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/mirkomarkov4.jpg",
+        "alt": "Mirko Markov",
+        "caption": "Mirko Markov",
+        "altEn": "Mirko Markov",
+        "captionEn": "Mirko Markov"
+      }
+    ],
+    "3.1.1.1.2.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/milanmirkov.jpg",
+        "alt": "Milan Mirkov",
+        "caption": "Milan Mirkov",
+        "altEn": "Milan Mirkov",
+        "captionEn": "Milan Mirkov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/milansarajevo.jpg",
+        "alt": "Milan Mirkov",
+        "caption": "Milan Mirkov",
+        "altEn": "Milan Mirkov",
+        "captionEn": "Milan Mirkov"
+      }
+    ],
+    "3.1.1.1.2.1.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/daliborovaobitelj.jpg",
+        "alt": "Obitelj Dalibora Milanova",
+        "caption": "Obitelj Dalibora Milanova",
+        "altEn": "Obitelj Dalibora Milanova",
+        "captionEn": "Obitelj Dalibora Milanova"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/amela4.jpg",
+        "alt": "Dalibor i Amela",
+        "caption": "Dalibor i Amela",
+        "altEn": "Dalibor and Amela",
+        "captionEn": "Dalibor and Amela"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/amela2.jpg",
+        "alt": "Dalibor i Amela na Trebeviću",
+        "caption": "Dalibor i Amela na Trebeviću",
+        "altEn": "Dalibor and Amela on Trebević",
+        "captionEn": "Dalibor and Amela on Trebević"
+      }
+    ],
+    "3.1.1.1.2.1.1.2-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/amela.jpg",
+        "alt": "Amela",
+        "caption": "Amela",
+        "altEn": "Amela",
+        "captionEn": "Amela"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ameladaliborova.jpg",
+        "alt": "Amela Tandara sa suprugom Daliborom Tandarom",
+        "caption": "Amela Tandara sa suprugom Daliborom Tandarom",
+        "altEn": "Amela Tandara with her husband Dalibor Tandara",
+        "captionEn": "Amela Tandara with her husband Dalibor Tandara"
+      }
+    ],
+    "3.1.1.1.2.1.1.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/damirdaliborov.jpg",
+        "alt": "Damir Daliborov",
+        "caption": "Damir Daliborov",
+        "altEn": "Damir Daliborov",
+        "captionEn": "Damir Daliborov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/amela3.jpg",
+        "alt": "Damir i Tea Tandara s ocem Daliborom Tandarom",
+        "caption": "Damir i Tea Tandara s ocem Daliborom Tandarom",
+        "altEn": "Damir and Tea Tandara with their father Dalibor Tandara",
+        "captionEn": "Damir and Tea Tandara with their father Dalibor Tandara"
+      }
+    ],
+    "3.1.1.1.2.1.1.2-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/amela5.jpg",
+        "alt": "Tea Tandara s ocem Daliborom Tandarom",
+        "caption": "Tea Tandara s ocem Daliborom Tandarom",
+        "altEn": "Tea Tandara with her father Dalibor Tandara",
+        "captionEn": "Tea Tandara with her father Dalibor Tandara"
+      }
+    ],
+    "3.1.1.1.4.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/grobobiteljinikolemarijanova.jpg",
+        "alt": "Nikola Marijanov i Marija Lukić",
+        "caption": "Nikola Marijanov (1939.–2018.) i Marija Lukić (1939.–2021.)",
+        "altEn": "Nikola Marijanov and Marija Lukić",
+        "captionEn": "Nikola Marijanov (1939–2018) and Marija Lukić (1939–2021)"
+      }
+    ],
+    "3.1.1.1.4.1.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/vladenikolin.jpg",
+        "alt": "Vlade Nikolin (1970.–)",
+        "caption": "Vlade Nikolin (1970.–)",
+        "altEn": "Vlade Nikolin (1970–)",
+        "captionEn": "Vlade Nikolin (1970–)"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/vladenikolin1.jpg",
+        "alt": "Vlade Nikolin (1970.–)",
+        "caption": "Vlade Nikolin (1970.–)",
+        "altEn": "Vlade Nikolin (1970–)",
+        "captionEn": "Vlade Nikolin (1970–)"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/vladesilvana.jpg",
+        "alt": "Vlade i Silvana",
+        "caption": "Vlade i Silvana",
+        "altEn": "Vlade i Silvana",
+        "captionEn": "Vlade i Silvana"
+      }
+    ],
+    "3.1.1.1.4.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/andalukina.jpg",
+        "alt": "Anđa rođ. Kovač",
+        "caption": "Anđa rođ. Kovač",
+        "altEn": "Anđa née Kovač",
+        "captionEn": "Anđa née Kovač"
+      }
+    ],
+    "3.1.1.2.1.2.3.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/alenmatin.jpg",
+        "alt": "Alen Matin",
+        "caption": "Alen Matin",
+        "altEn": "Alen Matin",
+        "captionEn": "Alen Matin"
+      }
+    ],
+    "3.1.1.2.1.2.3.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marinalenov.jpg",
+        "alt": "Marin Alenov",
+        "caption": "Marin Alenov",
+        "altEn": "Marin Alenov",
+        "captionEn": "Marin Alenov"
+      }
+    ],
+    "3.1.1.2.1.2.4": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/lanaivanova.jpg",
+        "alt": "Lana Ivanova",
+        "caption": "Lana Ivanova",
+        "altEn": "Lana Ivanova",
+        "captionEn": "Lana Ivanova"
+      }
+    ],
+    "3.1.1.2.1.2.4.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marijanivanov.jpg",
+        "alt": "Marijan Ivanov",
+        "caption": "Marijan Ivanov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marijanivanov1.jpg",
+        "alt": "Marijan Ivanov i supruga Dragana",
+        "caption": "Marijan Ivanov i supruga Dragana"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marijan%C4%911.jpg",
+        "altEn": "Marijan Ivanov",
+        "captionEn": "Marijan Ivanov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marijan%C4%912.jpg",
+        "altEn": "Marijan Ivanov and wife Dragana",
+        "captionEn": "Marijan Ivanov and wife Dragana"
+      }
+    ],
+    "3.1.1.2.7.3.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/krizan.jpg",
+        "alt": "Križan, Magdalena i Ljerka",
+        "caption": "Križan, Magdalena i Ljerka",
+        "altEn": "Križan, Magdalena and Ljerka",
+        "captionEn": "Križan, Magdalena and Ljerka"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ljerka.jpg",
+        "alt": "Ljerka i Yamaha",
+        "caption": "Ljerka i Yamaha",
+        "altEn": "Ljerka and Yamaha",
+        "captionEn": "Ljerka and Yamaha"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ljerka2.jpg",
+        "alt": "Ljerka Križanova",
+        "caption": "Ljerka Križanova",
+        "altEn": "Ljerka, Križan’s wife",
+        "captionEn": "Ljerka, Križan’s wife"
+      }
+    ],
+    "3.1.1.2.7.3.1.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/toni.jpg",
+        "alt": "Toni Križanov",
+        "caption": "Toni Križanov",
+        "altEn": "Toni Križanov",
+        "captionEn": "Toni Križanov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/toni1.jpg",
+        "alt": "Toni i supruga Nada",
+        "caption": "Toni i supruga Nada",
+        "altEn": "Toni and wife Nada",
+        "captionEn": "Toni and wife Nada"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/tonidjeca.jpg",
+        "alt": "Toni, Magdalena i Filip",
+        "caption": "Toni, Magdalena i Filip",
+        "altEn": "Toni, Magdalena and Filip",
+        "captionEn": "Toni, Magdalena and Filip"
+      }
+    ],
+    "3.1.1.2.7.3.1.1.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/tonifilip.jpg",
+        "alt": "Filip i Magdalena",
+        "caption": "Filip i Magdalena",
+        "altEn": "Filip and Magdalena",
+        "captionEn": "Filip and Magdalena"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/filipveronika.jpg",
+        "alt": "Filip i Veronika",
+        "caption": "Filip i Veronika",
+        "altEn": "Filip and Veronika",
+        "captionEn": "Filip and Veronika"
+      }
+    ],
+    "3.1.1.2.7.3.1.1.1-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/veronikaljerkina.jpg",
+        "alt": "Veronika Tonijeva",
+        "caption": "Veronika Tonijeva",
+        "altEn": "Veronika, daughter of Toni",
+        "captionEn": "Veronika, daughter of Toni"
+      }
+    ],
+    "3.1.1.2.7.3.1.1.1-K2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/tonimagda.jpg",
+        "alt": "Magdalena Tonijeva",
+        "caption": "Magdalena Tonijeva",
+        "altEn": "Magdalena, daughter of Toni",
+        "captionEn": "Magdalena, daughter of Toni"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/magdalena.jpg",
+        "alt": "Magdalena Tonijeva",
+        "caption": "Magdalena Tonijeva",
+        "altEn": "Magdalena, daughter of Toni",
+        "captionEn": "Magdalena, daughter of Toni"
+      }
+    ],
+    "3.1.1.2.7.3.1.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/dinkokrizanov.jpg",
+        "alt": "Dinko Križanov",
+        "caption": "Dinko Križanov",
+        "altEn": "Dinko Križanov",
+        "captionEn": "Dinko Križanov"
+      }
+    ],
+    "3.1.1.2.8.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-01.jpg",
+        "alt": "Josip Jurin i Anica rođ. Dragun",
+        "caption": "Josip Jurin i Anica rođ. Dragun",
+        "altEn": "Josip Jurin and Anica née Dragun",
+        "captionEn": "Josip Jurin and Anica née Dragun"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-02.jpg",
+        "alt": "Sa bakom Anicom-75",
+        "caption": "Sa bakom Anicom-75",
+        "altEn": "With grandmother Anica-75",
+        "captionEn": "With grandmother Anica-75"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-03.jpg",
+        "alt": "Obiteljska grobnica Josipa Jurina",
+        "caption": "Obiteljska grobnica Josipa Jurina",
+        "altEn": "Josip Jurin’s family tomb",
+        "captionEn": "Josip Jurin’s family tomb"
+      }
+    ],
+    "3.1.1.2.8.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-01.jpg",
+        "alt": "Ivan Josipov – 1960.",
+        "caption": "Ivan Josipov – 1960.",
+        "altEn": "Ivan Josipov – 1960.",
+        "captionEn": "Ivan Josipov – 1960."
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-02.jpg",
+        "alt": "Ivanova obitelj – 1968.",
+        "caption": "Ivanova obitelj – 1968.",
+        "altEn": "Ivan’s family – 1968.",
+        "captionEn": "Ivan’s family – 1968."
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-03.jpg",
+        "alt": "Ivan Josipov i Jure Ivanov – 2022.",
+        "caption": "Ivan Josipov i Jure Ivanov – 2022.",
+        "altEn": "Ivan Josipov and Jure Ivanov – 2022.",
+        "captionEn": "Ivan Josipov and Jure Ivanov – 2022."
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-04.jpg",
+        "alt": "Ivan Josipov s praunukom",
+        "caption": "Ivan Josipov s praunukom",
+        "altEn": "Ivan Josipov with his great-grandson",
+        "captionEn": "Ivan Josipov with his great-grandson"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-05.jpg",
+        "alt": "Grob Ivana Josipova",
+        "caption": "Grob Ivana Josipova",
+        "altEn": "Ivan Josipov’s grave",
+        "captionEn": "Ivan Josipov’s grave"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-07.jpg",
+        "alt": "Ivan Josipov u krugu obitelji",
+        "caption": "Ivan Josipov u krugu obitelji",
+        "altEn": "Ivan Josipov with his family",
+        "captionEn": "Ivan Josipov with his family"
+      }
+    ],
+    "3.1.1.2.8.1.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-01.jpg",
+        "alt": "Jure Ivanov",
+        "caption": "Jure Ivanov",
+        "altEn": "Jure Ivanov",
+        "captionEn": "Jure Ivanov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-02.jpg",
+        "alt": "Jure Ivanov i Ruža rođ. Kosić – 1980.",
+        "caption": "Jure Ivanov i Ruža rođ. Kosić – 1980.",
+        "altEn": "Jure Ivanov and Ruža née Kosić – 1980.",
+        "captionEn": "Jure Ivanov and Ruža née Kosić – 1980."
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-03.jpg",
+        "alt": "Jure i Ruža – 2007.",
+        "caption": "Jure i Ruža – 2007.",
+        "altEn": "Jure and Ruža – 2007.",
+        "captionEn": "Jure and Ruža – 2007."
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-04.jpg",
+        "alt": "Jure Ivanov na skijanju",
+        "caption": "Jure Ivanov na skijanju",
+        "altEn": "Jure Ivanov skiing",
+        "captionEn": "Jure Ivanov skiing"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-05.jpg",
+        "alt": "Jure i Ruža s unucima",
+        "caption": "Jure i Ruža s unucima",
+        "altEn": "Jure and Ruža with their grandchildren",
+        "captionEn": "Jure and Ruža with their grandchildren"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-06.jpg",
+        "alt": "Jure i Ruža s unucima",
+        "caption": "Jure i Ruža s unucima",
+        "altEn": "Jure and Ruža with their grandchildren",
+        "captionEn": "Jure and Ruža with their grandchildren"
+      }
+    ],
+    "3.1.1.2.8.1.1.1-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-SP1-01.jpg",
+        "alt": "Ruža rođ. Kosić",
+        "caption": "Ruža rođ. Kosić",
+        "altEn": "Ruža née Kosić",
+        "captionEn": "Ruža née Kosić"
+      }
+    ],
+    "3.1.1.2.8.1.1.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-00.jpg",
+        "alt": "Ivica Julio Jurin",
+        "caption": "Ivica Julio Jurin",
+        "altEn": "Ivica Julio Jurin",
+        "captionEn": "Ivica Julio Jurin"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-01.jpg",
+        "alt": "Ivica Julio Jurin i Ana rođ. Mikuš",
+        "caption": "Ivica Julio i Ana rođ. Mikuš",
+        "altEn": "Ivica Julio Jurin and Ana née Mikuš",
+        "captionEn": "Ivica Julio and Ana née Mikuš"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-02.jpg",
+        "alt": "Ivica Julio sa sinom",
+        "caption": "Ivica Julio i sin",
+        "altEn": "Ivica Julio with his son",
+        "captionEn": "Ivica Julio and son"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-03.jpg",
+        "alt": "Ivica Julio Jurin i Ana rođ. Mikuš s djecom",
+        "caption": "Ivica Julio i Ana rođ. Mikuš s djecom",
+        "altEn": "Ivica Julio Jurin and Ana née Mikuš with their children",
+        "captionEn": "Ivica Julio and Ana née Mikuš with their children"
+      }
+    ],
+    "3.1.1.2.8.1.1.1.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1.1-01.jpg",
+        "alt": "Vigo Ivičin",
+        "caption": "Vigo Ivičin",
+        "altEn": "Vigo Ivičin",
+        "captionEn": "Vigo Ivičin"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1.1-02.jpg",
+        "alt": "Vigo Ivičin i Teo",
+        "caption": "Vigo Ivičin i Teo",
+        "altEn": "Vigo Ivičin and Teo",
+        "captionEn": "Vigo Ivičin and Teo"
+      }
+    ],
+    "3.1.1.2.8.1.1.1.1-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-K-01.jpg",
+        "alt": "Kaia Ivičina",
+        "caption": "Kaia Ivičina",
+        "altEn": "Kaia Ivičina",
+        "captionEn": "Kaia Ivičina"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-K-02.jpg",
+        "alt": "Kaia",
+        "caption": "Kaia",
+        "altEn": "Kaia",
+        "captionEn": "Kaia"
+      }
+    ],
+    "3.1.1.2.8.1.1.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2-01.png",
+        "alt": "Marin Tin Jurin",
+        "caption": "Marin Tin",
+        "altEn": "Marin Tin Jurin",
+        "captionEn": "Marin Tin"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2-02.jpg",
+        "alt": "Marin Tin Jurin i Ivana rođ. Kereta",
+        "caption": "Marin Tin i Ivana rođ. Kereta",
+        "altEn": "Marin Tin Jurin and Ivana née Kereta",
+        "captionEn": "Marin Tin and Ivana née Kereta"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2-SP-01.jpg",
+        "alt": "Ivana rođ. Kereta",
+        "caption": "Ivana rođ. Kereta",
+        "altEn": "Ivana née Kereta",
+        "captionEn": "Ivana née Kereta"
+      }
+    ],
+    "3.1.1.2.8.1.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.2.0.jpg",
+        "alt": "Vladimir Ivanov – 3.1.1.2.8.1.1.2",
+        "caption": "Vladimir Ivanov – 3.1.1.2.8.1.1.2",
+        "altEn": "Vladimir Ivanov – 3.1.1.2.8.1.1.2",
+        "captionEn": "Vladimir Ivanov – 3.1.1.2.8.1.1.2"
+      }
+    ],
+    "3.1.1.2.8.1.1.2-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.2.0-1SP.jpg",
+        "alt": "Ljubica Kosić – 3.1.1.2.8.1.1.2-SP-1",
+        "caption": "Ljubica Kosić – 3.1.1.2.8.1.1.2-SP-1",
+        "altEn": "Ljubica Kosić – 3.1.1.2.8.1.1.2-SP-1",
+        "captionEn": "Ljubica Kosić – 3.1.1.2.8.1.1.2-SP-1"
+      }
+    ],
+    "3.1.1.2.8.1.1.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.2.1-01.jpg",
+        "alt": "Filip Vladimirov",
+        "caption": "Filip Vladimirov",
+        "altEn": "Filip Vladimirov",
+        "captionEn": "Filip Vladimirov"
+      }
+    ],
+    "3.1.1.2.8.1.1.2.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.2.2-02.jpg",
+        "alt": "Leo Vladimirov",
+        "caption": "Leo Vladimirov",
+        "altEn": "Leo Vladimirov",
+        "captionEn": "Leo Vladimirov"
+      }
+    ],
+    "3.1.1.2.8.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2-01.jpg",
+        "alt": "Milan Josipov i Slavka rođ. Budimir",
+        "caption": "Milan Josipov i Slavka rođ. Budimir",
+        "altEn": "Milan Josipov and Slavka née Budimir",
+        "captionEn": "Milan Josipov and Slavka née Budimir"
+      }
+    ],
+    "3.1.1.2.8.1.2-K2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2-K2-01.jpg",
+        "alt": "Ana Milanova",
+        "caption": "Ana Milanova",
+        "altEn": "Ana Milanova",
+        "captionEn": "Ana Milanova"
+      }
+    ],
+    "3.1.1.2.8.1.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.1-01.jpg",
+        "alt": "Jozo Milanov",
+        "caption": "Jozo Milanov",
+        "altEn": "Jozo Milanov",
+        "captionEn": "Jozo Milanov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.1-SP1-01.jpg",
+        "alt": "Vesna rođ. Matić",
+        "caption": "Vesna rođ. Matić",
+        "altEn": "Vesna née Matić",
+        "captionEn": "Vesna née Matić"
+      }
+    ],
+    "3.1.1.2.8.1.2.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2-01.jpg",
+        "alt": "Ivan Milanov i Ružica rođ. Glavaš",
+        "caption": "Ivan Milanov i Ružica rođ. Glavaš",
+        "altEn": "Ivan Milanov and Ružica née Glavaš",
+        "captionEn": "Ivan Milanov and Ružica née Glavaš"
+      }
+    ],
+    "3.1.1.2.8.1.2.2-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2-K1-01.jpg",
+        "alt": "Natalija s diplomom",
+        "caption": "Natalija s diplomom",
+        "altEn": "Natalija with her diploma",
+        "captionEn": "Natalija with her diploma"
+      }
+    ],
+    "3.1.1.2.8.1-K2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marajosipova.jpg",
+        "alt": "Mara Josipova",
+        "caption": "Mara Josipova",
+        "altEn": "Mara Josipova",
+        "captionEn": "Mara Josipova"
+      }
+    ],
+    "3.1.1.2.8.1-K3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/nedajosipova.jpg",
+        "alt": "Neda Josipova",
+        "caption": "Neda Josipova",
+        "altEn": "Neda Josipova",
+        "captionEn": "Neda Josipova"
+      }
+    ],
+    "3.1.1.2.8.1-K4": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/matija-budimir.png",
+        "alt": "Matija i Ante sa sinovima; slijeva nadesno: Mario, Mirko, Ivica i Jozo",
+        "caption": "Matija i Ante sa sinovima. Slijeva nadesno: Mario, Mirko, Ivica i Jozo.",
+        "altEn": "Matija and Ante with their sons; from left to right: Mario, Mirko, Ivica and Jozo",
+        "captionEn": "Matija and Ante with their sons. From left to right: Mario, Mirko, Ivica and Jozo."
+      }
+    ],
+    "3.1.2.1.1.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ikokum.jpg",
+        "alt": "Ivan Marijanov (1939.–2025.)",
+        "caption": "Ivan Marijanov (1939.–2025.)",
+        "altEn": "Ivan Marijanov (1939–2025)",
+        "captionEn": "Ivan Marijanov (1939–2025)"
+      }
+    ],
+    "3.1.2.1.1.1.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/nediljkomilanov.jpg",
+        "alt": "Nedjeljko Milanov",
+        "caption": "Nedjeljko Milanov",
+        "altEn": "Nedjeljko Milanov",
+        "captionEn": "Nedjeljko Milanov"
+      }
+    ],
+    "3.1.2.1.1.4.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/antetucic1.jpg",
+        "alt": "Ante Antin",
+        "caption": "Ante Antin",
+        "altEn": "Ante Antin",
+        "captionEn": "Ante Antin"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/antetucic2.jpg",
+        "alt": "Ante i supruga Valentina",
+        "caption": "Ante i supruga Valentina",
+        "altEn": "Ante and wife Valentina",
+        "captionEn": "Ante and wife Valentina"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/antetucic3.jpg",
+        "alt": "Ante i njegova obitelj",
+        "caption": "Ante i njegova obitelj",
+        "altEn": "Ante and his family",
+        "captionEn": "Ante and his family"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/antetucic4.jpg",
+        "alt": "Ante i Valentina",
+        "caption": "Ante i Valentina",
+        "altEn": "Ante and Valentina",
+        "captionEn": "Ante and Valentina"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/antetucic5.jpg",
+        "alt": "Valentina rođ. Jureša",
+        "caption": "Valentina rođ. Jureša",
+        "altEn": "Valentina née Jureša",
+        "captionEn": "Valentina née Jureša"
+      }
+    ],
+    "3.1.2.5.2.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/mirkoikin.jpg",
+        "alt": "Mirko i sinovi Ivan i Josip",
+        "caption": "Mirko i sinovi Ivan i Josip",
+        "altEn": "Mirko and sons Ivan and Josip",
+        "captionEn": "Mirko and sons Ivan and Josip"
+      }
+    ],
+    "3.1.2.5.2.1.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ivanikin2.jpg",
+        "alt": "Ivan Mirkov",
+        "caption": "Ivan Mirkov",
+        "altEn": "Ivan Mirkov",
+        "captionEn": "Ivan Mirkov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ivanikin.jpg",
+        "alt": "Ivan i supruga",
+        "caption": "Ivan i supruga",
+        "altEn": "Ivan and wife",
+        "captionEn": "Ivan and wife"
+      }
+    ],
+    "3.1.2.5.2.1.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/josipisara1.jpg",
+        "alt": "Josip Mirkov",
+        "caption": "Josip Mirkov",
+        "altEn": "Josip Mirkov",
+        "captionEn": "Josip Mirkov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/josipisara2.jpg",
+        "alt": "Sara i Josip",
+        "caption": "Sara i Josip",
+        "altEn": "Sara and Josip",
+        "captionEn": "Sara and Josip"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/josipisara3.jpg",
+        "alt": "Josipova obitelj",
+        "caption": "Josipova obitelj",
+        "altEn": "Josip’s family",
+        "captionEn": "Josip’s family"
+      }
+    ],
+    "3.1.2.5.4.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/sonja2.jpg",
+        "alt": "Sonja Mirčina",
+        "caption": "Sonja Mirčina",
+        "altEn": "Sonja Mirčina",
+        "captionEn": "Sonja Mirčina"
+      }
+    ],
+    "3.1.2.5.4.2.3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ante-mirkov.jpg",
+        "alt": "Ante Mirkov",
+        "caption": "Ante Mirkov",
+        "altEn": "Ante Mirkov",
+        "captionEn": "Ante Mirkov"
+      }
+    ],
+    "3.3.1.1.3.1.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/zelko1963.jpg",
+        "alt": "Željko Nikolin",
+        "caption": "Željko Nikolin",
+        "altEn": "Željko Nikolin",
+        "captionEn": "Željko Nikolin"
+      }
+    ],
+    "3.3.1.1.3.1.1.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/nikolaprogramer.jpg",
+        "alt": "Nikola Željkov",
+        "caption": "Nikola Željkov",
+        "altEn": "Nikola Željkov",
+        "captionEn": "Nikola Željkov"
+      }
+    ],
+    "3.3.1.1.3.1.1.2.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/markozeljkov.jpg",
+        "alt": "Marko Željkov",
+        "caption": "Marko Željkov",
+        "altEn": "Marko Željkov",
+        "captionEn": "Marko Željkov"
+      }
+    ],
+    "3.3.1.1.3.1.2.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/mirkodajana.jpg",
+        "alt": "Mirko Nedjeljkov",
+        "caption": "Mirko Nedjeljkov",
+        "altEn": "Mirko Nedjeljkov",
+        "captionEn": "Mirko Nedjeljkov"
+      }
+    ],
+    "3.3.1.1.3.1.2.2.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/vedranzdravkov.jpg",
+        "alt": "Vedran Zdravkov",
+        "caption": "Vedran Zdravkov",
+        "altEn": "Vedran Zdravkov",
+        "captionEn": "Vedran Zdravkov"
+      }
+    ],
+    "3.3.1.1.3.1.3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marijanmatin.jpg",
+        "alt": "Marijan Matin",
+        "caption": "Marijan Matin",
+        "altEn": "Marijan Matin",
+        "captionEn": "Marijan Matin"
+      }
+    ],
+    "3.3.1.1.3.2.1.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ivandarkov.jpg",
+        "alt": "Ivan Darkov",
+        "caption": "Ivan Darkov",
+        "altEn": "Ivan Darkov",
+        "captionEn": "Ivan Darkov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ivandarkov1.jpg",
+        "alt": "Ivanova obitelj",
+        "caption": "Ivanova obitelj",
+        "altEn": "Ivanova obitelj",
+        "captionEn": "Ivanova obitelj"
+      }
+    ],
+    "3.3.1.2.1.3.1.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ivicamijin75.jpg",
+        "alt": "Ivica Mijin",
+        "caption": "Ivica Mijin",
+        "altEn": "Ivica Mijin",
+        "captionEn": "Ivica Mijin"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/mija.jpg",
+        "alt": "Mija Ivičina",
+        "caption": "Mija Ivičina",
+        "altEn": "Mija Ivičina",
+        "captionEn": "Mija Ivičina"
+      }
+    ],
+    "3.3.1.2.1.3.1.1.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/lukaivice.jpg",
+        "alt": "Luka Ivičin",
+        "caption": "Luka Ivičin",
+        "altEn": "Luka Ivičin",
+        "captionEn": "Luka Ivičin"
+      }
+    ],
+    "3.3.1.2.1.3.1.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/zoranmijin.jpg",
+        "alt": "Zoran Mijin",
+        "caption": "Zoran Mijin",
+        "altEn": "Zoran Mijin",
+        "captionEn": "Zoran Mijin"
+      }
+    ],
+    "3.3.1.2.1.3.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/antevinkov54.jpg",
+        "alt": "Ante i supruga Vesna rođ. Topalušić",
+        "caption": "Ante i supruga Vesna rođ. Topalušić",
+        "altEn": "Ante and his wife Vesna, née Topalušić",
+        "captionEn": "Ante and his wife Vesna, née Topalušić"
+      }
+    ],
+    "3.3.1.2.1.3.1.3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/milanvinkov.jpg",
+        "alt": "Milan Vinkov",
+        "caption": "Milan Vinkov",
+        "altEn": "Milan Vinkov",
+        "captionEn": "Milan Vinkov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/nediljkamilanova.jpg",
+        "alt": "Nediljka rođ. Matešić",
+        "caption": "Nediljka — Milanova supruga",
+        "altEn": "Nediljka née Matešić",
+        "captionEn": "Nediljka — Milan’s wife"
+      }
+    ],
+    "3.3.1.2.1.3.1.3.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/kristmilanov.jpg",
+        "alt": "Kristijan Milanov",
+        "caption": "Kristijan Milanov",
+        "altEn": "Kristijan Milanov",
+        "captionEn": "Kristijan Milanov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/kristmilanov2.jpg",
+        "alt": "Kristijan i ?",
+        "caption": "Kristijan i ?",
+        "altEn": "Kristijan and ?",
+        "captionEn": "Kristijan and ?"
+      }
+    ],
+    "3.3.1.2.1.3.1.3.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/antoniomilanov.jpg",
+        "alt": "Antonio Milanov",
+        "caption": "Antonio Milanov",
+        "altEn": "Antonio Milanov",
+        "captionEn": "Antonio Milanov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/antonioiromana.jpg",
+        "alt": "Antonio i supruga Romana",
+        "caption": "Antonio i supruga Romana",
+        "altEn": "Antonio and wife Romana",
+        "captionEn": "Antonio and wife Romana"
+      }
+    ],
+    "3.3.1.2.1.3.1.3.3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/dinomilanov.jpg",
+        "alt": "Dino Milanov",
+        "caption": "Dino Milanov",
+        "altEn": "Dino Milanov",
+        "captionEn": "Dino Milanov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/dinoimartina.jpg",
+        "alt": "Dino i supruga Martina",
+        "caption": "Dino i supruga Martina",
+        "altEn": "Dino and wife Martina",
+        "captionEn": "Dino and wife Martina"
+      }
+    ],
+    "3.3.1.2.1.3.1.3-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/valentinamilanova.jpg",
+        "alt": "Valentina Milanova",
+        "caption": "Valentina Milanova",
+        "altEn": "Valentina Milanova",
+        "captionEn": "Valentina Milanova"
+      }
+    ],
+    "3.3.1.2.1.3.1.4": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/zdravkovinkov.jpg",
+        "alt": "Zdravko Vinkov",
+        "caption": "Zdravko Vinkov",
+        "altEn": "Zdravko Vinkov",
+        "captionEn": "Zdravko Vinkov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/brigita.jpg",
+        "alt": "Brigita — Zdravkova supruga",
+        "caption": "Brigita — Zdravkova supruga",
+        "altEn": "Brigita — Zdravko’s wife",
+        "captionEn": "Brigita — Zdravko’s wife"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/zdravkovaobitel.jpg",
+        "alt": "Zdravkova obitelj",
+        "caption": "Zdravkova obitelj",
+        "altEn": "Zdravko’s family",
+        "captionEn": "Zdravko’s family"
+      }
+    ],
+    "3.3.1.2.1.3.1.4-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/anitazdravkova.jpg",
+        "alt": "Anita Zdravkova",
+        "caption": "Anita Zdravkova",
+        "altEn": "Anita Zdravkova",
+        "captionEn": "Anita Zdravkova"
+      }
+    ],
+    "3.3.1.2.1.3.1.4.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/matezdravkov.jpg",
+        "alt": "Mate Zdravkov",
+        "caption": "Mate Zdravkov",
+        "altEn": "Mate Zdravkov",
+        "captionEn": "Mate Zdravkov"
+      }
+    ],
+    "3.3.1.2.1.3.1.4.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/brunozdravkov.jpg",
+        "alt": "Bruno Zdravkov",
+        "caption": "Bruno Zdravkov",
+        "altEn": "Bruno Zdravkov",
+        "captionEn": "Bruno Zdravkov"
+      }
+    ],
+    "3.3.1.2.1.3.1.4-K2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/petrazdravkova.jpg",
+        "alt": "Petra Zdravkova",
+        "caption": "Petra Zdravkova",
+        "altEn": "Petra Zdravkova",
+        "captionEn": "Petra Zdravkova"
+      }
+    ],
+    "3.3.1.2.1.3.1.5": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/martinavinkova.jpg",
+        "alt": "Martina Vinkova",
+        "caption": "Martina Vinkova",
+        "altEn": "Martina Vinkova",
+        "captionEn": "Martina Vinkova"
+      }
+    ],
+    "3.3.1.2.1.3.2-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/rosamilanova.jpg",
+        "alt": "Rosa Milanova rođ. Tandara",
+        "caption": "Rosa Milanova rođ. Tandara",
+        "altEn": "Rosa Milanova née Tandara",
+        "captionEn": "Rosa Milanova née Tandara"
+      }
+    ],
+    "3.3.1.2.1.3.2.1-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ivanaeva.jpg",
+        "alt": "Ivana Željkova",
+        "caption": "Ivana Željkova",
+        "altEn": "Ivana, daughter of Željko",
+        "captionEn": "Ivana, daughter of Željko"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ivanaeva2.jpg",
+        "alt": "Eva od Ivane",
+        "caption": "Eva od Ivane",
+        "altEn": "Eva, daughter of Ivana",
+        "captionEn": "Eva, daughter of Ivana"
+      }
+    ],
+    "3.3.1.2.1.3.2.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ivadraganova.jpg",
+        "alt": "Iva Draganova",
+        "caption": "Iva Draganova · 3.3.1.2.1.3.2.2-K1",
+        "altEn": "Iva Draganova",
+        "captionEn": "Iva Draganova · 3.3.1.2.1.3.2.2-K1"
+      }
+    ],
+    "3.3.1.2.1.3.2.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/gorandraganov.jpg",
+        "alt": "Goran Draganov",
+        "caption": "Goran Draganov i supruga · 3.3.1.2.1.3.2.2.1",
+        "altEn": "Goran Draganov",
+        "captionEn": "Goran Draganov and wife · 3.3.1.2.1.3.2.2.1"
+      }
+    ],
+    "3.3.1.2.1.4.1.1-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/sabina.jpg",
+        "alt": "Sabina Ivičina – Sabina Tandara Knezović",
+        "caption": "Sabina Ivičina",
+        "altEn": "Sabina Ivičina – Sabina Tandara Knezović",
+        "captionEn": "Sabina Ivičina"
+      }
+    ],
+    "3.3.1.2.1.4.1.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/hrvojeivicin.jpg",
+        "alt": "Hrvoje Ivičin – 3.3.1.2.1.4.1.1.1",
+        "caption": "Hrvoje Ivičin – 3.3.1.2.1.4.1.1.1",
+        "altEn": "Hrvoje Ivičin – 3.3.1.2.1.4.1.1.1",
+        "captionEn": "Hrvoje Ivičin – 3.3.1.2.1.4.1.1.1"
+      }
+    ],
+    "3.3.1.2.1.4.4": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/zlatadrazenkova.jpg",
+        "alt": "Zlata rođ. Vučemil",
+        "caption": "Zlata rođ. Vučemil",
+        "altEn": "Zlata née Vučemil",
+        "captionEn": "Zlata née Vučemil"
+      }
+    ],
+    "3.3.1.2.1.4.4.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/dra%C5%BEenko.jpg",
+        "alt": "Draženko Antin",
+        "caption": "Draženko Antin",
+        "altEn": "Draženko Antin",
+        "captionEn": "Draženko Antin"
+      }
+    ],
+    "3.3.1.2.1.4.5.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/vanjintata.jpg",
+        "alt": "Željko Matin",
+        "caption": "Željko Matin",
+        "altEn": "Željko Matin",
+        "captionEn": "Željko Matin"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/vanjinirod.jpg",
+        "alt": "Željko Matin i supruga Ankica r. Šitum",
+        "caption": "Željko Matin i supruga Ankica r. Šitum",
+        "altEn": "Željko Matin i supruga Ankica r. Šitum",
+        "captionEn": "Željko Matin i supruga Ankica r. Šitum"
+      }
+    ],
+    "3.3.1.2.1.4.5.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/mariovanjin.jpg",
+        "alt": "Mario Željkov",
+        "caption": "Mario Željkov",
+        "altEn": "Mario Željkov",
+        "captionEn": "Mario Željkov"
+      }
+    ],
+    "3.3.1.2.1.4.5.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ivanvanja.jpg",
+        "alt": "Ivan Vanja Željkov",
+        "caption": "Ivan Vanja Željkov",
+        "altEn": "Ivan Vanja Željkov",
+        "captionEn": "Ivan Vanja Željkov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/vanja2.jpg",
+        "alt": "Vanjina obitelj",
+        "caption": "Vanjina obitelj",
+        "altEn": "Vanjina obitelj",
+        "captionEn": "Vanjina obitelj"
+      }
+    ],
+    "3.3.1.2.1.4.5.1.2-K2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/vanjinasonja.jpg",
+        "alt": "Sonja Vanjina",
+        "caption": "Sonja Vanjina",
+        "altEn": "Sonja Lynn",
+        "captionEn": "Sonja Lynn"
+      }
+    ],
+    "3.3.1.2.1.4.5.1.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/vanjinkiki.jpg",
+        "alt": "Christian Ivan Vanjin",
+        "caption": "Christian Ivan Vanjin",
+        "altEn": "Christian Ivan",
+        "captionEn": "Christian Ivan"
+      }
+    ],
+    "3.3.1.2.1.4.5.1.2-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/christa.jpg",
+        "alt": "Christa rođ. Gates",
+        "caption": "Christa rođ. Gates",
+        "altEn": "Christa née Gates",
+        "captionEn": "Christa née Gates"
+      }
+    ],
+    "2.3.1.2.3.3.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/ikopiin.jpg",
+        "alt": "Ivan Piin",
+        "caption": "Ivan Piin",
+        "altEn": "Ivan Piin",
+        "captionEn": "Ivan Piin"
+      }
+    ],
+    "2.3.1.2.3.3.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/dino.jpg",
+        "alt": "Dino Ivanov",
+        "caption": "Dino Ivanov",
+        "altEn": "Dino Ivanov",
+        "captionEn": "Dino Ivanov"
+      }
+    ],
+    "2.3.1.2.3.3.1.1-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/dinomatilda.jpg",
+        "alt": "Dino Ivanov i Matilda Dinova",
+        "caption": "Dino Ivanov i Matilda Dinova",
+        "altEn": "Dino Ivanov and Matilda Dinova",
+        "captionEn": "Dino Ivanov and Matilda Dinova"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/matildadinova.jpg",
+        "alt": "Matilda Dinova",
+        "caption": "Matilda Dinova",
+        "altEn": "Matilda Dinova",
+        "captionEn": "Matilda Dinova"
+      }
+    ],
+    "2.3.1.2.3.3.1.1-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/hedviga.jpg",
+        "alt": "Hedviga Dinina",
+        "caption": "Hedviga Dinova",
+        "altEn": "Hedviga Dinova",
+        "captionEn": "Hedviga Dinova"
+      }
+    ],
+    "2.3.1.2.3.3.1.1-K2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/leonardadinova.jpg",
+        "alt": "Leonarda Dinova",
+        "caption": "Leonarda Dinova",
+        "altEn": "Leonarda Dinova",
+        "captionEn": "Leonarda Dinova"
+      }
+    ],
+    "2.3.1.2.3.3.1.1-K3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/lucijadinova.jpg",
+        "alt": "Lucija Dinova",
+        "caption": "Lucija Dinova",
+        "altEn": "Lucija Dinova",
+        "captionEn": "Lucija Dinova"
+      }
+    ],
+    "2.3.1.2.3.3.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/tomislavjukin.jpg",
+        "alt": "Tomislav Jurin",
+        "caption": "Tomislav Jurin"
+      }
+    ],
+    "2.3.1.2.3.3.3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/jozopiin3.jpg",
+        "alt": "Jozo Piin",
+        "caption": "Jozo Piin",
+        "altEn": "Jozo Piin",
+        "captionEn": "Jozo Piin"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/jozopiin.jpg",
+        "alt": "Jozo Piin",
+        "caption": "Jozo Piin",
+        "altEn": "Jozo, son of Pio",
+        "captionEn": "Jozo, son of Pio"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/jozopiin1.jpg",
+        "alt": "Jozo Piin",
+        "caption": "Jozo Piin",
+        "altEn": "Jozo, son of Pio",
+        "captionEn": "Jozo, son of Pio"
+      }
+    ],
+    "2.3.1.2.3.4.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/antedomin.jpg",
+        "alt": "Ante Dominikov",
+        "caption": "Ante Dominikov",
+        "altEn": "Ante Dominikov",
+        "captionEn": "Ante Dominikov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/ozana.jpg",
+        "alt": "Ozana Antina",
+        "caption": "Ozana Antina"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/anamarijaantina.jpg",
+        "alt": "Ana Marija Antina",
+        "caption": "Ana Marija Antina"
+      }
+    ],
+    "2.3.1.2.3.4.4": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/piodomin.jpg",
+        "alt": "Pio Dominikov",
+        "caption": "Pio Dominikov",
+        "altEn": "Pio, son of Dominik",
+        "captionEn": "Pio, son of Dominik"
+      }
+    ],
+    "2.3.1.2.3.4.5": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/sveto.jpg",
+        "alt": "Sveto Dominikov",
+        "caption": "Sveto Dominikov",
+        "altEn": "Sveto, son of Dominik",
+        "captionEn": "Sveto, son of Dominik"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/sveto1.jpg",
+        "alt": "Sveto Dominikov",
+        "caption": "Sveto Dominikov",
+        "altEn": "Sveto, son of Dominik",
+        "captionEn": "Sveto, son of Dominik"
+      }
+    ],
+    "2.3.1.2.3.5": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/matejurin.jpg",
+        "alt": "Mate Jurin",
+        "caption": "Mate Jurin",
+        "altEn": "Mate Jurin",
+        "captionEn": "Mate Jurin"
+      }
+    ],
+    "2.3.1.2.3.5.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/tomislavmatin.jpg",
+        "alt": "Toma Matin",
+        "caption": "Toma Matin",
+        "altEn": "Toma Matin",
+        "captionEn": "Toma Matin"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/tominovjencanje.jpg",
+        "alt": "Božica, Mara i Toma",
+        "caption": "Božica, Mara i Toma",
+        "altEn": "Božica, Mara and Toma",
+        "captionEn": "Božica, Mara and Toma"
+      }
+    ],
+    "2.3.1.2.3.5.1-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/martinatomina.jpg",
+        "alt": "Martina Tomina, udana Živanović",
+        "caption": "Martina Tomina",
+        "altEn": "Martina Tomina",
+        "captionEn": "Martina Tomina"
+      }
+    ],
+    "2.3.1.2.3.5.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/matetomin.jpg",
+        "alt": "Mate Tomin",
+        "caption": "Mate Tomin",
+        "altEn": "Mate, son of Toma",
+        "captionEn": "Mate, son of Toma"
+      }
+    ],
+    "2.3.4.1.1.4.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/bruno.png",
+        "alt": "Dr. Ante Bruno Tandara",
+        "caption": "Dr. Ante Bruno Tandara",
+        "altEn": "Dr. Ante Bruno Tandara",
+        "captionEn": "Dr. Ante Bruno Tandara"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/drbruno-graf.jpeg",
+        "alt": "Grafički prikaz grananja prezimena",
+        "caption": "Grafički prikaz grananja prezimena",
+        "altEn": "Graphic representation of surname branching",
+        "captionEn": "Graphic representation of surname branching"
+      }
+    ],
+    "2.3.4.1.1.4.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/anetagacek.jpg",
+        "alt": "Aneta rođ. Gacek, Zvonimirova supruga",
+        "caption": "Zvonimirova supruga Aneta"
+      }
+    ],
+    "2.3.4.1.1.4.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/mate73.jpg",
+        "alt": "Mate Franin",
+        "caption": "Mate Franin",
+        "altEn": "Mate Franin",
+        "captionEn": "Mate Franin"
+      }
+    ],
+    "2.3.4.1.1.4.2.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/ante2000.jpg",
+        "alt": "Ante Matin",
+        "caption": "Ante Matin",
+        "altEn": "Ante Matin",
+        "captionEn": "Ante Matin"
+      }
+    ],
+    "2.3.4.1.1.5.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/nikoladragin2.jpg",
+        "alt": "P. Nikola Tandara",
+        "caption": "P. Nikola Tandara",
+        "altEn": "Fr Nikola Tandara",
+        "captionEn": "Fr Nikola Tandara"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/nikoladragin.jpg",
+        "alt": "P. Nikola Tandara",
+        "caption": "P. Nikola Tandara"
+      }
+    ],
+    "2.3.4.1.1.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/mirjana.jpg",
+        "alt": "Mirjana Mirkina",
+        "caption": "Mirjana Mirkina",
+        "altEn": "Mirjana Mirkina",
+        "captionEn": "Mirjana Mirkina"
+      }
+    ],
+    "2.3.4.1.3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/marijanlovrin.jpg",
+        "alt": "Marijan Lovrin",
+        "caption": "Marijan Lovrin",
+        "altEn": "Marijan, son of Lovro",
+        "captionEn": "Marijan, son of Lovro"
+      }
+    ],
+    "2.3.4.1.3.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/mijomarijanov1908.jpg",
+        "alt": "Mijo Marijanov",
+        "caption": "Mijo Marijanov",
+        "altEn": "Mijo Marijanov",
+        "captionEn": "Mijo Marijanov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/mijomarijanov.jpg",
+        "alt": "Mijo i Slavka",
+        "caption": "Mijo i Slavka",
+        "altEn": "Mijo i Slavka",
+        "captionEn": "Mijo i Slavka"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/grupa.jpg",
+        "alt": "Mijo Marijanov — gornji red, 2. osoba slijeva.",
+        "caption": "Mijo Marijanov — gornji red, 2. osoba slijeva.",
+        "altEn": "Mijo Marijanov — upper row, position 2 from the left.",
+        "captionEn": "Mijo Marijanov — upper row, position 2 from the left."
+      }
+    ],
+    "2.3.4.1.3.1-K3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/grupa.jpg",
+        "alt": "Nada Mijina, udana Bilić — gornji red, 3. osoba slijeva.",
+        "caption": "Nada Mijina, udana Bilić — gornji red, 3. osoba slijeva.",
+        "altEn": "Nada Mijina, udana Bilić — upper row, position 3 from the left.",
+        "captionEn": "Nada Mijina, udana Bilić — upper row, position 3 from the left."
+      }
+    ],
+    "2.3.4.1.3.1-K4": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/grupa.jpg",
+        "alt": "Maca Mijina, udana Knezović — gornji red, 1. osoba slijeva.",
+        "caption": "Maca Mijina, udana Knezović — gornji red, 1. osoba slijeva.",
+        "altEn": "Maca Mijina, udana Knezović — upper row, position 1 from the left.",
+        "captionEn": "Maca Mijina, udana Knezović — upper row, position 1 from the left."
+      }
+    ],
+    "2.3.4.1.3.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/grupa.jpg",
+        "alt": "Vinko Mijin — donji red, 1. osoba slijeva.",
+        "caption": "Vinko Mijin — donji red, 1. osoba slijeva.",
+        "altEn": "Vinko Mijin — lower row, position 1 from the left.",
+        "captionEn": "Vinko Mijin — lower row, position 1 from the left."
+      }
+    ],
+    "2.3.4.1.3.1.1-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/grupa.jpg",
+        "alt": "Dragica Vinkova — donji red, 2. osoba slijeva.",
+        "caption": "Dragica Vinkova — donji red, 2. osoba slijeva.",
+        "altEn": "Dragica Vinkova — lower row, position 2 from the left.",
+        "captionEn": "Dragica Vinkova — lower row, position 2 from the left."
+      }
+    ],
+    "2.3.4.1.3.1.1-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/grupa.jpg",
+        "alt": "Mara Dragica, rođ. Budimir — gornji red, 4. osoba slijeva.",
+        "caption": "Mara Dragica, rođ. Budimir — gornji red, 4. osoba slijeva.",
+        "altEn": "Mara Dragica, rođ. Budimir — upper row, position 4 from the left.",
+        "captionEn": "Mara Dragica, rođ. Budimir — upper row, position 4 from the left."
+      }
+    ],
+    "2.3.4.1.3.1.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/svetkovinkov.jpg",
+        "alt": "Svetko Vinkov",
+        "caption": "Svetko Vinkov",
+        "altEn": "Svetko, son of Vinko",
+        "captionEn": "Svetko, son of Vinko"
+      }
+    ],
+    "2.3.4.1.3.1.3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/milanmijin.jpg",
+        "alt": "Milan Mijin",
+        "caption": "Milan Mijin",
+        "altEn": "Milan Mijin",
+        "captionEn": "Milan Mijin"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/grupa.jpg",
+        "alt": "Milan Mijin — donji red, 3. osoba slijeva.",
+        "caption": "Milan Mijin — donji red, 3. osoba slijeva.",
+        "altEn": "Milan Mijin — lower row, position 3 from the left.",
+        "captionEn": "Milan Mijin — lower row, position 3 from the left."
+      }
+    ],
+    "2.3.4.1.3.1.3.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/nediljkomilanov62.jpg",
+        "alt": "Nediljko Milanov",
+        "caption": "Nediljko Milanov",
+        "altEn": "Nediljko, son of Milan",
+        "captionEn": "Nediljko, son of Milan"
+      }
+    ],
+    "2.3.4.1.3.1.3.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/zeljkomilanov.jpg",
+        "alt": "Željko Milanov",
+        "caption": "Željko Milanov",
+        "altEn": "Željko Milanov",
+        "captionEn": "Željko Milanov"
+      }
+    ],
+    "2.3.4.1.3.1.3.3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/anicamilos.jpg",
+        "alt": "Anica r. Miloš",
+        "caption": "Anica r. Miloš",
+        "altEn": "Anica r. Miloš",
+        "captionEn": "Anica r. Miloš"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/anica1.jpg",
+        "alt": "Anica sa djecom",
+        "caption": "Anica sa djecom",
+        "altEn": "Anica sa djecom",
+        "captionEn": "Anica sa djecom"
+      }
+    ],
+    "2.3.4.1.3.1.3.3.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/milaninform.jpg",
+        "alt": "Milan Tihomirov",
+        "caption": "Milan Tihomirov",
+        "altEn": "Milan Tihomirov",
+        "captionEn": "Milan Tihomirov"
+      }
+    ],
+    "2.3.4.1.3.1.4": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/grupa.jpg",
+        "alt": "Marijan Mijin — gornji red, 5. osoba slijeva.",
+        "caption": "Marijan Mijin — gornji red, 5. osoba slijeva.",
+        "altEn": "Marijan Mijin — upper row, position 5 from the left.",
+        "captionEn": "Marijan Mijin — upper row, position 5 from the left."
+      }
+    ],
+    "2.3.4.1.3.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/ankavicina.jpg",
+        "alt": "Anka Marinova",
+        "caption": "Anka Marinova"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/dragicavicina.jpg",
+        "alt": "Dragica Marinova",
+        "caption": "Dragica Marinova"
+      }
+    ],
+    "2.3.4.1.3.2.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/zrinkaalojzova.jpg",
+        "alt": "Zrinka Alojzova",
+        "caption": "Zrinka Alojzova"
+      }
+    ],
+    "2.3.4.1.3.2.2.1-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/sabinetandara.jpg",
+        "alt": "Sabina rođ. Patzak",
+        "caption": "Sabina rođ. Patzak",
+        "altEn": "Sabina, née Patzak",
+        "captionEn": "Sabina, née Patzak"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/sabinefamily.jpg",
+        "alt": "Sabina s obitelji",
+        "caption": "Carolina, Marc i Laura",
+        "altEn": "Sabina and family",
+        "captionEn": "Sabina and family"
+      }
+    ],
+    "2.3.4.1.3.2.5": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/blazmarinov.jpg",
+        "alt": "Blaž Marinov",
+        "caption": "Blaž Marinov",
+        "altEn": "Blaž Marinov",
+        "captionEn": "Blaž Marinov"
+      }
+    ],
+    "2.3.4.3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/mijogrgin.jpg",
+        "alt": "Mijo Grgin",
+        "caption": "Mijo Grgin",
+        "altEn": "Mijo Grgin",
+        "captionEn": "Mijo Grgin"
+      }
+    ],
+    "3.1.1.1.4.1.1-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marijanikolina.jpg",
+        "caption": "Marija rođ. Lekić",
+        "captionEn": "Marija née Lekić",
+        "alt": "Marija rođ. Lekić",
+        "altEn": "Marija née Lekić"
+      }
+    ],
+    "3.1.1.1.4.2-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/andalukina.jpg",
+        "caption": "Anđa rođ. Kovač",
+        "captionEn": "Anđa née Kovač",
+        "alt": "Anđa rođ. Kovač",
+        "altEn": "Anđa née Kovač"
+      }
+    ],
+    "3.1.1.2.8.1.2-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2-01.jpg",
+        "caption": "Milan Josipov i Slavka rođ. Budimir",
+        "captionEn": "Milan Josipov and Slavka née Budimir",
+        "alt": "Milan Josipov i Slavka rođ. Budimir",
+        "altEn": "Milan Josipov and Slavka née Budimir"
+      }
+    ],
+    "3.1.1.2.8.1-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-01.jpg",
+        "caption": "Josip Jurin i Anica rođ. Dragun",
+        "captionEn": "Josip Jurin and Anica née Dragun",
+        "alt": "Josip Jurin i Anica rođ. Dragun",
+        "altEn": "Josip Jurin and Anica née Dragun"
+      }
+    ],
+    "3.3.1.2.1.4.4-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/zlatadrazenkova.jpg",
+        "caption": "Zlata rođ. Vučemil",
+        "captionEn": "Zlata née Vučemil",
+        "alt": "Zlata rođ. Vučemil",
+        "altEn": "Zlata née Vučemil"
+      }
+    ],
+    "2.3.4.1.3.2-K3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/ankavicina.jpg",
+        "caption": "Anka Marinova",
+        "captionEn": "Anka Marinova",
+        "alt": "Anka Marinova",
+        "altEn": "Anka Marinova"
+      }
+    ],
+    "2.3.4.1.3.2-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/dragicavicina.jpg",
+        "caption": "Dragica Marinova",
+        "captionEn": "Dragica Marinova",
+        "alt": "Dragica Marinova",
+        "altEn": "Dragica Marinova"
+      }
+    ],
+    "4.1.1.4.5-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/dragicanikolina.jpg",
+        "caption": "Dragica Nikolina",
+        "captionEn": "Dragica Nikolina",
+        "alt": "Dragica Nikolina",
+        "altEn": "Dragica Nikolina"
+      }
+    ],
+    "3.1.2.3.2.2-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/danicamatina.jpg",
+        "caption": "Danica rođ. Malenica",
+        "captionEn": "Danica née Malenica",
+        "alt": "Danica rođ. Malenica",
+        "altEn": "Danica née Malenica"
+      }
+    ]
+  }
+}
