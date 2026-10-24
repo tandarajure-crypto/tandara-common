@@ -150,3 +150,52 @@
     transition: none;
   }
 }
+
+/* Posters already include a red cross: make that exact corner interactive. */
+.tandara-announcement--image-only {
+  width: min(1536px, calc(100vw - 2rem), calc((100vh - 2rem) * 1.5));
+  width: min(1536px, calc(100vw - 2rem), calc((100dvh - 2rem) * 1.5));
+}
+.tandara-announcement--image-only .tandara-announcement__panel {
+  padding: 0;
+  border: 0;
+  gap: 0;
+  overflow: visible;
+  background: transparent;
+  border-radius: 0;
+}
+.tandara-announcement--image-only .tandara-announcement__title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.tandara-announcement--image-only .tandara-announcement__image {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  border-radius: 0;
+}
+.tandara-announcement--image-only .tandara-announcement__close {
+  top: 0;
+  right: 0;
+  width: 7%;
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  padding: 0;
+  color: transparent;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+.tandara-announcement--image-only .tandara-announcement__close:hover,
+.tandara-announcement--image-only .tandara-announcement__close:focus-visible {
+  outline: 3px solid white;
+  outline-offset: -3px;
+  background: rgb(255 255 255 / 15%);
+}
