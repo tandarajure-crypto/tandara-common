@@ -157,7 +157,7 @@
       (language === "en" ? "Announcement" : "Obavijest");
     const message = localized(config.message, language);
     const imageAlt = localized(config.imageAlt, language) || title;
-    const imageUrl = safeImageUrl(config.image, config.id);
+    const imageUrl = safeImageUrl(localized(config.image, language), config.id);
 
     if (!imageUrl) {
       return null;
@@ -165,6 +165,7 @@
 
     const dialog = document.createElement("dialog");
     dialog.className = "tandara-announcement";
+    if (config.imageOnly === true) dialog.classList.add("tandara-announcement--image-only");
     dialog.setAttribute("aria-labelledby", "tandara-announcement-title");
 
     const panel = document.createElement("div");
@@ -190,6 +191,7 @@
     image.alt = imageAlt;
     image.decoding = "async";
     image.fetchPriority = "high";
+    image.addEventListener("error", () => closeDialog(false));
 
     panel.append(closeButton, heading, image);
 
@@ -215,8 +217,12 @@
 
     dialog.appendChild(panel);
 
-    function dismiss() {
-      saveDismissal(config.id);
+    let expiryTimer;
+    function closeDialog(remember) {
+      if (remember) saveDismissal(config.id);
+      clearTimeout(expiryTimer);
+      document.removeEventListener("visibilitychange", checkExpiry);
+      window.removeEventListener("pageshow", checkExpiry);
       if (dialog.open) {
         if (typeof dialog.close === "function") {
           dialog.close();
@@ -226,6 +232,20 @@
       }
       dialog.remove();
     }
+
+    function dismiss() { closeDialog(true); }
+
+    function checkExpiry() {
+      clearTimeout(expiryTimer);
+      const end = parseBoundary(config.endsAt);
+      if (end === null || !Number.isFinite(end)) return;
+      const remaining = end - Date.now();
+      if (remaining <= 0) closeDialog(false);
+      else expiryTimer = setTimeout(checkExpiry, Math.min(remaining, 2147483647));
+    }
+    document.addEventListener("visibilitychange", checkExpiry);
+    window.addEventListener("pageshow", checkExpiry);
+    checkExpiry();
 
     closeButton.addEventListener("click", dismiss);
     dialog.addEventListener("cancel", (event) => {
