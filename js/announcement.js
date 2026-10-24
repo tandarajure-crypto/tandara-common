@@ -121,8 +121,16 @@
     }
 
     try {
-      const url = new URL(path, siteRoot);
-      if (url.origin !== window.location.origin) {
+      // Zajedničke slike (../tandara-common/...) uvijek se čitaju iz common repozitorija,
+      // i za javnu i za privatnu stranicu.
+      const shared = path.trim().startsWith("../tandara-common/");
+      const url = shared
+        ? new URL(path.trim(), commonRoot)
+        : new URL(path, siteRoot);
+      if (
+        url.origin !== window.location.origin &&
+        url.origin !== commonRoot.origin
+      ) {
         return null;
       }
 
@@ -264,7 +272,7 @@
       const configUrl = new URL("objava.json", siteRoot);
       const response = await fetch(configUrl.href, {
         cache: "no-store",
-        credentials: "omit"
+        credentials: "same-origin"
       });
 
       if (!response.ok) {
