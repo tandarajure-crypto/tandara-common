@@ -199,3 +199,25 @@
   outline-offset: -3px;
   background: rgb(255 255 255 / 15%);
 }
+
+/* Keep eligibility dates readable below posters on every screen size. */
+.tandara-announcement--image-only:has(.tandara-announcement__message) {
+  width: min(1536px, calc(100vw - 2rem), calc((100vh - 9rem) * 1.5));
+  width: min(1536px, calc(100vw - 2rem), calc((100dvh - 9rem) * 1.5));
+}
+.tandara-announcement--image-only:has(.tandara-announcement__message) .tandara-announcement__panel {
+  overflow: auto;
+}
+.tandara-announcement--image-only .tandara-announcement__image,
+.tandara-announcement--image-only .tandara-announcement__message {
+  flex: none;
+}
+.tandara-announcement--image-only .tandara-announcement__message {
+  box-sizing: border-box;
+  padding: 0.8rem 1rem;
+  border-top: 2px solid #a66a2b;
+  background: #fff3d6;
+  color: #751b15;
+  font: 600 1rem / 1.5 system-ui, sans-serif;
+  text-align: center;
+}
