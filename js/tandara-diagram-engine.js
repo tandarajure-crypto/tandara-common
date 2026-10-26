@@ -1024,8 +1024,9 @@
   }
 
   // Ime osobe: prije pretrage uklanja godine iz zapisa.
-  function matchPersonField(value, query) {
-    return matchName(personName(value), query);
+  function matchPersonField(value, query, aliases = []) {
+    if (matchName(personName(value), query)) return true;
+    return Array.isArray(aliases) && aliases.some(alias => matchName(alias, query));
   }
 
   // Šifra: traži podniz (npr. "3.1.1" nalazi sve što počinje tim kodom).
@@ -1053,7 +1054,7 @@
 
     const found = Object.values(nodes).filter(rec =>
       matchField(rec.code, qCode)
-      && matchPersonField(recLabel(rec), qPerson)
+      && matchPersonField(recLabel(rec), qPerson, rec.aliases)
       && matchName(recFather(rec), qFather)
       && matchName(recMother(rec), qMother)
     );
