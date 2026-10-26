@@ -30,7 +30,7 @@
   // Public diagrams receive only the public mapping; the private site receives the combined mapping.
   let photoRegistry = { public: {}, private: {} };
   try {
-    const registryUrl = new URL('../tandara-common/data/person-photo-map.json', window.location.href);
+    const registryUrl = new URL('https://tandarajure-crypto.github.io/tandara-common/data/person-photo-map.json');
     const registryResponse = await fetch(registryUrl.href, { cache: 'no-cache' });
     if (registryResponse.ok) photoRegistry = await registryResponse.json();
   } catch (error) {
@@ -69,7 +69,7 @@
     if (photos.length) record.photos = photos;
   }
 
-  const isPrivateSite = /\/PRIVAT(?:\/|$)/i.test(window.location.pathname);
+  const isPrivateSite = window.location.hostname.toLowerCase() === 'privat-tvz.pages.dev' || /\/PRIVAT(?:\/|$)/i.test(window.location.pathname);
   const registeredByCode = isPrivateSite
     ? { ...(photoRegistry.public || {}), ...(photoRegistry.private || {}) }
     : (photoRegistry.public || {});
