@@ -293,7 +293,16 @@
     return String(codeA).localeCompare(String(codeB), 'hr', { numeric: true });
   }
 
+  // Only explicitly opted-in public pages omit the genealogy symbols.
+  // Private pages retain the original rendering, regardless of their hostname.
+  const showDateSymbols = document.body.dataset.dateSymbols !== 'none';
+
+  function birthSymbol() {
+    return showDateSymbols ? '★ ' : '';
+  }
+
   function deathSymbol(rec) {
+    if (!showDateSymbols) return '';
     const code = String(rec && (rec.code || rec.id) || '');
     const omit = ['3.1.1.1.2.1.1.1', '3.1.1.1.2.1.1.2'].some(root =>
       code === root || code.startsWith(root + '.') || code.startsWith(root + '-')
@@ -302,14 +311,14 @@
   }
 
   function dateText(rec) {
-    return `(★ ${yearText(rec && rec.birth)} - ${deathSymbol(rec)} ${yearText(rec && rec.death)})`;
+    return `(${birthSymbol()}${yearText(rec && rec.birth)} - ${showDateSymbols ? deathSymbol(rec) + ' ' : ''}${yearText(rec && rec.death)})`;
   }
 
   function dateHtml(rec) {
     const value = year => year
       ? esc(yearText(year))
       : `<span class="date-ng">N.G.</span>`;
-    return `<span class="life-date">(★ ${value(rec && rec.birth)} - ${deathSymbol(rec)} ${value(rec && rec.death)})</span>`;
+    return `<span class="life-date">(${birthSymbol()}${value(rec && rec.birth)} - ${showDateSymbols ? deathSymbol(rec) + ' ' : ''}${value(rec && rec.death)})</span>`;
   }
 
   function formatDetailHtml(text, rec) {
@@ -317,12 +326,12 @@
     const value = year => year
       ? esc(yearText(year))
       : `<span class="date-ng">N.G.</span>`;
-    const pair = (birth, death) => `<span class="life-date">(★ ${value(birth)} - ${deathSymbol(rec)} ${value(death)})</span>`;
+    const pair = (birth, death) => `<span class="life-date">(${birthSymbol()}${value(birth)} - ${showDateSymbols ? deathSymbol(rec) + ' ' : ''}${value(death)})</span>`;
     // Already-symbolized date pairs, if any occur in descriptive text.
     out = out.replace(/\(?\s*★\s*(N\.G\.|oko\s+\d{4}\.?|\d{4}\.?)\s*(?:[–—-]\s*)?✝\s*(N\.G\.|\d{4}\.?)\s*\)?/gi, (_, b, d) => pair(/^N\.G\./i.test(b) ? '' : b, /^N\.G\./i.test(d) ? '' : d));
     // HR legacy: (1953.- ), (1932.-1936.); EN legacy: (1953– ), (1932–1936).
     out = out.replace(/\((\d{4})\.?\s*(?:\.\s*)?(?:-|–|—)\s*(\d{4})?\.?\s*\)/g, (_, b, d) => pair(b, d || ''));
-    return out;
+    return showDateSymbols ? out : out.replace(/[★✝]\s*/g, '');
   }
 
   function inlineDateSvg(rec, kind = 'node', opts = {}) {
@@ -351,7 +360,7 @@
       return `<g class="date-unknown"><rect class="date-unknown-box" x="${valueX - 1}" y="${badgeY}" width="${badgeW}" height="${badgeH}" rx="0"></rect><text class="${cls} date-unknown-text" x="${valueX + badgeW / 2 - 1}" y="${y - 1}" text-anchor="middle" font-size="8">N.G.</text></g>`;
     };
 
-    return `<g class="date-inline"><text class="${cls}" x="${openX}" y="${y}"${fontSize}>(</text><text class="${cls}" x="${starX}" y="${y}"${fontSize}>★</text>${value(rec && rec.birth, birthX, opts.birthW || 30)}<text class="${cls}" x="${dashX}" y="${y}"${fontSize}>-</text><text class="${cls}" x="${deathSymbolX}" y="${y}"${fontSize}>${deathSymbol(rec)}</text>${value(rec && rec.death, deathX, opts.deathW || 30)}<text class="${cls}" x="${closeX}" y="${y}"${fontSize}>)</text></g>`;
+    return `<g class="date-inline"><text class="${cls}" x="${openX}" y="${y}"${fontSize}>(</text><text class="${cls}" x="${starX}" y="${y}"${fontSize}>${showDateSymbols ? '★' : ''}</text>${value(rec && rec.birth, birthX, opts.birthW || 30)}<text class="${cls}" x="${dashX}" y="${y}"${fontSize}>-</text><text class="${cls}" x="${deathSymbolX}" y="${y}"${fontSize}>${deathSymbol(rec)}</text>${value(rec && rec.death, deathX, opts.deathW || 30)}<text class="${cls}" x="${closeX}" y="${y}"${fontSize}>)</text></g>`;
   }
 
   function rootNameAndDatesSvg(displayName, rec) {
