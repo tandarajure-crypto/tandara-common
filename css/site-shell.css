@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap");
 @import url("./photo-size.css?v=20261023-1");
 /* =========================================================
    TANDARA — SITE SHELL
@@ -522,44 +521,15 @@ a[aria-current="page"] {
 }
 
 
-/* lijevo — AUTOR / AUTHOR: ukrasni rukopisni potpis */
+/* Author typography is fixed to the reference sidebar; change only on explicit owner request. */
 
 .site-shell__author-label {
   min-width: 0;
-
-  padding-right:
-    6px;
-
-  color:
-    #63452c;
-
-  font-family:
-    "Great Vibes",
-    "Segoe Script",
-    "URW Chancery L",
-    cursive;
-
-  font-size:
-    clamp(
-      12px,
-      1.15vw,
-      16px
-    );
-
-  font-style:
-    italic;
-
-  line-height:
-    1.1;
-
-  font-weight:
-    400;
-
-  text-align:
-    right;
-
-  white-space:
-    nowrap;
+  padding-right: 6px;
+  text-align: right;
+  white-space: nowrap;
+  transform: rotate(-20deg);
+  transform-origin: right center;
 }
 
 
@@ -620,44 +590,14 @@ a[aria-current="page"] {
 
 .site-shell__author-name {
   display: flex;
-
   flex-direction: column;
-
   align-items: flex-start;
   justify-content: center;
-
   min-width: 0;
-
-  padding-left:
-    7px;
-
-  color:
-    #63452c;
-
-  font-family:
-    "Great Vibes",
-    "Segoe Script",
-    "URW Chancery L",
-    cursive;
-
-  font-size:
-    clamp(
-      17px,
-      1.55vw,
-      23px
-    );
-
-  font-style:
-    italic;
-
-  line-height:
-    1.12;
-
-  font-weight:
-    400;
-
-  text-align:
-    left;
+  padding-left: 7px;
+  text-align: left;
+  transform: rotate(-20deg);
+  transform-origin: left center;
 }
 
 .site-shell__author-name span {
@@ -670,15 +610,6 @@ a[aria-current="page"] {
 }
 
 
-/* TANDARA AUTHOR SIGNATURE STYLE — identical handwritten italic on author label and signature */
-.site-shell .site-shell__author-label,
-.site-shell .site-shell__author-name,
-.site-shell .site-shell__author-name span {
-  font-family: "Great Vibes", "Segoe Script", "URW Chancery L", cursive !important;
-  font-style: italic !important;
-  font-weight: 400 !important;
-  text-decoration: none !important;
-}
 
 /* =========================================================
    FLAGCOUNTER
@@ -900,75 +831,35 @@ a[aria-current="page"] {
       4px;
   }
 
-  .site-shell__author-label {
-    padding-right:
-      4px;
+  .site-shell__author-label { padding-right: 4px; }
 
-    font-size:
-      clamp(
-        9px,
-        3vw,
-        12px
-      );
-  }
-
-  .site-shell__author-name {
-    padding-left:
-      4px;
-
-    font-size:
-      clamp(
-        11px,
-        3.5vw,
-        15px
-      );
-  }
+  .site-shell__author-name { padding-left: 4px; }
 
 }
-/* =========================================================
-   AUTOR i JURE TANDARA - Pinyon Script, ukošeno
-   ========================================================= */
 
-.site-shell__author-label,
-.site-shell__author-name {
-  font-family: "Pinyon Script", cursive;
-  font-weight: 400;
-  font-style: normal;
+/* Stable author signature shared by home, content pages, branches and diagrams.
+   Reference: existing author sidebar, 2026-10-28. Do not restyle without the owner's explicit request. */
+.site-shell .site-shell__author-label,
+.site-shell .site-shell__author-name,
+.site-shell .site-shell__author-name span {
+  font-family: "Great Vibes", "Segoe Script", "URW Chancery L", cursive !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  text-decoration: none !important;
   color: #7a4a1a;
   line-height: 0.95;
 }
-
-/* Autor: jedna veličina veći od potpisa */
-.site-shell__author-label {
-  font-size: clamp(34px, 3.4vw, 46px);
-  transform: rotate(-20deg);
-  transform-origin: right center;
-}
-
-/* Jure / Tandara */
-.site-shell__author-name {
-  font-size: clamp(30px, 3vw, 42px);
-  transform: rotate(-20deg);
-  transform-origin: left center;
-}
-
-/* mobitel */
-@media (max-width: 420px) {
-  .site-shell__author-label {
-    font-size: clamp(26px, 7vw, 34px);
-  }
-
-  .site-shell__author-name {
-    font-size: clamp(22px, 6vw, 30px);
-  }
-}
-.site-shell__author-name span:last-child {
+.site-shell .site-shell__author-label { font-size: clamp(34px, 3.4vw, 46px); }
+.site-shell .site-shell__author-name { font-size: clamp(30px, 3vw, 42px); }
+.site-shell .site-shell__author-name span { font-size: inherit; }
+.site-shell .site-shell__author-name span:last-child {
   position: relative;
   z-index: 2;
   font-size: 0.8em;
-
-  /* pomak riječi "Tandara": 3 mm niže i 5 mm desno na ekranu
-     (iznosi su preračunati jer je blok nagnut za -20°) */
   left: calc(-0.9em + 3.7mm);
   top: 4.5mm;
+}
+@media (max-width: 420px) {
+  .site-shell .site-shell__author-label { font-size: clamp(26px, 7vw, 34px); }
+  .site-shell .site-shell__author-name { font-size: clamp(22px, 6vw, 30px); }
 }
