@@ -190,13 +190,6 @@
   // Shared TANDARA geometry: parent on the left, next generation on the right.
   const MAIN_W = 284;
   const MAIN_H = 72;
-  // Private archive only: reserve extra card height for a person's photo and caption.
-  function nodeHeight(code) {
-    const rec = nodes[code];
-    return isPrivateSite && rec && Array.isArray(rec.photos) && rec.photos.some(photo => photo && photo.src)
-      ? 142
-      : MAIN_H;
-  }
   const SIDE_W = 270;
   const SIDE_H = 51;
   const SIDE_GAP = 7;
@@ -600,12 +593,12 @@
         children: [],
         x: 0,
         y: 0,
-        height: nodeHeight(code),
+        height: MAIN_H,
         subtreeHeight: 0
       };
       list.push(item);
       const extraLayout = expanded.has(code) ? familyExtraLayout(code) : { items: [], totalHeight: 0 };
-      item.height = nodeHeight(code) + extraLayout.totalHeight;
+      item.height = MAIN_H + extraLayout.totalHeight;
       if (expanded.has(code)) {
         item.children = structuralChildren(code).map(child => visit(child, code, depth + 1));
       }
@@ -657,23 +650,23 @@
         x: item.x,
         y: item.y,
         w: MAIN_W,
-        h: nodeHeight(item.code),
+        h: MAIN_H,
         cx: item.x + MAIN_W / 2,
-        cy: item.y + nodeHeight(item.code) / 2,
+        cy: item.y + MAIN_H / 2,
         parent: item.parent,
         depth: item.depth
       });
       minX = Math.min(minX, item.x);
       minY = Math.min(minY, item.y);
       maxX = Math.max(maxX, item.x + MAIN_W);
-      maxY = Math.max(maxY, item.y + nodeHeight(item.code));
+      maxY = Math.max(maxY, item.y + MAIN_H);
 
       if (expanded.has(item.code)) {
         const extras = familyExtraLayout(item.code).items;
         extras.forEach(entry => {
           const code = entry.code;
           const sx = item.x + (MAIN_W - SIDE_W) / 2;
-          const sy = item.y + nodeHeight(item.code) + entry.offset;
+          const sy = item.y + MAIN_H + entry.offset;
           positions.set(code, {
             code,
             type: 'side',
@@ -789,13 +782,6 @@
       } else {
         html += inlineNameSvg(displayName, 'node');
         html += inlineDateSvg(rec, 'node');
-      }
-      // Private-only inline photo display; public diagrams do not render personal photos.
-      if (isPrivateSite && Array.isArray(rec.photos) && rec.photos.length && rec.photos[0].src) {
-        const photo = rec.photos[0];
-        html += `<image class="private-node-photo" href="${esc(photo.src)}" x="13" y="74" width="60" height="45" preserveAspectRatio="xMidYMid slice" aria-label="${esc(photo.alt || displayName)}"/>`;
-        const caption = photo.caption || photo.captionEn || displayName;
-        html += `<text class="private-node-photo-caption" x="13" y="133">${esc(caption)}</text>`;
       }
       if (family) {
         html += `<g class="toggle-hit" data-toggle="${esc(item.code)}" transform="translate(${MAIN_W - 18},18)" role="button" aria-label="${expanded.has(item.code) ? TXT.closeFamily : TXT.openFamily}">`;
