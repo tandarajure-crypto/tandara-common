@@ -1023,9 +1023,10 @@
   // Svaki upit mora se podudarati s nekom riječi u tekstu (ime, otac ili majka).
   function matchName(value, query) {
     if (!query) return true;
-    const tokens = normalize(query).split(' ').filter(Boolean);
+    // Hyphenated given names are searchable by either name; code matching stays unchanged.
+    const tokens = normalize(query).replace(/-/g, ' ').split(' ').filter(Boolean);
     if (!tokens.length) return true;
-    const words = normalize(value).split(' ').filter(Boolean);
+    const words = normalize(value).replace(/-/g, ' ').split(' ').filter(Boolean);
     return tokens.every(token => words.some(word => wordMatches(token, word)));
   }
 
