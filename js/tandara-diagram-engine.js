@@ -48,10 +48,10 @@
   }
 
   function applyPhotoRegistry(record, code, registeredPhotos) {
-    if (!record || !Array.isArray(registeredPhotos) || !registeredPhotos.length) return;
-    const photos = Array.isArray(record.photos) ? record.photos.slice() : [];
+    if (!record) return;
+    const candidates = Array.isArray(record.photos) ? record.photos.slice() : [];
     if (record.photo) {
-      photos.push({
+      candidates.push({
         src: record.photo,
         alt: record.photoAlt || '',
         caption: record.photoCaption || '',
@@ -59,14 +59,17 @@
         captionEn: record.photoCaptionEn || ''
       });
     }
-    const knownSources = new Set(photos.map(photoSourceKey));
-    for (const photo of registeredPhotos) {
+    if (Array.isArray(registeredPhotos)) candidates.push(...registeredPhotos);
+    const photos = [];
+    const knownSources = new Set();
+    for (const photo of candidates) {
+      if (!photo || !photo.src) continue;
       const key = photoSourceKey(photo);
       if (!key || knownSources.has(key)) continue;
       photos.push(photo);
       knownSources.add(key);
     }
-    if (photos.length) record.photos = photos;
+    if (photos.length || Array.isArray(record.photos)) record.photos = photos;
   }
 
   const isPrivateSite = window.location.hostname.toLowerCase() === 'privat-tvz.pages.dev' || /\/PRIVAT(?:\/|$)/i.test(window.location.pathname);
@@ -401,8 +404,9 @@
       src: localized(rec, 'photo'), alt: localized(rec, 'photoAlt'),
       caption: localized(rec, 'photoCaption')
     }];
+    const renderedSources = new Set();
     for (const photo of photos) {
-      if (!photo.src) continue;
+      if (!photo || !photo.src) continue;
       let url;
       try {
         url = new URL(photo.src, window.location.href);
@@ -413,6 +417,8 @@
         }
         if (url.protocol !== 'https:') continue;
       } catch (_) { continue; }
+      if (renderedSources.has(url.href)) continue;
+      renderedSources.add(url.href);
       const figure = document.createElement('figure');
       figure.className = 'person-details-photo';
       const link = document.createElement('a');
