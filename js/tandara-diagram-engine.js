@@ -267,7 +267,7 @@
   function personName(label) {
     return String(label || '')
       .replace(/\s*\((?:\d{4}\.)?–(?:\d{4}\.)?\)\s*/g, ' ')
-      .replace(/\s*\((?:nema podataka za godine|dates unknown)\)\s*/ig, ' ')
+      .replace(/\s*\((?:nema podataka za godine|dates unknown|Zaštićeni podaci)\)\s*/ig, ' ')
       .replace(/\s+–\s+nadimak potomaka:\s*/i, ' – ')
       .replace(/\s+/g, ' ')
       .trim();
@@ -314,10 +314,12 @@
   }
 
   function dateText(rec) {
+    if (rec && rec.dateProtected) return '(Zaštićeni podaci)';
     return `(${birthSymbol()}${yearText(rec && rec.birth)} - ${showDateSymbols ? deathSymbol(rec) + ' ' : ''}${yearText(rec && rec.death)})`;
   }
 
   function dateHtml(rec) {
+    if (rec && rec.dateProtected) return '<span class="life-date">(Zaštićeni podaci)</span>';
     const value = year => year
       ? esc(yearText(year))
       : `<span class="date-ng">N.G.</span>`;
@@ -353,6 +355,11 @@
     const badgeY = y - 10;
     const fontSize = opts.fontSize ? ` font-size="${opts.fontSize}"` : '';
     const naturalWidth = Boolean(opts.naturalWidth);
+
+    if (rec && rec.dateProtected) {
+      const width = isSide ? 104 : 108;
+      return `<g class="date-inline"><text class="${cls}" x="${openX}" y="${y}"${fontSize} textLength="${width}" lengthAdjust="spacingAndGlyphs">(Zaštićeni podaci)</text></g>`;
+    }
 
     const value = (year, valueX, maxW = 30) => {
       if (year) {
