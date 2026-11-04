@@ -345,19 +345,19 @@
     "3.1.1.2.8.1.1.2.1": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.2.1-01.jpg",
-        "alt": "Filip",
-        "caption": "Filip",
-        "altEn": "Filip, son of Vladimir",
-        "captionEn": "Filip, son of Vladimir"
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.2.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.2.1",
+        "captionEn": ""
       }
     ],
     "3.1.1.2.8.1.1.2.2": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.2.2-02.jpg",
-        "alt": "Leo",
-        "caption": "Leo",
-        "altEn": "Leo, son of Vladimir",
-        "captionEn": "Leo, son of Vladimir"
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.2.2",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.2.2",
+        "captionEn": ""
       }
     ],
     "3.1.1.2.8.1.2": [
@@ -1016,38 +1016,6 @@
         "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.2-SP-1",
         "caption": "",
         "altEn": "Photo for code 3.1.1.2.8.1.1.1.2-SP-1",
-        "captionEn": ""
-      }
-    ],
-    "3.1.1.2.8.1.1.2": [
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.2.0.jpg",
-        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.2",
-        "caption": "",
-        "altEn": "Photo for code 3.1.1.2.8.1.1.2",
-        "captionEn": ""
-      },
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.2-01.png",
-        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.2",
-        "caption": "",
-        "altEn": "Photo for code 3.1.1.2.8.1.1.2",
-        "captionEn": ""
-      }
-    ],
-    "3.1.1.2.8.1.1.2-SP-1": [
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.2.0-1SP.jpg",
-        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.2-SP-1",
-        "caption": "",
-        "altEn": "Photo for code 3.1.1.2.8.1.1.2-SP-1",
-        "captionEn": ""
-      },
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.2-SP-1-01.jpg",
-        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.2-SP-1",
-        "caption": "",
-        "altEn": "Photo for code 3.1.1.2.8.1.1.2-SP-1",
         "captionEn": ""
       }
     ],
