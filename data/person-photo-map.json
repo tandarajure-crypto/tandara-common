@@ -149,10 +149,10 @@
       },
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-2-Z.jpg",
-        "alt": "Josip Jurin – javna fotografija",
-        "caption": "",
-        "altEn": "Josip Jurin – public photograph",
-        "captionEn": ""
+        "alt": "Dijagram potomaka Josipa Jurina",
+        "caption": "Dijagram potomaka Josipa Jurina",
+        "altEn": "Diagram of Josip Jurin's descendants",
+        "captionEn": "Diagram of Josip Jurin's descendants"
       },
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-03.jpg",
@@ -1184,10 +1184,10 @@
       },
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-02.jpg",
-        "alt": "Sa bakom Anicom-75",
-        "caption": "Sa bakom Anicom-75",
-        "altEn": "With grandmother Anica-75",
-        "captionEn": "With grandmother Anica-75"
+        "alt": "Dijagram potomaka Josipa Jurina",
+        "caption": "Dijagram potomaka Josipa Jurina",
+        "altEn": "Diagram of Josip Jurin's descendants",
+        "captionEn": "Diagram of Josip Jurin's descendants"
       },
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-03.jpg",
@@ -2591,13 +2591,6 @@
       }
     ],
     "3.1.1.2.8.1-SP-1": [
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-01.jpg",
-        "caption": "Josip Jurin i Anica rođ. Dragun",
-        "captionEn": "Josip Jurin and Anica née Dragun",
-        "alt": "Josip Jurin i Anica rođ. Dragun",
-        "altEn": "Josip Jurin and Anica née Dragun"
-      },
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-SP-1-01.jpg",
         "alt": "Anica rođ. Dragun",
