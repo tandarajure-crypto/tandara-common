@@ -365,29 +365,29 @@
     ],
     "3.1.1.2.8.1-K2": [
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marajosipova.jpg",
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-K2-01.jpg",
         "alt": "Mara Josipova",
         "caption": "Mara Josipova",
-        "altEn": "Mara Josipova",
-        "captionEn": "Mara Josipova"
+        "altEn": "Mara, daughter of Josip",
+        "captionEn": "Mara, daughter of Josip"
       }
     ],
     "3.1.1.2.8.1-K3": [
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/nedajosipova.jpg",
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-K3-02.jpg",
         "alt": "Neda Josipova",
-        "caption": "Neda Josipova, Tatjana i Ana",
-        "altEn": "Neda Josipova",
-        "captionEn": "Neda Josipova"
+        "caption": "Neda Josipova",
+        "altEn": "Neda, daughter of Josip",
+        "captionEn": "Neda, daughter of Josip"
       }
     ],
     "3.1.1.2.8.1-K4": [
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/matija-budimir.png",
-        "alt": "Matija i Ante sa sinovima; slijeva nadesno: Mario, Mirko, Ivica i Jozo",
-        "caption": "Matija i Ante sa sinovima. Slijeva nadesno: Mario, Mirko, Ivica i Jozo.",
-        "altEn": "Matija and Ante with their sons; from left to right: Mario, Mirko, Ivica and Jozo",
-        "captionEn": "Matija and Ante with their sons. From left to right: Mario, Mirko, Ivica and Jozo."
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-K4-02.jpg",
+        "alt": "Matija sa obitelji",
+        "caption": "Matija sa obitelji",
+        "altEn": "Matija with her family",
+        "captionEn": "Matija with her family"
       }
     ],
     "3.1.2.1.1.1.1": [
@@ -761,6 +761,15 @@
         "caption": "Obiteljska grobnica Tandara Lovrić – lijevi dio",
         "altEn": "Tandara Lovrić family tomb – left section",
         "captionEn": "Tandara Lovrić family tomb – left section"
+      }
+    ],
+    "3.1.1.2.8.1-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-K1-01.jpg",
+        "alt": "Slava Josipova",
+        "caption": "Slava Josipova",
+        "altEn": "Slava, daughter of Josip",
+        "captionEn": "Slava, daughter of Josip"
       }
     ]
   },
@@ -1572,13 +1581,6 @@
     ],
     "3.1.1.2.8.1-K2": [
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marajosipova.jpg",
-        "alt": "Mara Josipova",
-        "caption": "Mara Josipova",
-        "altEn": "Mara Josipova",
-        "captionEn": "Mara Josipova"
-      },
-      {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-K2-01.jpg",
         "alt": "Mara Josipova",
         "caption": "Mara Josipova",
@@ -1587,13 +1589,6 @@
       }
     ],
     "3.1.1.2.8.1-K3": [
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/nedajosipova.jpg",
-        "alt": "Neda Josipova",
-        "caption": "Neda Josipova",
-        "altEn": "Neda Josipova",
-        "captionEn": "Neda Josipova"
-      },
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-K3-02.jpg",
         "alt": "Neda Josipova",
@@ -1604,18 +1599,11 @@
     ],
     "3.1.1.2.8.1-K4": [
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/matija-budimir.png",
-        "alt": "Matija i Ante sa sinovima; slijeva nadesno: Mario, Mirko, Ivica i Jozo",
-        "caption": "Matija i Ante sa sinovima. Slijeva nadesno: Mario, Mirko, Ivica i Jozo.",
-        "altEn": "Matija and Ante with their sons; from left to right: Mario, Mirko, Ivica and Jozo",
-        "captionEn": "Matija and Ante with their sons. From left to right: Mario, Mirko, Ivica and Jozo."
-      },
-      {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-K4-02.jpg",
-        "alt": "Matija Josipova",
-        "caption": "Matija Josipova",
-        "altEn": "Matija, daughter of Josip",
-        "captionEn": "Matija, daughter of Josip"
+        "alt": "Matija sa obitelji",
+        "caption": "Matija sa obitelji",
+        "altEn": "Matija with her family",
+        "captionEn": "Matija with her family"
       }
     ],
     "3.1.2.1.1.1.1": [
