@@ -178,13 +178,6 @@
         "captionEn": "Ivan’s family – 1968"
       },
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-05.jpg",
-        "alt": "Grob Ivana Josipova",
-        "caption": "Grob Ivana Josipova",
-        "altEn": "Grave of Ivan, son of Josip",
-        "captionEn": "Grave of Ivan, son of Josip"
-      },
-      {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-03.jpg",
         "altEn": "Ivan, son of Josip and Jure, son of Ivan – 2022",
         "captionEn": "Ivan, son of Josip and Jure, son of Ivan – 2022",
@@ -199,11 +192,32 @@
         "caption": "Ivan Josipov s praunukom"
       },
       {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-06.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1",
+        "captionEn": ""
+      },
+      {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-07.jpg",
         "altEn": "Ivan, son of Josip with his family",
         "captionEn": "Ivan, son of Josip with his family",
         "alt": "Ivan Josipov u krugu obitelji",
         "caption": "Ivan Josipov u krugu obitelji"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-05.jpg",
+        "alt": "Grob Ivana Josipova",
+        "caption": "Grob Ivana Josipova",
+        "altEn": "Grave of Ivan, son of Josip",
+        "captionEn": "Grave of Ivan, son of Josip"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-08.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1",
+        "captionEn": ""
       }
     ],
     "3.1.1.2.8.1.1.1": [
@@ -242,24 +256,52 @@
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-06.jpg",
         "altEn": "Jure and Ruža with their grandchildren",
         "captionEn": "Jure and Ruža with their grandchildren"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-08.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-09.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1",
+        "captionEn": ""
       }
     ],
     "3.1.1.2.8.1.1.1-SP-1": [
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-SP1-01.jpg",
-        "alt": "Ruža jurina",
-        "caption": "Ruža Jurina",
-        "altEn": "Ruža, née Kosić",
-        "captionEn": "Ruža, née Kosić"
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-SP-1-01.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1-SP-1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1-SP-1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-SP-1-02.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1-SP-1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1-SP-1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-SP-1-03.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1-SP-1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1-SP-1",
+        "captionEn": ""
       }
     ],
     "3.1.1.2.8.1.1.1.1": [
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-01.jpg",
-        "alt": "Ivica Julio Jurin i Ana rođ. Mikuš",
-        "caption": "Ivica Julio i supruga Ana",
-        "altEn": "Ivica Julio, son of Jure and Ana, née Mikuš",
-        "captionEn": "Ivica Julio and Ana, née Mikuš"
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-00.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.1",
+        "captionEn": ""
       },
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-02.jpg",
@@ -270,6 +312,13 @@
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-03.jpg",
         "altEn": "Ivica Julio, son of Jure and Ana, née Mikuš, with their children",
         "captionEn": "Ivica Julio and Ana, née Mikuš, with their children"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-03.png",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.1",
+        "captionEn": ""
       }
     ],
     "3.1.1.2.8.1.1.1.2": [
@@ -281,16 +330,16 @@
         "captionEn": "Marin Tin"
       },
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2-SP-01.jpg",
-        "alt": "Ivana Marinova",
-        "caption": "Ivana, Marinova supruga",
-        "altEn": "Ivana, née Kereta",
-        "captionEn": "Ivana, née Kereta"
-      },
-      {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2-02.jpg",
         "altEn": "Marin Tin, son of Jure and Ivana, née Kereta",
         "captionEn": "Marin Tin and Ivana, née Kereta"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2-03.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.2",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.2",
+        "captionEn": ""
       }
     ],
     "3.1.1.2.8.1.1.2.1": [
@@ -336,13 +385,6 @@
         "caption": "Jozo Milanov",
         "altEn": "Jozo, son of Milan",
         "captionEn": "Jozo, son of Milan"
-      },
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.1-SP1-01.jpg",
-        "alt": "Vesna rođ. Matić",
-        "caption": "Vesna Jozina",
-        "altEn": "Vesna, née Matić",
-        "captionEn": "Vesna, née Matić"
       }
     ],
     "3.1.1.2.8.1.2.2": [
@@ -668,11 +710,11 @@
     ],
     "3.1.1.2.8.1-SP-1": [
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-01.jpg",
-        "caption": "Josip Jurin i Anica rođ. Dragun",
-        "captionEn": "Josip Jurin and Anica née Dragun",
-        "alt": "Josip Jurin i Anica rođ. Dragun",
-        "altEn": "Josip Jurin and Anica née Dragun"
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-SP-1-01.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1-SP-1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1-SP-1",
+        "captionEn": ""
       }
     ],
     "2.3.1.2.3.3.1": [
@@ -770,6 +812,279 @@
         "caption": "Slava Josipova",
         "altEn": "Slava, daughter of Josip",
         "captionEn": "Slava, daughter of Josip"
+      }
+    ],
+    "3.1.1.2.8.1.1-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-SP-1-01.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1-SP-1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1-SP-1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-SP-1-02.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1-SP-1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1-SP-1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-SP-1-05.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1-SP-1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1-SP-1",
+        "captionEn": ""
+      }
+    ],
+    "3.1.1.2.8.1.1.1.1-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-SP-1-01.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.1-SP-1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.1-SP-1",
+        "captionEn": ""
+      }
+    ],
+    "3.1.1.2.8.1.1.1.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1.1-01.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.1.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.1.1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1.1-02.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.1.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.1.1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1.1-03.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.1.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.1.1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1.1-04.png",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.1.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.1.1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1.1-05.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.1.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.1.1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1.1-06.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.1.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.1.1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1.1-07.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.1.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.1.1",
+        "captionEn": ""
+      }
+    ],
+    "3.1.1.2.8.1.1.1.1-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-K-02.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.1-K1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.1-K1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-K1-01.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.1-K1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.1-K1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-K1-02.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.1-K1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.1-K1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-K1-03.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.1-K1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.1-K1",
+        "captionEn": ""
+      }
+    ],
+    "3.1.1.2.8.1.1.1.2-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2-K1-01.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.2-K1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.2-K1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2-K1-02.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.2-K1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.2-K1",
+        "captionEn": ""
+      }
+    ],
+    "3.1.1.2.8.1.1.1.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2.1-02.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.2.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.2.1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2.1-01.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.2.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.2.1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2.1-03.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.2.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.2.1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2.1-05.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.2.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.2.1",
+        "captionEn": ""
+      }
+    ],
+    "3.1.1.2.8.1.1.1.2.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2.2-01.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.2.2",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.2.2",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2.2-03.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.2.2",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.2.2",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2.2-02.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.2.2",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.2.2",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2.2-04.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.2.2",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.2.2",
+        "captionEn": ""
+      }
+    ],
+    "3.1.1.2.8.1.1.1.2-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2-SP-01.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.2-SP-1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.2-SP-1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2-SP-1-01.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.2-SP-1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.2-SP-1",
+        "captionEn": ""
+      }
+    ],
+    "3.1.1.2.8.1.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.2.0.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.2",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.2",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.2-01.png",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.2",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.2",
+        "captionEn": ""
+      }
+    ],
+    "3.1.1.2.8.1.1.2-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.2.0-1SP.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.2-SP-1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.2-SP-1",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.2-SP-1-01.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.2-SP-1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.2-SP-1",
+        "captionEn": ""
+      }
+    ],
+    "3.1.1.2.8.1.2.1-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.1-SP1-01.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.2.1-SP-1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.2.1-SP-1",
+        "captionEn": ""
+      }
+    ],
+    "3.1.1.2.8.1.2.1-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.1-K1-01.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.2.1-K1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.2.1-K1",
+        "captionEn": ""
+      }
+    ],
+    "3.1.1.2.8.1.2.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.1.1-01.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.2.1.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.2.1.1",
+        "captionEn": ""
+      }
+    ],
+    "3.1.1.2.8.1.2.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.1.2-01.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.2.1.2",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.2.1.2",
+        "captionEn": ""
       }
     ]
   },
@@ -1227,10 +1542,10 @@
         "captionEn": ""
       },
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-05.jpg",
-        "alt": "Grob Ivana Josipova",
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-06.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1",
         "caption": "",
-        "altEn": "Ivan Josipov’s grave",
+        "altEn": "Photo for code 3.1.1.2.8.1.1",
         "captionEn": ""
       },
       {
@@ -1238,6 +1553,13 @@
         "alt": "Ivan Josipov u krugu obitelji",
         "caption": "",
         "altEn": "Ivan Josipov with his family",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-05.jpg",
+        "alt": "Grob Ivana Josipova",
+        "caption": "",
+        "altEn": "Ivan Josipov’s grave",
         "captionEn": ""
       },
       {
@@ -1350,6 +1672,13 @@
         "caption": "",
         "altEn": "Ivica Julio Jurin and Ana née Mikuš with their children",
         "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1-03.png",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.1",
+        "captionEn": ""
       }
     ],
     "3.1.1.2.8.1.1.1.1.1": [
@@ -1372,6 +1701,13 @@
         "alt": "Vigo Ivičin",
         "caption": "",
         "altEn": "Vigo, son of Ivica Julio",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.1.1-04.png",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.1.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.1.1",
         "captionEn": ""
       },
       {
@@ -1442,20 +1778,6 @@
         "captionEn": ""
       },
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2-SP-01.jpg",
-        "alt": "Ivana rođ. Kereta",
-        "caption": "",
-        "altEn": "Ivana née Kereta",
-        "captionEn": ""
-      },
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2-01.jpg",
-        "alt": "Marin Tin Jurin",
-        "caption": "",
-        "altEn": "Marin Tin Jurin",
-        "captionEn": ""
-      },
-      {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2-03.jpg",
         "alt": "Marin Tin Jurin",
         "caption": "",
@@ -1469,6 +1791,13 @@
         "alt": "Vladimir Ivanov – 3.1.1.2.8.1.1.2",
         "caption": "",
         "altEn": "Vladimir Ivanov – 3.1.1.2.8.1.1.2",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.2-01.png",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.2",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.2",
         "captionEn": ""
       }
     ],
@@ -1531,13 +1860,6 @@
         "caption": "Jozo Milanov",
         "altEn": "Jozo Milanov",
         "captionEn": "Jozo Milanov"
-      },
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.1-SP1-01.jpg",
-        "alt": "Vesna rođ. Matić",
-        "caption": "Vesna rođ. Matić",
-        "altEn": "Vesna née Matić",
-        "captionEn": "Vesna née Matić"
       }
     ],
     "3.1.1.2.8.1.2.2": [
@@ -2673,10 +2995,24 @@
     ],
     "3.1.1.2.8.1.1.1.2.1": [
       {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2.1-02.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.2.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.2.1",
+        "captionEn": ""
+      },
+      {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2.1-01.jpg",
         "alt": "David Marinov",
         "caption": "",
         "altEn": "David, son of Marin Tin",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2.1-03.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.2.1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.2.1",
         "captionEn": ""
       },
       {
@@ -2696,14 +3032,14 @@
         "captionEn": ""
       },
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2.2-02.jpg",
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2.2-03.jpg",
         "alt": "Jakov Marinov",
         "caption": "",
         "altEn": "Jakov, son of Marin Tin",
         "captionEn": ""
       },
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2.2-03.jpg",
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2.2-02.jpg",
         "alt": "Jakov Marinov",
         "caption": "",
         "altEn": "Jakov, son of Marin Tin",
@@ -2734,6 +3070,13 @@
       }
     ],
     "3.1.1.2.8.1.1.1.2-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2-SP-01.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.1.1.2-SP-1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.1.1.2-SP-1",
+        "captionEn": ""
+      },
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1.2-SP-1-01.jpg",
         "alt": "Ivana rođ. Kereta",
@@ -2799,6 +3142,15 @@
         "caption": "Slava Josipova",
         "altEn": "Slava, daughter of Josip",
         "captionEn": "Slava, daughter of Josip"
+      }
+    ],
+    "3.1.1.2.8.1.2.1-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.1-SP1-01.jpg",
+        "alt": "Fotografija uz šifru 3.1.1.2.8.1.2.1-SP-1",
+        "caption": "",
+        "altEn": "Photo for code 3.1.1.2.8.1.2.1-SP-1",
+        "captionEn": ""
       }
     ]
   }
