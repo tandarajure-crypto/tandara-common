@@ -398,7 +398,7 @@
   if (location.hostname === 'tandarajure-crypto.github.io' && location.pathname.startsWith('/Tandara/')) {
     window.tandaraPublicRecordsReady = new Promise(resolve => {
       const supplement = document.createElement('script');
-      supplement.src = new URL('js/public-memorials.js?v=20261105-josip-no-duplicate', new URL('/Tandara/', location.origin)).href;
+      supplement.src = new URL('js/public-memorials.js?v=20261105-marija-caption', new URL('/Tandara/', location.origin)).href;
       supplement.onload = () => {  placeSnjezanaPortrait(); placeSilvanaPortrait(); updateMilenkaDates(); placeNediljkoFamilyPhotos(); updateMarinDaughtersDates(); resolve(); };
       supplement.onerror = () => {  placeSnjezanaPortrait(); placeSilvanaPortrait(); updateMilenkaDates(); placeNediljkoFamilyPhotos(); updateMarinDaughtersDates(); console.error('TANDARA: public memorial supplement unavailable.'); resolve(); };
       document.head.appendChild(supplement);
