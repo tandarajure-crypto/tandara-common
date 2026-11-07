@@ -1154,3 +1154,24 @@ body.branch-photo-lightbox-open {
   width: max-content !important;
   max-width: none !important;
 }
+
+/* Keep genealogical codes, names and photo captions on one visual line.
+   Narrow screens scroll horizontally rather than wrapping names. */
+.branch-card h3[data-person-code] {
+  white-space: nowrap !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+.branch-card h3[data-person-code] * {
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+.branch-card .person-photo-gallery {
+  flex-wrap: nowrap !important;
+  overflow-x: auto;
+  max-width: 100%;
+}
