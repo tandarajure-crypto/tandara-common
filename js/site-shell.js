@@ -1811,3 +1811,32 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, {once:true});
   else start();
 })();
+
+/* Keep multiple galleries of the SAME person as one horizontal photo row.
+   Never join galleries with different or unknown genealogy codes. */
+(() => {
+  'use strict';
+  function samePersonCode(gallery) {
+    const figures = [...gallery.children].filter(el => el.matches('figure.person-photo'));
+    if (!figures.length) return '';
+    const codes = figures.map(fig => fig.dataset.personCode || '');
+    return codes[0] && codes.every(code => code === codes[0]) ? codes[0] : '';
+  }
+  function combineAdjacentPersonGalleries() {
+    document.querySelectorAll('.branch-card .person-photo-gallery').forEach(gallery => {
+      if (!gallery.isConnected) return;
+      const code = samePersonCode(gallery);
+      if (!code) return;
+      let next = gallery.nextElementSibling;
+      while (next && next.matches('.person-photo-gallery') && samePersonCode(next) === code) {
+        const remove = next;
+        next = next.nextElementSibling;
+        [...remove.children].forEach(child => gallery.appendChild(child));
+        remove.remove();
+      }
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', combineAdjacentPersonGalleries, {once:true});
+  } else combineAdjacentPersonGalleries();
+})();
