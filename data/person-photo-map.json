@@ -1057,9 +1057,64 @@
     ]
   },
   "private": {
+    "4.1.1.1.2.1.1.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/marijanjosipov.jpg",
+        "alt": "Marijan Josipov",
+        "caption": "Marijan Josipov",
+        "altEn": "Marijan Josipov",
+        "captionEn": "Marijan Josipov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/marijanjosipovsabracom.jpg",
+        "alt": "Marijan Josipov",
+        "caption": "Marijan Josipov s braćom",
+        "altEn": "Marijan Josipov",
+        "captionEn": "Marijan Josipov with his brothers"
+      }
+    ],
+    "4.1.1.1.2.1.1-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/silvijajosipova.jpg",
+        "alt": "Silvija Josipova",
+        "caption": "Silvija Josipova",
+        "altEn": "Silvija Josipova",
+        "captionEn": "Silvija Josipova"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/silvija2.jpg",
+        "alt": "Silvija Josipova",
+        "caption": "Silvija Josipova",
+        "altEn": "Silvija Josipova",
+        "captionEn": "Silvija Josipova"
+      }
+    ],
+    "4.1.1.1.2.1.1.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/antejosipov1.jpg",
+        "alt": "Ante Josipov",
+        "caption": "Ante Josipov",
+        "altEn": "Ante Josipov",
+        "captionEn": "Ante Josipov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/antejosipov2.jpg",
+        "alt": "Ante Josipov",
+        "caption": "Ante Josipov",
+        "altEn": "Ante Josipov",
+        "captionEn": "Ante Josipov"
+      }
+    ],
     "4.1.1.1.2.1.1.3": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/kristijan.jpg",
+        "alt": "Kristijan Josipov",
+        "caption": "Kristijan Josipov",
+        "altEn": "Kristijan Josipov",
+        "captionEn": "Kristijan Josipov"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/kristijanjosipov2.jpg",
         "alt": "Kristijan Josipov",
         "caption": "Kristijan Josipov",
         "altEn": "Kristijan Josipov",
