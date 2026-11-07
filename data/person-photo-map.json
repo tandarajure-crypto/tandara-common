@@ -1039,6 +1039,22 @@
     ]
   },
   "private": {
+    "2.3.4.1.1.1.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/ivanmirkov.jpg",
+        "alt": "Ivan Mirkov",
+        "caption": "Ivan Mirkov",
+        "altEn": "Ivan, son of Mirko",
+        "captionEn": "Ivan, son of Mirko"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/ivanmirkov2.jpg",
+        "alt": "Ivan Mirkov",
+        "caption": "Ivan Mirkov",
+        "altEn": "Ivan, son of Mirko",
+        "captionEn": "Ivan, son of Mirko"
+      }
+    ],
     "4.1.1.1.2.1.1.1": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/matinagrana/marijanjosipov.jpg",
