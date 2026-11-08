@@ -390,19 +390,33 @@
     "3.1.1.2.8.1.2.2": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2-01.jpg",
-        "alt": "Ivan Milanov i supruga Ružica",
-        "caption": "Ivan Milanov i Ružica",
-        "altEn": "Ivan, son of Milan and Ružica, née Glavaš",
-        "captionEn": "Ivan, son of Milan and Ružica, née Glavaš"
+        "alt": "Fotografija – 3.1.1.2.8.1.2.2",
+        "caption": "",
+        "altEn": "Photo – 3.1.1.2.8.1.2.2",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2-03.jpg",
+        "alt": "Fotografija – 3.1.1.2.8.1.2.2",
+        "caption": "",
+        "altEn": "Photo – 3.1.1.2.8.1.2.2",
+        "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2-02.jpg",
+        "alt": "Fotografija – 3.1.1.2.8.1.2.2",
+        "caption": "",
+        "altEn": "Photo – 3.1.1.2.8.1.2.2",
+        "captionEn": ""
       }
     ],
     "3.1.1.2.8.1.2.2-K1": [
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2-K1-01.jpg",
-        "alt": "Natalija s diplomom",
-        "caption": "Natalija s diplomom",
-        "altEn": "Natalija with her diploma",
-        "captionEn": "Natalija with her diploma"
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2-K1-02.jpg",
+        "alt": "Fotografija – 3.1.1.2.8.1.2.2-K1",
+        "caption": "",
+        "altEn": "Photo – 3.1.1.2.8.1.2.2-K1",
+        "captionEn": ""
       }
     ],
     "3.1.1.2.8.1-K2": [
@@ -1069,6 +1083,33 @@
         "caption": "Ivan Stipanov",
         "altEn": "Ivan, son of Stipan",
         "captionEn": "Ivan, son of Stipan"
+      }
+    ],
+    "3.1.1.2.8.1.2.2-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2.-SP1-01.jpg",
+        "alt": "Fotografija – 3.1.1.2.8.1.2.2-SP-1",
+        "caption": "",
+        "altEn": "Photo – 3.1.1.2.8.1.2.2-SP-1",
+        "captionEn": ""
+      }
+    ],
+    "3.1.1.2.8.1.2.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2.1-01.jpg",
+        "alt": "Fotografija – 3.1.1.2.8.1.2.2.1",
+        "caption": "",
+        "altEn": "Photo – 3.1.1.2.8.1.2.2.1",
+        "captionEn": ""
+      }
+    ],
+    "3.1.1.2.8.1.2.2.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2.2-01.jpg",
+        "alt": "Fotografija – 3.1.1.2.8.1.2.2.2",
+        "caption": "",
+        "altEn": "Photo – 3.1.1.2.8.1.2.2.2",
+        "captionEn": ""
       }
     ]
   },
@@ -1929,19 +1970,33 @@
     "3.1.1.2.8.1.2.2": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2-01.jpg",
-        "alt": "Ivan Milanov i Ružica rođ. Glavaš",
-        "caption": "Ivan Milanov i Ružica rođ. Glavaš",
-        "altEn": "Ivan Milanov and Ružica née Glavaš",
-        "captionEn": "Ivan Milanov and Ružica née Glavaš"
+        "alt": "Ivan Milanov",
+        "caption": "Ivan Milanov",
+        "altEn": "Ivan, son of Milan",
+        "captionEn": "Ivan, son of Milan"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2-03.jpg",
+        "alt": "Ivan Milanov",
+        "caption": "Ivan Milanov",
+        "altEn": "Ivan, son of Milan",
+        "captionEn": "Ivan, son of Milan"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2-02.jpg",
+        "alt": "Ivan Milanov",
+        "caption": "Ivan Milanov",
+        "altEn": "Ivan, son of Milan",
+        "captionEn": "Ivan, son of Milan"
       }
     ],
     "3.1.1.2.8.1.2.2-K1": [
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2-K1-01.jpg",
-        "alt": "Natalija s diplomom",
-        "caption": "Natalija s diplomom",
-        "altEn": "Natalija with her diploma",
-        "captionEn": "Natalija with her diploma"
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2-K1-02.jpg",
+        "alt": "Natalija Ivanova",
+        "caption": "Natalija Ivanova",
+        "altEn": "Natalija, daughter of Ivan",
+        "captionEn": "Natalija, daughter of Ivan"
       }
     ],
     "3.1.1.2.8.1-K2": [
@@ -3293,6 +3348,33 @@
         "caption": "Josip Marijanov",
         "altEn": "Josip, son of Marijan",
         "captionEn": "Josip, son of Marijan"
+      }
+    ],
+    "3.1.1.2.8.1.2.2-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2.-SP1-01.jpg",
+        "alt": "Ružica rođ. Glavaš",
+        "caption": "Ružica rođ. Glavaš",
+        "altEn": "Ružica née Glavaš",
+        "captionEn": "Ružica née Glavaš"
+      }
+    ],
+    "3.1.1.2.8.1.2.2.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2.1-01.jpg",
+        "alt": "David Ivanov",
+        "caption": "David Ivanov",
+        "altEn": "David, son of Ivan",
+        "captionEn": "David, son of Ivan"
+      }
+    ],
+    "3.1.1.2.8.1.2.2.2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.2.2.2-01.jpg",
+        "alt": "Milan Ivanov",
+        "caption": "Milan Ivanov",
+        "altEn": "Milan, son of Ivan",
+        "captionEn": "Milan, son of Ivan"
       }
     ]
   }
