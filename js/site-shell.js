@@ -1846,13 +1846,10 @@
 (() => {
   'use strict';
   // The common shell also runs on the public site: never retry public images.
-  const onPrivateSite = () => {
-    const host = location.hostname.toLowerCase();
-    return host === 'privat-tvz.pages.dev' ||
-      /^\/PRIVAT(?:\/|$)/i.test(location.pathname) ||
-      document.body?.dataset.photoScope === 'private';
-  };
-  if (!onPrivateSite()) return;
+  const onTargetPrivateBranch = () =>
+    document.body?.dataset.photoScope === 'private' &&
+    ['antinagrana', 'petrovagrana', 'matinagrana'].includes(document.body.dataset.page);
+  if (!onTargetPrivateBranch()) return;
 
   const tracked = new WeakMap();
   const maxRetries = 2;
