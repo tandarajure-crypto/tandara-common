@@ -334,6 +334,8 @@
     const pair = (birth, death) => `<span class="life-date">(${birthSymbol()}${value(birth)} – ${showDateSymbols ? deathSymbol(rec) + ' ' : ''}${value(death)})</span>`;
     // Already-symbolized date pairs, if any occur in descriptive text.
     out = out.replace(/\(?\s*★\s*(N\.G\.|oko\s+\d{4}\.?|\d{4}\.?)\s*(?:[–—-]\s*)?✝\s*(N\.G\.|\d{4}\.?)\s*\)?/gi, (_, b, d) => pair(/^N\.G\./i.test(b) ? '' : b, /^N\.G\./i.test(d) ? '' : d));
+    // Birth-only notes must also use the uniform two-sided date range.
+    if (!showDateSymbols) out = out.replace(/\(★\s*(\d{4}\.?)\)/g, (_, b) => pair(b, ''));
     // HR legacy: (1953.- ), (1932.-1936.); EN legacy: (1953– ), (1932–1936).
     out = out.replace(/\((\d{4})\.?\s*(?:\.\s*)?(?:-|–|—)\s*(\d{4})?\.?\s*\)/g, (_, b, d) => pair(b, d || ''));
     return showDateSymbols ? out : out.replace(/[★✝]\s*/g, '');
