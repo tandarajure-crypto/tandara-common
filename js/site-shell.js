@@ -1840,3 +1840,105 @@
     document.addEventListener('DOMContentLoaded', combineAdjacentPersonGalleries, {once:true});
   } else combineAdjacentPersonGalleries();
 })();
+
+
+/* PRIVATE SITE PHOTO RETRY (global, bounded, no page refresh) */
+(() => {
+  'use strict';
+  // The common shell also runs on the public site: never retry public images.
+  const onPrivateSite = () => {
+    const host = location.hostname.toLowerCase();
+    return host === 'privat-tvz.pages.dev' ||
+      /^\/PRIVAT(?:\/|$)/i.test(location.pathname) ||
+      document.body?.dataset.photoScope === 'private';
+  };
+  if (!onPrivateSite()) return;
+
+  const tracked = new WeakMap();
+  const maxRetries = 2;
+  const retryDelays = [800, 2000];
+  const originalSource = (img) => img.getAttribute('src');
+
+  function eligible(img) {
+    if (!(img instanceof HTMLImageElement) || !img.isConnected) return false;
+    const raw = originalSource(img);
+    if (!raw || /^(data:|blob:)/i.test(raw)) return false;
+    try {
+      const url = new URL(raw, document.baseURI);
+      return url.protocol === 'https:' || url.protocol === 'http:';
+    } catch (_) { return false; }
+  }
+  function visible(img) {
+    const rect = img.getBoundingClientRect();
+    return rect.width > 0 && rect.height > 0 &&
+      rect.bottom > 0 && rect.right > 0 &&
+      rect.top < innerHeight && rect.left < innerWidth;
+  }
+  function track(img) {
+    if (!eligible(img) || tracked.has(img)) return;
+    const source = originalSource(img);
+    const state = { source, retries: 0, timer: null };
+    tracked.set(img, state);
+    // 'error' events do not bubble, so listen in capture phase at document.
+    if (img.complete && img.naturalWidth === 0 && visible(img)) retry(img);
+  }
+  function retry(img) {
+    if (!eligible(img)) return;
+    const state = tracked.get(img);
+    if (!state || state.timer !== null || state.retries >= maxRetries) return;
+    if (img.complete && img.naturalWidth > 0) return;
+    const current = originalSource(img);
+    // Do not interfere if another script has intentionally replaced the image.
+    if (current !== state.source &&
+        !current.includes('private_photo_retry=')) return;
+    const attempt = ++state.retries;
+    state.timer = setTimeout(() => {
+      state.timer = null;
+      if (!img.isConnected || img.naturalWidth > 0) return;
+      const url = new URL(state.source, document.baseURI);
+      url.searchParams.set('private_photo_retry', String(attempt));
+      img.src = url.href;
+    }, retryDelays[attempt - 1]);
+  }
+  document.addEventListener('error', (event) => {
+    const img = event.target;
+    if (!(img instanceof HTMLImageElement)) return;
+    if (!tracked.has(img)) track(img);
+    retry(img);
+  }, true);
+  document.addEventListener('load', (event) => {
+    const img = event.target;
+    const state = tracked.get(img);
+    if (state && img.naturalWidth > 0 && state.timer !== null) {
+      clearTimeout(state.timer);
+      state.timer = null;
+    }
+  }, true);
+  function scan(root) {
+    if (root instanceof HTMLImageElement) track(root);
+    if (root.querySelectorAll) root.querySelectorAll('img[src]').forEach(track);
+  }
+  scan(document);
+  const observer = new MutationObserver(records => {
+    for (const record of records) {
+      if (record.type === 'attributes') {
+        const img = record.target;
+        const state = tracked.get(img);
+        if (state && originalSource(img) !== state.source &&
+            !originalSource(img).includes('private_photo_retry=')) {
+          if (state.timer !== null) clearTimeout(state.timer);
+          tracked.delete(img);
+        }
+        track(img);
+      } else {
+        for (const node of record.addedNodes) {
+          if (node.nodeType === 1) scan(node);
+        }
+      }
+    }
+  });
+  observer.observe(document.documentElement, {
+    childList: true, subtree: true, attributes: true, attributeFilter: ['src']
+  });
+  window.addEventListener('load', () => scan(document), { once: true });
+})();
