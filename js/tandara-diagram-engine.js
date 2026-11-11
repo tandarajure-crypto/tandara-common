@@ -274,7 +274,7 @@
   }
 
   function yearText(year) {
-    if (!year) return 'N.G.';
+    if (!year) return isPrivateSite ? 'G. N.' : 'N.G.';
     const value = String(year).trim();
     return /\.$/.test(value) ? value : `${value}.`;
   }
@@ -298,7 +298,7 @@
 
   // Only explicitly opted-in public pages omit the genealogy symbols.
   // Private pages retain the original rendering, regardless of their hostname.
-  const showDateSymbols = document.body.dataset.dateSymbols !== 'none';
+  const showDateSymbols = !isPrivateSite && document.body.dataset.dateSymbols !== 'none';
 
   function birthSymbol() {
     return showDateSymbols ? '★ ' : '';
@@ -315,23 +315,23 @@
 
   function dateText(rec) {
     if (rec && rec.dateProtected) return '(Zaštićeni podaci)';
-    return `(${birthSymbol()}${yearText(rec && rec.birth)} - ${showDateSymbols ? deathSymbol(rec) + ' ' : ''}${yearText(rec && rec.death)})`;
+    return `(${birthSymbol()}${yearText(rec && rec.birth)} – ${showDateSymbols ? deathSymbol(rec) + ' ' : ''}${yearText(rec && rec.death)})`;
   }
 
   function dateHtml(rec) {
     if (rec && rec.dateProtected) return '<span class="life-date">(Zaštićeni podaci)</span>';
     const value = year => year
       ? esc(yearText(year))
-      : `<span class="date-ng">N.G.</span>`;
-    return `<span class="life-date">(${birthSymbol()}${value(rec && rec.birth)} - ${showDateSymbols ? deathSymbol(rec) + ' ' : ''}${value(rec && rec.death)})</span>`;
+      : `<span class="date-ng">${isPrivateSite ? 'G. N.' : 'N.G.'}</span>`;
+    return `<span class="life-date">(${birthSymbol()}${value(rec && rec.birth)} – ${showDateSymbols ? deathSymbol(rec) + ' ' : ''}${value(rec && rec.death)})</span>`;
   }
 
   function formatDetailHtml(text, rec) {
     let out = esc(String(text || ''));
     const value = year => year
       ? esc(yearText(year))
-      : `<span class="date-ng">N.G.</span>`;
-    const pair = (birth, death) => `<span class="life-date">(${birthSymbol()}${value(birth)} - ${showDateSymbols ? deathSymbol(rec) + ' ' : ''}${value(death)})</span>`;
+      : `<span class="date-ng">${isPrivateSite ? 'G. N.' : 'N.G.'}</span>`;
+    const pair = (birth, death) => `<span class="life-date">(${birthSymbol()}${value(birth)} – ${showDateSymbols ? deathSymbol(rec) + ' ' : ''}${value(death)})</span>`;
     // Already-symbolized date pairs, if any occur in descriptive text.
     out = out.replace(/\(?\s*★\s*(N\.G\.|oko\s+\d{4}\.?|\d{4}\.?)\s*(?:[–—-]\s*)?✝\s*(N\.G\.|\d{4}\.?)\s*\)?/gi, (_, b, d) => pair(/^N\.G\./i.test(b) ? '' : b, /^N\.G\./i.test(d) ? '' : d));
     // HR legacy: (1953.- ), (1932.-1936.); EN legacy: (1953– ), (1932–1936).
@@ -359,6 +359,11 @@
     if (rec && rec.dateProtected) {
       const width = isSide ? 104 : 108;
       return `<g class="date-inline"><text class="${cls}" x="${openX}" y="${y}"${fontSize} textLength="${width}" lengthAdjust="spacingAndGlyphs">(Zaštićeni podaci)</text></g>`;
+    }
+
+    if (!showDateSymbols) {
+      const compact = dateText(rec);
+      return `<g class="date-inline"><text class="${cls}" x="${openX}" y="${y}"${fontSize} textLength="${Math.max(94, closeX - openX)}" lengthAdjust="spacingAndGlyphs">${esc(compact)}</text></g>`;
     }
 
     const value = (year, valueX, maxW = 30) => {
