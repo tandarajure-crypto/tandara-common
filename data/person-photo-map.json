@@ -1761,6 +1761,13 @@
         "caption": "",
         "altEn": "Ruža, née Kosić",
         "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.1-SP-1-04.jpg",
+        "alt": "Ruža rođ. Kosić – obiteljska fotografija",
+        "caption": "Ruža rođ. Kosić – obiteljska fotografija",
+        "altEn": "Ruža née Kosić – family photograph",
+        "captionEn": "Ruža née Kosić – family photograph"
       }
     ],
     "3.1.1.2.8.1.1.1.1": [
@@ -1936,6 +1943,13 @@
         "caption": "",
         "altEn": "Filip Vladimirov",
         "captionEn": ""
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1.2.1-02.jpg",
+        "alt": "Filip Vladimirov",
+        "caption": "Filip Vladimirov",
+        "altEn": "Filip Vladimirov",
+        "captionEn": "Filip Vladimirov"
       }
     ],
     "3.1.1.2.8.1.1.2.2": [
@@ -3073,6 +3087,13 @@
         "caption": "Anica rođ. Dragun",
         "altEn": "Anica, née Dragun",
         "captionEn": "Anica, née Dragun"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-SP-1-02.jpg",
+        "alt": "Anica rođ. Dragun (1975.)",
+        "caption": "Anica rođ. Dragun (1975.)",
+        "altEn": "Anica née Dragun (1975)",
+        "captionEn": "Anica née Dragun (1975)"
       }
     ],
     "3.3.1.2.1.4.4-SP-1": [
@@ -3521,6 +3542,22 @@
         "caption": "Dijana-Nevenka",
         "altEn": "Dijana Nevenka née Mihajlović",
         "captionEn": "Dijana-Nevenka"
+      }
+    ],
+    "3.1.1.2.8.1.1-SP-2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-SP-2-01.jpg",
+        "alt": "Vera rođ. Nikolovski",
+        "caption": "Vera rođ. Nikolovski",
+        "altEn": "Vera née Nikolovski",
+        "captionEn": "Vera née Nikolovski"
+      },
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ.1-SP-2-02.jpg",
+        "alt": "Vera rođ. Nikolovski",
+        "caption": "Vera rođ. Nikolovski",
+        "altEn": "Vera née Nikolovski",
+        "captionEn": "Vera née Nikolovski"
       }
     ]
   }
