@@ -148,13 +148,6 @@
         "captionEn": "Josip, son of Jure and Anica, née Dragun"
       },
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-2-Z.jpg",
-        "alt": "Dijagram potomaka Josipa Jurina",
-        "caption": "Dijagram potomaka Josipa Jurina",
-        "altEn": "Diagram of Josip Jurin's descendants",
-        "captionEn": "Diagram of Josip Jurin's descendants"
-      },
-      {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/JJ-03.jpg",
         "alt": "Obiteljska grobnica Josipa Jurina",
         "caption": "Obiteljska grobnica Josipa Jurina",
@@ -521,20 +514,6 @@
     ],
     "2.3.1.2.3.3.3": [
       {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/jozopiin.jpg",
-        "alt": "Jozo Piin",
-        "caption": "Jozo Piin",
-        "altEn": "Jozo, son of Pio",
-        "captionEn": "Jozo, son of Pio"
-      },
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/jozopiin1.jpg",
-        "alt": "Jozo Piin",
-        "caption": "Jozo Piin",
-        "altEn": "Jozo, son of Pio",
-        "captionEn": "Jozo, son of Pio"
-      },
-      {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/jozopiin3.jpg",
         "alt": "Jozo Piin",
         "caption": "Jozo Piin",
@@ -596,13 +575,6 @@
       }
     ],
     "2.3.4.1.1.4.1": [
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/bruno.png",
-        "alt": "Dr. Ante Bruno Tandara",
-        "caption": "Dr. Ante Bruno Tandara",
-        "altEn": "Dr. Ante Bruno Tandara",
-        "captionEn": "Dr. Ante Bruno Tandara"
-      },
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/drbruno-graf.jpeg",
         "alt": "Grafički prikaz grananja prezimena",
@@ -2441,7 +2413,6 @@
         "captionEn": "Petra Zdravkova"
       }
     ],
-    "3.3.1.2.1.3.1.5": [],
     "3.3.1.2.1.3.1.5-K1": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/martinavinkova.jpg",
@@ -2673,20 +2644,6 @@
         "caption": "Jozo Piin",
         "altEn": "Jozo Piin",
         "captionEn": "Jozo Piin"
-      },
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/jozopiin.jpg",
-        "alt": "Jozo Piin",
-        "caption": "Jozo Piin",
-        "altEn": "Jozo, son of Pio",
-        "captionEn": "Jozo, son of Pio"
-      },
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/jozopiin1.jpg",
-        "alt": "Jozo Piin",
-        "caption": "Jozo Piin",
-        "altEn": "Jozo, son of Pio",
-        "captionEn": "Jozo, son of Pio"
       }
     ],
     "2.3.1.2.3.4.1": [
@@ -2777,13 +2734,6 @@
       }
     ],
     "2.3.4.1.1.4.1": [
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/bruno.png",
-        "alt": "Dr. Ante Bruno Tandara",
-        "caption": "Dr. Ante Bruno Tandara",
-        "altEn": "Dr. Ante Bruno Tandara",
-        "captionEn": "Dr. Ante Bruno Tandara"
-      },
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/drbruno-graf.jpeg",
         "alt": "Grafički prikaz grananja prezimena",
@@ -3018,22 +2968,6 @@
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/zrinkaalojzova.jpg",
         "alt": "Zrinka Alojzova",
         "caption": "Zrinka Alojzova"
-      }
-    ],
-    "2.3.4.1.3.2.2.1-SP-1": [
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/sabinarobertova.jpg",
-        "alt": "Sabina rođ. Patzak",
-        "caption": "Sabina rođ. Patzak",
-        "altEn": "Sabina, née Patzak",
-        "captionEn": "Sabina, née Patzak"
-      },
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/sabinefamily.jpg",
-        "alt": "Sabina s obitelji",
-        "caption": "Carolina, Marc i Laura",
-        "altEn": "Sabina and family",
-        "captionEn": "Sabina and family"
       }
     ],
     "2.3.4.1.3.2.5": [
