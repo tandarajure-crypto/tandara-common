@@ -1,6 +1,8 @@
 /* Stable loading for the public Antina branch. Original photo links are preserved. */
 (() => {
   'use strict';
+  // The shared shell handles every public and private family photo.
+  if (window.tandaraReliablePhotos) return;
   const root = document.querySelector('main.branch-content');
   if (!root) return;
   const initialized = new WeakSet();

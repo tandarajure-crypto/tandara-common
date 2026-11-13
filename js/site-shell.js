@@ -1842,100 +1842,197 @@
 })();
 
 
-/* PRIVATE SITE PHOTO RETRY (global, bounded, no page refresh) */
+/* RELIABLE GENEALOGY PHOTOS — public + private branches and diagrams.
+   Two bounded cache-busting retries, including dynamically added person cards.
+   Preserve lazy loading, original links and privacy; never substitute another photo. */
 (() => {
   'use strict';
-  // The common shell also runs on the public site: never retry public images.
-  const onTargetPrivateBranch = () =>
-    document.body?.dataset.photoScope === 'private' &&
-    ['antinagrana', 'petrovagrana', 'matinagrana'].includes(document.body.dataset.page);
-  if (!onTargetPrivateBranch()) return;
+  if (window.tandaraReliablePhotos) return;
+  window.tandaraReliablePhotos = { version: '2026-11-13' };
 
   const tracked = new WeakMap();
-  const maxRetries = 2;
-  const retryDelays = [800, 2000];
-  const originalSource = (img) => img.getAttribute('src');
+  const retryKey = 'tandara_photo_retry';
+  const retryDelays = [900, 2200];
+  const isEnglish = () =>
+    document.documentElement.lang.toLowerCase().startsWith('en') ||
+    document.body?.dataset.lang === 'en';
 
-  function eligible(img) {
-    if (!(img instanceof HTMLImageElement) || !img.isConnected) return false;
-    const raw = originalSource(img);
-    if (!raw || /^(data:|blob:)/i.test(raw)) return false;
+  function photoUrl(img) {
+    if (!(img instanceof HTMLImageElement) || !img.isConnected ||
+        !img.closest('main.branch-content, main.diagram-shell, #personDetails, .person-details')) return null;
+    const raw = img.getAttribute('src');
+    if (!raw || /^(?:data:|blob:)/i.test(raw)) return null;
     try {
       const url = new URL(raw, document.baseURI);
-      return url.protocol === 'https:' || url.protocol === 'http:';
-    } catch (_) { return false; }
+      if (!/^https?:$/.test(url.protocol) || /\/slike\/ikone\//i.test(url.pathname)) return null;
+      const shared = url.hostname === 'tandarajure-crypto.github.io' &&
+        /\/(?:tandara-common|Tandara)\/slike\//i.test(url.pathname);
+      const rawGithub = url.hostname === 'raw.githubusercontent.com' &&
+        url.pathname.startsWith('/tandarajure-crypto/tandara-common/') &&
+        url.pathname.includes('/slike/');
+      const local = url.origin === location.origin && url.pathname.includes('/slike/');
+      if (!shared && !rawGithub && !local) return null;
+      url.searchParams.delete(retryKey);
+      url.searchParams.delete('media_retry');
+      url.searchParams.delete('private_photo_retry');
+      url.searchParams.delete('photo_retry');
+      return url.href;
+    } catch (_) { return null; }
   }
-  function visible(img) {
+
+  function inView(img) {
     const rect = img.getBoundingClientRect();
     return rect.width > 0 && rect.height > 0 &&
-      rect.bottom > 0 && rect.right > 0 &&
-      rect.top < innerHeight && rect.left < innerWidth;
+      rect.bottom >= -200 && rect.right >= 0 &&
+      rect.top <= innerHeight + 200 && rect.left <= innerWidth;
   }
-  function track(img) {
-    if (!eligible(img) || tracked.has(img)) return;
-    const source = originalSource(img);
-    const state = { source, retries: 0, timer: null };
-    tracked.set(img, state);
-    // 'error' events do not bubble, so listen in capture phase at document.
-    if (img.complete && img.naturalWidth === 0 && visible(img)) retry(img);
+
+  function restore(img, state) {
+    if (state.timer !== null) clearTimeout(state.timer);
+    state.timer = null;
+    if (state.status) { state.status.remove(); state.status = null; }
+    if (state.changedDisplay) {
+      if (state.displayValue) img.style.setProperty('display', state.displayValue, state.displayPriority);
+      else img.style.removeProperty('display');
+      state.changedDisplay = false;
+    }
+    if (state.changedLoading) {
+      if (state.loadingValue === null) img.removeAttribute('loading');
+      else img.setAttribute('loading', state.loadingValue);
+      state.changedLoading = false;
+    }
+    img.removeAttribute('data-photo-load-state');
   }
-  function retry(img) {
-    if (!eligible(img)) return;
-    const state = tracked.get(img);
-    if (!state || state.timer !== null || state.retries >= maxRetries) return;
-    if (img.complete && img.naturalWidth > 0) return;
-    const current = originalSource(img);
-    // Do not interfere if another script has intentionally replaced the image.
-    if (current !== state.source &&
-        !current.includes('private_photo_retry=')) return;
+
+  function showStatus(img, state, exhausted) {
+    if (!state.changedDisplay) {
+      state.displayValue = img.style.getPropertyValue('display');
+      state.displayPriority = img.style.getPropertyPriority('display');
+      state.changedDisplay = true;
+    }
+    // Only a failed photograph becomes eager. Off-screen healthy photos remain lazy.
+    if (!state.changedLoading) {
+      state.loadingValue = img.getAttribute('loading');
+      state.changedLoading = true;
+    }
+    img.loading = 'eager';
+    img.style.setProperty('display', 'none', 'important');
+
+    if (!state.status) {
+      const host = img.closest('figure') ||
+        (img.parentElement?.tagName === 'A' ? img.parentElement.parentElement : img.parentElement);
+      if (!host) return;
+      const status = document.createElement('div');
+      status.className = 'tandara-photo-load-status';
+      status.setAttribute('role', 'status');
+      status.style.cssText =
+        'box-sizing:border-box;display:block;max-width:100%;margin:6px 0;padding:8px 10px;' +
+        'border:1px solid #aaa;border-radius:5px;font:13px/1.4 Arial,sans-serif;' +
+        'overflow-wrap:anywhere;background:transparent;';
+      const message = document.createElement('span');
+      message.className = 'tandara-photo-load-message';
+      status.appendChild(message);
+      const controls = document.createElement('span');
+      controls.className = 'tandara-photo-load-controls';
+      controls.style.cssText = 'display:block;margin-top:6px;';
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = isEnglish() ? 'Try again' : 'Pokušaj ponovno';
+      button.style.cssText = 'font:inherit;padding:3px 8px;margin-right:10px;cursor:pointer;';
+      button.addEventListener('click', () => {
+        if (!img.isConnected) return;
+        state.retries = 0;
+        state.timer = null;
+        showStatus(img, state, false);
+        const retryUrl = new URL(state.source);
+        retryUrl.searchParams.set(retryKey, 'manual-' + Date.now());
+        img.src = retryUrl.href;
+      });
+      const link = document.createElement('a');
+      link.href = state.source;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = isEnglish() ? 'Open original' : 'Otvori izvornik';
+      controls.append(button, link);
+      status.appendChild(controls);
+      host.appendChild(status);
+      state.status = status;
+    }
+    state.status.querySelector('.tandara-photo-load-message').textContent = exhausted
+      ? (isEnglish() ? 'Photo currently unavailable.' : 'Fotografija trenutačno nije dostupna.')
+      : (isEnglish() ? 'Retrying photograph…' : 'Ponovno učitavanje fotografije…');
+    state.status.querySelector('.tandara-photo-load-controls').hidden = !exhausted;
+    img.dataset.photoLoadState = exhausted ? 'unavailable' : 'retrying';
+  }
+
+  function fail(img) {
+    const state = track(img);
+    if (!state || state.timer !== null || img.naturalWidth > 0) return;
+    if (state.retries >= retryDelays.length) {
+      showStatus(img, state, true);
+      return;
+    }
+    showStatus(img, state, false);
     const attempt = ++state.retries;
     state.timer = setTimeout(() => {
       state.timer = null;
-      if (!img.isConnected || img.naturalWidth > 0) return;
-      const url = new URL(state.source, document.baseURI);
-      url.searchParams.set('private_photo_retry', String(attempt));
-      img.src = url.href;
+      if (!img.isConnected || img.naturalWidth > 0 || photoUrl(img) !== state.source) return;
+      const next = new URL(state.source);
+      next.searchParams.set(retryKey, String(attempt));
+      img.src = next.href;
     }, retryDelays[attempt - 1]);
   }
+
+  function track(img) {
+    const source = photoUrl(img);
+    const previous = tracked.get(img);
+    if (previous && previous.source !== source) {
+      restore(img, previous);
+      tracked.delete(img);
+    }
+    if (!source) return null;
+    let state = tracked.get(img);
+    if (!state) {
+      state = {
+        source, retries: 0, timer: null, status: null,
+        changedDisplay: false, changedLoading: false,
+        displayValue: '', displayPriority: '', loadingValue: null
+      };
+      tracked.set(img, state);
+    }
+    return state;
+  }
+
+  function scan(root) {
+    if (root instanceof HTMLImageElement) check(root);
+    if (root.querySelectorAll) root.querySelectorAll('img[src]').forEach(check);
+  }
+
+  function check(img) {
+    const state = track(img);
+    if (state && img.complete && img.naturalWidth === 0 && inView(img)) fail(img);
+  }
+
   document.addEventListener('error', (event) => {
-    const img = event.target;
-    if (!(img instanceof HTMLImageElement)) return;
-    if (!tracked.has(img)) track(img);
-    retry(img);
+    if (event.target instanceof HTMLImageElement) fail(event.target);
   }, true);
   document.addEventListener('load', (event) => {
-    const img = event.target;
-    const state = tracked.get(img);
-    if (state && img.naturalWidth > 0 && state.timer !== null) {
-      clearTimeout(state.timer);
-      state.timer = null;
-    }
+    if (!(event.target instanceof HTMLImageElement) || event.target.naturalWidth === 0) return;
+    const state = tracked.get(event.target);
+    if (state) restore(event.target, state);
   }, true);
-  function scan(root) {
-    if (root instanceof HTMLImageElement) track(root);
-    if (root.querySelectorAll) root.querySelectorAll('img[src]').forEach(track);
-  }
+
   scan(document);
-  const observer = new MutationObserver(records => {
+  new MutationObserver((records) => {
     for (const record of records) {
-      if (record.type === 'attributes') {
-        const img = record.target;
-        const state = tracked.get(img);
-        if (state && originalSource(img) !== state.source &&
-            !originalSource(img).includes('private_photo_retry=')) {
-          if (state.timer !== null) clearTimeout(state.timer);
-          tracked.delete(img);
-        }
-        track(img);
-      } else {
-        for (const node of record.addedNodes) {
-          if (node.nodeType === 1) scan(node);
-        }
+      if (record.type === 'attributes') check(record.target);
+      else for (const node of record.addedNodes) {
+        if (node.nodeType === 1) scan(node);
       }
     }
-  });
-  observer.observe(document.documentElement, {
+  }).observe(document.documentElement, {
     childList: true, subtree: true, attributes: true, attributeFilter: ['src']
   });
+  // Catch cached failures whose error fired before the deferred script ran.
   window.addEventListener('load', () => scan(document), { once: true });
 })();
