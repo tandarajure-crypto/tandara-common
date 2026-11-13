@@ -12,7 +12,7 @@
     family.hidden = true;
     const caption = document.documentElement.lang === 'en' ? 'Zdravko’s family' : 'Obitelj Zdravkova';
     const link = document.createElement('a');
-    link.href = 'https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/zdravkovaobitel%20.jpg';
+    link.href = 'https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/zdravkovaobitel.jpg';
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
     const image = document.createElement('img');
