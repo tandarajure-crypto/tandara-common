@@ -265,8 +265,11 @@
   }
 
   function personName(label) {
+    // Dates belong to birth/death fields and are rendered once by inlineDateSvg().
+    // Some legacy labels embed a date range, including "G. N." / "N.G." and spaced forms.
+    // Remove only a complete parenthesized date range; keep nicknames and other parentheses.
     return String(label || '')
-      .replace(/\s*\((?:\d{4}\.)?–(?:\d{4}\.)?\)\s*/g, ' ')
+      .replace(/\s*\(\s*(?:★\s*)?(?:(?:oko\s+)?\d{4}\.?|G\.?\s*N\.?|N\.?\s*G\.?|D\.?\s*U\.?)?\s*[–—-]\s*(?:✝\s*)?(?:(?:oko\s+)?\d{4}\.?|G\.?\s*N\.?|N\.?\s*G\.?|D\.?\s*U\.?)?\s*\)\s*/gi, ' ')
       .replace(/\s*\((?:nema podataka za godine|dates unknown|Zaštićeni podaci)\)\s*/ig, ' ')
       .replace(/\s+–\s+nadimak potomaka:\s*/i, ' – ')
       .replace(/\s+/g, ' ')
