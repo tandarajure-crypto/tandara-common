@@ -54,7 +54,7 @@
   (() => {
     const records = [
       ['4.1.1.4.5-K1', 'Dragica Nikolina', 'Dragica Nikolina', '1937', '2015', 'matinagrana/dragicanikolina.jpg'],
-      ['3.1.1.1.4.1.1-SP-1', 'Marija rođ. Lekić', 'Marija née Lekić', '1939', '2021', 'antinagrana/marijanikolina.jpg'],
+      ['3.1.1.1.4.1.1-SP-1', 'Marija rođ. Lukić', 'Marija née Lukić', '1939', '2021', 'antinagrana/marijanikolina.jpg'],
       ['3.1.2.3.2.2-SP-1', 'Danica rođ. Malenica', 'Danica née Malenica', '1935', '2016', 'antinagrana/danicamatina.jpg']
     ];
     const en = (document.documentElement.lang || '').startsWith('en');
@@ -93,7 +93,7 @@
         const walker = document.createTreeWalker(paragraph, NodeFilter.SHOW_TEXT);
         while (walker.nextNode()) {
           let value = walker.currentNode.textContent;
-          if (code === '3.1.1.1.4.1.1-SP-1') value = value.replace(/Marija (?:rođ\. |née )?Lukić/g, name);
+          if (code === '3.1.1.1.4.1.1-SP-1') value = value.replace(/Marija (?:rođ\. |née )?(?:Lekić|Lukić)/g, name);
           if (code === '3.1.2.3.2.2-SP-1') value = value.replace(/Danica Malenica \((?:godine nisu poznate|years unknown)\)/g, name + ' ' + dates);
           if (code === '4.1.1.4.5-K1') value = value.replace(/Dragica \(1937\.?[–-]\)/g, name + ' ' + dates);
           walker.currentNode.textContent = value;
@@ -113,9 +113,9 @@
       if (codes.includes('3.1.1.1.4.1.1-SP-1') && codes.includes('3.1.1.1.4.1.1')) {
         figure.dataset.personCodes = codes.filter(code => code !== '3.1.1.1.4.1.1-SP-1').join(' ');
         const cap = figure.querySelector('figcaption');
-        if (cap) cap.textContent = cap.textContent.replace(/Marija Lukić/g, 'Marija Lekić');
+        if (cap) cap.textContent = cap.textContent.replace(/Marija (?:Lekić|Lukić)/g, 'Marija Lukić');
         const img = figure.querySelector('img');
-        if (img) img.alt = img.alt.replace(/Marija Lukić/g, 'Marija Lekić');
+        if (img) img.alt = img.alt.replace(/Marija (?:Lekić|Lukić)/g, 'Marija Lukić');
       }
     }
     if (dataEl) {
