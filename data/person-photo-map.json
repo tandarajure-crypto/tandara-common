@@ -2731,13 +2731,6 @@
         "caption": "Sveto Dominikov",
         "altEn": "Sveto, son of Dominik",
         "captionEn": "Sveto, son of Dominik"
-      },
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/svetodomin.jpg",
-        "alt": "Sveto Dominikov",
-        "caption": "Sveto Dominikov",
-        "altEn": "Sveto, son of Dominik",
-        "captionEn": "Sveto, son of Dominik"
       }
     ],
     "2.3.1.2.3.5": [
@@ -3584,24 +3577,6 @@
         "caption": "Nediljka Milanova",
         "altEn": "Nediljka Milanova",
         "captionEn": "Nediljka Milanova"
-      }
-    ],
-    "2.3.1.2.3.4.5-SP-2": [
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/verasvetina.jpg",
-        "alt": "Vera rođ. Rakin",
-        "caption": "Vera rođ. Rakin",
-        "altEn": "Vera Rakin",
-        "captionEn": "Vera Rakin"
-      }
-    ],
-    "2.3.1.2.3.4.5-K2": [
-      {
-        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/annie.jpg",
-        "alt": "Annie Svetina",
-        "caption": "Annie Svetina",
-        "altEn": "Annie, daughter of Sveto",
-        "captionEn": "Annie Svetina"
       }
     ]
   }
