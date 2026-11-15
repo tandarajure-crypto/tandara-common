@@ -99,6 +99,8 @@
           walker.currentNode.textContent = value;
         }
       }
+            // Marijina slika je ručno u antinagrana.html, pod njezinim naslovom.
+      if (code === '3.1.1.1.4.1.1-SP-1') continue;
       if (document.querySelector(`[data-memorial-code="${code}"]`)) continue;
       const gallery = document.createElement('div'); gallery.className = 'person-photo-gallery'; gallery.dataset.memorialCode = code;
       const figure = document.createElement('figure'); figure.className = 'person-photo'; figure.dataset.personCode = code;
