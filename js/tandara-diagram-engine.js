@@ -81,7 +81,8 @@
     if (primary[code] && primary[code] !== nodes[code]) applyPhotoRegistry(primary[code], code, photos);
   }
   const rootCode = (DATA.meta && DATA.meta.rootCode) || document.body.dataset.rootCode || Object.keys(primary)[0] || '';
-  // Kronološko sortiranje primjenjuje se samo na Matinu granu.
+  // Ova zastavica određuje samo redoslijed strukturnih članova Matine grane.
+  // Rezultati PRETRAGE sortiraju se globalno po godini rođenja, neovisno o grani.
   const sortMatinaBranch = rootCode === '4.0';
 
   const LANG = document.body.dataset.lang === 'en' ? 'en' : 'hr';
@@ -1087,22 +1088,18 @@
       const aExact = normalize(a.code) === normalize(qCode) ? -1 : 0;
       const bExact = normalize(b.code) === normalize(qCode) ? -1 : 0;
       if (aExact !== bExact) return aExact - bExact;
-      if (sortMatinaBranch) {
-        // Grupira osobe po imenu (prvoj riječi), pa nepoznate godine prve i ostale od najstarije.
-        const aName = normalize(personName(recLabel(a)));
-        const bName = normalize(personName(recLabel(b)));
-        const aGroup = aName.split(' ')[0] || aName;
-        const bGroup = bName.split(' ')[0] || bName;
-        const byGroup = aGroup.localeCompare(bGroup, 'hr', { numeric: true });
-        if (byGroup) return byGroup;
-        const ay = birthYearNumber(a);
-        const by = birthYearNumber(b);
-        if (ay == null && by != null) return -1;
-        if (ay != null && by == null) return 1;
-        if (ay != null && by != null && ay !== by) return ay - by;
-        const byFullName = aName.localeCompare(bName, 'hr', { numeric: true });
-        if (byFullName) return byFullName;
-      }
+      // ZAJEDNIČKO PRAVILO: svi rezultati, na svim dijagramima i granama,
+      // idu kronološki od najstarijeg prema najmlađem, neovisno o imenu.
+      // Nepoznate godine idu na kraj; osobe iste godine stabilno se razvrstavaju po imenu i šifri.
+      const ay = birthYearNumber(a);
+      const by = birthYearNumber(b);
+      if (ay == null && by != null) return 1;
+      if (ay != null && by == null) return -1;
+      if (ay != null && by != null && ay !== by) return ay - by;
+      const byName = normalize(personName(recLabel(a))).localeCompare(
+        normalize(personName(recLabel(b))), 'hr', { numeric: true }
+      );
+      if (byName) return byName;
       return String(a.code).localeCompare(String(b.code), 'hr', { numeric: true });
     });
 
