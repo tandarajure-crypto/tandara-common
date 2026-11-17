@@ -81,7 +81,9 @@
     if (primary[code] && primary[code] !== nodes[code]) applyPhotoRegistry(primary[code], code, photos);
   }
   const rootCode = (DATA.meta && DATA.meta.rootCode) || document.body.dataset.rootCode || Object.keys(primary)[0] || '';
-  // Kronološki redoslijed pretrage definiran je zajednički u search() za sve grane.
+  // Ova zastavica određuje samo redoslijed strukturnih članova Matine grane.
+  // Rezultati PRETRAGE sortiraju se globalno po godini rođenja, neovisno o grani.
+  const sortMatinaBranch = rootCode === '4.0';
 
   const LANG = document.body.dataset.lang === 'en' ? 'en' : 'hr';
   const TXT = LANG === 'en' ? {
