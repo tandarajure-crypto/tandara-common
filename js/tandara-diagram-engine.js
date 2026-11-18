@@ -105,7 +105,14 @@
 
   function localized(rec, key) {
     if (!rec) return '';
-    if (LANG === 'en' && rec[`${key}En`] != null) return rec[`${key}En`];
+    if (LANG === 'en') {
+      const englishValue = rec[`${key}En`];
+      if (englishValue != null) return englishValue;
+      // Never expose Croatian narrative text in an English-language diagram.
+      // Names may safely retain their original spelling, but descriptions
+      // must have an explicit English field.
+      if (key === 'detail') return '';
+    }
     return rec[key] == null ? '' : rec[key];
   }
   function recLabel(rec) { return localized(rec, 'label'); }
