@@ -450,8 +450,12 @@
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
       const img = document.createElement('img');
-      const photoAlt = LANG === 'en' ? (photo.altEn || photo.alt || photo.captionEn || photo.caption) : (photo.alt || photo.caption);
-      const photoCaption = LANG === 'en' ? (photo.captionEn || photo.caption) : photo.caption;
+      const photoAlt = LANG === 'en'
+        ? (photo.altEn || photo.captionEn || recLabel(rec) || detailsName.textContent)
+        : (photo.alt || photo.caption);
+      const photoCaption = LANG === 'en'
+        ? (photo.captionEn || recLabel(rec) || detailsName.textContent)
+        : photo.caption;
       img.alt = String(photoAlt || photoCaption || detailsName.textContent);
       // The selected person's card should load immediately, even while hidden.
       img.loading = 'eager';
