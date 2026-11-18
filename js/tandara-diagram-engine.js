@@ -1087,22 +1087,15 @@
       const aExact = normalize(a.code) === normalize(qCode) ? -1 : 0;
       const bExact = normalize(b.code) === normalize(qCode) ? -1 : 0;
       if (aExact !== bExact) return aExact - bExact;
-      if (sortMatinaBranch) {
-        // Grupira osobe po imenu (prvoj riječi), pa nepoznate godine prve i ostale od najstarije.
-        const aName = normalize(personName(recLabel(a)));
-        const bName = normalize(personName(recLabel(b)));
-        const aGroup = aName.split(' ')[0] || aName;
-        const bGroup = bName.split(' ')[0] || bName;
-        const byGroup = aGroup.localeCompare(bGroup, 'hr', { numeric: true });
-        if (byGroup) return byGroup;
-        const ay = birthYearNumber(a);
-        const by = birthYearNumber(b);
-        if (ay == null && by != null) return -1;
-        if (ay != null && by == null) return 1;
-        if (ay != null && by != null && ay !== by) return ay - by;
-        const byFullName = aName.localeCompare(bName, 'hr', { numeric: true });
-        if (byFullName) return byFullName;
-      }
+
+      // U svim glavnim granama: poznate godine rođenja od najstarije prema najmlađoj.
+      // Osobe bez poznate godine rođenja prikazuju se nakon osoba s poznatom godinom.
+      const ay = birthYearNumber(a);
+      const by = birthYearNumber(b);
+      if (ay == null && by != null) return 1;
+      if (ay != null && by == null) return -1;
+      if (ay != null && by != null && ay !== by) return ay - by;
+
       return String(a.code).localeCompare(String(b.code), 'hr', { numeric: true });
     });
 
