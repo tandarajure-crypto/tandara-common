@@ -52,6 +52,9 @@
   const isEnglish =
     language.startsWith("en");
 
+  const isGerman =
+    language.startsWith("de");
+
 
   /* =======================================================
      PUTANJE
@@ -91,6 +94,11 @@
         en: Object.freeze({
           label: "Jure's branch",
           route: "jurinagrana-en.html"
+        }),
+
+        de: Object.freeze({
+          label: "Jurinas Familienzweig",
+          route: null
         })
       }),
 
@@ -105,6 +113,11 @@
         en: Object.freeze({
           label: "Petar's branch",
           route: "petrovagrana-en.html"
+        }),
+
+        de: Object.freeze({
+          label: "Peters Familienzweig",
+          route: null
         })
       }),
 
@@ -119,6 +132,11 @@
         en: Object.freeze({
           label: "Ante's branch",
           route: "antinagrana-en.html"
+        }),
+
+        de: Object.freeze({
+          label: "Antes Familienzweig",
+          route: null
         })
       }),
 
@@ -133,6 +151,11 @@
         en: Object.freeze({
           label: "Mate's branch",
           route: "matinagrana-en.html"
+        }),
+
+        de: Object.freeze({
+          label: "Mates Familienzweig",
+          route: null
         })
       }),
 
@@ -147,6 +170,11 @@
         en: Object.freeze({
           label: "Ivan Tandara",
           route: "box1-en.html"
+        }),
+
+        de: Object.freeze({
+          label: "Ivan Tandara",
+          route: null
         })
       }),
 
@@ -161,6 +189,11 @@
         en: Object.freeze({
           label: "Jure Tandara",
           route: "box2a-en.html"
+        }),
+
+        de: Object.freeze({
+          label: "Jure Tandara",
+          route: null
         })
       }),
 
@@ -175,6 +208,11 @@
         en: Object.freeze({
           label: "Petar Tandara",
           route: "box2b-en.html"
+        }),
+
+        de: Object.freeze({
+          label: "Petar Tandara",
+          route: null
         })
       }),
 
@@ -189,6 +227,11 @@
         en: Object.freeze({
           label: "Ante Tandara",
           route: "box2c-en.html"
+        }),
+
+        de: Object.freeze({
+          label: "Ante Tandara",
+          route: null
         })
       }),
 
@@ -203,6 +246,11 @@
         en: Object.freeze({
           label: "Mate Tandara",
           route: "box2d-en.html"
+        }),
+
+        de: Object.freeze({
+          label: "Mate Tandara",
+          route: null
         })
       }),
 
@@ -217,6 +265,11 @@
         en: Object.freeze({
           label: "Livno Tandara branch",
           route: "filipovagrana-en.html"
+        }),
+
+        de: Object.freeze({
+          label: "Tandara aus Livno",
+          route: null
         })
       })
     ]);
@@ -230,7 +283,9 @@
     const config =
       isEnglish
         ? item.en
-        : item.hr;
+        : isGerman
+          ? item.de
+          : item.hr;
 
     const link =
       document.createElement("a");
@@ -244,10 +299,14 @@
     link.dataset.hotspot =
       item.key;
 
-    link.href =
-      siteUrl(
-        config.route
-      );
+    if (config.route) {
+      link.href = siteUrl(config.route);
+    } else {
+      // German branch translations do not exist yet; never send users to Croatian pages.
+      link.removeAttribute("href");
+      link.setAttribute("aria-disabled", "true");
+      link.title = "Die deutsche Übersetzung dieses Familienzweigs ist noch nicht verfügbar.";
+    }
 
     link.setAttribute(
       "aria-label",
@@ -260,7 +319,9 @@
       link.textContent =
         isEnglish
           ? "LIVNO TANDARA"
-          : "LIVANJSKE TANDARE";
+          : isGerman
+            ? "TANDARA AUS LIVNO"
+            : "LIVANJSKE TANDARE";
     }
 
     return link;
