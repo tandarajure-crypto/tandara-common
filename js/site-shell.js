@@ -1165,12 +1165,7 @@
       body.dataset.pageDe || "index-de.html";
 
 
-    if (
-      !navigation ||
-      !hrLink ||
-      !enLink ||
-      !deLink
-    ) {
+    if (!navigation) {
       return;
     }
 
@@ -1181,42 +1176,54 @@
     );
 
 
-    if (hrPage) {
+    if (hrLink) {
 
-      hrLink.href =
-        siteUrl(
-          hrPage
+      if (hrPage) {
+
+        hrLink.href =
+          siteUrl(
+            hrPage
+          );
+
+      } else {
+
+        hrLink.removeAttribute(
+          "href"
         );
 
-    } else {
-
-      hrLink.removeAttribute(
-        "href"
-      );
+      }
 
     }
 
 
-    if (enPage) {
+    if (enLink) {
 
-      enLink.href =
-        siteUrl(
-          enPage
+      if (enPage) {
+
+        enLink.href =
+          siteUrl(
+            enPage
+          );
+
+      } else {
+
+        enLink.removeAttribute(
+          "href"
         );
 
-    } else {
-
-      enLink.removeAttribute(
-        "href"
-      );
+      }
 
     }
 
 
-    deLink.href =
-      siteUrl(
-        dePage
-      );
+    if (deLink) {
+
+      deLink.href =
+        siteUrl(
+          dePage
+        );
+
+    }
 
 
     const currentLanguageLink =
@@ -1227,24 +1234,26 @@
           : hrLink;
 
 
-    [hrLink, enLink, deLink].forEach((link) => {
+    [hrLink, enLink, deLink]
+      .filter(Boolean)
+      .forEach((link) => {
 
-      if (link === currentLanguageLink) {
+        if (link === currentLanguageLink) {
 
-        link.setAttribute(
-          "aria-current",
-          "page"
-        );
+          link.setAttribute(
+            "aria-current",
+            "page"
+          );
 
-      } else {
+        } else {
 
-        link.removeAttribute(
-          "aria-current"
-        );
+          link.removeAttribute(
+            "aria-current"
+          );
 
-      }
+        }
 
-    });
+      });
 
 
     navigation.hidden =
