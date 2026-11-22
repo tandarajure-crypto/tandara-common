@@ -10,9 +10,10 @@
    - HR zastavu
    - HOME
    - EN zastavu
+   - DE zastavu
    - naslov
    - glavni izbornik
-   - AUTOR / AUTHOR
+   - AUTOR / AUTHOR / AUTOR
    - fotografiju autora
    - Jure / Tandara
    - FlagCounter
@@ -545,16 +546,20 @@
     );
 
 
+  const isGerman =
+    language.startsWith(
+      "de"
+    );
+
+
   /* =======================================================
      TEKSTOVI
      ======================================================= */
 
   const TEXT =
     Object.freeze({
-
       hr:
         Object.freeze({
-
           siteTitle:
             "TANDARA-PREZIME",
 
@@ -571,16 +576,14 @@
             "Početna stranica",
 
           author:
-         "Autor",
+            "Autor",
 
           visitors:
             "Posjetitelji"
         }),
 
-
       en:
         Object.freeze({
-
           siteTitle:
             "TANDARA — SURNAME",
 
@@ -597,34 +600,50 @@
             "Home",
 
           author:
-           "Author",
+            "Author",
 
           visitors:
             "Visitors"
-        })
+        }),
 
+      de:
+        Object.freeze({
+          siteTitle:
+            "TANDARA — FAMILIENNAME",
+
+          shellLabel:
+            "Hauptnavigation",
+
+          languageLabel:
+            "Sprache und Startseite",
+
+          navigationLabel:
+            "Hauptmenü",
+
+          home:
+            "Startseite",
+
+          author:
+            "Autor",
+
+          visitors:
+            "Besucher"
+        })
     });
 
 
   const text =
     isEnglish
       ? TEXT.en
-      : TEXT.hr;
+      : isGerman
+        ? TEXT.de
+        : TEXT.hr;
 
-
-  /* =======================================================
-     GLAVNI IZBORNIK
-
-     Tekst i rute usklađeni su sa zajedničkim
-     lijevim stupcem glavnih stranica.
-     ======================================================= */
 
   const NAVIGATION =
     Object.freeze({
-
       author:
         Object.freeze({
-
           hr:
             Object.freeze({
               label:
@@ -641,14 +660,20 @@
 
               route:
                 "autor-en.html"
+            }),
+
+          de:
+            Object.freeze({
+              label:
+                "Über den Autor und das Projekt",
+
+              route:
+                "autor-de.html"
             })
-
         }),
-
 
       origin:
         Object.freeze({
-
           hr:
             Object.freeze({
               label:
@@ -665,14 +690,20 @@
 
               route:
                 "podrijetlo-en.html"
+            }),
+
+          de:
+            Object.freeze({
+              label:
+                "Herkunft des Familiennamens",
+
+              route:
+                "podrijetlo-de.html"
             })
-
         }),
-
 
       genealogy:
         Object.freeze({
-
           hr:
             Object.freeze({
               label:
@@ -689,14 +720,20 @@
 
               route:
                 "rodoslovlje-en.html"
+            }),
+
+          de:
+            Object.freeze({
+              label:
+                "Familienstammbaum",
+
+              route:
+                "rodoslovlje-de.html"
             })
-
         }),
-
 
       migration:
         Object.freeze({
-
           hr:
             Object.freeze({
               label:
@@ -713,14 +750,20 @@
 
               route:
                 "migracije-en.html"
+            }),
+
+          de:
+            Object.freeze({
+              label:
+                "Migration und Verbreitung",
+
+              route:
+                "migracije-de.html"
             })
-
         }),
-
 
       life:
         Object.freeze({
-
           hr:
             Object.freeze({
               label:
@@ -737,14 +780,20 @@
 
               route:
                 "zivot-en.html"
+            }),
+
+          de:
+            Object.freeze({
+              label:
+                "Leben durch drei Jahrhunderte",
+
+              route:
+                "zivot-de.html"
             })
-
         }),
-
 
       facts:
         Object.freeze({
-
           hr:
             Object.freeze({
               label:
@@ -761,14 +810,20 @@
 
               route:
                 "zanimljivosti-en.html"
+            }),
+
+          de:
+            Object.freeze({
+              label:
+                "Wissenswertes",
+
+              route:
+                "zanimljivosti-de.html"
             })
-
         }),
-
 
       instructions:
         Object.freeze({
-
           hr:
             Object.freeze({
               label:
@@ -785,14 +840,20 @@
 
               route:
                 "upute-en.html"
+            }),
+
+          de:
+            Object.freeze({
+              label:
+                "Anleitung",
+
+              route:
+                "upute-de.html"
             })
-
         }),
-
 
       contact:
         Object.freeze({
-
           hr:
             Object.freeze({
               label:
@@ -809,14 +870,20 @@
 
               route:
                 "contacts.html"
+            }),
+
+          de:
+            Object.freeze({
+              label:
+                "Kontakt und Zusammenarbeit",
+
+              route:
+                "kontakti-de.html"
             })
-
         }),
-
 
       guestbook:
         Object.freeze({
-
           hr:
             Object.freeze({
               label:
@@ -833,14 +900,20 @@
 
               route:
                 "visitors-messages.html"
+            }),
+
+          de:
+            Object.freeze({
+              label:
+                "Gästebuch",
+
+              route:
+                "knjiga-poruka-de.html"
             })
-
         }),
-
 
       privacy:
         Object.freeze({
-
           hr:
             Object.freeze({
               label:
@@ -857,16 +930,19 @@
 
               route:
                 "privacy.html"
+            }),
+
+          de:
+            Object.freeze({
+              label:
+                "Datenschutzerklärung",
+
+              route:
+                "privatnost-de.html"
             })
-
         })
-
     });
 
-
-  /* =======================================================
-     ZAJEDNIČKE SLIKE
-     ======================================================= */
 
   const IMAGES =
     Object.freeze({
@@ -882,6 +958,9 @@
 
       enFlag:
         "slike/ikone/zastava-uk.png",
+
+      deFlag:
+        "slike/ikone/zastava-de.png",
 
       author:
         "slike/common-foto/jure.webp"
@@ -962,7 +1041,9 @@
         siteUrl(
           isEnglish
             ? "index-en.html"
-            : "index.html"
+            : isGerman
+              ? "index-de.html"
+              : "index.html"
         );
 
 
@@ -995,7 +1076,7 @@
 
 
   /* =======================================================
-     HR / EN
+     JEZIČNE ZASTAVICE
      ======================================================= */
 
   function configureLanguages(shell) {
@@ -1018,6 +1099,12 @@
       );
 
 
+    const deLink =
+      shell.querySelector(
+        '[data-role="de-link"]'
+      );
+
+
     const hrFlag =
       shell.querySelector(
         '[data-role="hr-flag"]'
@@ -1027,6 +1114,12 @@
     const enFlag =
       shell.querySelector(
         '[data-role="en-flag"]'
+      );
+
+
+    const deFlag =
+      shell.querySelector(
+        '[data-role="de-flag"]'
       );
 
 
@@ -1050,6 +1143,16 @@
     }
 
 
+    if (deFlag) {
+
+      deFlag.src =
+        commonUrl(
+          IMAGES.deFlag
+        );
+
+    }
+
+
     const hrPage =
       body.dataset.pageHr;
 
@@ -1058,10 +1161,15 @@
       body.dataset.pageEn;
 
 
+    const dePage =
+      body.dataset.pageDe || "index-de.html";
+
+
     if (
       !navigation ||
       !hrLink ||
-      !enLink
+      !enLink ||
+      !deLink
     ) {
       return;
     }
@@ -1105,29 +1213,38 @@
     }
 
 
-    if (!isEnglish) {
-
-      hrLink.setAttribute(
-        "aria-current",
-        "page"
+    deLink.href =
+      siteUrl(
+        dePage
       );
 
-      enLink.removeAttribute(
-        "aria-current"
-      );
 
-    } else {
+    const currentLanguageLink =
+      isEnglish
+        ? enLink
+        : isGerman
+          ? deLink
+          : hrLink;
 
-      enLink.setAttribute(
-        "aria-current",
-        "page"
-      );
 
-      hrLink.removeAttribute(
-        "aria-current"
-      );
+    [hrLink, enLink, deLink].forEach((link) => {
 
-    }
+      if (link === currentLanguageLink) {
+
+        link.setAttribute(
+          "aria-current",
+          "page"
+        );
+
+      } else {
+
+        link.removeAttribute(
+          "aria-current"
+        );
+
+      }
+
+    });
 
 
     navigation.hidden =
@@ -1208,7 +1325,9 @@
           const config =
             isEnglish
               ? item.en
-              : item.hr;
+              : isGerman
+                ? item.de
+                : item.hr;
 
 
           link.href =
@@ -1327,7 +1446,9 @@
       siteUrl(
         isEnglish
           ? NAVIGATION.author.en.route
-          : NAVIGATION.author.hr.route
+          : isGerman
+            ? NAVIGATION.author.de.route
+            : NAVIGATION.author.hr.route
       );
 
 
@@ -1858,6 +1979,9 @@
   const isEnglish = () =>
     document.documentElement.lang.toLowerCase().startsWith('en') ||
     document.body?.dataset.lang === 'en';
+  const isGerman = () =>
+    document.documentElement.lang.toLowerCase().startsWith('de') ||
+    document.body?.dataset.lang === 'de';
 
   function photoUrl(img) {
     if (!(img instanceof HTMLImageElement) || !img.isConnected ||
@@ -1939,7 +2063,7 @@
       controls.style.cssText = 'display:block;margin-top:6px;';
       const button = document.createElement('button');
       button.type = 'button';
-      button.textContent = isEnglish() ? 'Try again' : 'Pokušaj ponovno';
+      button.textContent = isGerman() ? 'Erneut versuchen' : isEnglish() ? 'Try again' : 'Pokušaj ponovno';
       button.style.cssText = 'font:inherit;padding:3px 8px;margin-right:10px;cursor:pointer;';
       button.addEventListener('click', () => {
         if (!img.isConnected) return;
@@ -1954,15 +2078,15 @@
       link.href = state.source;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
-      link.textContent = isEnglish() ? 'Open original' : 'Otvori izvornik';
+      link.textContent = isGerman() ? 'Original öffnen' : isEnglish() ? 'Open original' : 'Otvori izvornik';
       controls.append(button, link);
       status.appendChild(controls);
       host.appendChild(status);
       state.status = status;
     }
     state.status.querySelector('.tandara-photo-load-message').textContent = exhausted
-      ? (isEnglish() ? 'Photo currently unavailable.' : 'Fotografija trenutačno nije dostupna.')
-      : (isEnglish() ? 'Retrying photograph…' : 'Ponovno učitavanje fotografije…');
+      ? (isGerman() ? 'Foto derzeit nicht verfügbar.' : isEnglish() ? 'Photo currently unavailable.' : 'Fotografija trenutačno nije dostupna.')
+      : (isGerman() ? 'Foto wird erneut geladen…' : isEnglish() ? 'Retrying photograph…' : 'Ponovno učitavanje fotografije…');
     state.status.querySelector('.tandara-photo-load-controls').hidden = !exhausted;
     img.dataset.photoLoadState = exhausted ? 'unavailable' : 'retrying';
   }

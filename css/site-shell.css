@@ -168,9 +168,9 @@ body {
 /* =========================================================
    GORNJI RED
 
-   HR ZASTAVA — HOME — EN ZASTAVA
+   HR ZASTAVA — HOME — EN ZASTAVA — DE ZASTAVA
 
-   Sva tri elementa imaju ISTU VISINU.
+   Sva četiri elementa imaju ISTU VISINU.
    ========================================================= */
 
 .site-shell__top {
@@ -179,6 +179,7 @@ body {
   grid-template-columns:
     max-content
     var(--shell-top-control-size)
+    max-content
     max-content;
 
   align-items: center;
