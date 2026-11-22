@@ -43,6 +43,12 @@
   const body =
     document.body;
 
+  const isGermanPage =
+    (document.documentElement.lang || body?.dataset.lang || "")
+      .trim()
+      .toLowerCase()
+      .startsWith("de");
+
   if (
     !script ||
     !body
@@ -53,6 +59,9 @@
 
   // Owner-confirmed deceased portraits, 2026-10-19. Only these three IDs are changed.
   (() => {
+    // HR/EN memorial corrections must not overwrite German page content.
+    if (isGermanPage) return;
+
     const records = [
       ['4.1.1.4.5-K1', 'Dragica Nikolina', 'Dragica Nikolina', '1937', '2015', 'matinagrana/dragicanikolina.jpg'],
       ['3.1.1.1.4.1.1-SP-1', 'Marija rođ. Lukić', 'Marija née Lukić', '1939', '2021', 'antinagrana/marijanikolina.jpg'],
@@ -398,7 +407,7 @@
   }
 
   // Optional public-only record supplement. Private sites never load this file.
-  if (location.hostname === 'tandarajure-crypto.github.io' && location.pathname.startsWith('/Tandara/')) {
+  if (!isGermanPage && location.hostname === 'tandarajure-crypto.github.io' && location.pathname.startsWith('/Tandara/')) {
     window.tandaraPublicRecordsReady = new Promise(resolve => {
       const supplement = document.createElement('script');
       supplement.src = new URL('js/public-memorials.js?v=20261105-marija-caption', new URL('/Tandara/', location.origin)).href;
@@ -406,8 +415,7 @@
       supplement.onerror = () => {  placeSnjezanaPortrait(); placeSilvanaPortrait(); updateMilenkaDates(); placeNediljkoFamilyPhotos(); updateMarinDaughtersDates(); console.error('TANDARA: public memorial supplement unavailable.'); resolve(); };
       document.head.appendChild(supplement);
     });
-  } else {
-    
+  } else if (!isGermanPage) {
     placeSnjezanaPortrait(); placeSilvanaPortrait(); updateMilenkaDates(); placeNediljkoFamilyPhotos(); updateMarinDaughtersDates();
   }
 
