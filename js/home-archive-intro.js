@@ -51,13 +51,26 @@
 
         text:
           "The Tandara surname digital archive brings together information on the origin, genealogy and history of the Tandara family. It presents the main family branches, their connections, and the migration and distribution of the surname in Croatia, Bosnia and Herzegovina, and the diaspora. The archive is intended for members of the Tandara family and everyone researching this surname."
+      }),
+
+      de: Object.freeze({
+        title:
+          "Familienname Tandara – Herkunft und Genealogie",
+
+        text:
+          "Das digitale Archiv des Familiennamens Tandara vereint Informationen über die Herkunft, Genealogie und Geschichte der Familie Tandara. Es stellt die wichtigsten Familienzweige und ihre Verbindungen sowie die Migration und Verbreitung des Familiennamens in Kroatien, Bosnien und Herzegowina und in der Diaspora vor. Das Archiv richtet sich an Mitglieder der Familie Tandara und an alle, die diesen Familiennamen erforschen."
       })
     });
+
+  const isGerman =
+    language.startsWith("de");
 
   const copy =
     isEnglish
       ? COPY.en
-      : COPY.hr;
+      : isGerman
+        ? COPY.de
+        : COPY.hr;
 
   const section =
     document.createElement(
