@@ -93,7 +93,7 @@
       key: "autor",
       lang: "hr",
       hr: "autor-hr.html",
-      en: "autor-en.html",
+      en: "autor-en.html", de: "autor-de.html",
       de: "autor-de.html"
     },
 
@@ -105,7 +105,7 @@
       key: "podrijetlo",
       lang: "hr",
       hr: "podrijetlo-hr.html",
-      en: "podrijetlo-en.html",
+      en: "podrijetlo-en.html", de: "podrijetlo-de.html",
       de: "podrijetlo-de.html"
     },
 
@@ -128,7 +128,7 @@
       key: "rodoslovlje",
       lang: "hr",
       hr: "rodoslovlje-hr.html",
-      en: "rodoslovlje-en.html",
+      en: "rodoslovlje-en.html", de: "rodoslovlje-de.html",
       de: "rodoslovlje-de.html"
     },
 
@@ -151,7 +151,7 @@
       key: "migracije",
       lang: "hr",
       hr: "migracije-hr.html",
-      en: "migracije-en.html",
+      en: "migracije-en.html", de: "migracije-de.html",
       de: "migracije-de.html"
     },
 
@@ -174,7 +174,7 @@
       key: "zanimljivosti",
       lang: "hr",
       hr: "zanimljivosti.html",
-      en: "zanimljivosti-en.html",
+      en: "zanimljivosti-en.html", de: "zanimljivosti-de.html",
       de: "zanimljivosti-de.html"
     },
 
@@ -197,7 +197,7 @@
       key: "kontakti",
       lang: "hr",
       hr: "kontakti.html",
-      en: "contacts.html",
+      en: "contacts.html", de: "kontakti-de.html",
       de: "kontakti-de.html"
     },
 
@@ -220,7 +220,7 @@
       key: "knjiga-poruka",
       lang: "hr",
       hr: "knjiga-poruka.html",
-      en: "visitors-messages.html",
+      en: "visitors-messages.html", de: "knjiga-poruka-de.html",
       de: "knjiga-poruka-de.html"
     },
 
@@ -243,7 +243,7 @@
       key: "privatnost",
       lang: "hr",
       hr: "privatnost.html",
-      en: "privacy.html",
+      en: "privacy.html", de: "privatnost-de.html",
       de: "privatnost-de.html"
     },
 
