@@ -4,35 +4,38 @@
   Sve adrese repoa postavlja učitavač iz data-site-root atributa stranice.
 -->
 <template id="tandara-common-shell">
-  <aside class="tandara-sidebar" data-label-en="Main navigation" data-label-hr="Glavna navigacija" id="common-sidebar">
-    <a class="tandara-home-button" data-route-en="index-en.html" data-route-hr="index.html" data-role="home-link" target="_top">
+  <aside class="tandara-sidebar" data-label-de="Hauptnavigation" data-label-en="Main navigation" data-label-hr="Glavna navigacija" id="common-sidebar">
+    <a class="tandara-home-button" data-route-de="index-de.html" data-route-en="index-en.html" data-route-hr="index.html" data-role="home-link" target="_top">
       <span class="tandara-home-circle">
         <img alt="" data-common-src="slike/ikone/pocetna.png" height="32" width="32">
       </span>
-      <span class="tandara-visually-hidden" data-text-en="Home" data-text-hr="Početna stranica"></span>
+      <span class="tandara-visually-hidden" data-text-de="Startseite" data-text-en="Home" data-text-hr="Početna stranica"></span>
     </a>
 
-    <nav class="tandara-lang-switch" data-label-en="Language selection" data-label-hr="Odabir jezika" data-role="language-switch" hidden>
+    <nav class="tandara-lang-switch" data-label-de="Sprachauswahl" data-label-en="Language selection" data-label-hr="Odabir jezika" data-role="language-switch" hidden>
       <a data-role="hr-link" hreflang="hr" lang="hr" target="_top" title="Hrvatski">
         <img alt="Hrvatski" data-common-src="slike/ikone/zastava-hr.png" height="20" width="30">
       </a>
       <a data-role="en-link" hreflang="en" lang="en" target="_top" title="English">
         <img alt="English" data-common-src="slike/ikone/zastava-uk.png" height="20" width="30">
       </a>
+      <a data-role="de-link" hreflang="de" lang="de" target="_top" title="Deutsch">
+        <img alt="Deutsch" data-common-src="slike/ikone/zastava-de.png" height="20" width="30">
+      </a>
     </nav>
 
-    <div class="tandara-menu-title" data-text-en="TANDARA-SURNAME" data-text-hr="TANDARA-PREZIME"></div>
+    <div class="tandara-menu-title" data-text-de="TANDARA-FAMILIENNAME" data-text-en="TANDARA-SURNAME" data-text-hr="TANDARA-PREZIME"></div>
 
     <nav data-label-en="Main navigation" data-label-hr="Glavna navigacija" data-role="main-navigation">
       <ul class="tandara-heritage-menu">
-        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-en="autor-en.html" data-route-hr="autor-hr.html" target="_top"><span data-text-en="About the author and project" data-text-hr="O autoru i projektu"></span></a></li>
-        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-en="podrijetlo-en.html" data-route-hr="podrijetlo-hr.html" target="_top"><span data-text-en="Surname origin" data-text-hr="Podrijetlo prezimena"></span></a></li>
-        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-en="rodoslovlje-en.html" data-route-hr="rodoslovlje-hr.html" target="_top"><span data-text-en="Family genealogy" data-text-hr="Rodoslovlje roda"></span></a></li>
-        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-en="migracije-en.html" data-route-hr="migracije-hr.html" target="_top"><span data-text-en="Migration and distribution" data-text-hr="Migracije i rasprostranjenost"></span></a></li>
-        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-en="zanimljivosti-en.html" data-route-hr="zanimljivosti.html" target="_top"><span data-text-en="Interesting facts" data-text-hr="Zanimljivosti"></span></a></li>
-        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-en="contacts.html" data-route-hr="kontakti.html" target="_top"><span data-text-en="Contact and collaboration" data-text-hr="Kontakt i suradnja"></span></a></li>
-        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-en="visitors-messages.html" data-route-hr="knjiga-poruka.html" target="_top"><span data-text-en="Guestbook" data-text-hr="Knjiga poruka"></span></a></li>
-        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-en="privacy.html" data-route-hr="privatnost.html" target="_top"><span data-text-en="Privacy policy" data-text-hr="Politika privatnosti"></span></a></li>
+        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-de="autor-de.html" data-route-en="autor-en.html" data-route-hr="autor-hr.html" target="_top"><span data-text-de="Über den Autor und das Projekt" data-text-en="About the author and project" data-text-hr="O autoru i projektu"></span></a></li>
+        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-de="podrijetlo-de.html" data-route-en="podrijetlo-en.html" data-route-hr="podrijetlo-hr.html" target="_top"><span data-text-de="Herkunft des Familiennamens" data-text-en="Surname origin" data-text-hr="Podrijetlo prezimena"></span></a></li>
+        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-de="rodoslovlje-de.html" data-route-en="rodoslovlje-en.html" data-route-hr="rodoslovlje-hr.html" target="_top"><span data-text-de="Familiengenealogie" data-text-en="Family genealogy" data-text-hr="Rodoslovlje roda"></span></a></li>
+        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-de="migracije-de.html" data-route-en="migracije-en.html" data-route-hr="migracije-hr.html" target="_top"><span data-text-de="Migration und Verbreitung" data-text-en="Migration and distribution" data-text-hr="Migracije i rasprostranjenost"></span></a></li>
+        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-de="zanimljivosti-de.html" data-route-en="zanimljivosti-en.html" data-route-hr="zanimljivosti.html" target="_top"><span data-text-de="Wissenswertes" data-text-en="Interesting facts" data-text-hr="Zanimljivosti"></span></a></li>
+        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-de="kontakti-de.html" data-route-en="contacts.html" data-route-hr="kontakti.html" target="_top"><span data-text-de="Kontakt und Zusammenarbeit" data-text-en="Contact and collaboration" data-text-hr="Kontakt i suradnja"></span></a></li>
+        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-de="knjiga-poruka-de.html" data-route-en="visitors-messages.html" data-route-hr="knjiga-poruka.html" target="_top"><span data-text-de="Gästebuch" data-text-en="Guestbook" data-text-hr="Knjiga poruka"></span></a></li>
+        <li><img alt="" data-common-src="slike/ikone/stablo.png"><a data-route-de="privatnost-de.html" data-route-en="privacy.html" data-route-hr="privatnost.html" target="_top"><span data-text-de="Datenschutzerklärung" data-text-en="Privacy policy" data-text-hr="Politika privatnosti"></span></a></li>
       </ul>
     </nav>
 
