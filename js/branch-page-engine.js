@@ -11,7 +11,7 @@
    - dodati opcionalni povratni link
    - dodati opcionalnu završnu napomenu
    - dodati gumb za zaštićene obiteljske podatke ispod glavnog naslova
-   - otvoriti zajednički HR/EN dijalog za zaštićene obiteljske podatke
+   - otvoriti zajednički HR/EN/DE dijalog za zaštićene obiteljske podatke
    - otvoriti fotografije osoba u zajedničkom lightboxu
 
    MOTOR NE SADRŽI:
