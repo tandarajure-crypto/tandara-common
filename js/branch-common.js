@@ -12,11 +12,12 @@
 
   const pathFile = window.location.pathname.split("/").pop() || "";
   const pathLanguage = pathFile.match(/(?:^|[-_])(de|en|hr)(?=\.html$)/i)?.[1];
+  // URL language must win over stale language state from cached scripts.
   const lang = (
-    window.TandaraLanguage?.current ||
     pathLanguage ||
     document.documentElement.lang ||
     body.dataset.lang ||
+    window.TandaraLanguage?.current ||
     "hr"
   ).toLowerCase();
 
