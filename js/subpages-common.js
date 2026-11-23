@@ -63,7 +63,9 @@
 
 
   const currentLanguage =
-    page?.lang || "hr";
+    window.TandaraLanguage?.current ||
+    page?.lang ||
+    "hr";
 
 
   const commonRoot =
