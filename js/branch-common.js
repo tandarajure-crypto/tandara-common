@@ -17,8 +17,8 @@
       "hr"
     ).toLowerCase();
 
-  const isHr =
-    lang.startsWith("hr");
+  const isHr = lang.startsWith("hr");
+  const isGerman = lang.startsWith("de");
 
   const commonRoot =
     new URL(
@@ -141,9 +141,7 @@
       .forEach(
         (element) => {
           element.textContent =
-            isHr
-              ? element.dataset.textHr
-              : element.dataset.textEn;
+            isGerman ? (element.dataset.textDe || element.dataset.textEn || element.dataset.textHr) : isHr ? element.dataset.textHr : element.dataset.textEn;
         }
       );
 
@@ -156,9 +154,7 @@
         (element) => {
           element.setAttribute(
             "aria-label",
-            isHr
-              ? element.dataset.labelHr
-              : element.dataset.labelEn
+            isGerman ? (element.dataset.labelDe || element.dataset.labelEn || element.dataset.labelHr) : isHr ? element.dataset.labelHr : element.dataset.labelEn
           );
         }
       );
@@ -172,9 +168,7 @@
         (link) => {
           link.href =
             siteUrl(
-              isHr
-                ? link.dataset.routeHr
-                : link.dataset.routeEn
+              isGerman ? (link.dataset.routeDe || link.dataset.routeEn || link.dataset.routeHr) : isHr ? link.dataset.routeHr : link.dataset.routeEn
             );
         }
       );
@@ -195,71 +189,28 @@
   }
 
 
-  function configureLanguageSwitch(
-    sidebar
-  ) {
-    const switcher =
-      sidebar.querySelector(
-        '[data-role="language-switch"]'
-      );
+  function configureLanguageSwitch(sidebar) {
+    const switcher = sidebar.querySelector('[data-role="language-switch"]');
+    const hrLink = sidebar.querySelector('[data-role="hr-link"]');
+    const enLink = sidebar.querySelector('[data-role="en-link"]');
+    const deLink = sidebar.querySelector('[data-role="de-link"]');
+    const hrPage = body.dataset.pageHr;
+    const enPage = body.dataset.pageEn;
+    const dePage = body.dataset.pageDe;
 
-    const hrLink =
-      sidebar.querySelector(
-        '[data-role="hr-link"]'
-      );
+    if (!switcher || !hrLink || !enLink || !hrPage || !enPage) return;
 
-    const enLink =
-      sidebar.querySelector(
-        '[data-role="en-link"]'
-      );
+    hrLink.href = siteUrl(hrPage);
+    enLink.href = siteUrl(enPage);
+    if (deLink && dePage) deLink.href = siteUrl(dePage);
+    if (deLink) deLink.hidden = !dePage;
 
-    const hrPage =
-      body.dataset.pageHr;
-
-    const enPage =
-      body.dataset.pageEn;
-
-
-    if (
-      !switcher ||
-      !hrLink ||
-      !enLink ||
-      !hrPage ||
-      !enPage
-    ) {
-      return;
+    const activeLink = isGerman ? deLink : isHr ? hrLink : enLink;
+    if (activeLink) {
+      activeLink.classList.add("active");
+      activeLink.setAttribute("aria-current", "page");
     }
-
-
-    hrLink.href =
-      siteUrl(
-        hrPage
-      );
-
-    enLink.href =
-      siteUrl(
-        enPage
-      );
-
-
-    const activeLink =
-      isHr
-        ? hrLink
-        : enLink;
-
-
-    if (!activeLink) return;
-    activeLink.classList.add(
-      "active"
-    );
-
-    activeLink.setAttribute(
-      "aria-current",
-      "page"
-    );
-
-    switcher.hidden =
-      false;
+    switcher.hidden = false;
   }
 
 
