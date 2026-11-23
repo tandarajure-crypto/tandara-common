@@ -62,70 +62,70 @@
   const homeHotspots = [
     {
       key: "jurina",
-      labelHr: "Jurina grana",
+      labelHr: "Jurina grana", labelDe: "Jures Familienzweig",
       labelEn: "Jure's branch",
       routeHr: "jurinagrana.html",
       routeEn: "jurinagrana-en.html"
     },
     {
       key: "petrova",
-      labelHr: "Petrova grana",
+      labelHr: "Petrova grana", labelDe: "Petars Familienzweig",
       labelEn: "Petar's branch",
       routeHr: "petrovagrana.html",
       routeEn: "petrovagrana-en.html"
     },
     {
       key: "antina",
-      labelHr: "Antina grana",
+      labelHr: "Antina grana", labelDe: "Antes Familienzweig",
       labelEn: "Ante's branch",
       routeHr: "antinagrana.html",
       routeEn: "antinagrana-en.html"
     },
     {
       key: "matina",
-      labelHr: "Matina grana",
+      labelHr: "Matina grana", labelDe: "Mates Familienzweig",
       labelEn: "Mate's branch",
       routeHr: "matinagrana.html",
       routeEn: "matinagrana-en.html"
     },
     {
       key: "ivanov",
-      labelHr: "Ivan Tandara",
+      labelHr: "Ivan Tandara", labelDe: "Ivan Tandara",
       labelEn: "Ivan Tandara",
       routeHr: "box1.html",
       routeEn: "box1-en.html"
     },
     {
       key: "jurin",
-      labelHr: "Jure Tandara",
+      labelHr: "Jure Tandara", labelDe: "Jure Tandara",
       labelEn: "Jure Tandara",
       routeHr: "box2a.html",
       routeEn: "box2a-en.html"
     },
     {
       key: "petrov",
-      labelHr: "Petar Tandara",
+      labelHr: "Petar Tandara", labelDe: "Petar Tandara",
       labelEn: "Petar Tandara",
       routeHr: "box2b.html",
       routeEn: "box2b-en.html"
     },
     {
       key: "antin",
-      labelHr: "Ante Tandara",
+      labelHr: "Ante Tandara", labelDe: "Ante Tandara",
       labelEn: "Ante Tandara",
       routeHr: "box2c.html",
       routeEn: "box2c-en.html"
     },
     {
       key: "matin",
-      labelHr: "Mate Tandara",
+      labelHr: "Mate Tandara", labelDe: "Mate Tandara",
       labelEn: "Mate Tandara",
       routeHr: "box2d.html",
       routeEn: "box2d-en.html"
     },
     {
       key: "livanjske",
-      labelHr: "Livanjske Tandare",
+      labelHr: "Livanjske Tandare", labelDe: "Tandara aus Livno",
       labelEn: "Livno Tandara branch",
       routeHr: "filipovagrana.html",
       routeEn: "filipovagrana-en.html"
@@ -380,19 +380,11 @@
         link.dataset.hotspot =
           hotspot.key;
 
-        link.href =
-          siteUrl(
-            isHr
-              ? hotspot.routeHr
-              : hotspot.routeEn
-          );
+        const hotspotRoute = isGerman ? hotspot.routeDe : isHr ? hotspot.routeHr : hotspot.routeEn;
+        if (hotspotRoute) link.href = siteUrl(hotspotRoute);
+        else { link.removeAttribute("href"); link.setAttribute("aria-disabled", "true"); link.title = "Deutsche Version dieser Familienzweigseite ist noch nicht verfügbar."; }
 
-        link.setAttribute(
-          "aria-label",
-          isHr
-            ? hotspot.labelHr
-            : hotspot.labelEn
-        );
+        link.setAttribute("aria-label", isGerman ? hotspot.labelDe : isHr ? hotspot.labelHr : hotspot.labelEn);
 
 
         if (
