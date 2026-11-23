@@ -422,6 +422,7 @@ body {
 
 .site-shell__menu li > img {
   display: block;
+  pointer-events: none;
 
   flex:
     0
@@ -436,7 +437,15 @@ body {
 }
 
 .site-shell__menu a {
+  display: block;
+  flex: 1 1 auto;
+  position: relative;
+  z-index: 1;
   min-width: 0;
+  width: 100%;
+  padding: 2px 0;
+  cursor: pointer;
+  pointer-events: auto;
 
   color:
     var(--shell-text);
