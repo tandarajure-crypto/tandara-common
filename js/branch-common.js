@@ -136,7 +136,7 @@
   function localize(root) {
     root
       .querySelectorAll(
-        "[data-text-hr][data-text-en]"
+        "[data-text-hr][data-text-en], [data-text-de]"
       )
       .forEach(
         (element) => {
@@ -150,7 +150,7 @@
 
     root
       .querySelectorAll(
-        "[data-label-hr][data-label-en]"
+        "[data-label-hr][data-label-en], [data-label-de]"
       )
       .forEach(
         (element) => {
@@ -166,7 +166,7 @@
 
     root
       .querySelectorAll(
-        "[data-route-hr][data-route-en]"
+        "[data-route-hr][data-route-en], [data-route-de]"
       )
       .forEach(
         (link) => {
@@ -248,6 +248,7 @@
         : enLink;
 
 
+    if (!activeLink) return;
     activeLink.classList.add(
       "active"
     );
