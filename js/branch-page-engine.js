@@ -56,6 +56,7 @@
       .trim()
       .toLowerCase();
 
+  const isGerman = documentLanguage.startsWith("de") || body.dataset.lang === "de";
   const isEnglish =
     documentLanguage.startsWith("en") ||
     body.classList.contains("en");
@@ -257,7 +258,26 @@
      ======================================================= */
 
   const protectedAccessText =
-    isEnglish
+    isGerman
+      ? {
+          trigger: "Informationen zu geschützten Familiendaten",
+          title: "Geschützte Familiendaten",
+          paragraphs: [
+            "Daten wahrscheinlich lebender Familienmitglieder sowie von Personen, die nach 1930 geboren wurden und deren Tod nicht eingetragen oder bestätigt ist, sind zum Schutz der Privatsphäre nicht öffentlich zugänglich. Daten nachweislich verstorbener Personen bleiben öffentlich zugänglich.",
+            "Zugang können Familienmitglieder und andere Personen beantragen, die eine begründete Verbindung zur Familie Tandara nachweisen können.",
+            "Der Antrag auf Zugang ist über die Seite Kontakt und Zusammenarbeit zu stellen. Die Nachricht sollte Folgendes enthalten:",
+            "Die Identität und die familiäre Verbindung können durch ein persönliches Gespräch mit dem Archivadministrator, durch die Bestätigung eines bekannten Familienmitglieds oder durch Einsicht in einen gültigen Ausweis und andere geeignete Nachweise bestätigt werden.",
+            "Nach Prüfung des Antrags entscheiden der Autor und der Archivadministrator über die Genehmigung. Zugelassenen Nutzern wird persönlicher Zugang zum privaten Archiv mittels Passkey-Authentifizierung gewährt.",
+            "Der genehmigte Zugang ist ausschließlich für den Nutzer bestimmt, dem er erteilt wurde. Das Gerät oder Benutzerkonto, auf dem der Passkey registriert ist, darf anderen Personen nicht zum Zugriff überlassen werden. Geschützte Daten dürfen weder kopiert noch veröffentlicht, weitergeleitet oder anderweitig verwendet werden.",
+            "Der Administrator behält sich das Recht vor, einen Antrag abzulehnen, den Zugang einzuschränken oder einen bereits genehmigten Zugang zum Schutz der Privatsphäre von Familienmitgliedern zu widerrufen."
+          ],
+          list: ["Vor- und Nachname", "zu welchem Familienzweig Sie gehören", "Ihre Beziehung zu der Person oder dem Familienzweig, dessen Daten Sie einsehen möchten", "den Grund für Ihren Antrag", "wie Sie Ihre Identität und familiäre Verbindung bestätigen können"],
+          warning: "Senden Sie keine Kopie eines Ausweises per gewöhnlicher E-Mail, ohne dies vorher mit dem Administrator abzustimmen. In der Regel genügt die Einsichtnahme in das Dokument, ohne eine Kopie dauerhaft zu speichern.",
+          close: "Schließen",
+          closeAria: "Dialog zu geschützten Familiendaten schließen",
+          request: "Zugang beantragen"
+        }
+      : isEnglish
       ? {
           trigger:
             "Information about protected family data",
