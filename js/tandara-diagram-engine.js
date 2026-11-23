@@ -155,49 +155,61 @@
     detailsText.parentNode.insertBefore(detailsImage, detailsText);
   }
 
-  // MASTER rule: every interactive diagram must expose both HR and EN flags.
-  // Existing explicit links are preserved. If a converted page accidentally
-  // omits them, the master inserts a safe fallback pair automatically.
+  // Every interactive diagram must expose HR, EN and DE.
+  // Existing links are preserved; when no German diagram exists yet,
+  // the German flag leads to the German home page instead of disappearing.
   function ensureLanguageFlags() {
     const topbar = document.querySelector('.topbar');
     if (!topbar) return;
-    const existing = topbar.querySelectorAll('.flag-btn');
-    if (existing.length >= 2) return;
 
-    const file = (window.location.pathname.split('/').pop() || 'index.html');
+    const file = window.location.pathname.split('/').pop() || 'index.html';
+    const stem = file.replace(/-(?:hr|en|de)(?=\.html$)/i, '').replace(/\.html$/i, '');
     const isEnglishFile = /-en\.html$/i.test(file);
-    const hrFallback = isEnglishFile ? file.replace(/-en\.html$/i, '.html') : file;
-    const enFallback = isEnglishFile ? file : file.replace(/\.html$/i, '-en.html');
-    const hrHref = document.body.dataset.hrHref || hrFallback;
-    const enHref = document.body.dataset.enHref || enFallback;
+    const isGermanFile = /-de\.html$/i.test(file);
+    const baseFile = /-(?:en|de)\.html$/i.test(file) ? file.replace(/-(?:en|de)\.html$/i, '.html') : file;
+    const hrHref = document.body.dataset.hrHref || baseFile;
+    const enHref = document.body.dataset.enHref || (isEnglishFile ? file : stem + '-en.html');
+    const deHref = document.body.dataset.deHref || (isGermanFile ? file : 'index-de.html');
     const flagBase = document.body.dataset.flagBase || '';
 
-    const makeFlag = (lang, href, src, title, active) => {
-      const a = document.createElement('a');
-      a.className = `icon-btn flag-btn${active ? ' active' : ''}`;
-      a.href = href;
-      a.target = '_top';
-      a.lang = lang;
-      a.hreflang = lang;
-      a.title = title;
-      if (active) a.setAttribute('aria-current', 'page');
-      const img = document.createElement('img');
-      img.src = `${flagBase}${src}`;
-      img.alt = lang === 'hr' ? 'HR' : lang === 'de' ? 'DE' : 'EN';
-      a.appendChild(img);
-      return a;
-    };
+    const definitions = [
+      { lang: 'hr', href: hrHref, src: 'flag-hr.png', title: 'Hrvatski' },
+      { lang: 'en', href: enHref, src: 'flag-uk.png', title: 'English' },
+      { lang: 'de', href: deHref, src: 'flag-de.png', title: 'Deutsch' }
+    ];
 
-    existing.forEach(node => node.remove());
-    const home = topbar.querySelector('.home-btn');
-    const hr = makeFlag('hr', hrHref, 'flag-hr.png', LANG === 'hr' ? 'Hrvatski' : 'Croatian', LANG === 'hr');
-    const en = makeFlag('en', enHref, 'flag-uk.png', 'English', LANG === 'en');
-    if (home) {
-      home.insertAdjacentElement('afterend', en);
-      home.insertAdjacentElement('afterend', hr);
-    } else {
-      topbar.prepend(en);
-      topbar.prepend(hr);
+    const allFlags = [...topbar.querySelectorAll('.flag-btn')];
+    for (const item of definitions) {
+      let link = allFlags.find(node =>
+        (node.getAttribute('hreflang') || node.lang || '').trim().toLowerCase().startsWith(item.lang)
+      );
+
+      if (!link) {
+        link = document.createElement('a');
+        link.className = 'icon-btn flag-btn';
+        link.target = '_top';
+        const img = document.createElement('img');
+        link.appendChild(img);
+        topbar.appendChild(link);
+      }
+
+      link.href = item.href;
+      link.lang = item.lang;
+      link.hreflang = item.lang;
+      link.title = item.title;
+
+      let img = link.querySelector('img');
+      if (!img) {
+        img = document.createElement('img');
+        link.appendChild(img);
+      }
+      img.src = flagBase + item.src;
+      img.alt = item.lang.toUpperCase();
+
+      const active = LANG === item.lang;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
     }
   }
   ensureLanguageFlags();
