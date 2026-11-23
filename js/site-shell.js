@@ -303,7 +303,7 @@
   // Owner-confirmed lifespan for Milenka née Budimir.
   function updateMilenkaDates() {
     const code = '2.3.4.1.3.1.4-SP-1';
-    const en = (document.documentElement.lang || '').startsWith('en');
+    const en = window.TandaraLanguage.is("en");
     const name = en ? 'Milenka née Budimir' : 'Milenka rođ. Budimir';
     const dates = en ? '(1946–1993)' : '(1946.–1993.)';
     const replaceDates = (text, english) => String(text || '').replace(
