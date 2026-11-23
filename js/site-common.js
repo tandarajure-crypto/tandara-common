@@ -96,12 +96,8 @@
       en: "autor-en.html"
     },
 
-    "autor-en.html": {
-      key: "autor",
-      lang: "en",
-      hr: "autor-hr.html",
-      en: "autor-en.html"
-    },
+    "autor-en.html": { key: "autor", lang: "en", hr: "autor-hr.html", en: "autor-en.html", de: "autor-de.html" },
+    "autor-de.html": { key: "autor", lang: "de", hr: "autor-hr.html", en: "autor-en.html", de: "autor-de.html" },
 
 
     "podrijetlo-hr.html": {
@@ -116,6 +112,12 @@
       lang: "en",
       hr: "podrijetlo-hr.html",
       en: "podrijetlo-en.html"
+    },
+
+    "podrijetlo-de.html": {
+      key: "podrijetlo", lang: "de",
+      hr: "podrijetlo-hr.html",
+      en: "podrijetlo-en.html", de: "podrijetlo-de.html"
     },
 
 
@@ -133,6 +135,12 @@
       en: "rodoslovlje-en.html"
     },
 
+    "rodoslovlje-de.html": {
+      key: "rodoslovlje", lang: "de",
+      hr: "rodoslovlje-hr.html",
+      en: "rodoslovlje-en.html", de: "rodoslovlje-de.html"
+    },
+
 
     "migracije-hr.html": {
       key: "migracije",
@@ -146,6 +154,12 @@
       lang: "en",
       hr: "migracije-hr.html",
       en: "migracije-en.html"
+    },
+
+    "migracije-de.html": {
+      key: "migracije", lang: "de",
+      hr: "migracije-hr.html",
+      en: "migracije-en.html", de: "migracije-de.html"
     },
 
 
@@ -163,6 +177,12 @@
       en: "zanimljivosti-en.html"
     },
 
+    "zanimljivosti-de.html": {
+      key: "zanimljivosti", lang: "de",
+      hr: "zanimljivosti.html",
+      en: "zanimljivosti-en.html", de: "zanimljivosti-de.html"
+    },
+
 
     "kontakti.html": {
       key: "kontakti",
@@ -178,6 +198,12 @@
       en: "contacts.html"
     },
 
+    "kontakti-de.html": {
+      key: "kontakti", lang: "de",
+      hr: "kontakti.html",
+      en: "contacts.html", de: "kontakti-de.html"
+    },
+
 
     "knjiga-poruka.html": {
       key: "knjiga-poruka",
@@ -191,6 +217,12 @@
       lang: "en",
       hr: "knjiga-poruka.html",
       en: "visitors-messages.html"
+    },
+
+    "knjiga-poruka-de.html": {
+      key: "knjiga-poruka", lang: "de",
+      hr: "knjiga-poruka.html",
+      en: "visitors-messages.html", de: "knjiga-poruka-de.html"
     },
 
 
@@ -238,7 +270,9 @@
   let currentLanguage = "hr";
 
 
-  if (htmlLanguage.startsWith("en")) {
+  if (htmlLanguage.startsWith("de")) {
+    currentLanguage = "de";
+  } else if (htmlLanguage.startsWith("en")) {
 
     currentLanguage = "en";
 
@@ -251,17 +285,10 @@
     currentLanguage =
       mappedPage.lang;
 
-  } else if (
-    (
-      body.dataset.lang ||
-      ""
-    )
-      .toLowerCase()
-      .startsWith("en")
-  ) {
-
-    currentLanguage = "en";
-
+  } else if (body.dataset.lang) {
+    const bodyLanguage = body.dataset.lang.trim().toLowerCase();
+    if (bodyLanguage.startsWith("de")) currentLanguage = "de";
+    else if (bodyLanguage.startsWith("en")) currentLanguage = "en";
   }
 
 
@@ -289,6 +316,11 @@
   const enPage =
     body.dataset.pageEn ||
     mappedPage?.en ||
+    null;
+
+  const dePage =
+    body.dataset.pageDe ||
+    mappedPage?.de ||
     null;
 
 
@@ -345,29 +377,33 @@
 
     root
       .querySelectorAll(
-        "[data-text-hr][data-text-en]"
+        "[data-text-hr][data-text-en], [data-text-de]"
       )
       .forEach((element) => {
 
         element.textContent =
-          isHr
-            ? element.dataset.textHr
-            : element.dataset.textEn;
+          currentLanguage === "de"
+            ? (element.dataset.textDe || element.dataset.textEn || element.dataset.textHr)
+            : isHr
+              ? element.dataset.textHr
+              : element.dataset.textEn;
 
       });
 
 
     root
       .querySelectorAll(
-        "[data-label-hr][data-label-en]"
+        "[data-label-hr][data-label-en], [data-label-de]"
       )
       .forEach((element) => {
 
         element.setAttribute(
           "aria-label",
-          isHr
-            ? element.dataset.labelHr
-            : element.dataset.labelEn
+          currentLanguage === "de"
+            ? (element.dataset.labelDe || element.dataset.labelEn || element.dataset.labelHr)
+            : isHr
+              ? element.dataset.labelHr
+              : element.dataset.labelEn
         );
 
       });
@@ -375,14 +411,16 @@
 
     root
       .querySelectorAll(
-        "[data-route-hr][data-route-en]"
+        "[data-route-hr][data-route-en], [data-route-de]"
       )
       .forEach((link) => {
 
         const route =
-          isHr
-            ? link.dataset.routeHr
-            : link.dataset.routeEn;
+          currentLanguage === "de"
+            ? (link.dataset.routeDe || link.dataset.routeEn || link.dataset.routeHr)
+            : isHr
+              ? link.dataset.routeHr
+              : link.dataset.routeEn;
 
 
         if (!route) {
