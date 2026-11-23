@@ -200,14 +200,16 @@
     const deLink = sidebar.querySelector('[data-role="de-link"]');
     const hrPage = body.dataset.pageHr;
     const enPage = body.dataset.pageEn;
-    const dePage = body.dataset.pageDe;
+    const dePage = body.dataset.pageDe || "index-de.html";
 
     if (!switcher || !hrLink || !enLink || !hrPage || !enPage) return;
 
     hrLink.href = siteUrl(hrPage);
     enLink.href = siteUrl(enPage);
-    if (deLink && dePage) deLink.href = siteUrl(dePage);
-    if (deLink) deLink.hidden = !dePage;
+    if (deLink) {
+      deLink.href = siteUrl(dePage);
+      deLink.hidden = false;
+    }
 
     const activeLink = isGerman ? deLink : isHr ? hrLink : enLink;
     if (activeLink) {
