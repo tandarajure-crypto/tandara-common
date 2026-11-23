@@ -142,25 +142,20 @@
   let currentLanguage = window.TandaraLanguage?.current || "hr";
 
 
-  if (htmlLanguage.startsWith("de")) {
-    currentLanguage = "de";
-  } else if (htmlLanguage.startsWith("en")) {
-
-    currentLanguage = "en";
-
-  } else if (htmlLanguage.startsWith("hr")) {
-
-    currentLanguage = "hr";
-
-  } else if (mappedPage?.lang) {
-
-    currentLanguage =
-      mappedPage.lang;
-
-  } else if (body.dataset.lang) {
-    const bodyLanguage = body.dataset.lang.trim().toLowerCase();
-    if (bodyLanguage.startsWith("de")) currentLanguage = "de";
-    else if (bodyLanguage.startsWith("en")) currentLanguage = "en";
+  if (!window.TandaraLanguage?.current) {
+    if (htmlLanguage.startsWith("de")) {
+      currentLanguage = "de";
+    } else if (htmlLanguage.startsWith("en")) {
+      currentLanguage = "en";
+    } else if (htmlLanguage.startsWith("hr")) {
+      currentLanguage = "hr";
+    } else if (mappedPage?.lang) {
+      currentLanguage = mappedPage.lang;
+    } else if (body.dataset.lang) {
+      const bodyLanguage = body.dataset.lang.trim().toLowerCase();
+      if (bodyLanguage.startsWith("de")) currentLanguage = "de";
+      else if (bodyLanguage.startsWith("en")) currentLanguage = "en";
+    }
   }
 
 
