@@ -173,9 +173,9 @@
     const flagBase = document.body.dataset.flagBase || '';
 
     const definitions = [
-      { lang: 'hr', href: hrHref, src: 'flag-hr.png', title: 'Hrvatski' },
-      { lang: 'en', href: enHref, src: 'flag-uk.png', title: 'English' },
-      { lang: 'de', href: deHref, src: 'flag-de.png', title: 'Deutsch' }
+      { lang: 'hr', href: hrHref, src: 'zastava-hr.png', title: 'Hrvatski' },
+      { lang: 'en', href: enHref, src: 'zastava-uk.png', title: 'English' },
+      { lang: 'de', href: deHref, src: 'zastava-de.png', title: 'Deutsch' }
     ];
 
     const allFlags = [...topbar.querySelectorAll('.flag-btn')];
