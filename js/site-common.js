@@ -466,99 +466,19 @@
      ======================================================= */
 
   function configureLanguageLinks(sidebar) {
-
-    const hrLink =
-      sidebar.querySelector(
-        '[data-role="hr-link"]'
-      );
-
-
-    const enLink =
-      sidebar.querySelector(
-        '[data-role="en-link"]'
-      );
-
-
-    if (hrLink) {
-
-      if (hrPage) {
-
-        hrLink.href =
-          siteUrl(hrPage);
-
-      } else {
-
-        hrLink.removeAttribute(
-          "href"
-        );
-
-      }
-
-
-      if (isHr) {
-
-        hrLink.setAttribute(
-          "aria-current",
-          "page"
-        );
-
-      } else {
-
-        hrLink.removeAttribute(
-          "aria-current"
-        );
-
-      }
-
-    }
-
-
-    if (enLink) {
-
-      if (enPage) {
-
-        enLink.href =
-          siteUrl(enPage);
-
-      } else {
-
-        enLink.removeAttribute(
-          "href"
-        );
-
-      }
-
-
-      if (!isHr) {
-
-        enLink.setAttribute(
-          "aria-current",
-          "page"
-        );
-
-      } else {
-
-        enLink.removeAttribute(
-          "aria-current"
-        );
-
-      }
-
-    }
-
+    const hrLink = sidebar.querySelector('[data-role="hr-link"]');
+    const enLink = sidebar.querySelector('[data-role="en-link"]');
+    const deLink = sidebar.querySelector('[data-role="de-link"]');
+    [[hrLink, hrPage, "hr"], [enLink, enPage, "en"], [deLink, dePage, "de"]].forEach(([link, page, language]) => {
+      if (!link) return;
+      if (page) link.href = siteUrl(page);
+      else link.removeAttribute("href");
+      if (currentLanguage === language) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+      if (language === "de" && !page) link.hidden = true;
+    });
   }
 
-
-
-  /* =======================================================
-     AKTIVNI PODNASLOV
-
-     Za osam glavnih stranica dobiva se automatski.
-
-     Za neku buduću posebnu stranicu može se koristiti:
-       data-page-key="autor"
-     itd.
-     ======================================================= */
 
   function markActiveMenu(sidebar) {
 
