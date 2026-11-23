@@ -180,10 +180,12 @@
     mappedPage?.en ||
     null;
 
+  // German navigation must remain available even on pages without
+  // a dedicated German translation; use the German home page as fallback.
   const dePage =
     body.dataset.pageDe ||
     mappedPage?.de ||
-    null;
+    "index-de.html";
 
 
 
