@@ -115,7 +115,7 @@
   const body =
     document.body;
 
-  const isGermanPage = window.TandaraLanguage.is("de");
+  const isGermanPage = resolvedLanguage === "de";
 
   if (
     !script ||
@@ -135,7 +135,7 @@
       ['3.1.1.1.4.1.1-SP-1', 'Marija rođ. Lukić', 'Marija née Lukić', '1939', '2021', 'antinagrana/marijanikolina.jpg'],
       ['3.1.2.3.2.2-SP-1', 'Danica rođ. Malenica', 'Danica née Malenica', '1935', '2016', 'antinagrana/danicamatina.jpg']
     ];
-    const en = window.TandaraLanguage.is("en");
+    const en = resolvedLanguage === "en";
     const dataEl = document.getElementById('diagramData');
     const data = dataEl ? JSON.parse(dataEl.textContent) : null;
     for (const [code, hr, english, birth, death, file] of records) {
@@ -304,7 +304,7 @@
   // Owner-confirmed lifespan for Milenka née Budimir.
   function updateMilenkaDates() {
     const code = '2.3.4.1.3.1.4-SP-1';
-    const en = window.TandaraLanguage.is("en");
+    const en = resolvedLanguage === "en";
     const name = en ? 'Milenka née Budimir' : 'Milenka rođ. Budimir';
     const dates = en ? '(1946–1993)' : '(1946.–1993.)';
     const replaceDates = (text, english) => String(text || '').replace(
@@ -430,7 +430,7 @@
       {code:'2.3.4.1.3.2-K3', name:'Anka Marinova', birth:'1954', death:'2024'},
       {code:'2.3.4.1.3.2-K1', name:'Dragica Marinova', birth:'1938', death:'2023'}
     ];
-    const en = window.TandaraLanguage.is("en");
+    const en = resolvedLanguage === "en";
     const dates = (r, english) => english ? '(' + r.birth + '–' + r.death + ')' : '(' + r.birth + '.–' + r.death + '.)';
     const replaceDates = (text, english) => {
       let result = String(text || '');
@@ -606,10 +606,10 @@
      JEZIK
      ======================================================= */
 
-  const language = window.TandaraLanguage.current;
+  const language = resolvedLanguage;
 
-  const isEnglish = window.TandaraLanguage.is("en");
-  const isGerman = window.TandaraLanguage.is("de");
+  const isEnglish = resolvedLanguage === "en";
+  const isGerman = resolvedLanguage === "de";
 
 
   /* =======================================================
@@ -2045,8 +2045,8 @@
   const tracked = new WeakMap();
   const retryKey = 'tandara_photo_retry';
   const retryDelays = [900, 2200];
-  const isEnglish = () => window.TandaraLanguage.is("en");
-  const isGerman = () => window.TandaraLanguage.is("de");
+  const isEnglish = () => document.documentElement.lang === "en";
+  const isGerman = () => document.documentElement.lang === "de";
 
   function photoUrl(img) {
     if (!(img instanceof HTMLImageElement) || !img.isConnected ||
