@@ -139,24 +139,19 @@
       .toLowerCase();
 
 
-  let currentLanguage = window.TandaraLanguage?.current || "hr";
+  const pathLanguage =
+    fileName.match(/(?:^|[-_])(de|en|hr)(?=\.html$)/i)?.[1] || null;
 
-
-  if (!window.TandaraLanguage?.current) {
-    if (htmlLanguage.startsWith("de")) {
-      currentLanguage = "de";
-    } else if (htmlLanguage.startsWith("en")) {
-      currentLanguage = "en";
-    } else if (htmlLanguage.startsWith("hr")) {
-      currentLanguage = "hr";
-    } else if (mappedPage?.lang) {
-      currentLanguage = mappedPage.lang;
-    } else if (body.dataset.lang) {
-      const bodyLanguage = body.dataset.lang.trim().toLowerCase();
-      if (bodyLanguage.startsWith("de")) currentLanguage = "de";
-      else if (bodyLanguage.startsWith("en")) currentLanguage = "en";
-    }
-  }
+  // Requested filename and explicit HTML language outrank cached shell state.
+  const currentLanguage =
+    mappedPage?.lang ||
+    pathLanguage ||
+    (htmlLanguage.startsWith("de") ? "de" :
+      htmlLanguage.startsWith("en") ? "en" :
+      htmlLanguage.startsWith("hr") ? "hr" : null) ||
+    (body.dataset.lang || "").trim().toLowerCase().match(/^(de|en|hr)/)?.[1] ||
+    window.TandaraLanguage?.current ||
+    "hr";
 
 
   const isHr =
