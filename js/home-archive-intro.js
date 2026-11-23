@@ -27,11 +27,12 @@
 
   const pathFile = window.location.pathname.split("/").pop() || "";
   const pathLanguage = pathFile.match(/(?:^|[-_])(de|en|hr)(?=\.html$)/i)?.[1];
+  // The requested document URL is authoritative over any stale shell state.
   const language = (
-    window.TandaraLanguage?.current ||
     pathLanguage ||
     document.documentElement.lang ||
     document.body?.dataset.lang ||
+    window.TandaraLanguage?.current ||
     "hr"
   ).toLowerCase();
 
