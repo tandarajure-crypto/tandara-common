@@ -55,7 +55,7 @@
     }
 
     if (value && typeof value === "object") {
-      const selected = value[language] || value.hr || value.en || "";
+      const selected = value[language] || (language === "de" ? value.en || value.hr : value.hr || value.en) || "";
       return typeof selected === "string" ? selected.trim() : "";
     }
 
