@@ -35,8 +35,8 @@
   /*
    * TANDARA LANGUAGE AUTHORITY
    * Jedini izvor istine za HR / EN / DE na svim stranicama
-   * koje učitavaju site-shell.js. Jezik se određuje iz <html lang>,
-   * zatim body[data-lang], a tek potom iz naziva datoteke.
+   * koje učitavaju site-shell.js. Jezik se najprije određuje iz
+   * jezičnog sufiksa URL-a, zatim iz <html lang> i body[data-lang].
    * HR nije fallback za već prepoznatu EN ili DE stranicu.
    */
   const languageCode = value => {
