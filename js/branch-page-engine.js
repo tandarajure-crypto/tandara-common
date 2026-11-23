@@ -4,7 +4,7 @@
    Zajednički motor za svih 10 glavnih rodoslovnih grana.
 
    Koristi se za:
-   - HR i EN verzije
+   - HR, EN i DE verzije
    - PUBLIC i PRIVATE stranice istoga tipa
 
    MOTOR MOŽE:
