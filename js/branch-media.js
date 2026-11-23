@@ -20,7 +20,8 @@
         const link = img.closest('a');
         if (link && !notice) {
           notice = document.createElement('span');
-          notice.textContent = document.documentElement.lang.startsWith('en') ? 'Open original photograph' : 'Otvori izvornu fotografiju';
+          const lang = (document.documentElement.lang || 'hr').toLowerCase();
+          notice.textContent = lang.startsWith('de') ? 'Originalfoto öffnen' : lang.startsWith('en') ? 'Open original photograph' : 'Otvori izvornu fotografiju';
           link.append(notice);
         }
         return;
