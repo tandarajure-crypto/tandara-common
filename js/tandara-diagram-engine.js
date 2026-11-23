@@ -1,6 +1,6 @@
 /*
   TANDARA DIAGRAM ENGINE — COMMON STANDARD 2026-09-18
-  Jedini zajednički tehnički motor za svih 5 HR + 5 EN dijagrama.
+  Jedini zajednički tehnički motor za svih 5 HR + 5 EN + DE dijagrama.
   Rodoslovni podaci ne pripadaju ovom motoru.
   Funkcije: grane +/−, više brakova i djeca po majci, četveropoljska pretraga,
   zoom/pan, fullscreen, ispis, kartica osobe, HR/EN, N.G., privremeni zapisi
