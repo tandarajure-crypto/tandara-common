@@ -3,7 +3,7 @@
 
    Jedini zajednički loader za:
    - index HR / EN / DE
-   - 8 glavnih podstranica HR / EN
+   - 8 glavnih podstranica HR / EN / DE
    - grane
    - dijagrame
    - box stranice
