@@ -29,7 +29,8 @@
     "https://privat-tvz.pages.dev/__public-access-request";
   const privateValues = [
     "Zahtjev za pristup privatnom arhivu",
-    "Request for access to the private archive"
+    "Request for access to the private archive",
+    "Antrag auf Zugang zum privaten Archiv"
   ];
   const privateOption = inquiryType && Array.from(inquiryType.options).find(
     (option) => privateValues.includes(option.value)
