@@ -10,12 +10,15 @@
 
   if (!loaderScript || !body || !pageContent) return;
 
-  const lang =
-    (
-      document.documentElement.lang ||
-      body.dataset.lang ||
-      "hr"
-    ).toLowerCase();
+  const pathFile = window.location.pathname.split("/").pop() || "";
+  const pathLanguage = pathFile.match(/(?:^|[-_])(de|en|hr)(?=\.html$)/i)?.[1];
+  const lang = (
+    window.TandaraLanguage?.current ||
+    pathLanguage ||
+    document.documentElement.lang ||
+    body.dataset.lang ||
+    "hr"
+  ).toLowerCase();
 
   const isHr = lang.startsWith("hr");
   const isGerman = lang.startsWith("de");
