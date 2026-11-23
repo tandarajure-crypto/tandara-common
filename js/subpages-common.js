@@ -1,4 +1,4 @@
-/* TANDARA COMMON — zajednički okvir za HR i EN podstranice */
+/* TANDARA COMMON — zajednički okvir za HR, EN i DE podstranice */
 
 (() => {
   "use strict";
