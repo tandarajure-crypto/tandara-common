@@ -12,8 +12,9 @@
   const form = document.querySelector(".archive-contact-form");
   if (!form) return;
 
-  const lang = (document.documentElement.lang || "hr").toLowerCase();
+  const lang = (document.documentElement.lang || document.body.dataset.lang || "hr").toLowerCase();
   const isEnglish = lang.startsWith("en");
+  const isGerman = lang.startsWith("de");
   const submitButton = form.querySelector('button[type="submit"]');
   const honey = form.querySelector('input[name="_honey"]');
   const messageField = form.querySelector(
@@ -61,7 +62,7 @@
     if (!success) return;
 
     success.hidden = false;
-    success.textContent = isEnglish ? en : hr;
+    success.textContent = isGerman ? "Ihre Nachricht wurde gesendet." : isEnglish ? en : hr;
     success.setAttribute("role", "alert");
     success.scrollIntoView({ block: "nearest" });
   }
@@ -157,7 +158,7 @@
     if (submitButton) {
       submitButton.disabled = true;
       submitButton.setAttribute("aria-disabled", "true");
-      submitButton.textContent = isEnglish ? "Sending…" : "Šaljem…";
+      submitButton.textContent = isGerman ? "Wird gesendet…" : isEnglish ? "Sending…" : "Šaljem…";
     }
   });
 })();
