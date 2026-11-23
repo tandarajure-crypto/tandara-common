@@ -49,10 +49,11 @@
 
   const pathFile = window.location.pathname.split("/").pop() || "index.html";
   const pathMatch = pathFile.match(/(?:^|[-_])(de|en|hr)(?=\.html$)/i);
+  // A language suffix in the requested page URL outranks stale HTML/cache state.
   const resolvedLanguage =
+    languageCode(pathMatch?.[1]) ||
     languageCode(document.documentElement.getAttribute("lang")) ||
     languageCode(document.body?.dataset.lang) ||
-    languageCode(pathMatch?.[1]) ||
     "hr";
 
   document.documentElement.setAttribute("lang", resolvedLanguage);
