@@ -139,7 +139,7 @@
       .toLowerCase();
 
 
-  let currentLanguage = "hr";
+  let currentLanguage = window.TandaraLanguage?.current || "hr";
 
 
   if (htmlLanguage.startsWith("de")) {
