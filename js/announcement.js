@@ -162,7 +162,7 @@
   function makeDialog(config, language) {
     const title =
       localized(config.title, language) ||
-      (language === "en" ? "Announcement" : "Obavijest");
+      (language === "de" ? "Mitteilung" : language === "en" ? "Announcement" : "Obavijest");
     const message = localized(config.message, language);
     const imageAlt = localized(config.imageAlt, language) || title;
     const imageUrl = safeImageUrl(localized(config.image, language), config.id);
@@ -295,12 +295,8 @@
       return;
     }
 
-    const language = document.documentElement.lang
-      .trim()
-      .toLowerCase()
-      .startsWith("en")
-      ? "en"
-      : "hr";
+    const languageTag = (document.documentElement.lang || document.body.dataset.lang || "hr").trim().toLowerCase();
+    const language = languageTag.startsWith("de") ? "de" : languageTag.startsWith("en") ? "en" : "hr";
 
     const dialog = makeDialog(config, language);
     if (!dialog) {
