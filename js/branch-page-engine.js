@@ -952,9 +952,7 @@
 
     overlay.setAttribute(
       "aria-label",
-      isEnglish
-        ? "Enlarged photograph"
-        : "Povećana fotografija"
+      isGerman ? "Vergrößertes Foto" : isEnglish ? "Enlarged photograph" : "Povećana fotografija"
     );
 
 
@@ -971,9 +969,7 @@
 
     closeButton.setAttribute(
       "aria-label",
-      isEnglish
-        ? "Close photograph"
-        : "Zatvori fotografiju"
+      isGerman ? "Foto schließen" : isEnglish ? "Close photograph" : "Zatvori fotografiju"
     );
 
     closeButton.textContent =
