@@ -25,12 +25,15 @@
     return;
   }
 
-  const language =
-    (
-      document.documentElement.lang ||
-      document.body?.dataset.lang ||
-      "hr"
-    ).toLowerCase();
+  const pathFile = window.location.pathname.split("/").pop() || "";
+  const pathLanguage = pathFile.match(/(?:^|[-_])(de|en|hr)(?=\.html$)/i)?.[1];
+  const language = (
+    window.TandaraLanguage?.current ||
+    pathLanguage ||
+    document.documentElement.lang ||
+    document.body?.dataset.lang ||
+    "hr"
+  ).toLowerCase();
 
   const isEnglish =
     language.startsWith("en");
