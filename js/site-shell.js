@@ -1685,11 +1685,21 @@
 
   function loadTemplate() {
 
+    // Revalidate the shared template so an older cached menu cannot
+    // leave German pages with stale navigation labels or destinations.
+    const localPrivateTemplate =
+      location.hostname === "privat-tvz.pages.dev"
+        ? new URL("templates/site-shell.html", siteRoot)
+        : null;
+
+    const selectedTemplateUrl =
+      localPrivateTemplate || templateUrl;
+
     return fetch(
-      templateUrl,
+      selectedTemplateUrl,
       {
         cache:
-          "force-cache",
+          "no-cache",
 
         credentials:
           "omit"
