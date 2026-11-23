@@ -298,6 +298,20 @@
     const languageTag = (document.documentElement.lang || document.body.dataset.lang || "hr").trim().toLowerCase();
     const language = languageTag.startsWith("de") ? "de" : languageTag.startsWith("en") ? "en" : "hr";
 
+    // Do not place a non-German announcement modal over the German navigation.
+    // The current announcement has only HR/EN artwork and text; show it in DE
+    // only after a complete German title, image and alternative text are supplied.
+    if (
+      language === "de" &&
+      !(
+        typeof config.title?.de === "string" && config.title.de.trim() &&
+        typeof config.image?.de === "string" && config.image.de.trim() &&
+        typeof config.imageAlt?.de === "string" && config.imageAlt.de.trim()
+      )
+    ) {
+      return;
+    }
+
     const dialog = makeDialog(config, language);
     if (!dialog) {
       return;
