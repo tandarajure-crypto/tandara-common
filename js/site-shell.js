@@ -32,6 +32,77 @@
 (() => {
   "use strict";
 
+  /*
+   * TANDARA LANGUAGE AUTHORITY
+   * Jedini izvor istine za HR / EN / DE na svim stranicama
+   * koje učitavaju site-shell.js. Jezik se određuje iz <html lang>,
+   * zatim body[data-lang], a tek potom iz naziva datoteke.
+   * HR nije fallback za već prepoznatu EN ili DE stranicu.
+   */
+  const languageCode = value => {
+    const valueNormalized = String(value || "").trim().toLowerCase();
+    if (valueNormalized.startsWith("de")) return "de";
+    if (valueNormalized.startsWith("en")) return "en";
+    if (valueNormalized.startsWith("hr")) return "hr";
+    return null;
+  };
+
+  const pathFile = window.location.pathname.split("/").pop() || "index.html";
+  const pathMatch = pathFile.match(/(?:^|[-_])(de|en|hr)(?=\\.html$)/i);
+  const resolvedLanguage =
+    languageCode(document.documentElement.getAttribute("lang")) ||
+    languageCode(document.body?.dataset.lang) ||
+    languageCode(pathMatch?.[1]) ||
+    "hr";
+
+  document.documentElement.setAttribute("lang", resolvedLanguage);
+  if (document.body) {
+    document.body.dataset.lang = resolvedLanguage;
+    document.body.classList.remove("hr", "en", "de");
+    document.body.classList.add(resolvedLanguage);
+  }
+
+  const languageAuthority = Object.freeze({
+    current: resolvedLanguage,
+    is: code => resolvedLanguage === code,
+    text: values => values?.[resolvedLanguage] ?? values?.hr ?? ""
+  });
+
+  try {
+    Object.defineProperty(window, "TandaraLanguage", {
+      value: languageAuthority,
+      configurable: false,
+      enumerable: true,
+      writable: false
+    });
+  } catch (_) {
+    // Keep the already established authority if the property exists.
+  }
+
+  // Prevent later legacy scripts from silently changing a DE/EN page to HR.
+  if (document.documentElement && typeof MutationObserver === "function") {
+    const languageGuard = new MutationObserver(() => {
+      if (document.documentElement.getAttribute("lang") !== resolvedLanguage) {
+        document.documentElement.setAttribute("lang", resolvedLanguage);
+      }
+      if (document.body && document.body.dataset.lang !== resolvedLanguage) {
+        document.body.dataset.lang = resolvedLanguage;
+      }
+    });
+    languageGuard.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["lang"],
+      subtree: false
+    });
+    if (document.body) {
+      languageGuard.observe(document.body, {
+        attributes: true,
+        attributeFilter: ["data-lang"],
+        subtree: false
+      });
+    }
+  }
+
 
   /* =======================================================
      OSNOVNI ELEMENTI
@@ -43,11 +114,7 @@
   const body =
     document.body;
 
-  const isGermanPage =
-    (document.documentElement.lang || body?.dataset.lang || "")
-      .trim()
-      .toLowerCase()
-      .startsWith("de");
+  const isGermanPage = window.TandaraLanguage.is("de");
 
   if (
     !script ||
@@ -67,7 +134,7 @@
       ['3.1.1.1.4.1.1-SP-1', 'Marija rođ. Lukić', 'Marija née Lukić', '1939', '2021', 'antinagrana/marijanikolina.jpg'],
       ['3.1.2.3.2.2-SP-1', 'Danica rođ. Malenica', 'Danica née Malenica', '1935', '2016', 'antinagrana/danicamatina.jpg']
     ];
-    const en = (document.documentElement.lang || '').startsWith('en');
+    const en = window.TandaraLanguage.is("en");
     const dataEl = document.getElementById('diagramData');
     const data = dataEl ? JSON.parse(dataEl.textContent) : null;
     for (const [code, hr, english, birth, death, file] of records) {
@@ -538,26 +605,10 @@
      JEZIK
      ======================================================= */
 
-  const language =
-    (
-      document.documentElement.lang ||
-      body.dataset.lang ||
-      "hr"
-    )
-      .trim()
-      .toLowerCase();
+  const language = window.TandaraLanguage.current;
 
-
-  const isEnglish =
-    language.startsWith(
-      "en"
-    );
-
-
-  const isGerman =
-    language.startsWith(
-      "de"
-    );
+  const isEnglish = window.TandaraLanguage.is("en");
+  const isGerman = window.TandaraLanguage.is("de");
 
 
   /* =======================================================
@@ -1993,12 +2044,8 @@
   const tracked = new WeakMap();
   const retryKey = 'tandara_photo_retry';
   const retryDelays = [900, 2200];
-  const isEnglish = () =>
-    document.documentElement.lang.toLowerCase().startsWith('en') ||
-    document.body?.dataset.lang === 'en';
-  const isGerman = () =>
-    document.documentElement.lang.toLowerCase().startsWith('de') ||
-    document.body?.dataset.lang === 'de';
+  const isEnglish = () => window.TandaraLanguage.is("en");
+  const isGerman = () => window.TandaraLanguage.is("de");
 
   function photoUrl(img) {
     if (!(img instanceof HTMLImageElement) || !img.isConnected ||
