@@ -62,9 +62,14 @@
     pageMap[fileName];
 
 
+  // The page map is based on the requested filename and must outrank
+  // any stale language value left by an older cached shell.
   const currentLanguage =
-    window.TandaraLanguage?.current ||
     page?.lang ||
+    window.location.pathname.split("/").pop()?.match(/(?:^|[-_])(de|en|hr)(?=\.html$)/i)?.[1] ||
+    document.documentElement.lang ||
+    body.dataset.lang ||
+    window.TandaraLanguage?.current ||
     "hr";
 
 
