@@ -48,7 +48,7 @@
   };
 
   const pathFile = window.location.pathname.split("/").pop() || "index.html";
-  const pathMatch = pathFile.match(/(?:^|[-_])(de|en|hr)(?=\\.html$)/i);
+  const pathMatch = pathFile.match(/(?:^|[-_])(de|en|hr)(?=\.html$)/i);
   const resolvedLanguage =
     languageCode(document.documentElement.getAttribute("lang")) ||
     languageCode(document.body?.dataset.lang) ||
@@ -429,7 +429,7 @@
       {code:'2.3.4.1.3.2-K3', name:'Anka Marinova', birth:'1954', death:'2024'},
       {code:'2.3.4.1.3.2-K1', name:'Dragica Marinova', birth:'1938', death:'2023'}
     ];
-    const en = (document.documentElement.lang || '').startsWith('en');
+    const en = window.TandaraLanguage.is("en");
     const dates = (r, english) => english ? '(' + r.birth + '–' + r.death + ')' : '(' + r.birth + '.–' + r.death + '.)';
     const replaceDates = (text, english) => {
       let result = String(text || '');
