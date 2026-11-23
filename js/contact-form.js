@@ -62,7 +62,7 @@
     if (!success) return;
 
     success.hidden = false;
-    success.textContent = isGerman ? "Ihre Nachricht wurde gesendet." : isEnglish ? en : hr;
+    success.textContent = isGerman ? (hr.startsWith("Obrazac je poslan prebrzo") ? "Das Formular wurde zu schnell gesendet. Bitte warten Sie einige Sekunden und versuchen Sie es erneut." : hr.startsWith("Radi zaštite") ? "Bitte warten Sie aus Sicherheitsgründen noch " + (hr.match(/\d+/)?.[0] || "") + " Sekunden, bevor Sie die Nachricht erneut senden." : hr.startsWith("Poruka sadrži") ? "Die Nachricht enthält ungewöhnlich viele Links. Bitte reduzieren Sie die Anzahl der Links und versuchen Sie es erneut." : "Ihre Nachricht wurde gesendet.") : isEnglish ? en : hr;
     success.setAttribute("role", "alert");
     success.scrollIntoView({ block: "nearest" });
   }
