@@ -189,7 +189,7 @@
     closeButton.type = "button";
     closeButton.setAttribute(
       "aria-label",
-      language === "en" ? "Close announcement" : "Zatvori objavu"
+      language === "de" ? "Mitteilung schließen" : language === "en" ? "Close announcement" : "Zatvori objavu"
     );
     closeButton.textContent = "×";
 
