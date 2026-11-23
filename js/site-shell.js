@@ -908,7 +908,7 @@
                 "Anleitung",
 
               route:
-                "upute-de.html"
+                "https://tandarajure-crypto.github.io/tandara-common/Pdf/WEB-tandara.anleitung.pdf"
             })
         }),
 
