@@ -84,30 +84,36 @@
   // Kronološko sortiranje primjenjuje se samo na Matinu granu.
   const sortMatinaBranch = rootCode === '4.0';
 
-  const LANG = document.body.dataset.lang === 'en' ? 'en' : 'hr';
-  const TXT = LANG === 'en' ? {
-    missingRoot: 'Missing root person', code: 'Code', father: 'Father', mother: 'Mother', missing: 'not provided',
-    opened: 'Opened', closed: 'Closed', branch: 'branch', enterSearch: 'Enter at least one search value.',
-    noResults: 'No results for the entered data.', found: 'Found', fullOn: 'Full screen enabled.',
-    fullDenied: 'The browser did not allow full screen.', openFamily: 'Open family', closeFamily: 'Close family',
-    openSubbranch: 'Open sub-branch', privateDates: 'Dates are available only on the private website.',
-    privateParents: 'Family details are available only on the private website.',
-    marriageWord: 'marriage'
+  const languageTag = (document.documentElement.lang || document.body.dataset.lang || "hr").toLowerCase();
+  const LANG = languageTag.startsWith("de") ? "de" : languageTag.startsWith("en") ? "en" : "hr";
+  const TXT = LANG === "en" ? {
+    missingRoot:"Missing root person", code:"Code", father:"Father", mother:"Mother", missing:"not provided",
+    opened:"Opened", closed:"Closed", branch:"branch", enterSearch:"Enter at least one search value.",
+    noResults:"No results for the entered data.", found:"Found", fullOn:"Full screen enabled.",
+    fullDenied:"The browser did not allow full screen.", openFamily:"Open family", closeFamily:"Close family",
+    openSubbranch:"Open sub-branch", privateDates:"Dates are available only on the private website.",
+    privateParents:"Family details are available only on the private website.", marriageWord:"marriage"
+  } : LANG === "de" ? {
+    missingRoot:"Stammperson fehlt", code:"Kennziffer", father:"Vater", mother:"Mutter", missing:"nicht angegeben",
+    opened:"Geöffnet", closed:"Geschlossen", branch:"Familienzweig", enterSearch:"Geben Sie mindestens einen Suchwert ein.",
+    noResults:"Keine Ergebnisse für die eingegebenen Daten.", found:"Gefunden", fullOn:"Vollbild aktiviert.",
+    fullDenied:"Der Browser hat den Vollbildmodus nicht zugelassen.", openFamily:"Familie öffnen", closeFamily:"Familie schließen",
+    openSubbranch:"Unterzweig öffnen", privateDates:"Jahresangaben sind nur auf der privaten Website verfügbar.",
+    privateParents:"Familiendetails sind nur auf der privaten Website verfügbar.", marriageWord:"Ehe"
   } : {
-    missingRoot: 'Nedostaje početna osoba', code: 'Šifra', father: 'Otac', mother: 'Majka', missing: 'podatak nije naveden',
-    opened: 'Otvorena', closed: 'Zatvorena', branch: 'grana', enterSearch: 'Upišite barem jedan podatak za pretragu.',
-    noResults: 'Nema rezultata za zadane podatke.', found: 'Pronađeno', fullOn: 'Cijeli ekran uključen.',
-    fullDenied: 'Preglednik nije dopustio cijeli ekran.', openFamily: 'Otvori obitelj', closeFamily: 'Zatvori obitelj',
-    openSubbranch: 'Otvori podgranu', privateDates: 'Godine su dostupne samo na privatnoj web-stranici.',
-    privateParents: 'Obiteljski podaci dostupni su samo na privatnoj web-stranici.',
-    marriageWord: 'brak'
+    missingRoot:"Nedostaje početna osoba", code:"Šifra", father:"Otac", mother:"Majka", missing:"podatak nije naveden",
+    opened:"Otvorena", closed:"Zatvorena", branch:"grana", enterSearch:"Upišite barem jedan podatak za pretragu.",
+    noResults:"Nema rezultata za zadane podatke.", found:"Pronađeno", fullOn:"Cijeli ekran uključen.",
+    fullDenied:"Preglednik nije dopustio cijeli ekran.", openFamily:"Otvori obitelj", closeFamily:"Zatvori obitelj",
+    openSubbranch:"Otvori podgranu", privateDates:"Godine su dostupne samo na privatnoj web-stranici.",
+    privateParents:"Obiteljski podaci dostupni su samo na privatnoj web-stranici.", marriageWord:"brak"
   };
 
   function localized(rec, key) {
     if (!rec) return '';
-    if (LANG === 'en') {
-      const englishValue = rec[`${key}En`];
-      if (englishValue != null) return englishValue;
+    if (LANG === 'en' || LANG === 'de') {
+      const localizedValue = rec[`${key}${LANG.toUpperCase()}`];
+      if (localizedValue != null) return localizedValue;
       // Never expose Croatian narrative text in an English-language diagram.
       // Names may safely retain their original spelling, but descriptions
       // must have an explicit English field.
@@ -176,7 +182,7 @@
       if (active) a.setAttribute('aria-current', 'page');
       const img = document.createElement('img');
       img.src = `${flagBase}${src}`;
-      img.alt = lang === 'hr' ? 'HR' : 'EN';
+      img.alt = lang === 'hr' ? 'HR' : lang === 'de' ? 'DE' : 'EN';
       a.appendChild(img);
       return a;
     };
