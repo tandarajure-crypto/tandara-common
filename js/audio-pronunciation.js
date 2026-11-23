@@ -20,13 +20,19 @@ if (!player || !buttons.length) return;
    JEZIK
    ========================================================= */
 
-const isEnglish =
-(document.documentElement.lang || "")
-.toLowerCase()
-.startsWith("en");
+const language = (document.documentElement.lang || document.body.dataset.lang || "hr").toLowerCase();
+const isEnglish = language.startsWith("en");
+const isGerman = language.startsWith("de");
 
 
-const text = isEnglish
+const text = isGerman
+? {
+    defaultLabel: "Aussprache", stopped: "Wiedergabe angehalten.",
+    playing: label => label + " wird abgespielt.",
+    playError: "Die Audiodatei konnte nicht abgespielt werden. Bitte versuchen Sie es erneut.",
+    loadError: "Die Audiodatei konnte nicht geladen werden. Bitte versuchen Sie es erneut."
+  }
+: isEnglish
 ? {
     defaultLabel: "pronunciation",
     stopped: "Playback stopped.",
