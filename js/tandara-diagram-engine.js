@@ -112,11 +112,11 @@
   function localized(rec, key) {
     if (!rec) return '';
     if (LANG === 'en' || LANG === 'de') {
-      const localizedValue = rec[`${key}${LANG.toUpperCase()}`];
+      const localizedValue = rec[`${key}${LANG.toUpperCase()}`] ?? rec[`${key}En`];
       if (localizedValue != null) return localizedValue;
-      // Never expose Croatian narrative text in an English-language diagram.
+      // Never expose Croatian narrative text in an non-Croatian diagram.
       // Names may safely retain their original spelling, but descriptions
-      // must have an explicit English field.
+      // must have an explicit localized field.
       if (key === 'detail') return '';
     }
     return rec[key] == null ? '' : rec[key];
