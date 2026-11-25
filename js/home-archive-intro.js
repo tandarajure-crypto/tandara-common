@@ -25,7 +25,7 @@
     return;
   }
 
-  const language = window.TandaraLanguage?.get() || "hr";
+  const language = String(window.TandaraLanguage?.get() || document.documentElement.lang || document.body?.dataset.lang || "hr").trim().toLowerCase().slice(0, 2);
 
   const isEnglish =
     language.startsWith("en");

@@ -168,7 +168,7 @@
     const baseFile = /-(?:en|de)\.html$/i.test(file) ? file.replace(/-(?:en|de)\.html$/i, '.html') : file;
     const hrHref = document.body.dataset.hrHref || baseFile;
     const enHref = document.body.dataset.enHref || (isEnglishFile ? file : stem + '-en.html');
-    const deHref = document.body.dataset.deHref || (isGermanFile ? file : 'index-de.html');
+    const deHref = document.body.dataset.deHref || document.body.dataset.pageDe || (isGermanFile ? file : stem + '-de.html');
     const flagBase = document.body.dataset.flagBase || '';
 
     const definitions = [
@@ -470,10 +470,14 @@
       const img = document.createElement('img');
       const photoAlt = LANG === 'en'
         ? (photo.altEn || photo.captionEn || recLabel(rec) || detailsName.textContent)
-        : (photo.alt || photo.caption);
+        : LANG === 'de'
+          ? (photo.altDe || photo.captionDe || photo.altEn || photo.captionEn || recLabel(rec) || detailsName.textContent)
+          : (photo.alt || photo.caption);
       const photoCaption = LANG === 'en'
         ? (photo.captionEn || recLabel(rec) || detailsName.textContent)
-        : photo.caption;
+        : LANG === 'de'
+          ? (photo.captionDe || photo.captionEn || recLabel(rec) || detailsName.textContent)
+          : photo.caption;
       img.alt = String(photoAlt || photoCaption || detailsName.textContent);
       // The selected person's card should load immediately, even while hidden.
       img.loading = 'eager';
@@ -577,6 +581,7 @@
 
   function marriageLabel(index) {
     if (!index) return '';
+    if (LANG === 'de') return `${index}. Ehe`;
     if (LANG === 'en') {
       if (index === 1) return '1st marriage';
       if (index === 2) return '2nd marriage';
