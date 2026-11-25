@@ -44,23 +44,10 @@
   }
 
 
-  /* =======================================================
-     JEZIK
-     ======================================================= */
-
-  const documentLanguage =
-    (
-      document.documentElement.lang ||
-      ""
-    )
-      .trim()
-      .toLowerCase();
-
-  const isGerman = documentLanguage.startsWith("de") || body.dataset.lang === "de";
-  const isEnglish =
-    documentLanguage.startsWith("en") ||
-    body.classList.contains("en");
-
+  /* Language is resolved only by site-shell.js. */
+  const documentLanguage = window.TandaraLanguage?.get() || "hr";
+  const isGerman = documentLanguage === "de";
+  const isEnglish = documentLanguage === "en";
 
   /* =======================================================
      PUTANJE
