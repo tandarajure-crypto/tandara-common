@@ -120,39 +120,8 @@
 
 
 
-  /* =======================================================
-     JEZIK
-
-     Prioritet:
-     1. <html lang="">
-     2. pageMap
-     3. body data-lang
-     4. HR kao sigurni fallback
-     ======================================================= */
-
-  const htmlLanguage =
-    (
-      document.documentElement.lang ||
-      ""
-    )
-      .trim()
-      .toLowerCase();
-
-
-  const pathLanguage =
-    fileName.match(/(?:^|[-_])(de|en|hr)(?=\.html$)/i)?.[1] || null;
-
-  // Requested filename and explicit HTML language outrank cached shell state.
-  const currentLanguage =
-    mappedPage?.lang ||
-    pathLanguage ||
-    (htmlLanguage.startsWith("de") ? "de" :
-      htmlLanguage.startsWith("en") ? "en" :
-      htmlLanguage.startsWith("hr") ? "hr" : null) ||
-    (body.dataset.lang || "").trim().toLowerCase().match(/^(de|en|hr)/)?.[1] ||
-    window.TandaraLanguage?.current ||
-    "hr";
-
+  /* Language is resolved only by site-shell.js. */
+  const currentLanguage = window.TandaraLanguage?.get() || "hr";
 
   const isHr =
     currentLanguage === "hr";
