@@ -65,8 +65,26 @@
     jurina: Object.freeze({ hr: "jurinagrana.html", en: "jurinagrana-en.html", de: "jurinagrana-de.html" }),
     petrova: Object.freeze({ hr: "petrovagrana.html", en: "petrovagrana-en.html", de: "petrovagrana-de.html" }),
     antina: Object.freeze({ hr: "antinagrana.html", en: "antinagrana-en.html", de: "antinagrana-de.html" }),
-    matina: Object.freeze({ hr: "matinagrana.html", en: "matinagrana-en.html", de: "matinagrana-de.html" })
+    matina: Object.freeze({ hr: "matinagrana.html", en: "matinagrana-en.html", de: "matinagrana-de.html" }),
+    autor: Object.freeze({ hr: "autor-hr.html", en: "autor-en.html", de: "autor-de.html" }),
+    podrijetlo: Object.freeze({ hr: "podrijetlo-hr.html", en: "podrijetlo-en.html", de: "podrijetlo-de.html" }),
+    rodoslovlje: Object.freeze({ hr: "rodoslovlje-hr.html", en: "rodoslovlje-en.html", de: "rodoslovlje-de.html" }),
+    migracije: Object.freeze({ hr: "migracije-hr.html", en: "migracije-en.html", de: "migracije-de.html" }),
+    zanimljivosti: Object.freeze({ hr: "zanimljivosti.html", en: "zanimljivosti-en.html", de: "zanimljivosti-de.html" }),
+    kontakti: Object.freeze({ hr: "kontakti.html", en: "contacts.html", de: "kontakti-de.html" }),
+    "knjiga-poruka": Object.freeze({ hr: "knjiga-poruka.html", en: "visitors-messages.html", de: "knjiga-poruka-de.html" }),
+    privatnost: Object.freeze({ hr: "privatnost.html", en: "privacy.html", de: "privatnost-de.html" })
   });
+
+  const pageInfoByFile = Object.freeze(Object.fromEntries(
+    Object.entries(pageLinks).flatMap(([key, variants]) =>
+      Object.entries(variants).map(([lang, file]) => [file, Object.freeze({
+        key, lang, hr: variants.hr, en: variants.en, de: variants.de
+      })])
+    )
+  ));
+
+  const pageInfo = file => pageInfoByFile[String(file || "").split("/").pop()] || null;
 
   document.documentElement.setAttribute("lang", resolvedLanguage);
   if (document.body) {
@@ -83,6 +101,7 @@
     text: (key, fallback = "") => translations[key]?.[resolvedLanguage] ?? fallback,
     translations,
     pages: pageLinks,
+    pageInfo,
     page: (key, language = resolvedLanguage) => pageLinks[key]?.[normalizeLanguage(language)] || null
   });
 
