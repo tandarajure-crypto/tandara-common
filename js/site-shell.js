@@ -45,7 +45,7 @@
   };
 
   const pathFile = window.location.pathname.split("/").pop() || "index.html";
-  const pathMatch = pathFile.match(/(?:^|[-_])(de|en|hr)(?=\.html$)/i);
+  const pathMatch = pathFile.match(/(?:^|[-_])(de|en|hr)(?=\.html$|$)/i);
   const resolvedLanguage =
     languageCode(pathMatch?.[1]) ||
     languageCode(document.documentElement.getAttribute("lang")) ||
