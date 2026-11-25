@@ -34,19 +34,22 @@
 
   /*
    * TANDARA LANGUAGE AUTHORITY
-   * Jedino mjesto koje određuje jezik, prijevode i parove stranica.
+   * Jedini izvor jezika za sve zajedničke module.
    */
-  const normalizeLanguage = value => {
-    const code = String(value || "").trim().toLowerCase().split(/[-_]/)[0];
-    return code === "de" || code === "en" || code === "hr" ? code : null;
+  const languageCode = value => {
+    const normalized = String(value || "").trim().toLowerCase();
+    if (normalized.startsWith("de")) return "de";
+    if (normalized.startsWith("en")) return "en";
+    if (normalized.startsWith("hr")) return "hr";
+    return null;
   };
 
-  const pageFile = window.location.pathname.split("/").pop() || "index.html";
-  const suffixLanguage = pageFile.match(/(?:^|[-_])(de|en|hr)(?=\.html$)/i)?.[1] || null;
+  const pathFile = window.location.pathname.split("/").pop() || "index.html";
+  const pathMatch = pathFile.match(/(?:^|[-_])(de|en|hr)(?=\.html$)/i);
   const resolvedLanguage =
-    normalizeLanguage(suffixLanguage) ||
-    normalizeLanguage(document.documentElement.getAttribute("lang")) ||
-    normalizeLanguage(document.body?.dataset.lang) ||
+    languageCode(pathMatch?.[1]) ||
+    languageCode(document.documentElement.getAttribute("lang")) ||
+    languageCode(document.body?.dataset.lang) ||
     "hr";
 
   const translations = Object.freeze({
@@ -83,7 +86,6 @@
       })])
     )
   ));
-
   const pageInfo = file => pageInfoByFile[String(file || "").split("/").pop()] || null;
 
   document.documentElement.setAttribute("lang", resolvedLanguage);
@@ -96,13 +98,12 @@
   const languageAuthority = Object.freeze({
     current: resolvedLanguage,
     get: () => resolvedLanguage,
-    normalize: normalizeLanguage,
-    is: code => resolvedLanguage === normalizeLanguage(code),
-    text: (key, fallback = "") => translations[key]?.[resolvedLanguage] ?? fallback,
+    is: code => resolvedLanguage === languageCode(code),
+    text: values => values?.[resolvedLanguage] ?? values?.hr ?? "",
     translations,
     pages: pageLinks,
     pageInfo,
-    page: (key, language = resolvedLanguage) => pageLinks[key]?.[normalizeLanguage(language)] || null
+    page: (key, language = resolvedLanguage) => pageLinks[key]?.[languageCode(language)] || null
   });
 
   try {
@@ -113,25 +114,17 @@
       writable: false
     });
   } catch (_) {
-    // Existing authority remains unchanged.
+    // Keep the already established authority if the property exists.
   }
 
-  // Keep all language markers synchronized; legacy modules cannot downgrade DE/EN.
+  // Protect the language attributes without observing or rewriting body classes.
   if (document.documentElement && typeof MutationObserver === "function") {
     const enforceLanguage = () => {
       if (document.documentElement.getAttribute("lang") !== resolvedLanguage) {
         document.documentElement.setAttribute("lang", resolvedLanguage);
       }
-      if (document.body) {
-        if (document.body.dataset.lang !== resolvedLanguage) {
-          document.body.dataset.lang = resolvedLanguage;
-        }
-        for (const code of ["hr", "en", "de"]) {
-          if (code !== resolvedLanguage) document.body.classList.remove(code);
-        }
-        if (!document.body.classList.contains(resolvedLanguage)) {
-          document.body.classList.add(resolvedLanguage);
-        }
+      if (document.body && document.body.dataset.lang !== resolvedLanguage) {
+        document.body.dataset.lang = resolvedLanguage;
       }
     };
     const languageGuard = new MutationObserver(enforceLanguage);
@@ -143,7 +136,7 @@
     if (document.body) {
       languageGuard.observe(document.body, {
         attributes: true,
-        attributeFilter: ["data-lang", "class"],
+        attributeFilter: ["data-lang"],
         subtree: false
       });
     }
