@@ -34,27 +34,39 @@
 
   /*
    * TANDARA LANGUAGE AUTHORITY
-   * Jedini izvor istine za HR / EN / DE na svim stranicama
-   * koje učitavaju site-shell.js. Jezik se najprije određuje iz
-   * jezičnog sufiksa URL-a, zatim iz <html lang> i body[data-lang].
-   * HR nije fallback za već prepoznatu EN ili DE stranicu.
+   * Jedino mjesto koje određuje jezik, prijevode i parove stranica.
    */
-  const languageCode = value => {
-    const valueNormalized = String(value || "").trim().toLowerCase();
-    if (valueNormalized.startsWith("de")) return "de";
-    if (valueNormalized.startsWith("en")) return "en";
-    if (valueNormalized.startsWith("hr")) return "hr";
-    return null;
+  const normalizeLanguage = value => {
+    const code = String(value || "").trim().toLowerCase().split(/[-_]/)[0];
+    return code === "de" || code === "en" || code === "hr" ? code : null;
   };
 
-  const pathFile = window.location.pathname.split("/").pop() || "index.html";
-  const pathMatch = pathFile.match(/(?:^|[-_])(de|en|hr)(?=\.html$)/i);
-  // A language suffix in the requested page URL outranks stale HTML/cache state.
+  const pageFile = window.location.pathname.split("/").pop() || "index.html";
+  const suffixLanguage = pageFile.match(/(?:^|[-_])(de|en|hr)(?=\.html$)/i)?.[1] || null;
   const resolvedLanguage =
-    languageCode(pathMatch?.[1]) ||
-    languageCode(document.documentElement.getAttribute("lang")) ||
-    languageCode(document.body?.dataset.lang) ||
+    normalizeLanguage(suffixLanguage) ||
+    normalizeLanguage(document.documentElement.getAttribute("lang")) ||
+    normalizeLanguage(document.body?.dataset.lang) ||
     "hr";
+
+  const translations = Object.freeze({
+    home: Object.freeze({ hr: "Početna", en: "Home", de: "Startseite" }),
+    author: Object.freeze({ hr: "Autor", en: "Author", de: "Autor" }),
+    genealogy: Object.freeze({ hr: "Rodoslovlje", en: "Genealogy", de: "Genealogie" }),
+    origin: Object.freeze({ hr: "Podrijetlo", en: "Origin", de: "Herkunft" }),
+    contacts: Object.freeze({ hr: "Kontakti", en: "Contacts", de: "Kontakt" }),
+    privacy: Object.freeze({ hr: "Privatnost", en: "Privacy", de: "Datenschutz" }),
+    messages: Object.freeze({ hr: "Knjiga poruka", en: "Visitors' messages", de: "Gästebuch" }),
+    language: Object.freeze({ hr: "Jezik", en: "Language", de: "Sprache" })
+  });
+
+  const pageLinks = Object.freeze({
+    index: Object.freeze({ hr: "index.html", en: "index-en.html", de: "index-de.html" }),
+    jurina: Object.freeze({ hr: "jurinagrana.html", en: "jurinagrana-en.html", de: "jurinagrana-de.html" }),
+    petrova: Object.freeze({ hr: "petrovagrana.html", en: "petrovagrana-en.html", de: "petrovagrana-de.html" }),
+    antina: Object.freeze({ hr: "antinagrana.html", en: "antinagrana-en.html", de: "antinagrana-de.html" }),
+    matina: Object.freeze({ hr: "matinagrana.html", en: "matinagrana-en.html", de: "matinagrana-de.html" })
+  });
 
   document.documentElement.setAttribute("lang", resolvedLanguage);
   if (document.body) {
@@ -65,8 +77,12 @@
 
   const languageAuthority = Object.freeze({
     current: resolvedLanguage,
-    is: code => resolvedLanguage === code,
-    text: values => values?.[resolvedLanguage] ?? values?.hr ?? ""
+    normalize: normalizeLanguage,
+    is: code => resolvedLanguage === normalizeLanguage(code),
+    text: (key, fallback = "") => translations[key]?.[resolvedLanguage] ?? fallback,
+    translations,
+    pages: pageLinks,
+    page: (key, language = resolvedLanguage) => pageLinks[key]?.[normalizeLanguage(language)] || null
   });
 
   try {
@@ -77,19 +93,28 @@
       writable: false
     });
   } catch (_) {
-    // Keep the already established authority if the property exists.
+    // Existing authority remains unchanged.
   }
 
-  // Prevent later legacy scripts from silently changing a DE/EN page to HR.
+  // Keep all language markers synchronized; legacy modules cannot downgrade DE/EN.
   if (document.documentElement && typeof MutationObserver === "function") {
-    const languageGuard = new MutationObserver(() => {
+    const enforceLanguage = () => {
       if (document.documentElement.getAttribute("lang") !== resolvedLanguage) {
         document.documentElement.setAttribute("lang", resolvedLanguage);
       }
-      if (document.body && document.body.dataset.lang !== resolvedLanguage) {
-        document.body.dataset.lang = resolvedLanguage;
+      if (document.body) {
+        if (document.body.dataset.lang !== resolvedLanguage) {
+          document.body.dataset.lang = resolvedLanguage;
+        }
+        for (const code of ["hr", "en", "de"]) {
+          if (code !== resolvedLanguage) document.body.classList.remove(code);
+        }
+        if (!document.body.classList.contains(resolvedLanguage)) {
+          document.body.classList.add(resolvedLanguage);
+        }
       }
-    });
+    };
+    const languageGuard = new MutationObserver(enforceLanguage);
     languageGuard.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["lang"],
@@ -98,12 +123,11 @@
     if (document.body) {
       languageGuard.observe(document.body, {
         attributes: true,
-        attributeFilter: ["data-lang"],
+        attributeFilter: ["data-lang", "class"],
         subtree: false
       });
     }
   }
-
 
   /* =======================================================
      OSNOVNI ELEMENTI
