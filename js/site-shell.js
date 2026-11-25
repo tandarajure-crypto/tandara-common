@@ -77,6 +77,7 @@
 
   const languageAuthority = Object.freeze({
     current: resolvedLanguage,
+    get: () => resolvedLanguage,
     normalize: normalizeLanguage,
     is: code => resolvedLanguage === normalizeLanguage(code),
     text: (key, fallback = "") => translations[key]?.[resolvedLanguage] ?? fallback,
