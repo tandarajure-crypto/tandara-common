@@ -84,8 +84,7 @@
   // Kronološko sortiranje primjenjuje se samo na Matinu granu.
   const sortMatinaBranch = rootCode === '4.0';
 
-  const languageTag = (document.documentElement.lang || document.body.dataset.lang || "hr").toLowerCase();
-  const LANG = languageTag.startsWith("de") ? "de" : languageTag.startsWith("en") ? "en" : "hr";
+  const LANG = window.TandaraLanguage?.get() || "hr";
   const TXT = LANG === "en" ? {
     missingRoot:"Missing root person", code:"Code", father:"Father", mother:"Mother", missing:"not provided",
     opened:"Opened", closed:"Closed", branch:"branch", enterSearch:"Enter at least one search value.",
