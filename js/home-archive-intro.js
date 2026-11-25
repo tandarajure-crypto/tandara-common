@@ -25,16 +25,7 @@
     return;
   }
 
-  const pathFile = window.location.pathname.split("/").pop() || "";
-  const pathLanguage = pathFile.match(/(?:^|[-_])(de|en|hr)(?=\.html$)/i)?.[1];
-  // The requested document URL is authoritative over any stale shell state.
-  const language = (
-    pathLanguage ||
-    document.documentElement.lang ||
-    document.body?.dataset.lang ||
-    window.TandaraLanguage?.current ||
-    "hr"
-  ).toLowerCase();
+  const language = window.TandaraLanguage?.get() || "hr";
 
   const isEnglish =
     language.startsWith("en");
