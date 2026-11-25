@@ -69,6 +69,13 @@
     petrova: Object.freeze({ hr: "petrovagrana.html", en: "petrovagrana-en.html", de: "petrovagrana-de.html" }),
     antina: Object.freeze({ hr: "antinagrana.html", en: "antinagrana-en.html", de: "antinagrana-de.html" }),
     matina: Object.freeze({ hr: "matinagrana.html", en: "matinagrana-en.html", de: "matinagrana-de.html" }),
+    instructions: Object.freeze({ hr: "upute.html", en: "upute-en.html", de: "upute-de.html" }),
+    ivanov: Object.freeze({ hr: "box1.html", en: "box1-en.html", de: "box1-de.html" }),
+    jurin: Object.freeze({ hr: "box2a.html", en: "box2a-en.html", de: "box2a-de.html" }),
+    petrov: Object.freeze({ hr: "box2b.html", en: "box2b-en.html", de: "box2b-de.html" }),
+    antin: Object.freeze({ hr: "box2c.html", en: "box2c-en.html", de: "box2c-de.html" }),
+    matin: Object.freeze({ hr: "box2d.html", en: "box2d-en.html", de: "box2d-de.html" }),
+    livanjske: Object.freeze({ hr: "filipovagrana.html", en: "filipovagrana-en.html", de: "filipovagrana-de.html" }),
     autor: Object.freeze({ hr: "autor-hr.html", en: "autor-en.html", de: "autor-de.html" }),
     podrijetlo: Object.freeze({ hr: "podrijetlo-hr.html", en: "podrijetlo-en.html", de: "podrijetlo-de.html" }),
     rodoslovlje: Object.freeze({ hr: "rodoslovlje-hr.html", en: "rodoslovlje-en.html", de: "rodoslovlje-de.html" }),
@@ -1250,16 +1257,20 @@
     }
 
 
+    // Resolve language partners from the current filename first.
+    // HTML data attributes remain a fallback for legacy or exceptional routes.
+    const currentPage = pageInfo(pathFile);
+
     const hrPage =
-      body.dataset.pageHr;
+      currentPage?.hr || body.dataset.pageHr || "index.html";
 
 
     const enPage =
-      body.dataset.pageEn;
+      currentPage?.en || body.dataset.pageEn || "index-en.html";
 
 
     const dePage =
-      body.dataset.pageDe || "index-de.html";
+      currentPage?.de || body.dataset.pageDe || "index-de.html";
 
 
     if (!navigation) {
