@@ -131,7 +131,7 @@
 
         de: Object.freeze({
           label: "Antes Familienzweig",
-          route: null
+          route: "antinagrana-de.html"
         })
       }),
 
