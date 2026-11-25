@@ -80,6 +80,7 @@
     podrijetlo: Object.freeze({ hr: "podrijetlo-hr.html", en: "podrijetlo-en.html", de: "podrijetlo-de.html" }),
     rodoslovlje: Object.freeze({ hr: "rodoslovlje-hr.html", en: "rodoslovlje-en.html", de: "rodoslovlje-de.html" }),
     migracije: Object.freeze({ hr: "migracije-hr.html", en: "migracije-en.html", de: "migracije-de.html" }),
+    life: Object.freeze({ hr: "zivot.html", en: "zivot-en.html", de: "zivot-de.html" }),
     zanimljivosti: Object.freeze({ hr: "zanimljivosti.html", en: "zanimljivosti-en.html", de: "zanimljivosti-de.html" }),
     kontakti: Object.freeze({ hr: "kontakti.html", en: "contacts.html", de: "kontakti-de.html" }),
     "knjiga-poruka": Object.freeze({ hr: "knjiga-poruka.html", en: "visitors-messages.html", de: "knjiga-poruka-de.html" }),
