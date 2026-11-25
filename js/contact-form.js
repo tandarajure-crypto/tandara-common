@@ -12,7 +12,7 @@
   const form = document.querySelector(".archive-contact-form");
   if (!form) return;
 
-  const lang = (document.documentElement.lang || document.body.dataset.lang || "hr").toLowerCase();
+  const lang = window.TandaraLanguage?.get() || "hr";
   const isEnglish = lang.startsWith("en");
   const isGerman = lang.startsWith("de");
   const submitButton = form.querySelector('button[type="submit"]');
