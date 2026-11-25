@@ -20,7 +20,7 @@
         const link = img.closest('a');
         if (link && !notice) {
           notice = document.createElement('span');
-          const lang = (document.documentElement.lang || 'hr').toLowerCase();
+          const lang = window.TandaraLanguage?.get() || 'hr';
           notice.textContent = lang.startsWith('de') ? 'Originalfoto öffnen' : lang.startsWith('en') ? 'Open original photograph' : 'Otvori izvornu fotografiju';
           link.append(notice);
         }
