@@ -76,6 +76,7 @@
     antin: Object.freeze({ hr: "box2c.html", en: "box2c-en.html", de: "box2c-de.html" }),
     matin: Object.freeze({ hr: "box2d.html", en: "box2d-en.html", de: "box2d-de.html" }),
     livanjske: Object.freeze({ hr: "filipovagrana.html", en: "filipovagrana-en.html", de: "filipovagrana-de.html" }),
+    filipovdijagram: Object.freeze({ hr: "filipovdijagram.html", en: "filipovdijagram-en.html", de: "filipovdijagram-de.html" }),
     autor: Object.freeze({ hr: "autor-hr.html", en: "autor-en.html", de: "autor-de.html" }),
     podrijetlo: Object.freeze({ hr: "podrijetlo-hr.html", en: "podrijetlo-en.html", de: "podrijetlo-de.html" }),
     rodoslovlje: Object.freeze({ hr: "rodoslovlje-hr.html", en: "rodoslovlje-en.html", de: "rodoslovlje-de.html" }),
