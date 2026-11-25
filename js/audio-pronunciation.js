@@ -20,7 +20,7 @@ if (!player || !buttons.length) return;
    JEZIK
    ========================================================= */
 
-const language = (document.documentElement.lang || document.body.dataset.lang || "hr").toLowerCase();
+const language = window.TandaraLanguage?.get() || "hr";
 const isEnglish = language.startsWith("en");
 const isGerman = language.startsWith("de");
 
