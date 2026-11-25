@@ -295,8 +295,7 @@
       return;
     }
 
-    const languageTag = (document.documentElement.lang || document.body.dataset.lang || "hr").trim().toLowerCase();
-    const language = languageTag.startsWith("de") ? "de" : languageTag.startsWith("en") ? "en" : "hr";
+    const language = window.TandaraLanguage?.get() || "hr";
 
     // Do not place a non-German announcement modal over the German navigation.
     // The current announcement has only HR/EN artwork and text; show it in DE
