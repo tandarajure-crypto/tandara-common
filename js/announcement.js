@@ -295,7 +295,10 @@
       return;
     }
 
-    const language = window.TandaraLanguage?.get() || "hr";
+    const pageLanguage = window.TandaraLanguage?.get() || "hr";
+    // Visitors whose browser is set to German see the German announcement on any page.
+    const browserLanguages = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""]);
+    const language = String(browserLanguages[0] || "").toLowerCase().startsWith("de") ? "de" : pageLanguage;
 
     // Do not place a non-German announcement modal over the German navigation.
     // The current announcement has only HR/EN artwork and text; show it in DE
