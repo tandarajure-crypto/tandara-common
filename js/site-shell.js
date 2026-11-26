@@ -945,7 +945,7 @@
                 "Anleitung",
 
               route:
-                "https://tandarajure-crypto.github.io/tandara-common/Pdf/WEB-tandara.anleitung.pdf"
+                "upute-de.html"
             })
         }),
 
