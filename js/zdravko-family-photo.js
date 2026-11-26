@@ -10,7 +10,7 @@
     const family = document.createElement('figure');
     family.className = 'person-details-image';
     family.hidden = true;
-    const lang = (document.documentElement.lang || 'hr').toLowerCase();
+    const lang = window.TandaraLanguage?.get() || 'hr';
     const caption = lang.startsWith('de') ? 'Zdravkos Familie' : lang.startsWith('en') ? 'Zdravko’s family' : 'Obitelj Zdravkova';
     const link = document.createElement('a');
     link.href = 'https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/zdravkovaobitel%20.jpg';

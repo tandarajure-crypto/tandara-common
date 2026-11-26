@@ -295,8 +295,7 @@
       return;
     }
 
-    const languageTag = (document.documentElement.lang || document.body.dataset.lang || "hr").trim().toLowerCase();
-    const pageLanguage = languageTag.startsWith("de") ? "de" : languageTag.startsWith("en") ? "en" : "hr";
+    const pageLanguage = window.TandaraLanguage?.get() || "hr";
     // Visitors whose browser is set to German see the German announcement on any page.
     const browserLanguages = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""]);
     const language = String(browserLanguages[0] || "").toLowerCase().startsWith("de") ? "de" : pageLanguage;

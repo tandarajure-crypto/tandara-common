@@ -34,27 +34,59 @@
 
   /*
    * TANDARA LANGUAGE AUTHORITY
-   * Jedini izvor istine za HR / EN / DE na svim stranicama
-   * koje učitavaju site-shell.js. Jezik se najprije određuje iz
-   * jezičnog sufiksa URL-a, zatim iz <html lang> i body[data-lang].
-   * HR nije fallback za već prepoznatu EN ili DE stranicu.
+   * Jedini izvor jezika za sve zajedničke module.
    */
   const languageCode = value => {
-    const valueNormalized = String(value || "").trim().toLowerCase();
-    if (valueNormalized.startsWith("de")) return "de";
-    if (valueNormalized.startsWith("en")) return "en";
-    if (valueNormalized.startsWith("hr")) return "hr";
+    const normalized = String(value || "").trim().toLowerCase();
+    if (normalized.startsWith("de")) return "de";
+    if (normalized.startsWith("en")) return "en";
+    if (normalized.startsWith("hr")) return "hr";
     return null;
   };
 
   const pathFile = window.location.pathname.split("/").pop() || "index.html";
-  const pathMatch = pathFile.match(/(?:^|[-_])(de|en|hr)(?=\.html$)/i);
-  // A language suffix in the requested page URL outranks stale HTML/cache state.
+  const pathMatch = pathFile.match(/(?:^|[-_])(de|en|hr)(?=\.html$|$)/i);
   const resolvedLanguage =
     languageCode(pathMatch?.[1]) ||
     languageCode(document.documentElement.getAttribute("lang")) ||
     languageCode(document.body?.dataset.lang) ||
     "hr";
+
+  const translations = Object.freeze({
+    home: Object.freeze({ hr: "Početna", en: "Home", de: "Startseite" }),
+    author: Object.freeze({ hr: "Autor", en: "Author", de: "Autor" }),
+    genealogy: Object.freeze({ hr: "Rodoslovlje", en: "Genealogy", de: "Genealogie" }),
+    origin: Object.freeze({ hr: "Podrijetlo", en: "Origin", de: "Herkunft" }),
+    contacts: Object.freeze({ hr: "Kontakti", en: "Contacts", de: "Kontakt" }),
+    privacy: Object.freeze({ hr: "Privatnost", en: "Privacy", de: "Datenschutz" }),
+    messages: Object.freeze({ hr: "Knjiga poruka", en: "Visitors' messages", de: "Gästebuch" }),
+    language: Object.freeze({ hr: "Jezik", en: "Language", de: "Sprache" })
+  });
+
+  const pageLinks = Object.freeze({
+    index: Object.freeze({ hr: "index.html", en: "index-en.html", de: "index-de.html" }),
+    jurina: Object.freeze({ hr: "jurinagrana.html", en: "jurinagrana-en.html", de: "jurinagrana-de.html" }),
+    petrova: Object.freeze({ hr: "petrovagrana.html", en: "petrovagrana-en.html", de: "petrovagrana-de.html" }),
+    antina: Object.freeze({ hr: "antinagrana.html", en: "antinagrana-en.html", de: "antinagrana-de.html" }),
+    matina: Object.freeze({ hr: "matinagrana.html", en: "matinagrana-en.html", de: "matinagrana-de.html" }),
+    autor: Object.freeze({ hr: "autor-hr.html", en: "autor-en.html", de: "autor-de.html" }),
+    podrijetlo: Object.freeze({ hr: "podrijetlo-hr.html", en: "podrijetlo-en.html", de: "podrijetlo-de.html" }),
+    rodoslovlje: Object.freeze({ hr: "rodoslovlje-hr.html", en: "rodoslovlje-en.html", de: "rodoslovlje-de.html" }),
+    migracije: Object.freeze({ hr: "migracije-hr.html", en: "migracije-en.html", de: "migracije-de.html" }),
+    zanimljivosti: Object.freeze({ hr: "zanimljivosti.html", en: "zanimljivosti-en.html", de: "zanimljivosti-de.html" }),
+    kontakti: Object.freeze({ hr: "kontakti.html", en: "contacts.html", de: "kontakti-de.html" }),
+    "knjiga-poruka": Object.freeze({ hr: "knjiga-poruka.html", en: "visitors-messages.html", de: "knjiga-poruka-de.html" }),
+    privatnost: Object.freeze({ hr: "privatnost.html", en: "privacy.html", de: "privatnost-de.html" })
+  });
+
+  const pageInfoByFile = Object.freeze(Object.fromEntries(
+    Object.entries(pageLinks).flatMap(([key, variants]) =>
+      Object.entries(variants).map(([lang, file]) => [file, Object.freeze({
+        key, lang, hr: variants.hr, en: variants.en, de: variants.de
+      })])
+    )
+  ));
+  const pageInfo = file => pageInfoByFile[String(file || "").split("/").pop()] || null;
 
   document.documentElement.setAttribute("lang", resolvedLanguage);
   // Keep every page in its source language: block Google Translate / Chrome auto-translation.
@@ -76,8 +108,13 @@
 
   const languageAuthority = Object.freeze({
     current: resolvedLanguage,
-    is: code => resolvedLanguage === code,
-    text: values => values?.[resolvedLanguage] ?? values?.hr ?? ""
+    get: () => resolvedLanguage,
+    is: code => resolvedLanguage === languageCode(code),
+    text: values => values?.[resolvedLanguage] ?? values?.hr ?? "",
+    translations,
+    pages: pageLinks,
+    pageInfo,
+    page: (key, language = resolvedLanguage) => pageLinks[key]?.[languageCode(language)] || null
   });
 
   try {
@@ -91,16 +128,17 @@
     // Keep the already established authority if the property exists.
   }
 
-  // Prevent later legacy scripts from silently changing a DE/EN page to HR.
+  // Protect the language attributes without observing or rewriting body classes.
   if (document.documentElement && typeof MutationObserver === "function") {
-    const languageGuard = new MutationObserver(() => {
+    const enforceLanguage = () => {
       if (document.documentElement.getAttribute("lang") !== resolvedLanguage) {
         document.documentElement.setAttribute("lang", resolvedLanguage);
       }
       if (document.body && document.body.dataset.lang !== resolvedLanguage) {
         document.body.dataset.lang = resolvedLanguage;
       }
-    });
+    };
+    const languageGuard = new MutationObserver(enforceLanguage);
     languageGuard.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["lang"],
@@ -114,7 +152,6 @@
       });
     }
   }
-
 
   /* =======================================================
      OSNOVNI ELEMENTI
@@ -919,7 +956,7 @@
                 "Anleitung",
 
               route:
-                "https://tandarajure-crypto.github.io/tandara-common/Pdf/WEB-tandara.anleitung.pdf"
+                "upute-de.html"
             })
         }),
 
