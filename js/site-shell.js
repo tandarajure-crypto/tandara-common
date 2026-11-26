@@ -57,7 +57,18 @@
     "hr";
 
   document.documentElement.setAttribute("lang", resolvedLanguage);
+  // Keep every page in its source language: block Google Translate / Chrome auto-translation.
+  document.documentElement.setAttribute("translate", "no");
+  document.documentElement.classList.add("notranslate");
+  if (!document.querySelector('meta[name="google"][content="notranslate"]')) {
+    const noTranslateMeta = document.createElement("meta");
+    noTranslateMeta.name = "google";
+    noTranslateMeta.content = "notranslate";
+    document.head.appendChild(noTranslateMeta);
+  }
   if (document.body) {
+    document.body.setAttribute("translate", "no");
+    document.body.classList.add("notranslate");
     document.body.dataset.lang = resolvedLanguage;
     document.body.classList.remove("hr", "en", "de");
     document.body.classList.add(resolvedLanguage);
