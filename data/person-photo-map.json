@@ -1,5 +1,27 @@
 {
   "public": {
+    "3.1.1.1.4.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/trosic.jpg",
+        "alt": "Marijan Jozin",
+        "caption": "Marijan Jozin",
+        "altEn": "Marijan, son of Jozo",
+        "captionEn": "Marijan, son of Jozo",
+        "altDe": "Marijan, Sohn von Jozo",
+        "captionDe": "Marijan, Sohn von Jozo"
+      }
+    ],
+    "3.1.1.1.4.1-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/budimirusa.jpg",
+        "alt": "Anica rođ. Budimir",
+        "caption": "Anica rođ. Budimir",
+        "altEn": "Anica née Budimir",
+        "captionEn": "Anica née Budimir",
+        "altDe": "Anica geb. Budimir",
+        "captionDe": "Anica geb. Budimir"
+      }
+    ],
     "2.3.4.1.1.1.4": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/antevlade.jpg",
@@ -1146,6 +1168,28 @@
     ]
   },
   "private": {
+    "3.1.1.1.4.1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/trosic.jpg",
+        "alt": "Marijan Jozin",
+        "caption": "Marijan Jozin",
+        "altEn": "Marijan, son of Jozo",
+        "captionEn": "Marijan, son of Jozo",
+        "altDe": "Marijan, Sohn von Jozo",
+        "captionDe": "Marijan, Sohn von Jozo"
+      }
+    ],
+    "3.1.1.1.4.1-SP-1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/budimirusa.jpg",
+        "alt": "Anica rođ. Budimir",
+        "caption": "Anica rođ. Budimir",
+        "altEn": "Anica née Budimir",
+        "captionEn": "Anica née Budimir",
+        "altDe": "Anica geb. Budimir",
+        "captionDe": "Anica geb. Budimir"
+      }
+    ],
     "3.1.1.1.4.1.1-K1": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ananikolina.jpg",
