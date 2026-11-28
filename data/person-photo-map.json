@@ -1146,6 +1146,39 @@
     ]
   },
   "private": {
+    "3.1.1.1.4.1.1-K1": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/ananikolina.jpg",
+        "alt": "Ana Nikolina",
+        "caption": "Ana Nikolina",
+        "altEn": "Ana, daughter of Nikola",
+        "captionEn": "Ana, daughter of Nikola",
+        "altDe": "Ana, Tochter von Nikola",
+        "captionDe": "Ana, Tochter von Nikola"
+      }
+    ],
+    "3.1.1.1.4.1.1-K2": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/marijananikolina.jpg",
+        "alt": "Marijana Nikolina",
+        "caption": "Marijana Nikolina",
+        "altEn": "Marijana, daughter of Nikola",
+        "captionEn": "Marijana, daughter of Nikola",
+        "altDe": "Marijana, Tochter von Nikola",
+        "captionDe": "Marijana, Tochter von Nikola"
+      }
+    ],
+    "3.1.1.1.4.1.1-K3": [
+      {
+        "src": "https://tandarajure-crypto.github.io/tandara-common/slike/antinagrana/radmila.jpg",
+        "alt": "Radmila Nikolina",
+        "caption": "Radmila Nikolina",
+        "altEn": "Radmila, daughter of Nikola",
+        "captionEn": "Radmila, daughter of Nikola",
+        "altDe": "Radmila, Tochter von Nikola",
+        "captionDe": "Radmila, Tochter von Nikola"
+      }
+    ],
     "2.3.4.1.1.1.4": [
       {
         "src": "https://tandarajure-crypto.github.io/tandara-common/slike/petrovagrana/antevlade.jpg",
